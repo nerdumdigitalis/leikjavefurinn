@@ -13,6 +13,7 @@ namespace Leikjavefur.Controllers
             //This is HomeController and now to add some diff for git
             //Sigurður Karl að prufa git
             //Sverrir test
+            //Natan test
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
             
             return View();
