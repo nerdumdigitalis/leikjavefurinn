@@ -79,6 +79,14 @@ namespace Leikjavefur.Controllers
                 // Attempt to register the user
                 try
                 {
+                    /*  Hér þurfum við að breyta þannig að í staðinn fyrir að nota WebSecurity klasan
+                        Til að geyma upplýsingar þá myndum við senda þessar upplýsingar til Database(SQL) serverin.
+                        Svo þurfum við að útfæra "login" klasa sem checkar hvort þessi notandi er til
+                        og loggar hann inn ef svo er satt.
+                        #TL;DR þurfum 2 klasa, Register og Login, til að replace'a þetta "WebSecurity" dót.
+                        
+                        -Natan
+                     */
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");

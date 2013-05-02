@@ -57,6 +57,10 @@ namespace Leikjavefur.Models
 
     public class LoginModel
     {
+        /*
+            Mögulega þarf að bæta hér inn "Forgot password" og "Register".
+            -Natan
+         */
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
@@ -72,6 +76,10 @@ namespace Leikjavefur.Models
 
     public class RegisterModel
     {
+        /*
+            Hér þurfum við að bæta við t.d. Email
+            -Natan
+         */
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
