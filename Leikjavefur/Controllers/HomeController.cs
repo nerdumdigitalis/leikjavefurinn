@@ -10,9 +10,10 @@ namespace Leikjavefur.Controllers
     {
         public ActionResult Index()
         {
-            //This is HomeController
+            //This is HomeController and now to add some diff for git
+            //Sigurður Karl að prufa git
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
+            
             return View();
         }
 
