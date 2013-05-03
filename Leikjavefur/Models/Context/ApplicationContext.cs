@@ -11,5 +11,6 @@ namespace Leikjavefur.Models.Context
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
+        public DbSet<Clan> Clans { get; set; }
     }
 }

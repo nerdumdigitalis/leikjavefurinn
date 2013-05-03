@@ -164,14 +164,20 @@
     <Compile Include="Controllers\AccountController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\ClanController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Entities\Clan.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201305031641432_UltramegaOK.cs" />
+    <Compile Include="Migrations\201305031641432_UltramegaOK.Designer.cs">
+      <DependentUpon>201305031641432_UltramegaOK.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -299,12 +305,22 @@
     <Content Include="Views\Game\Create.cshtml" />
     <Content Include="Views\Game\Edit.cshtml" />
     <Content Include="Views\Game\Delete.cshtml" />
+    <Content Include="Views\Clan\Index.cshtml" />
+    <Content Include="Views\Clan\Details.cshtml" />
+    <Content Include="Views\Clan\Create.cshtml" />
+    <Content Include="Views\Clan\Edit.cshtml" />
+    <Content Include="Views\Clan\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201305031641432_UltramegaOK.resx">
+      <DependentUpon>201305031641432_UltramegaOK.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
