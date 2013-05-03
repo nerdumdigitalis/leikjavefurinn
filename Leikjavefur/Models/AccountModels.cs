@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Globalization;
 using System.Web.Security;
+using Leikjavefur.Entities;
 
 namespace Leikjavefur.Models
 {
@@ -16,6 +17,8 @@ namespace Leikjavefur.Models
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 
     [Table("UserProfile")]

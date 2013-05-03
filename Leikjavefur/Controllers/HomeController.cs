@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Leikjavefur.Entities;
 
 namespace Leikjavefur.Controllers
 {
@@ -10,13 +11,7 @@ namespace Leikjavefur.Controllers
     {
         public ActionResult Index()
         {
-            //This is HomeController and now to add some diff for git
-            //Sigurður Karl að prufa git
-            //Sverrir test
-            //Natan test
-            //Kobbi test
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-            
+
             return View();
         }
 
