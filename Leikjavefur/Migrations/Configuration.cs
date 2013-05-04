@@ -9,7 +9,7 @@ namespace Leikjavefur.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Leikjavefur.Models.Context.ApplicationContext context)
