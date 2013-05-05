@@ -21,8 +21,12 @@ namespace Leikjavefur
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+<<<<<<< HEAD
             //Database.SetInitializer<ApplicationContext>(null);
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
+=======
+            Database.SetInitializer<ApplicationContext>(null);
+>>>>>>> ccd5c39... fix bug in global.asax which was causing database errors
             
         }
     }
