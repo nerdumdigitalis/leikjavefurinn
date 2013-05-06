@@ -1,7 +1,7 @@
 ﻿@model Leikjavefur.Models.LoginModel
 
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "Innskráning";
 }
 
 <hgroup class="title">
@@ -9,14 +9,12 @@
 </hgroup>
 
 <section id="loginForm">
-<h2>Use a local account to log in.</h2>
+
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Log in Form</legend>
-        <ol>
+    <ul>
             <li>
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
@@ -31,19 +29,11 @@
                 @Html.CheckBoxFor(m => m.RememberMe)
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
             </li>
-        </ol>
-        <input type="submit" value="Log in" />
-    </fieldset>
-    <p>
-        @Html.ActionLink("Register", "Register") if you don't have an account.
-    </p>
+        </ul>
+    
 }
 </section>
 
-<section class="social" id="socialLoginForm">
-    <h2>Use another service to log in.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
-</section>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

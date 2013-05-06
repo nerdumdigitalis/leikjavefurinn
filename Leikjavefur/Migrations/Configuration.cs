@@ -5,14 +5,14 @@ namespace Leikjavefur.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Leikjavefur.Models.Context.ApplicationContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Leikjavefur.Models.UsersContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Leikjavefur.Models.Context.ApplicationContext context)
+        protected override void Seed(Leikjavefur.Models.UsersContext context)
         {
             //  This method will be called after migrating to the latest version.
 

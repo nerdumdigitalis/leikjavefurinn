@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>Leikjavefurinn</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @*@Styles.Render("~/Content/css")*@
@@ -11,21 +11,22 @@
     <body>
         <header>
             <div class="content-wrapper">
-                <div class="float-left">
+                <div class="float-left" style="float:left">
                     <p class="site-title">@Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/logo.jpg") + "') no-repeat center right; display:block; height:251px; width:201px;"})</p>
-                    <h2>Chuck Norris can write infinite recursion functions … and have them return</h2>
+                    @*<h2>Chuck Norris can write infinite recursion functions … and have them return</h2>*@
                 </div>
                 <div class="float-right">
-                    @*<section id="login">
+                    <section id="login">
+                        
                         @Html.Partial("_LoginPartial")
-                    </section>*@
-                    <nav>
+                    </section>
+                    @*<nav>
                         <ul id="menu">
                             <li>@Html.ActionLink("User", "Index", "User")</li>
                             <li>@Html.ActionLink("Game", "Index", "Game")</li>
                             <li>@Html.ActionLink("Clan", "Index", "Clan")</li>
                         </ul>
-                    </nav>
+                    </nav>*@
                 </div>
             </div>
         </header>
@@ -36,11 +37,7 @@
             </section>
         </div>
         <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
-                </div>
-            </div>
+            
         </footer>
 
         @Scripts.Render("~/bundles/jquery")

@@ -28,12 +28,27 @@ namespace Leikjavefur.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Veffang")]
+        public string Email { get; set; }
+
+        [Display(Name = "Mynd (Valkvætt)")]
+        public string Avatar { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+        public bool IsAdmin { get; set; }
+
+        [Display(Name = "Stutt lýsing, max 200 stafir (Valkvætt)")]
+        [StringLength(200, ErrorMessage = "Styttu textan niður í max 200 stafi")]
+        public string About { get; set; }
     }
 
     public class RegisterExternalLoginModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Notandanafn")]
         public string UserName { get; set; }
 
         public string ExternalLoginData { get; set; }
@@ -43,18 +58,18 @@ namespace Leikjavefur.Models
     {
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Núverandi lykilorð")]
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} verður að vera a.m.k {2} stafa langt.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Nýtt lykilorð")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Staðfestu nýja lykilorðið")]
+        [Compare("NewPassword", ErrorMessage = "Lykilorðin stemma ekki")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -63,17 +78,19 @@ namespace Leikjavefur.Models
         /*
             Mögulega þarf að bæta hér inn "Forgot password" og "Register".
             -Natan
+         * Það verða í raun ActionLinks sem sjá um það redirection
+         * -Siggi
          */
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Notandanafn")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lykilorð")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Muna mig?")]
         public bool RememberMe { get; set; }
     }
 
@@ -84,19 +101,34 @@ namespace Leikjavefur.Models
             -Natan
          */
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Notandanafn")]
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} verður að vera a.m.k {2} stafa langt.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lykilorð")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Staðfestu lykilorðið")]
+        [Compare("Password", ErrorMessage = "Lykilorðin stemma ekki")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Veffang")]
+        public string Email { get; set; }
+
+        [Display(Name = "Mynd (Valkvætt)")]
+        public string Avatar { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
+        public bool IsAdmin { get; set; }
+
+        [Display(Name = "Stutt lýsing, max 200 stafir (Valkvætt)")]
+        [StringLength(200, ErrorMessage = "Styttu textan niður í max 200 stafi")]
+        public string About { get; set; }
     }
 
     public class ExternalLogin
