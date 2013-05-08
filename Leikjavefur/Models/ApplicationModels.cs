@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Web.Security;
 
 namespace Leikjavefur.Models
 {
 
-    [Table("UserProfile")]
+    [Table("UserDetails")]
     public class User
     {
         [Key]
@@ -18,12 +16,10 @@ namespace Leikjavefur.Models
         [Display(Name = "Notendanafn")]
         public string UserName { get; set; }
 
-        [Required]
-        [MembershipPassword]
-        [Display(Name = "Lykilorð")]
-        public string Password { get; set; }
+        //[MembershipPassword]
+        //[Display(Name = "Lykilorð")]
+        //public string Password { get; set; }
         
-        [Required]
         [Display(Name = "Veffang")]
         public string Email { get; set; }
 
@@ -38,8 +34,8 @@ namespace Leikjavefur.Models
         [StringLength(200, ErrorMessage = "Styttu textan niður í max 200 stafi")]
         public string About { get; set; }
 
-        [ForeignKey("UserID")]
-        public virtual ICollection<User> Friend { get; set; }
+        //[ForeignKey("UserID")]
+        //public virtual ICollection<User> Friend { get; set; }
     }
 
     [Table("GameProfile")]

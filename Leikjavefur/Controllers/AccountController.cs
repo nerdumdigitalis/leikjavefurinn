@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
+using Leikjavefur.Models.Repository;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using Leikjavefur.Models;
@@ -85,8 +86,20 @@ namespace Leikjavefur.Controllers
                         
                         -Natan
                      */
+                    var userRep = new UserRepository();
+                    
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    var user = new User
+                                   {
+                                       UserID = WebSecurity.CurrentUserId,
+                                       UserName = model.UserName,
+                                       About = model.About,
+                                       DateCreated = DateTime.Now,
+                                       Email = model.Email
+                                   };
+                    
                     WebSecurity.Login(model.UserName, model.Password);
+                    userRep.InsertOrUpdate(user);
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
