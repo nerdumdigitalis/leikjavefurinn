@@ -6,6 +6,8 @@ using System.Data.Entity;
 using Leikjavefur.Models.Context;
 using Microsoft.AspNet.SignalR;
 
+//using Microsoft.AspNet.SignalR;
+
 namespace Leikjavefur
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 

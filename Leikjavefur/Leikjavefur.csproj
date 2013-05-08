@@ -180,14 +180,8 @@
     <Compile Include="Controllers\AccountController.cs">
       <SubType>Code</SubType>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
-=======
-    <Compile Include="Controllers\ClanController.cs" />
-    <Compile Include="Controllers\GameController.cs" />
-    <Compile Include="Controllers\GameHub.cs" />
->>>>>>> 8a0a07dc1f474832a4954826c6ce51ef682cf16a
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
