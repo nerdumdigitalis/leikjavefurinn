@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Globalization;
 using System.Web.Security;
 
 namespace Leikjavefur.Models
 {
 
-    [Table("UserProfiles")]
+    [Table("UserProfile")]
     public class User
     {
         [Key]
@@ -44,7 +42,7 @@ namespace Leikjavefur.Models
         public virtual ICollection<User> Friend { get; set; }
     }
 
-    [Table("GameProfiles")]
+    [Table("GameProfile")]
     public class Game
     {
         [Key]
@@ -77,7 +75,7 @@ namespace Leikjavefur.Models
         public string Rules { get; set; }
     }
 
-    [Table("Statistics")]
+    [Table("Statistic")]
     public class Statistic
     {
         [Key]
@@ -103,7 +101,7 @@ namespace Leikjavefur.Models
         public int Points { get; set; }
     }
 
-    [Table("Reports")]
+    [Table("Report")]
     public class Report
     {
         [Key]
@@ -124,7 +122,7 @@ namespace Leikjavefur.Models
     
     }
 
-    [Table("GameInstances")]
+    [Table("GameInstance")]
     public class GameInstance
     {
         [Key]

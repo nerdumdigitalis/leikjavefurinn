@@ -38,9 +38,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GameId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GameId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GameId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.GameID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GameID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GameID })
         </td>
         <td>
 			@item.Name

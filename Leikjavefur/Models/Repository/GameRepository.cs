@@ -1,26 +1,25 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
 using Leikjavefur.Models.Context;
+using Leikjavefur.Models.Interfaces;
 
-namespace Leikjavefur.Models
+namespace Leikjavefur.Models.Repository
 { 
     public class GameRepository : IGameRepository
     {
-        ApplicationContext context = new ApplicationContext();
+        readonly ApplicationContext _context = new ApplicationContext();
 
         public IQueryable<Game> All
         {
-            get { return context.Games; }
+            get { return _context.Games; }
         }
 
         public IQueryable<Game> AllIncluding(params Expression<Func<Game, object>>[] includeProperties)
         {
-            IQueryable<Game> query = context.Games;
+            IQueryable<Game> query = _context.Games;
             foreach (var includeProperty in includeProperties) {
                 query = query.Include(includeProperty);
             }
@@ -29,44 +28,35 @@ namespace Leikjavefur.Models
 
         public Game Find(int id)
         {
-            return context.Games.Find(id);
+            return _context.Games.Find(id);
         }
 
         public void InsertOrUpdate(Game game)
         {
             if (game.GameID == default(int)) {
                 // New entity
-                context.Games.Add(game);
+                _context.Games.Add(game);
             } else {
                 // Existing entity
-                context.Entry(game).State = EntityState.Modified;
+                _context.Entry(game).State = EntityState.Modified;
             }
         }
 
         public void Delete(int id)
         {
-            var game = context.Games.Find(id);
-            context.Games.Remove(game);
+            var game = _context.Games.Find(id);
+            _context.Games.Remove(game);
         }
 
         public void Save()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Dispose() 
         {
-            context.Dispose();
+            _context.Dispose();
         }
     }
 
-    public interface IGameRepository : IDisposable
-    {
-        IQueryable<Game> All { get; }
-        IQueryable<Game> AllIncluding(params Expression<Func<Game, object>>[] includeProperties);
-        Game Find(int id);
-        void InsertOrUpdate(Game game);
-        void Delete(int id);
-        void Save();
-    }
 }
