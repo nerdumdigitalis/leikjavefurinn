@@ -7,14 +7,14 @@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
     </head>
     <body>
 
 <div id="body">
-    
-    @*Left Column*@
     <div id="leftChat">
-	    <div>
+	    <div id="search">
 		    <input type="text" id="searchbox">
 		    <input type="button" value="Search">
 	    </div>
@@ -25,9 +25,8 @@
 		    <p>Leikir</p>
 	    </div>
     </div>
-   
-    @*Middle Page*@
-    <div id="middle">            
+    
+    <div id="middle">
             <div id="profile">
                 <div id="avatar">
                     @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
@@ -43,40 +42,35 @@
                         </ul>
                     </nav>
                 </div>
-            </div>
                 <div id="mainPage">
-                    
+                    <div id="nyskra">
                         @RenderSection("featured", required: false)
-                        <section id="render">
+                        <section class="content-wrapper main-content clear-fix">
                         @RenderBody()
-                        </section>          
+                        </section>
+                    </div>
                 </div>
             </div>
+      </div>
+      
+      <div class="rightChat">
+	        <div id="search">
+		        <input type="text" id="searchbox">
+		        <input type="button" value="Search">
+	        </div>
+	        <div id="notendur">
+		        <p>Notendur</p>
+	        </div>
+	        <div id="spjall">
+		        @Html.Partial("~/Views/Chat/index.cshtml");
+	        </div>
+        </div>
 
-            
-            @*Right column*@
-            <div class="rightChat">
-	            <div>
-		            <input type="text" id="searchbox2">
-		            <input type="button" value="Search">
-	            </div>
-	            <div id="notendur">
-		            <p>Notendur</p>
-	            </div>
-	            <div id="spjall">
-		            <p>spjall</p>
-	            </div>
-            </div>
-
-            <div id="spjallgluggi">
-		            <input type="text" id="spjallbox">
-		            <input type="button" id="spjalltakki" value="Senda">
-            </div>
-
-      </div>       
-           
-
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
+        @*<div id="spjallgluggi">
+		    <input type="text" id="spjallbox">
+		    <input type="button" id="spjalltakki" value="Senda">
+        </div>*@
+        
+</div>   
     </body>
 </html>
