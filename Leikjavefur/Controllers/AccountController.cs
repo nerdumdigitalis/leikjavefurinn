@@ -91,7 +91,7 @@ namespace Leikjavefur.Controllers
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     var user = new User
                                    {
-                                       UserID = WebSecurity.CurrentUserId,
+                                       UserProfileID = WebSecurity.CurrentUserId,
                                        UserName = model.UserName,
                                        About = model.About,
                                        DateCreated = DateTime.Now,
@@ -100,6 +100,7 @@ namespace Leikjavefur.Controllers
                     
                     WebSecurity.Login(model.UserName, model.Password);
                     userRep.InsertOrUpdate(user);
+                    userRep.Save();
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
