@@ -1,0 +1,41 @@
+@model Leikjavefur.Models.Game
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Game</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">MaxPlayers</div>
+    <div class="display-field">@Model.MaxPlayers</div>
+
+    <div class="display-label">MinPlayers</div>
+    <div class="display-field">@Model.MinPlayers</div>
+
+    <div class="display-label">Avatar</div>
+    <div class="display-field">@Model.Avatar</div>
+
+    <div class="display-label">DateAdded</div>
+    <div class="display-field">@String.Format("{0:g}", Model.DateAdded)</div>
+
+    <div class="display-label">About</div>
+    <div class="display-field">@Model.About</div>
+
+    <div class="display-label">Rules</div>
+    <div class="display-field">@Model.Rules</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+

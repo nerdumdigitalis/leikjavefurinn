@@ -1,0 +1,66 @@
+@model Leikjavefur.Models.Statistic
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.GamesPlayed)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.GamesPlayed)
+    @Html.ValidationMessageFor(model => model.GamesPlayed)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Wins)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Wins)
+    @Html.ValidationMessageFor(model => model.Wins)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Losses)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Losses)
+    @Html.ValidationMessageFor(model => model.Losses)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Draws)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Draws)
+    @Html.ValidationMessageFor(model => model.Draws)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Points)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Points)
+    @Html.ValidationMessageFor(model => model.Points)
+</div>
+
+<div class="editor-label">
+    User
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.UserID, ((IEnumerable<Leikjavefur.Models.User>)ViewBag.PossibleUsers).Select(option => new SelectListItem {
+        Text = Html.DisplayTextFor(_ => option).ToString(), 
+        Value = option.UserID.ToString(),
+        Selected = (Model != null) && (option.UserID == Model.UserID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.UserID)
+</div>
+<div class="editor-label">
+    Game
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.GameID, ((IEnumerable<Leikjavefur.Models.Game>)ViewBag.PossibleGames).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.GameID.ToString(),
+        Selected = (Model != null) && (option.GameID == Model.GameID)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.GameID)
+</div>

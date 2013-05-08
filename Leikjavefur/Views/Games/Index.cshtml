@@ -1,0 +1,71 @@
+@model IEnumerable<Leikjavefur.Models.Game>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            MaxPlayers
+        </th>
+        <th>
+            MinPlayers
+        </th>
+        <th>
+            Avatar
+        </th>
+        <th>
+            DateAdded
+        </th>
+        <th>
+            About
+        </th>
+        <th>
+            Rules
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GameId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.GameId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.GameId })
+        </td>
+        <td>
+			@item.Name
+        </td>
+        <td>
+			@item.MaxPlayers
+        </td>
+        <td>
+			@item.MinPlayers
+        </td>
+        <td>
+			@item.Avatar
+        </td>
+        <td>
+			@String.Format("{0:g}", item.DateAdded)
+        </td>
+        <td>
+			@item.About
+        </td>
+        <td>
+			@item.Rules
+        </td>
+    </tr>
+}
+
+</table>
+
+

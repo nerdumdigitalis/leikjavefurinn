@@ -1,0 +1,60 @@
+@model Leikjavefur.Models.Game
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Name)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.MaxPlayers)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.MaxPlayers)
+    @Html.ValidationMessageFor(model => model.MaxPlayers)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.MinPlayers)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.MinPlayers)
+    @Html.ValidationMessageFor(model => model.MinPlayers)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Avatar)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Avatar)
+    @Html.ValidationMessageFor(model => model.Avatar)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.DateAdded)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.DateAdded)
+    @Html.ValidationMessageFor(model => model.DateAdded)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.About)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.About)
+    @Html.ValidationMessageFor(model => model.About)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Rules)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Rules)
+    @Html.ValidationMessageFor(model => model.Rules)
+</div>
+

@@ -25,7 +25,7 @@ namespace Leikjavefur.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<Users>(null);
 
                 try
                 {

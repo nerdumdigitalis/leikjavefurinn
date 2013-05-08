@@ -164,20 +164,22 @@
     <Compile Include="Controllers\AccountController.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\ClanController.cs" />
-    <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Entities\Clan.cs" />
-    <Compile Include="Entities\Game.cs" />
-    <Compile Include="Entities\User.cs" />
-    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ApplicationModels.cs" />
     <Compile Include="Models\Context\ApplicationContext.cs" />
+    <Compile Include="Models\GameRepository.cs" />
+    <Compile Include="Models\LeikjavefurContext.cs" />
+    <Compile Include="Models\ReportRepository.cs" />
+    <Compile Include="Models\StatisticRepository.cs" />
+    <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -293,25 +295,28 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\Game\Index.cshtml" />
-    <Content Include="Views\Game\Details.cshtml" />
-    <Content Include="Views\Game\Create.cshtml" />
-    <Content Include="Views\Game\Edit.cshtml" />
-    <Content Include="Views\Game\Delete.cshtml" />
-    <Content Include="Views\Clan\Index.cshtml" />
-    <Content Include="Views\Clan\Details.cshtml" />
-    <Content Include="Views\Clan\Create.cshtml" />
-    <Content Include="Views\Clan\Edit.cshtml" />
-    <Content Include="Views\Clan\Delete.cshtml" />
-    <Content Include="Views\Shared\_UserProfile.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Games\Create.cshtml" />
+    <Content Include="Views\Games\Edit.cshtml" />
+    <Content Include="Views\Games\Delete.cshtml" />
+    <Content Include="Views\Games\Details.cshtml" />
+    <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Games\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Statistics\Create.cshtml" />
+    <Content Include="Views\Statistics\Edit.cshtml" />
+    <Content Include="Views\Statistics\Delete.cshtml" />
+    <Content Include="Views\Statistics\Details.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Statistics\_CreateOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
