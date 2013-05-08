@@ -13,7 +13,7 @@
 
 <script>
 	$(function () {
-		var group = '@(Model.ID)';
+	    var group = @*'@(Model.ID)';*@ '1';
 		var hub = $.connection.communication;
 
 		hub.client.receiveMessage = function (message) {
@@ -24,7 +24,7 @@
 			hub.server.join(group);
 
 			$("#SendMessage").click(function () {
-			    var message = docuemnt.getElementById('Message').value;
+			    var message = document.getElementById('Message').value;
 
 			    hub.server.clickCell(group, message);
 			    document.getElementById('ChatArea').value += message;
