@@ -54,6 +54,7 @@ namespace Leikjavefur.Controllers
         public ActionResult Create(Game game)
         {
             if (ModelState.IsValid) {
+                game.DateAdded = DateTime.Now;
                 gameRepository.InsertOrUpdate(game);
                 gameRepository.Save();
                 return RedirectToAction("Index");
@@ -77,6 +78,7 @@ namespace Leikjavefur.Controllers
         public ActionResult Edit(Game game)
         {
             if (ModelState.IsValid) {
+                game.DateAdded = DateTime.Now;
                 gameRepository.InsertOrUpdate(game);
                 gameRepository.Save();
                 return RedirectToAction("Index");
