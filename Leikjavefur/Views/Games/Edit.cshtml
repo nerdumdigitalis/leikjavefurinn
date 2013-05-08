@@ -12,6 +12,7 @@
         <legend>Game</legend>
 
         @Html.HiddenFor(model => model.GameID)
+        @Html.HiddenFor(model => model.DateAdded)
 		@Html.Partial("_CreateOrEdit", Model)
 
         <p>
