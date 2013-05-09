@@ -8,10 +8,11 @@ namespace Leikjavefur.Models
     [Table("UserDetails")]
     public class User
     {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserID { get; set; }
-        
+
+        public int UserProfileID { get; set; }
+
         [Required]
         [Display(Name = "Notendanafn")]
         public string UserName { get; set; }

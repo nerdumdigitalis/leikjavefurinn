@@ -54,6 +54,7 @@ namespace Leikjavefur.Controllers
         public ActionResult Create(User user)
         {
             if (ModelState.IsValid) {
+                user.DateCreated = DateTime.Now;
                 userRepository.InsertOrUpdate(user);
                 userRepository.Save();
                 return RedirectToAction("Index");
@@ -77,6 +78,7 @@ namespace Leikjavefur.Controllers
         public ActionResult Edit(User user)
         {
             if (ModelState.IsValid) {
+                //user.DateCreated = DateTime.Now;
                 userRepository.InsertOrUpdate(user);
                 userRepository.Save();
                 return RedirectToAction("Index");
