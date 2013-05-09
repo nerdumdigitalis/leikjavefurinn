@@ -17,12 +17,13 @@
 
 <div id="body">
     <div id="leftChat">
-	    <div id="search">
-		    <input type="text" id="searchbox">
+	    <div id="leftsearch">
+		    <input type="text" id="leftsearchbox">
 		    <input type="button" value="Search">
 	    </div>
 	    <div id="vinir">
 		    <p id="vinirtext">Vinir</p>
+            @Html.Partial("_FriendsPartial")
 	    </div>
 	    <div id="leikirchat">
 		    <p>Leikir</p>
@@ -57,12 +58,13 @@
       </div>
       
       <div class="rightChat">
-	        <div id="search">
-		        <input type="text" id="searchbox">
+	        <div id="rightsearch">
+		        <input type="text" id="rightsearchbox">
 		        <input type="button" value="Search">
 	        </div>
 	        <div id="notendur">
 		        <p>Notendur</p>
+                @Html.Partial("_OnlineUsersPartial")
 	        </div>
 	        <div id="spjall">
 		        @Html.Partial("~/Views/Chat/index.cshtml")
