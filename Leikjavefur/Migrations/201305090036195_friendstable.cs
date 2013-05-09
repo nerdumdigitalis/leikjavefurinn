@@ -1,0 +1,16 @@
+namespace Leikjavefur.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class friendstable : DbMigration
+    {
+        public override void Up()
+        {
+        }
+        
+        public override void Down()
+        {
+        }
+    }
+}
