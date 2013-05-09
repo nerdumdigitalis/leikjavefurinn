@@ -5,6 +5,7 @@ using System.Web.Routing;
 using System.Data.Entity;
 using Leikjavefur.Models.Context;
 using Microsoft.AspNet.SignalR;
+using WebMatrix.WebData;
 
 //using Microsoft.AspNet.SignalR;
 
@@ -28,6 +29,7 @@ namespace Leikjavefur
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
             //Database.SetInitializer<ApplicationContext>(null);
+            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
         }
     }
