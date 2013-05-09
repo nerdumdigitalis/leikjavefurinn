@@ -191,7 +191,7 @@
     <Compile Include="Migrations\201305091114319_Added to UserProfile.cs" />
     <Compile Include="Migrations\201305091114319_Added to UserProfile.Designer.cs">
       <DependentUpon>201305091114319_Added to UserProfile.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Migrations\201305090036195_friendstable.cs" />
     <Compile Include="Migrations\201305090036195_friendstable.Designer.cs">
       <DependentUpon>201305090036195_friendstable.cs</DependentUpon>
@@ -343,6 +343,7 @@
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_FriendsPartial.cshtml" />
+    <Content Include="Views\Shared\_GamesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -356,7 +357,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201305091114319_Added to UserProfile.resx">
       <DependentUpon>201305091114319_Added to UserProfile.cs</DependentUpon>
-	  </EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305090036195_friendstable.resx">
       <DependentUpon>201305090036195_friendstable.cs</DependentUpon>
     </EmbeddedResource>
