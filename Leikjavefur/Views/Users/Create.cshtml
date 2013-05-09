@@ -1,4 +1,4 @@
-@model Leikjavefur.Models.User
+@model Leikjavefur.Models.UserProfile
 
 @{
     ViewBag.Title = "Create";
@@ -9,7 +9,7 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>User</legend>
+        <legend>UserProfile</legend>
 
 		@Html.Partial("_CreateOrEdit", Model)
 

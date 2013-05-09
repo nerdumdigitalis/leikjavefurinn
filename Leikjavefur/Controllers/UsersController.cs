@@ -51,11 +51,11 @@ namespace Leikjavefur.Controllers
         // POST: /Users/Create
 
         [HttpPost]
-        public ActionResult Create(User user)
+        public ActionResult Create(UserProfile userProfile)
         {
             if (ModelState.IsValid) {
-                user.DateCreated = DateTime.Now;
-                userRepository.InsertOrUpdate(user);
+                userProfile.DateCreated = DateTime.Now;
+                userRepository.InsertOrUpdate(userProfile);
                 userRepository.Save();
                 return RedirectToAction("Index");
             } else {
@@ -75,11 +75,11 @@ namespace Leikjavefur.Controllers
         // POST: /Users/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(User user)
+        public ActionResult Edit(UserProfile userProfile)
         {
             if (ModelState.IsValid) {
-                //user.DateCreated = DateTime.Now;
-                userRepository.InsertOrUpdate(user);
+                //UserProfile.DateCreated = DateTime.Now;
+                userRepository.InsertOrUpdate(userProfile);
                 userRepository.Save();
                 return RedirectToAction("Index");
             } else {

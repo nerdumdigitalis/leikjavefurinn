@@ -12,7 +12,7 @@ namespace Leikjavefur.Models.Context
             : base("DefaultConnection")
         {
         }
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserProfile> Users { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Statistic> Statistics { get; set; }
         public DbSet<Report> Reports { get; set; }

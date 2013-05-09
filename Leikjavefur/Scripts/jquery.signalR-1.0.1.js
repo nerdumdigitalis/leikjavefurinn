@@ -87,7 +87,7 @@
                 connection.reconnecting(function () {
                     var connection = this;
 
-                    // Guard against state changing in a previous user defined even handler
+                    // Guard against state changing in a previous UserProfile defined even handler
                     if (connection.state === signalR.connectionState.reconnecting) {
                         stopReconnectingTimeout = window.setTimeout(function () { onReconnectTimeout(connection); }, connection.disconnectTimeout);
                     }
@@ -144,7 +144,7 @@
 
     function validateTransport(requestedTransport, connection) {
         /// <summary>Validates the requested transport by cross checking it with the pre-defined signalR.transports</summary>
-        /// <param name="requestedTransport" type="Object">The designated transports that the user has specified.</param>
+        /// <param name="requestedTransport" type="Object">The designated transports that the UserProfile has specified.</param>
         /// <param name="connection" type="signalR">The connection that will be using the requested transports.  Used for logging purposes.</param>
         /// <returns type="Object" />
         if ($.isArray(requestedTransport)) {
@@ -235,7 +235,7 @@
 
         disconnectTimeout: 30000, // This should be set by the server in response to the negotiate request (30s default)
 
-        keepAliveWarnAt: 2 / 3, // Warn user of slow connection if we breach the X% mark of the keep alive timeout
+        keepAliveWarnAt: 2 / 3, // Warn UserProfile of slow connection if we breach the X% mark of the keep alive timeout
 
         start: function (options, callback) {
             /// <summary>Starts the connection</summary>
@@ -686,7 +686,7 @@
                 connection.transport.lostConnection(connection);
             }
             else if (timeElapsed >= keepAliveData.timeoutWarning) {
-                // This is to assure that the user only gets a single warning
+                // This is to assure that the UserProfile only gets a single warning
                 if (!keepAliveData.userNotified) {
                     connection.log("Keep alive has been missed, connection may be dead/slow.");
                     $(connection).triggerHandler(events.onConnectionSlow);

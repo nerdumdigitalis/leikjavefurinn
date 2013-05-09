@@ -25,7 +25,7 @@ namespace Leikjavefur.Models
 #endregion
 
 #region Chat Functions 
-        //Sends message to everyone in the same group as the user
+        //Sends message to everyone in the same group as the UserProfile
         public void SendMessage(string groupiD, string message)
         {
             Clients.OthersInGroup(groupiD).receiveMessage(message);
@@ -45,7 +45,7 @@ namespace Leikjavefur.Models
 #endregion
 
 #region Snakes'n'Ladders Functions
-        //Rolls the dice and sends the outcome to everyone (including user who rolled)
+        //Rolls the dice and sends the outcome to everyone (including UserProfile who rolled)
         //Not fnished
         public void RollDice(string groupId, string userNumber)
         {

@@ -13,7 +13,7 @@
     <tr>
         <th></th>
         <th>
-            User
+            UserProfile
         </th>
         <th>
             Game
@@ -43,7 +43,7 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
         <td>
-			@Html.DisplayTextFor(_ => item.User).ToString()
+			@Html.DisplayTextFor(_ => item.UserProfile).ToString()
         </td>
         <td>
 			@(item.Game == null ? "None" : item.Game.Name)

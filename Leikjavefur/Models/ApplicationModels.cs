@@ -1,17 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Leikjavefur.Models
 {
 
-    [Table("UserDetails")]
-    public class User
+    [Table("UserProfile")]
+    public class UserProfile
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserID { get; set; }
-
-        public int UserProfileID { get; set; }
 
         [Required]
         [Display(Name = "Notendanafn")]
@@ -29,14 +28,11 @@ namespace Leikjavefur.Models
 
         public DateTime DateCreated { get; set; }
 
-        public bool IsAdmin { get; set; }
-
         [Display(Name = "Stutt lýsing, max 200 stafir (Valkvætt)")]
         [StringLength(200, ErrorMessage = "Styttu textan niður í max 200 stafi")]
         public string About { get; set; }
 
-        //[ForeignKey("UserID")]
-        //public virtual ICollection<User> Friend { get; set; }
+        public virtual ICollection<UserProfile> Friends { get; set; }
     }
 
     [Table("GameProfile")]
@@ -80,12 +76,12 @@ namespace Leikjavefur.Models
         public string Id { get; set; }
 
         public int UserID { get; set; }
-        [ForeignKey("UserID")]
-        public virtual User User { get; set; }
+        //[ForeignKey("UserID")]
+        //public virtual UserProfile UserProfile { get; set; }
 
         public int GameID { get; set; }
-        [ForeignKey("GameID")]
-        public virtual Game Game { get; set; }
+        //[ForeignKey("GameID")]
+        //public virtual Game Game { get; set; }
 
         public int GamesPlayed { get; set; }
 
@@ -106,12 +102,12 @@ namespace Leikjavefur.Models
         public int ReportId { get; set; }
 
         public int UserID { get; set; }
-        [ForeignKey("UserID")]
-        public virtual User User { get; set; }
+        //[ForeignKey("UserID")]
+        //public virtual UserProfile UserProfile { get; set; }
 
         public int ReporterID { get; set; }
-        [ForeignKey("UserID")]
-        public virtual User Reporter { get; set; }
+        //[ForeignKey("UserID")]
+        //public virtual UserProfile Reporter { get; set; }
 
         public string Details { get; set; }
 
@@ -127,12 +123,12 @@ namespace Leikjavefur.Models
         public int GameInstanceID { get; set; }
 
         public int GameID { get; set; }
-        [ForeignKey("GameID")]
-        public virtual Game Game { get; set; }
+        //[ForeignKey("GameID")]
+        //public virtual Game Game { get; set; }
 
         public int UserID { get; set; }
-        [ForeignKey("UserID")]
-        public virtual User WinnerID { get; set; }
+        //[ForeignKey("UserID")]
+        //public virtual UserProfile WinnerID { get; set; }
     }
 
    
@@ -205,8 +201,6 @@ namespace Leikjavefur.Models
         public string Avatar { get; set; }
 
         public DateTime DateCreated { get; set; }
-
-        public bool IsAdmin { get; set; }
 
         [Display(Name = "Stutt lýsing, max 200 stafir (Valkvætt)")]
         [StringLength(200, ErrorMessage = "Styttu textan niður í max 200 stafi")]

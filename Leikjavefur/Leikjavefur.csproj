@@ -188,6 +188,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201305091114319_Added to UserProfile.cs" />
+    <Compile Include="Migrations\201305091114319_Added to UserProfile.Designer.cs">
+      <DependentUpon>201305091114319_Added to UserProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationModels.cs" />
     <Compile Include="Models\Communication.cs" />
@@ -343,6 +347,11 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201305091114319_Added to UserProfile.resx">
+      <DependentUpon>201305091114319_Added to UserProfile.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

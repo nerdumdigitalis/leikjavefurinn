@@ -43,10 +43,10 @@
 </div>
 
 <div class="editor-label">
-    User
+    UserProfile
 </div>
 <div class="editor-field">
-    @Html.DropDownListFor(model => model.UserID, ((IEnumerable<Leikjavefur.Models.User>)ViewBag.PossibleUsers).Select(option => new SelectListItem {
+    @Html.DropDownListFor(model => model.UserID, ((IEnumerable<Leikjavefur.Models.UserProfile>)ViewBag.PossibleUsers).Select(option => new SelectListItem {
         Text = Html.DisplayTextFor(_ => option).ToString(), 
         Value = option.UserID.ToString(),
         Selected = (Model != null) && (option.UserID == Model.UserID)

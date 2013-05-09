@@ -1,4 +1,4 @@
-@model Leikjavefur.Models.User
+@model Leikjavefur.Models.UserProfile
 
 @{
     ViewBag.Title = "Edit";
@@ -9,7 +9,7 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>User</legend>
+        <legend>UserProfile</legend>
 
         @Html.HiddenFor(model => model.UserID)
         @Html.HiddenFor(model => model.DateCreated)

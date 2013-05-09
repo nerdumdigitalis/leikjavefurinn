@@ -32,7 +32,7 @@ namespace Leikjavefur.Controllers
 
         public ViewResult Index()
         {
-            return View(statisticRepository.AllIncluding(statistic => statistic.User, statistic => statistic.Game));
+            return View(statisticRepository.AllIncluding(statistic => statistic.UserID, statistic => statistic.GameID));
         }
 
         //

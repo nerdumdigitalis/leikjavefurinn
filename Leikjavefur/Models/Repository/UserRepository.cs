@@ -12,33 +12,33 @@ namespace Leikjavefur.Models.Repository
     {
         readonly ApplicationContext _context = new ApplicationContext();
 
-        public IQueryable<User> All
+        public IQueryable<UserProfile> All
         {
             get { return _context.Users; }
         }
 
-        public IQueryable<User> AllIncluding(params Expression<Func<User, object>>[] includeProperties)
+        public IQueryable<UserProfile> AllIncluding(params Expression<Func<UserProfile, object>>[] includeProperties)
         {
-            IQueryable<User> query = _context.Users;
+            IQueryable<UserProfile> query = _context.Users;
             foreach (var includeProperty in includeProperties) {
                 query = query.Include(includeProperty);
             }
             return query;
         }
 
-        public User Find(int id)
+        public UserProfile Find(int id)
         {
             return _context.Users.Find(id);
         }
 
-        public void InsertOrUpdate(User user)
+        public void InsertOrUpdate(UserProfile userProfile)
         {
-            if (user.UserID == default(int)) {
+            if (userProfile.UserID == default(int)) {
                 // New entity
-                _context.Users.Add(user);
+                _context.Users.Add(userProfile);
             } else {
                 // Existing entity
-                _context.Entry(user).State = EntityState.Modified;
+                _context.Entry(userProfile).State = EntityState.Modified;
             }
         }
 

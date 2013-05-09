@@ -1,3 +1,7 @@
+using System.Web.Security;
+using Leikjavefur.Models.Context;
+using WebMatrix.WebData;
+
 namespace Leikjavefur.Migrations
 {
     using System;
@@ -12,20 +16,26 @@ namespace Leikjavefur.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Leikjavefur.Models.Context.ApplicationContext context)
+        protected override void Seed(ApplicationContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            //WebSecurity.InitializeDatabaseConnection(
+            //    "DefaultConnection",
+            //    "UserProfile",
+            //    "UserId",
+            //    "UserName", autoCreateTables: true);
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            //if (!Roles.RoleExists("Administrator"))
+            //    Roles.CreateRole("Administrator");
+
+            //if (!WebSecurity.UserExists("admin"))
+            //    WebSecurity.CreateUserAndAccount(
+            //        "admin",
+            //        "1a2b3c4d",
+            //        new { Email = "admin@leikjavefur.is", DateCreated = DateTime.Now, About = "I am the LAW" });
+
+            //if (!Roles.GetRolesForUser("admin").ToList().Contains("Administrator"))
+            //    Roles.AddUsersToRoles(new[] { "admin" }, new[] { "Administrator" });
+
         }
     }
 }
