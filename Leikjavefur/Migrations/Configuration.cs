@@ -18,23 +18,23 @@ namespace Leikjavefur.Migrations
 
         protected override void Seed(ApplicationContext context)
         {
-            //WebSecurity.InitializeDatabaseConnection(
-            //    "DefaultConnection",
-            //    "UserProfile",
-            //    "UserId",
-            //    "UserName", autoCreateTables: true);
+            WebSecurity.InitializeDatabaseConnection(
+                "DefaultConnection",
+                "UserProfile",
+                "UserId",
+                "UserName", autoCreateTables: true);
 
-            //if (!Roles.RoleExists("Administrator"))
-            //    Roles.CreateRole("Administrator");
+            if (!Roles.RoleExists("Administrator"))
+                Roles.CreateRole("Administrator");
 
-            //if (!WebSecurity.UserExists("admin"))
-            //    WebSecurity.CreateUserAndAccount(
-            //        "admin",
-            //        "1a2b3c4d",
-            //        new { Email = "admin@leikjavefur.is", DateCreated = DateTime.Now, About = "I am the LAW" });
+            if (!WebSecurity.UserExists("admin"))
+                WebSecurity.CreateUserAndAccount(
+                    "admin",
+                    "1a2b3c4d",
+                    new { Email = "admin@leikjavefur.is", DateCreated = DateTime.Now, About = "I am the LAW" });
 
-            //if (!Roles.GetRolesForUser("admin").ToList().Contains("Administrator"))
-            //    Roles.AddUsersToRoles(new[] { "admin" }, new[] { "Administrator" });
+            if (!Roles.GetRolesForUser("admin").ToList().Contains("Administrator"))
+                Roles.AddUsersToRoles(new[] { "admin" }, new[] { "Administrator" });
 
         }
     }
