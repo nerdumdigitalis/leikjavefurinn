@@ -191,6 +191,7 @@
     <Compile Include="Migrations\201305091114319_Added to UserProfile.cs" />
     <Compile Include="Migrations\201305091114319_Added to UserProfile.Designer.cs">
       <DependentUpon>201305091114319_Added to UserProfile.cs</DependentUpon>
+	</Compile>
     <Compile Include="Migrations\201305090036195_friendstable.cs" />
     <Compile Include="Migrations\201305090036195_friendstable.Designer.cs">
       <DependentUpon>201305090036195_friendstable.cs</DependentUpon>
@@ -353,13 +354,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201305091114319_Added to UserProfile.resx">
       <DependentUpon>201305091114319_Added to UserProfile.cs</DependentUpon>
-=======
+	  </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305090036195_friendstable.resx">
       <DependentUpon>201305090036195_friendstable.cs</DependentUpon>
->>>>>>> bafbbf45a6c59203c6fddfa5bad4c362471e00ac
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

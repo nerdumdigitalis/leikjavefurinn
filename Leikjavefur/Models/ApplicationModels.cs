@@ -136,11 +136,11 @@ namespace Leikjavefur.Models
     {
         public int UserID { get; set; }
         [ForeignKey("UserID")]
-        public virtual User User { get; set; }
+        public virtual UserProfile User { get; set; }
 
         public int FriendID { get; set; }
         [ForeignKey("UserID")]
-        public virtual User Friend { get; set; }
+        public virtual UserProfile Friend { get; set; }
     }
    
     public class LocalPasswordModel
