@@ -159,3 +159,14 @@ p
 	font-family: "Arial Black", Gadget, sans-serif;
 	font-size: 12px;
 }
+
+#ChatArea {
+    height: 210px;
+    width: 177px;
+    resize: none;
+}
+
+#TextBoxMessage {
+    width: 177px;
+    resize: none;
+}
