@@ -27,9 +27,6 @@
 	    var hub = $.connection.communication;
 
 		hub.client.ReceiveMessage = function (message) {
-		    //document.getElementById('ChatArea').value += message;
-		    //$('#ChatArea').val(message);
-		    //var textArea = document.getElementById('ChatArea')
 		    var text = document.createTextNode(message + '\n')
 		    textArea.appendChild(text)
 		    textArea.scrollTop = textArea.scrollHeight
@@ -48,8 +45,6 @@
 
 			        hub.server.sendMessage(group, $('#TextBoxMessage').val());
 			        $('#TextBoxMessage').val('');
-			        //$('#ChatArea').val(message);
-			        //var textArea = document.getElementById('ChatArea')
 			        var text = document.createTextNode(message + '\n')
 			        textArea.appendChild(text)
 			        textArea.scrollTop = textArea.scrollHeight
