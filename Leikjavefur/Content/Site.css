@@ -1,8 +1,9 @@
 ﻿
 #body
 {
+    float:left;
 width:1250px;
-height:547px;
+height:650px;
 background-color: grey;
 }
 
@@ -11,7 +12,7 @@ background-color: grey;
 background-color: #387C44;
 overflow-y: scroll;
 border: solid black 1px;
-height: 600px;
+height: 650px;
 width:200px;
 float:left;
 }
@@ -40,19 +41,24 @@ border: solid black 1px;
 resize:vertical;
 overflow:auto;
 width:180px;
-height:300px;
+height:325px;
 }
 
 #searchbox
 {
+    float:left;
+    width: 115px;
+}
+
+#searchbox2
+{
+    float:left;
     width: 115px;
 }
 
 #profile
 {
-border: groove black 5px;
-margin-left: auto;
-margin-right: auto;
+border: solid black 5px;
 float:left;
 width:837px;
 height:155px;
@@ -74,18 +80,23 @@ height:155px;
 
 #middle
 {
-width:840px;
+width:837px;
 height:800px;
 float:left;
 }
 
+#render 
+{
+    float:left;
+}
+
 #mainPage 
 {
+
 border: solid black 5px;
 overflow-y: scroll;
-height: 427px;
+height: 477px;
 width:837px;
-float:left;
 background-color: #C0C0C0;
 }
 
@@ -94,7 +105,7 @@ background-color: #C0C0C0;
 background-color: #387C44;
 border: solid black 1px;
 overflow-y: scroll;
-height: 570px;
+height: 620px;
 width:200px;
 float:right;
 }
@@ -106,8 +117,8 @@ float:right;
 	padding-left: 1px;
 	border: solid black 2px;
 	float:right;
-	width:198;
-	height:26;
+	width:198px;
+	height:26px;
 	
 }
 
@@ -123,16 +134,23 @@ height:270px;
 #spjall
 {
 border: solid black 1px;
+resize:vertical;
 overflow:auto;
 width:180px;
-height:270px;
+height:294px;
 }
 
 #spjallbox
 {
 border: solid black 2px;
-width:135px;
+width:130px;
 
+}
+
+#search 
+{
+    width:100px;
+    float:left;
 }
 
 p

@@ -11,8 +11,10 @@
     <body>
 
 <div id="body">
+    
+    @*Left Column*@
     <div id="leftChat">
-	    <div id="search">
+	    <div>
 		    <input type="text" id="searchbox">
 		    <input type="button" value="Search">
 	    </div>
@@ -23,8 +25,9 @@
 		    <p>Leikir</p>
 	    </div>
     </div>
-    
-    <div id="middle">
+   
+    @*Middle Page*@
+    <div id="middle">            
             <div id="profile">
                 <div id="avatar">
                     @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
@@ -40,35 +43,34 @@
                         </ul>
                     </nav>
                 </div>
+            </div>
                 <div id="mainPage">
-                    <div id="nyskra">
+                    
                         @RenderSection("featured", required: false)
-                        <section class="content-wrapper main-content clear-fix">
+                        <section id="render">
                         @RenderBody()
-                        </section>
-                    </div>
+                        </section>          
                 </div>
             </div>
-      </div>
-      
-      <div class="rightChat">
-	        <div id="search">
-		        <input type="text" id="searchbox">
-		        <input type="button" value="Search">
-	        </div>
-	        <div id="notendur">
-		        <p>Notendur</p>
-	        </div>
-	        <div id="spjall">
-		        <p>spjall</p>
-	        </div>
-        </div>
+            
+            @*Right column*@
+            <div class="rightChat">
+	            <div>
+		            <input type="text" id="searchbox2">
+		            <input type="button" value="Search">
+	            </div>
+	            <div id="notendur">
+		            <p>Notendur</p>
+	            </div>
+	            <div id="spjall">
+		            <p>spjall</p>
+	            </div>
+            </div>
 
-        <div id="spjallgluggi">
-		    <input type="text" id="spjallbox">
-		    <input type="button" id="spjalltakki" value="Senda">
-        </div>
-        
+            <div id="spjallgluggi">
+		            <input type="text" id="spjallbox">
+		            <input type="button" id="spjalltakki" value="Senda">
+            </div>
 </div>   
 
         @Scripts.Render("~/bundles/jquery")
