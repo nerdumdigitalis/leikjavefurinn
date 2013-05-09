@@ -5,19 +5,17 @@
         <title>Leikjavefurinn</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
-        @*@Styles.Render("~/Content/css")*@
+        @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left" style="float:left">
-                    <p class="site-title">@Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/logo.jpg") + "') no-repeat center right; display:block; height:251px; width:201px;"})</p>
-                    @*<h2>Chuck Norris can write infinite recursion functions … and have them return</h2>*@
+            <div id="middle">
+            <div id="profile">
+                <div id="avatar">
+                    @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
                 </div>
-                <div class="float-right">
-                    <section id="login">
-                        
+                <div id="profileinfo">
+                    <section id="login"> 
                         @Html.Partial("_LoginPartial")
                     </section>
                     <nav>
@@ -28,16 +26,15 @@
                     </nav>
                 </div>
             </div>
-        </header>
+
         <div id="body">
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
+            @RenderBody()
             </section>
         </div>
-        <footer>
-            
-        </footer>
+        </div>
+        
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
