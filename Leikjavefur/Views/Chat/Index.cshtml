@@ -6,32 +6,58 @@
 }
 
 <textarea disabled id="ChatArea">
-    
 </textarea>
-<input id="Message" type="text" />
-<input id="SendMessage" type="button" value ="Senda" />
+<input id="TextBoxMessage" type="text"/>
+<input id="SendButton" type="button" value ="Senda"/>
 
 <script>
-	$(function () {
-	    var group = @*'@(Model.ID)';*@ '1';
-		var hub = $.connection.communication;
 
-		hub.client.receiveMessage = function (message) {
-		    $document.getElementById('ChatArea').value += message;
+    $("#TextBoxMessage").keydown(function (event) {
+        if (event.keyCode == 13) {
+            $("#SendButton").click();
+            return false;
+        }
+        return true;
+    });
+
+    var textArea = document.getElementById('ChatArea')
+    $(function ()
+    {
+	    var group = @*'@(Model.ID)';*@ '1';
+	    var hub = $.connection.communication;
+
+		hub.client.ReceiveMessage = function (message) {
+		    //document.getElementById('ChatArea').value += message;
+		    //$('#ChatArea').val(message);
+		    //var textArea = document.getElementById('ChatArea')
+		    var text = document.createTextNode(message + '\n')
+		    textArea.appendChild(text)
+		    textArea.scrollTop = textArea.scrollHeight
 		};
 
-		$.connection.hub.start().done(function() {
+		$.connection.hub.start().done(function ()
+		{
 			hub.server.join(group);
 
-			$("#SendMessage").click(function () {
-			    var message = document.getElementById('Message').value;
+			$("#SendButton").click(function ()
+			{
+			    var message = $('#TextBoxMessage').val()
 
-			    hub.server.clickCell(group, message);
-			    document.getElementById('ChatArea').value += message;
+			    if (message != '')
+			    {
+
+			        hub.server.sendMessage(group, $('#TextBoxMessage').val());
+			        $('#TextBoxMessage').val('');
+			        //$('#ChatArea').val(message);
+			        //var textArea = document.getElementById('ChatArea')
+			        var text = document.createTextNode(message + '\n')
+			        textArea.appendChild(text)
+			        textArea.scrollTop = textArea.scrollHeight
+			        document.getElementById("TextBoxMessage").focus();
+			    }
 			});
 		});
 	});
-
 </script>
 
 

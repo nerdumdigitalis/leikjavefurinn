@@ -28,7 +28,7 @@ namespace Leikjavefur.Models
         //Sends message to everyone in the same group as the UserProfile
         public void SendMessage(string groupiD, string message)
         {
-            Clients.OthersInGroup(groupiD).receiveMessage(message);
+            Clients.OthersInGroup(groupiD).ReceiveMessage(message);
         }
 
 #endregion
