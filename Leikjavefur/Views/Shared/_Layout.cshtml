@@ -9,7 +9,22 @@
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
-            <div id="middle">
+
+<div id="body">
+    <div id="leftChat">
+	    <div id="search">
+		    <input type="text" id="searchbox">
+		    <input type="button" value="Search">
+	    </div>
+	    <div id="vinir">
+		    <p id="vinirtext">Vinir</p>
+	    </div>
+	    <div id="leikirchat">
+		    <p>Leikir</p>
+	    </div>
+    </div>
+    
+    <div id="middle">
             <div id="profile">
                 <div id="avatar">
                     @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
@@ -25,16 +40,36 @@
                         </ul>
                     </nav>
                 </div>
+                <div id="mainPage">
+                    <div id="nyskra">
+                        @RenderSection("featured", required: false)
+                        <section class="content-wrapper main-content clear-fix">
+                        @RenderBody()
+                        </section>
+                    </div>
+                </div>
             </div>
-
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-            @RenderBody()
-            </section>
+      </div>
+      
+      <div class="rightChat">
+	        <div id="search">
+		        <input type="text" id="searchbox">
+		        <input type="button" value="Search">
+	        </div>
+	        <div id="notendur">
+		        <p>Notendur</p>
+	        </div>
+	        <div id="spjall">
+		        <p>spjall</p>
+	        </div>
         </div>
+
+        <div id="spjallgluggi">
+		    <input type="text" id="spjallbox">
+		    <input type="button" id="spjalltakki" value="Senda">
         </div>
         
+</div>   
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)

@@ -1,4 +1,54 @@
-﻿#profile
+﻿
+#body
+{
+width:1250px;
+height:547px;
+background-color: grey;
+}
+
+#leftChat
+{
+background-color: #387C44;
+overflow-y: scroll;
+border: solid black 1px;
+height: 600px;
+width:200px;
+float:left;
+}
+
+#vinir
+{
+float:left;
+border: solid black 1px;
+resize:vertical;
+overflow:auto;
+width:180px;
+height:270px;
+}
+
+#vinirtext
+{
+	margin-left:auto;
+	margin-right:auto;
+	width:50px;	
+}
+
+#leikirchat
+{
+float:left;
+border: solid black 1px;
+resize:vertical;
+overflow:auto;
+width:180px;
+height:300px;
+}
+
+#searchbox
+{
+    width: 115px;
+}
+
+#profile
 {
 border: groove black 5px;
 margin-left: auto;
@@ -27,4 +77,67 @@ height:155px;
 width:840px;
 height:800px;
 float:left;
+}
+
+#mainPage 
+{
+border: solid black 5px;
+overflow-y: scroll;
+height: 427px;
+width:837px;
+float:left;
+background-color: #C0C0C0;
+}
+
+.rightChat
+{
+background-color: #387C44;
+border: solid black 1px;
+overflow-y: scroll;
+height: 570px;
+width:200px;
+float:right;
+}
+
+#spjallgluggi
+{
+	border: solid black 1px;
+	background-color: #387C44;
+	padding-left: 1px;
+	border: solid black 2px;
+	float:right;
+	width:198;
+	height:26;
+	
+}
+
+#notendur
+{
+border: solid black 1px;
+resize:vertical;
+overflow:auto;
+width:180px;
+height:270px;
+}
+
+#spjall
+{
+border: solid black 1px;
+overflow:auto;
+width:180px;
+height:270px;
+}
+
+#spjallbox
+{
+border: solid black 2px;
+width:135px;
+
+}
+
+p
+{
+	color:#CFECEC;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 12px;
 }
