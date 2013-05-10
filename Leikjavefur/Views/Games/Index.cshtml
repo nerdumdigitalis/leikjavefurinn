@@ -1,11 +1,20 @@
-@model IEnumerable<Leikjavefur.Models.Game>
+﻿@model IEnumerable<Leikjavefur.Models.Game>
 
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table>
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        @*<th>
+        <th>
             @Html.DisplayNameFor(model => model.MaxPlayers)
         </th>
         <th>
@@ -22,7 +31,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Rules)
-        </th>*@
+        </th>
         <th></th>
     </tr>
 
@@ -31,7 +40,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        @*<td>
+        <td>
             @Html.DisplayFor(modelItem => item.MaxPlayers)
         </td>
         <td>
@@ -48,12 +57,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Rules)
-        </td>*@
-        @*<td>
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.GameID }) |
             @Html.ActionLink("Details", "Details", new { id=item.GameID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.GameID })
-        </td>*@
+        </td>
     </tr>
 }
 
