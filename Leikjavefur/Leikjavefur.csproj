@@ -343,7 +343,6 @@
     <Content Include="Views\Chat\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_FriendsPartial.cshtml" />
-    <Content Include="Views\Shared\_GamesPartial.cshtml" />
     <Content Include="Views\Games\_GamesPartial.cshtml">
       <SubType>Code</SubType>
     </Content>

@@ -25,7 +25,7 @@
             @Html.Partial("_FriendsPartial")
 	    </div>
 	    <div id="leikirchat">
-		    <p>Leikir</p>
+		    <p>@Html.ActionLink("Leikir", "Index", "Games")</p>
             @Html.Action("GamesList", "Games")
         </div>
     </div>
@@ -41,8 +41,8 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Notendur", "Index", "Users")</li>
-                            <li>@Html.ActionLink("Leikir", "Index", "Games")</li>
+                            @*<li>@Html.ActionLink("Notendur", "Index", "Users")</li>
+                            <li>@Html.ActionLink("Leikir", "Index", "Games")</li>*@
                         </ul>
                     </nav>
                 </div>
@@ -63,7 +63,7 @@
 		        <input type="text" id="rightsearchbox">
 	        </div>
 	        <div id="notendur">
-		        <p>Notendur</p>
+		        <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
                 @Html.Action("UserList", "Users")
 	        </div>
 	        <div id="spjall">
