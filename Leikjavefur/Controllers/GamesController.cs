@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Leikjavefur.Models;
 using Leikjavefur.Models.Interfaces;
@@ -11,7 +8,7 @@ namespace Leikjavefur.Controllers
 {   
     public class GamesController : Controller
     {
-		private readonly IGameRepository gameRepository;
+		private readonly IGameRepository _gameRepository;
 
 		// If you are using Dependency Injection, you can delete the following constructor
         public GamesController() : this(new GameRepository())
@@ -20,23 +17,28 @@ namespace Leikjavefur.Controllers
 
         public GamesController(IGameRepository gameRepository)
         {
-			this.gameRepository = gameRepository;
+			this._gameRepository = gameRepository;
         }
 
         //
         // GET: /Games/
 
-        public ViewResult Index()
+        public ActionResult Index()
         {
-            return View(gameRepository.All);
+            return View(_gameRepository.All);
         }
 
         //
         // GET: /Games/Details/5
 
+        public ActionResult GamesList()
+        {
+            return PartialView(_gameRepository.All);
+        }
+
         public ViewResult Details(int id)
         {
-            return View(gameRepository.Find(id));
+            return View(_gameRepository.Find(id));
         }
 
         //
@@ -55,8 +57,8 @@ namespace Leikjavefur.Controllers
         {
             if (ModelState.IsValid) {
                 game.DateAdded = DateTime.Now;
-                gameRepository.InsertOrUpdate(game);
-                gameRepository.Save();
+                _gameRepository.InsertOrUpdate(game);
+                _gameRepository.Save();
                 return RedirectToAction("Index");
             } else {
 				return View();
@@ -68,7 +70,7 @@ namespace Leikjavefur.Controllers
  
         public ActionResult Edit(int id)
         {
-             return View(gameRepository.Find(id));
+             return View(_gameRepository.Find(id));
         }
 
         //
@@ -79,8 +81,8 @@ namespace Leikjavefur.Controllers
         {
             if (ModelState.IsValid) {
                 //game.DateAdded = DateTime.Now;
-                gameRepository.InsertOrUpdate(game);
-                gameRepository.Save();
+                _gameRepository.InsertOrUpdate(game);
+                _gameRepository.Save();
                 return RedirectToAction("Index");
             } else {
 				return View();
@@ -92,7 +94,7 @@ namespace Leikjavefur.Controllers
  
         public ActionResult Delete(int id)
         {
-            return View(gameRepository.Find(id));
+            return View(_gameRepository.Find(id));
         }
 
         //
@@ -101,8 +103,8 @@ namespace Leikjavefur.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            gameRepository.Delete(id);
-            gameRepository.Save();
+            _gameRepository.Delete(id);
+            _gameRepository.Save();
 
             return RedirectToAction("Index");
         }
@@ -110,7 +112,7 @@ namespace Leikjavefur.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing) {
-                gameRepository.Dispose();
+                _gameRepository.Dispose();
             }
             base.Dispose(disposing);
         }
