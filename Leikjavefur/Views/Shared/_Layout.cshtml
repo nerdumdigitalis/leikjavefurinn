@@ -15,7 +15,7 @@
     </head>
     <body>
 
-<div id="body">
+
     <div id="leftChat">
 	    <div id="leftsearch">
 		    <input type="text" id="leftsearchbox">
@@ -26,7 +26,8 @@
 	    </div>
 	    <div id="leikirchat">
 		    <p>Leikir</p>
-            <!-- Html.Action("GamesList", "Games")-->
+		    <p>@Html.ActionLink("Leikir", "Index", "Games")</p>
+            @Html.Action("GamesList", "Games")
         </div>
     </div>
     
@@ -41,8 +42,8 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Notendur", "Index", "Users")</li>
-                            <li>@Html.ActionLink("Leikir", "Index", "Games")</li>
+                            @*<li>@Html.ActionLink("Notendur", "Index", "Users")</li>
+                            <li>@Html.ActionLink("Leikir", "Index", "Games")</li>*@
                         </ul>
                     </nav>
                 </div>
@@ -58,26 +59,18 @@
                 </div>
       </div>
       
-      <div class="rightChat">
+      <div id="rightChat">
 	        <div id="rightsearch">
 		        <input type="text" id="rightsearchbox">
 	        </div>
 	        <div id="notendur">
 		        <p>Notendur</p>
-                <!--Html.Action("UserList", "Users")-->
+		        <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
+                @Html.Action("UserList", "Users")
 	        </div>
 	        <div id="spjall">
-                @*@Html.Partial("~/Views/Chat/ChatPartial.cshtml")*@
                 @Html.Action("ChatPartial", "Chat")
 	        </div>
         </div>
-        <!--
-        <div id="spjallgluggi">
-		    <input type="text" id="spjallbox">
-		    <input type="button" id="spjalltakki" value="Senda">
-        </div>
-        -->
-        
-</div>   
     </body>
 </html>

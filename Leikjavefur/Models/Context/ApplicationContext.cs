@@ -17,6 +17,5 @@ namespace Leikjavefur.Models.Context
         public DbSet<Statistic> Statistics { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<GameInstance> GameInstances { get; set; }
-
     }
 }
