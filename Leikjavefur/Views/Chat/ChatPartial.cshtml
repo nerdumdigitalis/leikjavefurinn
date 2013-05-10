@@ -38,13 +38,11 @@
 
 			$("#SendButton").click(function ()
 			{
-			    if (userName != '')
-			    {
+			    if (userName != '') {
 			        var message = userName + ": ";
 			        message += $('#TextBoxMessage').val();
 
-			        if (message != '')
-			        {
+			        if (message != '') {
 			            hub.server.sendMessage(group, $('#TextBoxMessage').val());
 			            $('#TextBoxMessage').val('');
 			            var text = document.createTextNode(message + '\n');
@@ -52,6 +50,9 @@
 			            textArea.scrollTop = textArea.scrollHeight;
 			            document.getElementById("TextBoxMessage").focus();
 			        }
+			    }
+			    else {
+			        $('#TextBoxMessage').val('');
 			    }
 			});
 		});
