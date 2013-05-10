@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Leikjavefur.Models;
 using Leikjavefur.Models.Interfaces;
@@ -29,6 +26,11 @@ namespace Leikjavefur.Controllers
         public ViewResult Index()
         {
             return View(userRepository.All);
+        }
+
+        public ActionResult UserList()
+        {
+            return PartialView(userRepository.All);
         }
 
         //

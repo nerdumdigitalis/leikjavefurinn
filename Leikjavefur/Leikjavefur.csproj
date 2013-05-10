@@ -209,6 +209,7 @@
     <Compile Include="Models\Repository\StatisticRepository.cs" />
     <Compile Include="Models\Repository\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -344,6 +345,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_FriendsPartial.cshtml" />
     <Content Include="Views\Shared\_GamesPartial.cshtml" />
+    <Content Include="Views\Games\_GamesPartial.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Games\GamesList.cshtml" />
+    <Content Include="Views\Users\UserList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
