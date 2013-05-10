@@ -92,7 +92,7 @@ float:left;
 
 #mainPage 
 {
-
+float:left;
 border: solid black 5px;
 overflow-y: scroll;
 height: 477px;
@@ -105,7 +105,7 @@ background-color: #C0C0C0;
 background-color: #387C44;
 border: solid black 1px;
 overflow-y: scroll;
-height: 620px;
+height: 650px;
 width:200px;
 float:right;
 }
@@ -134,10 +134,9 @@ height:270px;
 #spjall
 {
 border: solid black 1px;
-resize:vertical;
-overflow:auto;
+
 width:180px;
-height:294px;
+height:324px;
 }
 
 #spjallbox
@@ -161,12 +160,13 @@ p
 }
 
 #ChatArea {
-    height: 210px;
-    width: 177px;
+    height: 280px;
+    width: 175px;
     resize: none;
 }
 
 #TextBoxMessage {
-    width: 177px;
+    float:left;
+    width: 115px;
     resize: none;
 }
