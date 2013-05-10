@@ -41,7 +41,7 @@ border: solid black 1px;
 resize:vertical;
 overflow:auto;
 width:180px;
-height:325px;
+height:350px;
 }
 
 #searchbox
@@ -136,7 +136,7 @@ height:270px;
 border: solid black 1px;
 
 width:180px;
-height:324px;
+height:350px;
 }
 
 #spjallbox
@@ -160,7 +160,7 @@ p
 }
 
 #ChatArea {
-    height: 280px;
+    height: 310px;
     width: 175px;
     resize: none;
 }
