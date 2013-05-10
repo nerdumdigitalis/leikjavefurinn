@@ -26,7 +26,7 @@
 	    </div>
 	    <div id="leikirchat">
 		    <p>Leikir</p>
-            @Html.Action("GamesList", "Games")
+            <!-- Html.Action("GamesList", "Games")-->
         </div>
     </div>
     
@@ -64,17 +64,19 @@
 	        </div>
 	        <div id="notendur">
 		        <p>Notendur</p>
-                @Html.Action("UserList", "Users")
+                <!--Html.Action("UserList", "Users")-->
 	        </div>
 	        <div id="spjall">
-		        @Html.Partial("~/Views/Chat/index.cshtml")
+                @*@Html.Partial("~/Views/Chat/ChatPartial.cshtml")*@
+                @Html.Action("ChatPartial", "Chat")
 	        </div>
         </div>
-
-        @*<div id="spjallgluggi">
+        <!--
+        <div id="spjallgluggi">
 		    <input type="text" id="spjallbox">
 		    <input type="button" id="spjalltakki" value="Senda">
-        </div>*@
+        </div>
+        -->
         
 </div>   
     </body>

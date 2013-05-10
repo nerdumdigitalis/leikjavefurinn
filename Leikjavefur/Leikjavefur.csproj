@@ -200,6 +200,8 @@
     <Compile Include="Models\ApplicationModels.cs" />
     <Compile Include="Models\Communication.cs" />
     <Compile Include="Models\Context\ApplicationContext.cs" />
+    <Compile Include="Models\Interfaces\IGameInstanceRepository.cs" />
+    <Compile Include="Models\Repository\GameInstanceRepository.cs" />
     <Compile Include="Models\Repository\GameRepository.cs" />
     <Compile Include="Models\Interfaces\IGameRepository.cs" />
     <Compile Include="Models\Interfaces\IReportRepository.cs" />
@@ -209,6 +211,7 @@
     <Compile Include="Models\Repository\StatisticRepository.cs" />
     <Compile Include="Models\Repository\UserRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ChatModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -340,7 +343,7 @@
     <Content Include="Views\Statistics\Details.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\Statistics\_CreateOrEdit.cshtml" />
-    <Content Include="Views\Chat\Index.cshtml" />
+    <Content Include="Views\Chat\ChatPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_FriendsPartial.cshtml" />
     <Content Include="Views\Shared\_GamesPartial.cshtml" />
