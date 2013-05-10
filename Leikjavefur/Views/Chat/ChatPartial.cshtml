@@ -24,8 +24,13 @@
         var userName = '@(Model.UserName)';
         //var userID = '(Model.ID)';
         var group = '@(Model.gameInstance)';
-	    var hub = $.connection.communication;
+        var hub = $.connection.communication;
 
+        /*if (userName = '') {
+            var textBox = document.getElementById('TextBoxMessage');
+            textbox.disabled = true;
+        }*/
+       
 		hub.client.ReceiveMessage = function (message) {
 		    var text = document.createTextNode(message + '\n');
 		    textArea.appendChild(text);
@@ -39,12 +44,13 @@
 			$("#SendButton").click(function ()
 			{
 			    if (userName != '') {
+			        var message = $('#TextBoxMessage').val();
 			        if (message != '') {
-			            var message = userName + ": ";
+			            message = userName + ": ";
 			            message += $('#TextBoxMessage').val();
-			            hub.server.sendMessage(group, $('#TextBoxMessage').val());
+			            hub.server.sendMessage(group, message);
 			            $('#TextBoxMessage').val('');
-			            var text = document.createTextNode(message + '\n\r');
+			            var text = document.createTextNode(message + '\r');
 			            textArea.appendChild(text);
 			            textArea.scrollTop = textArea.scrollHeight;
 			            document.getElementById("TextBoxMessage").focus();
