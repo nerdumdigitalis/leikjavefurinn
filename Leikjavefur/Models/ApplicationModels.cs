@@ -32,6 +32,7 @@ namespace Leikjavefur.Models
         [StringLength(200, ErrorMessage = "Styttu textan niður í max 200 stafi")]
         public string About { get; set; }
 
+
         public virtual ICollection<UserProfile> Friends { get; set; }
     }
 

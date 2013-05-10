@@ -183,6 +183,7 @@
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlayController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -352,6 +353,9 @@
     <Content Include="Views\Games\GamesList.cshtml" />
     <Content Include="Views\Users\UserList.cshtml" />
     <Content Include="Views\Games\Index.cshtml" />
+    <Content Include="Views\Play\Index.cshtml" />
+    <Content Include="Views\Play\TicTacToe.cshtml" />
+    <Content Include="Views\Play\SnakesAndLadders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -369,6 +373,9 @@
     <EmbeddedResource Include="Migrations\201305090036195_friendstable.resx">
       <DependentUpon>201305090036195_friendstable.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

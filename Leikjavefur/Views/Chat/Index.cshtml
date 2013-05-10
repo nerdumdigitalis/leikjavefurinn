@@ -20,16 +20,16 @@
         return true;
     });
 
-    var textArea = document.getElementById('ChatArea')
+    var textArea = document.getElementById('ChatArea');
     $(function ()
     {
 	    var group = @*'@(Model.ID)';*@ '1';
 	    var hub = $.connection.communication;
 
 		hub.client.ReceiveMessage = function (message) {
-		    var text = document.createTextNode(message + '\n')
-		    textArea.appendChild(text)
-		    textArea.scrollTop = textArea.scrollHeight
+		    var text = document.createTextNode(message + '\n');
+		    textArea.appendChild(text);
+		    textArea.scrollTop = textArea.scrollHeight;
 		};
 
 		$.connection.hub.start().done(function ()
@@ -38,16 +38,16 @@
 
 			$("#SendButton").click(function ()
 			{
-			    var message = $('#TextBoxMessage').val()
+			    var message = $('#TextBoxMessage').val();
 
 			    if (message != '')
 			    {
 
 			        hub.server.sendMessage(group, $('#TextBoxMessage').val());
 			        $('#TextBoxMessage').val('');
-			        var text = document.createTextNode(message + '\n')
-			        textArea.appendChild(text)
-			        textArea.scrollTop = textArea.scrollHeight
+			        var text = document.createTextNode(message + '\n');
+			        textArea.appendChild(text);
+			        textArea.scrollTop = textArea.scrollHeight;
 			        document.getElementById("TextBoxMessage").focus();
 			    }
 			});
