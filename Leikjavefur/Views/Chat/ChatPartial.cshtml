@@ -6,7 +6,7 @@
 <textarea disabled id="ChatArea">
 </textarea>
 <input id="TextBoxMessage" type="text"/>
-<input id="SendButton" type="button" value ="Senda"/>
+<input id="SendButton" type="button" value ="Senda" style="display: none;"/>
 
 <script>
 
@@ -39,13 +39,12 @@
 			$("#SendButton").click(function ()
 			{
 			    if (userName != '') {
-			        var message = userName + ": ";
-			        message += $('#TextBoxMessage').val();
-
 			        if (message != '') {
+			            var message = userName + ": ";
+			            message += $('#TextBoxMessage').val();
 			            hub.server.sendMessage(group, $('#TextBoxMessage').val());
 			            $('#TextBoxMessage').val('');
-			            var text = document.createTextNode(message + '\n');
+			            var text = document.createTextNode(message + '\n\r');
 			            textArea.appendChild(text);
 			            textArea.scrollTop = textArea.scrollHeight;
 			            document.getElementById("TextBoxMessage").focus();
