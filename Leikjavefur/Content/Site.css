@@ -16,7 +16,7 @@ position:relative;
 background-color:#827B60;
 border: solid black 1px;
 height: 100%;
-width:20%;
+width:19%;
 float:left;
 }
 
@@ -46,6 +46,7 @@ height:50%;
 {
 position:relative;
 border: solid black 1px;
+border-right:none;
 float:left;
 width:100%;
 height:155px;
@@ -57,6 +58,7 @@ height:155px;
     float:left;
     width:30%;
     height:100%;
+    margin-left:10px;
 }
 
 #logoff 
@@ -94,8 +96,9 @@ float:left;
 position:relative;
 float:left;
 border: solid black 2px;
+border-right:none;
 overflow-y: scroll;
-height: 80%;
+height:100%;
 width:100%;
 background-color: gray;
 }
@@ -106,8 +109,8 @@ position:relative;
 background-color: #827B60;
 border: solid black 1px;
 height: 100%;
-width:19.5%;
-float:right;
+width:20%;
+float:left;
 }
 
 #spjallgluggi
@@ -171,7 +174,7 @@ ul
 #ChatArea {
     position:relative;
     overflow:auto;
-    height: 85%;
+    height: 89%;
     width: 100%;
     resize: none;
 }
@@ -180,5 +183,6 @@ ul
     position:relative;
     float:left;
     width: 100%;
+    height:5%;
     resize: none;
 }
