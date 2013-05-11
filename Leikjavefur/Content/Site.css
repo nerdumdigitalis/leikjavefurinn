@@ -94,7 +94,7 @@ float:left;
 #mainPage 
 {
 position:relative;
-float:left;
+text-align:center;
 border: solid black 2px;
 border-right:none;
 overflow-y: scroll;
@@ -185,4 +185,35 @@ ul
     width: 100%;
     height:5%;
     resize: none;
+}
+
+.RegisterAndManageFieldset
+{
+    border: none;
+    display:inline;
+    text-align: right;
+    margin-right:22%;
+}
+
+.RegisterAndManageList
+{
+    list-style-type: none;
+}
+
+.title
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.message-success
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.RegisterAndManageButton
+{
+    width: 157px;
+    height: 30px;
 }
