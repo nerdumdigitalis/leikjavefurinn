@@ -1,31 +1,32 @@
 ﻿
 body
 {
-position:fixed;
-float:left;
-width:100%;
-height:100%;
-background-color: #827B60;
-margin:0px;
-font-size: 90%;
+    position:fixed;
+    float:left;
+    width:100%;
+    height:100%;
+    background-color: #827B60;
+    margin:0px;
+    font-size: 90%;
 }
 
 #leftChat
 {
-position:relative;
-background-color:#827B60;
-border: solid black 1px;
-height: 100%;
-width:19%;
-float:left;
+    position:relative;
+    background-color:#827B60;
+    border: solid black 1px;
+    height: 100%;
+    width:19%;
+    float:left;
+    text-align: center;
 }
 
 #vinir
 {
-position:relative;
-border: solid black 1px;
-width:100%;
-height:50%;
+    position:relative;
+    border: solid black 1px;
+    width:100%;
+    height:50%;
 }
 
 #vinirtext
@@ -36,20 +37,20 @@ height:50%;
 
 #leikirchat
 {
-position:relative;
-border: solid black 1px;
-width:100%;
-height:50%;
+    position:relative;
+    border: solid black 1px;
+    width:100%;
+    height:50%;
 }
 
 #profile
 {
-position:relative;
-border: solid black 1px;
-border-right:none;
-float:left;
-width:100%;
-height:155px;
+    position:relative;
+    border: solid black 1px;
+    border-right:none;
+    float:left;
+    width:100%;
+    height:155px;
 }
 
 #profilestats 
@@ -79,11 +80,11 @@ height:155px;
 
 #middle
 {
-border: solid black 1px;
-position:relative;
-width:60%;
-height:100%;
-float:left;
+    border: solid black 1px;
+    position:relative;
+    width:60%;
+    height:100%;
+    float:left;
 }
 
 #render 
@@ -93,24 +94,25 @@ float:left;
 
 #mainPage 
 {
-position:relative;
-text-align:center;
-border: solid black 2px;
-border-right:none;
-overflow-y: scroll;
-height:100%;
-width:100%;
-background-color: gray;
+    position:relative;
+    text-align:center;
+    border: solid black 2px;
+    border-right:none;
+    overflow-y: scroll;
+    height:100%;
+    width:100%;
+    background-color: gray;
 }
 
 #rightChat
 {
-position:relative;
-background-color: #827B60;
-border: solid black 1px;
-height: 100%;
-width:20%;
-float:left;
+    position:relative;
+    background-color: #827B60;
+    border: solid black 1px;
+    height: 100%;
+    width:20%;
+    text-align:center;
+    float:left;
 }
 
 #spjallgluggi
@@ -127,35 +129,28 @@ float:left;
 
 #notendur
 {
-position:relative;
-border: solid black 1px;
-width:100%;
-height:50%;
+    position:relative;
+    border: solid black 1px;
+    width:100%;
+    height:50%;
 }
 
 #spjall
 {
-position:relative;
-border: solid black 1px;
-width:100%;
-height:50%;
-}
-
-p
-{
-	color:black;
-	font-family: "Arial Black", Gadget, sans-serif;
-	
     position:relative;
-    overflow:hidden;
-    text-align:left;
-    
+    border: solid black 1px;
+    width:100%;
+    height:50%;
 }
 
-p 
-{
-    color:white;
+p {
+    color: white;
+    font-family: "Arial Black", Gadget, sans-serif;
+    position: relative;
+    overflow: hidden;
 }
+
+
 
 a {
     
@@ -189,11 +184,11 @@ ul
 
 .RegisterAndManageFieldset
 {
-    border: none;
+    border: solid white;
     display:inline;
     text-align: right;
-    margin-right:22%;
-}
+    /*margin-right:15%;*/
+        }
 
 .RegisterAndManageList
 {
@@ -202,8 +197,9 @@ ul
 
 .title
 {
-    margin-left: auto;
-    margin-right: auto;
+    text-align:center;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
 }
 
 .message-success
@@ -217,3 +213,11 @@ ul
     width: 157px;
     height: 30px;
 }
+#loginForm 
+{
+    float: left;
+    text-align:center;
+    display:inline;
+    margin: auto;
+}
+
