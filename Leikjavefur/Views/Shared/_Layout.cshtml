@@ -17,9 +17,6 @@
 
 
     <div id="leftChat">
-	    <div id="leftsearch">
-		    <input type="text" id="leftsearchbox">
-	    </div>
 	    <div id="vinir">
 		    <p id="vinirtext">Vinir</p>
             @Html.Partial("_FriendsPartial")
@@ -59,9 +56,6 @@
       </div>
       
       <div id="rightChat">
-	        <div id="rightsearch">
-		        <input type="text" id="rightsearchbox">
-	        </div>
 	        <div id="notendur">
 		        <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
                 @Html.Action("UserList", "Users")
