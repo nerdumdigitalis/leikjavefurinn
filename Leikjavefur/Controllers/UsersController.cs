@@ -36,7 +36,7 @@ namespace Leikjavefur.Controllers
 
         public ActionResult FriendsList()
         {
-            return PartialView(userRepository.GetFriends(WebSecurity.CurrentUserId));
+            return PartialView(_userRepository.GetFriends(WebSecurity.CurrentUserId));
         }
         //
         // GET: /Users/Details/5
