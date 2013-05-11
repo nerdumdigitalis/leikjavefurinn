@@ -88,7 +88,7 @@ namespace Leikjavefur.Controllers
                      */
                     //var userRep = new UserRepository();
                     model.DateCreated = DateTime.Now;
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new{DateCreated = DateTime.Now, About = model.About, Email = model.Email});
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new{DateCreated = DateTime.Now, /*About = model.About,*/ Email = model.Email});
                     WebSecurity.Login(model.UserName, model.Password);
                     //var UserProfile = new UserProfile
                     //{

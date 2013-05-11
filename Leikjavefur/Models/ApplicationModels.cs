@@ -216,9 +216,9 @@ namespace Leikjavefur.Models
 
         public DateTime DateCreated { get; set; }
 
-        [Display(Name = "Stutt lýsing, max 200 stafir (Valkvætt)")]
+        /*[Display(Name = "Stutt lýsing, max 200 stafir (Valkvætt)")]
         [StringLength(200, ErrorMessage = "Styttu textan niður í max 200 stafi")]
-        public string About { get; set; }
+        public string About { get; set; }*/
     }
 
 }
