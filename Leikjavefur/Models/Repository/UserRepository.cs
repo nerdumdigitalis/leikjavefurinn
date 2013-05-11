@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Leikjavefur.Models.Context;
 using Leikjavefur.Models.Interfaces;
+using System.Collections.Generic;
 
 namespace Leikjavefur.Models.Repository
 { 
@@ -56,6 +57,33 @@ namespace Leikjavefur.Models.Repository
         public void Dispose() 
         {
             _context.Dispose();
+        }
+
+        public List<UserProfile> GetFriends(int currentUserId)
+        {
+            //var friendsList = (from friend in _context.Friends
+            //                                      join user in _context.Users on friend.UserID equals user.UserID
+            //                                      where friend.UserID == 1
+            //                                      select new UserProfile { UserID = user.UserID
+            //                                                                ,UserName = user.UserName
+            //                                                                ,DateCreated = user.DateCreated
+            //                                                                ,Avatar = user.Avatar
+            //                                                                ,Email = user.Email
+            //                                                                ,Friends = user.Friends
+            //                                                            });
+
+            var friendsIDs = (from friend in _context.Friends
+                                                  join user in _context.Users on friend.UserID equals user.UserID
+                                                  where friend.UserID == currentUserId
+                                                  select friend.FriendID).ToList();
+
+            var friendsList = new List<UserProfile>();
+            foreach (var user in friendsIDs)
+            {
+                friendsList.Add(Find(user));
+            }
+
+            return friendsList;
         }
     }
 
