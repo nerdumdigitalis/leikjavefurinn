@@ -3,8 +3,8 @@
     
     <div id="profilestats">
         <p>Name: @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "UserProfilename", title = "Manage" })</p>
-        <p>Score:</p>
-        <p>fjöldi leikja:</p>
+        <p>Stigafjöldi:</p>
+        <p>Fjöldi Spilaðra leikja:</p>
         <p>Medalía:</p>
     </div>
 
@@ -15,7 +15,7 @@
         
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            <a href="javascript:document.getElementById('logoutForm').submit()">Útskrá</a>
         }
     
     </div>

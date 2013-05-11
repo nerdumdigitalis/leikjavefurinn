@@ -1,4 +1,4 @@
-﻿@model IQueryable<Leikjavefur.Models.UserProfile>
+﻿@model List<Leikjavefur.Models.UserProfile>
 
 @{
     Layout = null;
@@ -6,7 +6,6 @@
 
 @foreach (var item in Model) 
 {
-    @*@Html.DisplayFor(modelItem => item.UserName)*@
     @Html.ActionLink(item.UserName, "Details", new { id=item.UserID })
     <br/>
 }

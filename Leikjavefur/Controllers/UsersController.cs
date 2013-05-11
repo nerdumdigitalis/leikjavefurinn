@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Leikjavefur.Models;
 using Leikjavefur.Models.Interfaces;
 using Leikjavefur.Models.Repository;
+using WebMatrix.WebData;
 
 namespace Leikjavefur.Controllers
 {   
@@ -33,6 +34,10 @@ namespace Leikjavefur.Controllers
             return PartialView(_userRepository.All);
         }
 
+        public ActionResult FriendsList()
+        {
+            return PartialView(_userRepository.GetFriends(WebSecurity.CurrentUserId));
+        }
         //
         // GET: /Players/Details/5
 

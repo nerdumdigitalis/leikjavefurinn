@@ -19,10 +19,10 @@
     <div id="leftChat">
 	    <div id="vinir">
 		    <p id="vinirtext">Vinir</p>
-            @Html.Partial("_FriendsPartial")
+            @*@Html.Partial("_FriendsPartial")*@
+            @Html.Action("FriendsList", "Users")
 	    </div>
 	    <div id="leikirchat">
-		    <p>Leikir</p>
 		    <p>@Html.ActionLink("Leikir", "Index", "Games")</p>
             @Html.Action("GamesList", "Games")
         </div>
@@ -60,7 +60,6 @@
       
       <div id="rightChat">
 	        <div id="notendur">
-		        <p>Notendur</p>
 		        <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
                 @Html.Action("UserList", "Users")
 	        </div>

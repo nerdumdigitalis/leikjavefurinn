@@ -350,6 +350,9 @@
     <Content Include="Views\GameInstance\SnakesAndLadders.cshtml" />
     <Content Include="Views\GameInstance\GetUsersByGameInstance.cshtml" />
     <Content Include="Views\GameInstance\Game.cshtml" />
+    <Content Include="Views\Account\_ChangeEmail.cshtml" >
+      <BrowseToURL>~/Account/_ChangeEmailPartial</BrowseToURL>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
