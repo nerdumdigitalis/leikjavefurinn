@@ -22,6 +22,7 @@
             @Html.Partial("_FriendsPartial")
 	    </div>
 	    <div id="leikirchat">
+		    <p>Leikir</p>
 		    <p>@Html.ActionLink("Leikir", "Index", "Games")</p>
             @Html.Action("GamesList", "Games")
         </div>
@@ -59,15 +60,13 @@
       
       <div id="rightChat">
 	        <div id="notendur">
+		        <p>Notendur</p>
 		        <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
                 @Html.Action("UserList", "Users")
 	        </div>
 	        <div id="spjall">
-		        @Html.Partial("~/Views/Chat/index.cshtml")
+                @Html.Action("ChatPartial", "Chat")
 	        </div>
         </div>
-
-     
-        
     </body>
 </html>

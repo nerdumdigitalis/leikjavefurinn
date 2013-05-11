@@ -1,0 +1,68 @@
+﻿@model Leikjavefur.ViewModels.ChatModel
+
+@{
+}
+
+<textarea disabled id="ChatArea">
+</textarea>
+<input id="TextBoxMessage" type="text"/>
+<input id="SendButton" type="button" value ="Senda" style="display: none;"/>
+
+<script>
+
+    $("#TextBoxMessage").keydown(function (event) {
+        if (event.keyCode == 13) {
+            $("#SendButton").click();
+            return false;
+        }
+        return true;
+    });
+
+    var textArea = document.getElementById('ChatArea')
+    $(function ()
+    {
+        var userName = '@(Model.UserName)';
+        //var userID = '(Model.ID)';
+        var group = '@(Model.gameInstance)';
+        var hub = $.connection.communication;
+
+        /*if (userName = '') {
+            var textBox = document.getElementById('TextBoxMessage');
+            textbox.disabled = true;
+        }*/
+       
+		hub.client.ReceiveMessage = function (message) {
+		    var text = document.createTextNode(message + '\n');
+		    textArea.appendChild(text);
+		    textArea.scrollTop = textArea.scrollHeight;
+		};
+
+		$.connection.hub.start().done(function ()
+		{
+			hub.server.join(group);
+
+			$("#SendButton").click(function ()
+			{
+			    if (userName != '') {
+			        var message = $('#TextBoxMessage').val();
+			        if (message != '') {
+			            message = userName + ": ";
+			            message += $('#TextBoxMessage').val();
+			            hub.server.sendMessage(group, message);
+			            $('#TextBoxMessage').val('');
+			            var text = document.createTextNode(message + '\r');
+			            textArea.appendChild(text);
+			            textArea.scrollTop = textArea.scrollHeight;
+			            document.getElementById("TextBoxMessage").focus();
+			        }
+			    }
+			    else {
+			        $('#TextBoxMessage').val('');
+			    }
+			});
+		});
+	});
+</script>
+
+
+
