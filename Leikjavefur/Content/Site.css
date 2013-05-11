@@ -1,47 +1,44 @@
 ﻿
 body
 {
+position:fixed;
 float:left;
 width:100%;
 height:100%;
 background-color: grey;
+margin:0px;
 }
 
 #leftChat
 {
+position:relative;
 background-color: #387C44;
-overflow-y: scroll;
 border: solid black 1px;
-height: 650px;
-width:200px;
+height: 100%;
+width:20%;
 float:left;
 }
 
 #vinir
 {
-float:left;
+position:relative;
 border: solid black 1px;
-resize:vertical;
-overflow:auto;
-width:180px;
-height:270px;
+width:100%;
+height:50%;
 }
 
 #vinirtext
 {
 	margin-left:auto;
-	margin-right:auto;
-	width:50px;	
+	margin-right:auto;	
 }
 
 #leikirchat
 {
-float:left;
+position:relative;
 border: solid black 1px;
-resize:vertical;
-overflow:auto;
-width:180px;
-height:350px;
+width:100%;
+height:50%;
 }
 
 #searchbox
@@ -58,24 +55,26 @@ height:350px;
 
 #profile
 {
+position:relative;
 border: solid black 5px;
 float:left;
-width:837px;
-height:155px;
+width:100%;
+height:20%;
 }
 
 #profileinfo
 {	
+    position:relative;
 	float:left;
-	width:81%;
-	height:145px;
+	width:40%;
+	height:100%;
 }
 
 #letteright 
-{
-    
+{   
     float:right;
-    width:80px;
+    width:20%;
+    height:100%
 }
 
 #profilestatus 
@@ -88,15 +87,17 @@ height:155px;
 
 #avatar
 {
+    position:relative;
 	float:left;
-	width:155px;
-    height:155px;
+	width:20%;
+    height:100%;
 }
 
 #middle
 {
-width:837px;
-height:800px;
+position:relative;
+width:60%;
+height:100%;
 float:left;
 }
 
@@ -107,22 +108,23 @@ float:left;
 
 #mainPage 
 {
+position:relative;
 float:left;
 border: solid black 5px;
 overflow-y: scroll;
-height: 477px;
-width:837px;
+height: 80%;
+width:100%;
 background-color: #C0C0C0;
 }
 
-.rightChat
+#rightChat
 {
+position:relative;
 background-color: #387C44;
 border: solid black 1px;
-overflow-y: scroll;
-height: 650px;
-width:200px;
-float:left;
+height: 100%;
+width:19.5%;
+float:right;
 }
 
 #spjallgluggi
@@ -139,19 +141,18 @@ float:left;
 
 #notendur
 {
+position:relative;
 border: solid black 1px;
-resize:vertical;
-overflow:auto;
-width:180px;
-height:270px;
+width:100%;
+height:50%;
 }
 
 #spjall
 {
+position:relative;
 border: solid black 1px;
-
-width:180px;
-height:350px;
+width:100%;
+height:50%;
 }
 
 #spjallbox
@@ -175,13 +176,15 @@ p
 }
 
 #ChatArea {
-    height: 310px;
-    width: 175px;
+    position:relative;
+    height: 70%;
+    width: 100%;
     resize: none;
 }
 
 #TextBoxMessage {
+    position:relative;
     float:left;
-    width: 115px;
+    width: 100%;
     resize: none;
 }
