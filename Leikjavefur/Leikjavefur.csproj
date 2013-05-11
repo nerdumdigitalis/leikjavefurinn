@@ -183,19 +183,11 @@
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PlayController.cs" />
+    <Compile Include="Controllers\GameInstanceController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305091114319_Added to UserProfile.cs" />
-    <Compile Include="Migrations\201305091114319_Added to UserProfile.Designer.cs">
-      <DependentUpon>201305091114319_Added to UserProfile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201305090036195_friendstable.cs" />
-    <Compile Include="Migrations\201305090036195_friendstable.Designer.cs">
-      <DependentUpon>201305090036195_friendstable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationModels.cs" />
@@ -353,9 +345,9 @@
     <Content Include="Views\Games\GamesList.cshtml" />
     <Content Include="Views\Users\UserList.cshtml" />
     <Content Include="Views\Games\Index.cshtml" />
-    <Content Include="Views\Play\Index.cshtml" />
-    <Content Include="Views\Play\TicTacToe.cshtml" />
-    <Content Include="Views\Play\SnakesAndLadders.cshtml" />
+    <Content Include="Views\GameInstance\Index.cshtml" />
+    <Content Include="Views\GameInstance\TicTacToe.cshtml" />
+    <Content Include="Views\GameInstance\SnakesAndLadders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -365,14 +357,6 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201305091114319_Added to UserProfile.resx">
-      <DependentUpon>201305091114319_Added to UserProfile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201305090036195_friendstable.resx">
-      <DependentUpon>201305090036195_friendstable.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
