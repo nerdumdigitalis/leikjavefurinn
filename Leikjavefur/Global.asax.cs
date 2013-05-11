@@ -28,9 +28,9 @@ namespace Leikjavefur
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-            //Database.SetInitializer<ApplicationContext>(null);
+            Database.SetInitializer<ApplicationContext>(null);
             WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
         }
     }
 }

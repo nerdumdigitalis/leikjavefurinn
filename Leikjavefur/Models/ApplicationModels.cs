@@ -135,11 +135,13 @@ namespace Leikjavefur.Models
     [Table("Friends")]
     public class Friends
     {
+        [Key, Column(Order = 0)]
         public int UserID { get; set; }
         //[ForeignKey("UserID")]
         //public virtual UserProfile User { get; set; }
 
-          public int FriendID { get; set; }
+        [Key, Column(Order = 1)]
+        public int FriendID { get; set; }
         //[ForeignKey("UserID")]
         //public virtual UserProfile Friend { get; set; }
     }
