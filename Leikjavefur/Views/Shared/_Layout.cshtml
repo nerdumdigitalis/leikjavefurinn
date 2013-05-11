@@ -29,10 +29,12 @@
     
     <div id="middle">
             <div id="profile">
-                <div id="avatar">
+                
+                
+                    <div id="avatar">
                     @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
-                </div>
-                <div id="profileinfo">
+                    </div>
+                    
                     <section id="login"> 
                         @Html.Partial("_LoginPartial")
                     </section>
@@ -44,7 +46,7 @@
                     </nav>
                 </div>
                
-            </div>
+            
              <div id="mainPage">
                     <div id="nyskra">
                         @RenderSection("featured", required: false)

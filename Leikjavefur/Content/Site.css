@@ -7,6 +7,7 @@ width:100%;
 height:100%;
 background-color: grey;
 margin:0px;
+font-size: 90%;
 }
 
 #leftChat
@@ -47,37 +48,29 @@ position:relative;
 border: solid black 1px;
 float:left;
 width:100%;
-height:20%;
+height:21%;
 }
 
-#profileinfo
-{	
+#profilestats 
+{
     position:relative;
-	float:left;
-	width:40%;
-	height:100%;
+    float:left;
+    width:30%;
+    height:100%;
 }
 
-#letteright 
+#logoff 
 {   
     float:right;
-    width:20%;
+    width:10%;
     height:100%
-}
-
-#profilestatus 
-{
-    float:left;
-    border: solid black 5px;
-    width:50%;
-    height:100px;
 }
 
 #avatar
 {
     position:relative;
 	float:left;
-	width:20%;
+	width:21%;
     height:100%;
 }
 
@@ -99,7 +92,7 @@ float:left;
 {
 position:relative;
 float:left;
-border: solid black 1px;
+border: solid black 2px;
 overflow-y: scroll;
 height: 80%;
 width:100%;
@@ -146,14 +139,32 @@ height:50%;
 
 p
 {
-	color:#CFECEC;
+	color:black;
+	font-family: "Arial Black", Gadget, sans-serif;
+	
+    position:relative;
+    overflow:hidden;
+    text-align:left;
+    
+}
+
+a {
+    
+    color:#CFECEC;
 	font-family: "Arial Black", Gadget, sans-serif;
 	font-size: 12px;
+    text-decoration:none;
+}
+
+ul 
+{
+    list-style-type:none;
+    float:left;
 }
 
 #ChatArea {
     position:relative;
-    height: 70%;
+    height: 80%;
     width: 100%;
     resize: none;
 }

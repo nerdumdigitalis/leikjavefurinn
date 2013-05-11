@@ -1,11 +1,16 @@
 ﻿@if (Request.IsAuthenticated) 
 {
     
-    
+    <div id="profilestats">
+        <p>Name: @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "UserProfilename", title = "Manage" })</p>
+        <p>Score:</p>
+        <p>fjöldi leikja:</p>
+        <p>Medalía:</p>
+    </div>
 
     
     
-    <div id="letteright">
+    <div id="logoff">
     
         Velkomin, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "UserProfilename", title = "Manage" })
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
