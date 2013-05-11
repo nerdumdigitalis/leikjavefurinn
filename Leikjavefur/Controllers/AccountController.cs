@@ -35,7 +35,7 @@ namespace Leikjavefur.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The UserProfile name or password provided is incorrect.");
+            ModelState.AddModelError("", "Notendanafnið eða lykilorðið er ekki rétt.");
             return View(model);
         }
 
@@ -144,9 +144,9 @@ namespace Leikjavefur.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Lykilorðinu hefur verið breytt."
+                : message == ManageMessageId.SetPasswordSuccess ? "Lykilorðið hefur verið sett."
+                : message == ManageMessageId.RemoveLoginSuccess ? "Notandanum hefur verið eytt."
                 : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
@@ -184,7 +184,7 @@ namespace Leikjavefur.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                        ModelState.AddModelError("", "Núverandi lykilorð er rangt eða nýja lykilorðið er ekki gilt.");
                     }
                 }
             }

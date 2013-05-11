@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 
 namespace Leikjavefur.Models
 {
@@ -20,7 +21,8 @@ namespace Leikjavefur.Models
         //[Display(Name = "Lykilorð")]
         //public string Password { get; set; }
         
-        [Display(Name = "Veffang")]
+        [Display(Name = "Póstfang")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Display(Name = "Mynd (Valkvætt)")]
@@ -139,10 +141,10 @@ namespace Leikjavefur.Models
         public int UserID { get; set; }
 
         [Key, Column(Order = 1)]
-          public int FriendID { get; set; }
+        public int FriendID { get; set; }
 
     }
-   
+    
     public class LocalPasswordModel
     {
         [Required]

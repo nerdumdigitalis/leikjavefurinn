@@ -73,9 +73,9 @@ namespace Leikjavefur.Models.Repository
             //                                                            });
 
             var friendsIDs = (from friend in _context.Friends
-                                                  join user in _context.Users on friend.UserID equals user.UserID
-                                                  where friend.UserID == currentUserId
-                                                  select friend.FriendID).ToList();
+                              join user in _context.Users on friend.UserID equals user.UserID
+                              where friend.UserID == currentUserId
+                              select friend.FriendID).ToList();
 
             var friendsList = new List<UserProfile>();
             foreach (var user in friendsIDs)
