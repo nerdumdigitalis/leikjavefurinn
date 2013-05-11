@@ -21,7 +21,7 @@ namespace Leikjavefur.Controllers
         }
 
         //
-        // GET: /Users/
+        // GET: /Players/
 
         public ViewResult Index()
         {
@@ -34,7 +34,7 @@ namespace Leikjavefur.Controllers
         }
 
         //
-        // GET: /Users/Details/5
+        // GET: /Players/Details/5
 
         public ViewResult Details(int id)
         {
@@ -42,7 +42,7 @@ namespace Leikjavefur.Controllers
         }
 
         //
-        // GET: /Users/Create
+        // GET: /Players/Create
 
         public ActionResult Create()
         {
@@ -50,7 +50,7 @@ namespace Leikjavefur.Controllers
         } 
 
         //
-        // POST: /Users/Create
+        // POST: /Players/Create
 
         [HttpPost]
         public ActionResult Create(UserProfile userProfile)
@@ -66,7 +66,7 @@ namespace Leikjavefur.Controllers
         }
         
         //
-        // GET: /Users/Edit/5
+        // GET: /Players/Edit/5
  
         public ActionResult Edit(int id)
         {
@@ -74,7 +74,7 @@ namespace Leikjavefur.Controllers
         }
 
         //
-        // POST: /Users/Edit/5
+        // POST: /Players/Edit/5
 
         [HttpPost]
         public ActionResult Edit(UserProfile userProfile)
@@ -90,7 +90,7 @@ namespace Leikjavefur.Controllers
         }
 
         //
-        // GET: /Users/Delete/5
+        // GET: /Players/Delete/5
  
         public ActionResult Delete(int id)
         {
@@ -98,7 +98,7 @@ namespace Leikjavefur.Controllers
         }
 
         //
-        // POST: /Users/Delete/5
+        // POST: /Players/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)

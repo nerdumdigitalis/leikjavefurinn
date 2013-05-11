@@ -1,14 +1,10 @@
-﻿﻿@model Leikjavefur.Models.GameInstance
+﻿﻿@model Leikjavefur.ViewModels.GameViewModel
 
-<h2>TicTacToe</h2>
-
-<h3>Leikjatilfelli númer: @Model.GameInstanceID</h3>
-<h3>Leikur stofnaður af leikmanni númer: @Model.UserID</h3>
-<h3>Leikur númer: @Model.GameID</h3>
+<h2>@Model.Game.Name</h2>
 
 <table border="1">
-<tr style ="width:100px; height:100px">
-    <td>row 1, cell 1</td>
+    <tr style ="width:100px; height:100px">
+        <td>row 1, cell 1</td>
         <td>row 1, cell 1</td>
         <td>row 1, cell 2</td>
         <td>row 1, cell 3</td>  

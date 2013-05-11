@@ -1,0 +1,7 @@
+﻿@model System.Linq.IQueryable<Leikjavefur.Models.UserProfile>
+
+
+@foreach (var item in Model) 
+{
+    @Html.DisplayFor(modelItem => item.UserName) <br/>
+}

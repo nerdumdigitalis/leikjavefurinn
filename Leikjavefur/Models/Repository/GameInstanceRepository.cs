@@ -32,6 +32,12 @@ namespace Leikjavefur.Models.Repository
             return _context.GameInstances.Find(gameInstance);
         }
 
+        public void DeleteGameInstance(GameInstance gameInstance)
+        {
+            //var instance = _context.Games.Find(gameInstance.GameInstanceID);
+            //_context.Games.Remove(instance);
+        }
+
         public List<GameInstance> GetGameInstances()
         {
             var groups = _context.GameInstances.GroupBy(inst => inst.GameInstanceID);
@@ -43,9 +49,16 @@ namespace Leikjavefur.Models.Repository
             return new List<GameInstance>();
         }
 
-        public List<UserProfile> GetUsersByGameInstance(int gameInstance)
+        public IQueryable<UserProfile> GetUsersByGameInstance(string gameInstance)
         {
-            return new List<UserProfile>();
+            //var instances = _context.GameInstances.Select(inst => inst).Where(inst => inst.GameInstanceID == gameInstance).ToList();
+            //IUserRepository userRep = new UserRepository();
+            //IQueryable users;
+
+            var users = from c in _context.GameInstances
+                        join o in _context.Users on c.UserID equals o.UserID
+                        select o;
+            return users;
         }
 
         public List<GameInstance> GetGameInstancesByUser(int userID)

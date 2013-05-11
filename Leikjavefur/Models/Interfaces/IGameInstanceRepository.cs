@@ -12,8 +12,9 @@ namespace Leikjavefur.Models.Interfaces
         GameInstance Find(string gameInstance);
         GameInstance CreateNewGameInstance(int gameID, int currentUserID);
         void JoinActiveGameInstance(GameInstance gameInstance, int currentUserID);
+        void DeleteGameInstance(GameInstance gameInstance);
         List<GameInstance> GetGameInstances();
-        List<UserProfile> GetUsersByGameInstance(int gameInstance);
+        IQueryable<UserProfile> GetUsersByGameInstance(string gameInstanceID);
         List<GameInstance> GetGameInstancesByUser(int userID);
         void Save();
         void Dispose();

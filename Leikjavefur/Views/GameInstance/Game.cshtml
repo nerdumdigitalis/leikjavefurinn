@@ -1,0 +1,10 @@
+﻿@model Leikjavefur.ViewModels.GameViewModel
+
+<h2>@Model.Game.Name</h2>
+
+<h3>Leikjatilfelli númer: @Model.GameInstance.GameInstanceID</h3>
+<h3>Leikur stofnaður af leikmanni númer: @Model.GameInstance.UserID</h3>
+<h3>Leikur númer: @Model.GameInstance.GameID</h3>
+
+@RenderPage(Model.Game.Name + ".cshtml")
+

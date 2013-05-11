@@ -14,7 +14,7 @@ namespace Leikjavefur.Controllers
                 {
                     ID = 0,
                     UserName = "",
-                    gameInstance = 0
+                    GameInstance = 0
                 };
                 return PartialView(model);
             }
@@ -23,7 +23,7 @@ namespace Leikjavefur.Controllers
             {
                 ID = WebSecurity.CurrentUserId,
                 UserName = WebSecurity.CurrentUserName,
-                gameInstance = 0
+                GameInstance = 0
             };
             return PartialView(model2);
         }

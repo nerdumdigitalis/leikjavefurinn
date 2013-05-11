@@ -2,6 +2,7 @@
 using Leikjavefur.Models;
 using Leikjavefur.Models.Interfaces;
 using Leikjavefur.Models.Repository;
+using Leikjavefur.ViewModels;
 using WebMatrix.WebData;
 
 namespace Leikjavefur.Controllers
@@ -18,7 +19,7 @@ namespace Leikjavefur.Controllers
 
         public GameInstanceController(IGameInstanceRepository gameInstanceRepository)
         {
-            this._gameInstanceRepository = gameInstanceRepository;
+            _gameInstanceRepository = gameInstanceRepository;
         }
 
         public ActionResult Index()
@@ -33,7 +34,7 @@ namespace Leikjavefur.Controllers
 
                 var gameInstance =_gameInstanceRepository.CreateNewGameInstance(gameID, WebSecurity.CurrentUserId);
                 _gameInstanceRepository.Save();
-                return RedirectToAction(gameName, gameInstance);
+                return RedirectToAction("Game", gameInstance);
             }
             return RedirectToAction("Login", "Account");
         }
@@ -43,6 +44,27 @@ namespace Leikjavefur.Controllers
             var gameName = new GameRepository().Find(gameInstance.GameID).Name;
             _gameInstanceRepository.JoinActiveGameInstance(gameInstance, WebSecurity.CurrentUserId);
             return RedirectToAction(gameName, "GameInstance", gameInstance);
+        }
+
+        public ActionResult DeleteGameInstance(GameInstance gameInstance)
+        {
+            _gameInstanceRepository.DeleteGameInstance(gameInstance);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult GetUsersByGameInstance(string gameInstance)
+        {
+            
+            return PartialView(_gameInstanceRepository.GetUsersByGameInstance(gameInstance));
+        }
+
+        public ActionResult Game(GameInstance gameInstance)
+        {
+            var players = _gameInstanceRepository.GetUsersByGameInstance(gameInstance.GameInstanceID);
+            var game = new GameRepository().Find(gameInstance.GameID);
+            var viewModel = new GameViewModel {GameInstance = gameInstance, Players = players, Game = game};
+
+            return View(viewModel);
         }
 
         public ActionResult TicTacToe(GameInstance gameInstance)
