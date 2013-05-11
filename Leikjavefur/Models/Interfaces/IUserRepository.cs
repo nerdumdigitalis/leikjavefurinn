@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Collections.Generic;
 
 namespace Leikjavefur.Models.Interfaces
 {
@@ -12,5 +13,6 @@ namespace Leikjavefur.Models.Interfaces
         void InsertOrUpdate(UserProfile userProfile);
         void Delete(int id);
         void Save();
+        List<UserProfile> GetFriends(int currentUserId);
     }
 }

@@ -338,7 +338,6 @@
     <Content Include="Views\Statistics\_CreateOrEdit.cshtml" />
     <Content Include="Views\Chat\ChatPartial.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_FriendsPartial.cshtml" />
     <Content Include="Views\Games\_GamesPartial.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -348,7 +347,11 @@
     <Content Include="Views\GameInstance\Index.cshtml" />
     <Content Include="Views\GameInstance\TicTacToe.cshtml" />
     <Content Include="Views\GameInstance\SnakesAndLadders.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Account\_ChangeEmail.cshtml" />
+=======
+    <Content Include="Views\Users\FriendsList.cshtml" />
+>>>>>>> 2ea1139d26132135f5d1842c3268cc0c8ca0776f
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
