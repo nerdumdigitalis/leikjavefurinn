@@ -119,14 +119,14 @@ namespace Leikjavefur.Models
     [Table("GameInstance")]
     public class GameInstance
     {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int GameInstanceID { get; set; }
+        [Key, Column(Order = 0)]
+        public string GameInstanceID { get; set; }
 
         public int GameID { get; set; }
         //[ForeignKey("GameID")]
         //public virtual Game Game { get; set; }
 
+        [Key, Column(Order = 1)]
         public int UserID { get; set; }
         //[ForeignKey("UserID")]
         //public virtual UserProfile WinnerID { get; set; }
@@ -137,13 +137,10 @@ namespace Leikjavefur.Models
     {
         [Key, Column(Order = 0)]
         public int UserID { get; set; }
-        //[ForeignKey("UserID")]
-        //public virtual UserProfile User { get; set; }
 
         [Key, Column(Order = 1)]
-        public int FriendID { get; set; }
-        //[ForeignKey("UserID")]
-        //public virtual UserProfile Friend { get; set; }
+          public int FriendID { get; set; }
+
     }
    
     public class LocalPasswordModel

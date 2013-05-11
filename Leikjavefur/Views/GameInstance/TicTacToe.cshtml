@@ -1,19 +1,24 @@
-﻿<h2>TicTacToe</h2>
+﻿﻿@model Leikjavefur.Models.GameInstance
 
+<h2>TicTacToe</h2>
 
-<table border ="1">
-    <tr style="height:100px; width:100px">
-        
+<h3>Leikjatilfelli númer: @Model.GameInstanceID</h3>
+<h3>Leikur stofnaður af leikmanni númer: @Model.UserID</h3>
+<h3>Leikur númer: @Model.GameID</h3>
+
+<table border="1">
+<tr style ="width:100px; height:100px">
+    <td>row 1, cell 1</td>
         <td>row 1, cell 1</td>
         <td>row 1, cell 2</td>
-        <td>row 1, cell 3</td>
+        <td>row 1, cell 3</td>  
     </tr>
-    <tr style="height:100px; width:100px">
+    <tr style ="width:100px; height:100px">
+        <td>row 2, cell 1</td>
         <td>row 2, cell 1</td>
         <td>row 2, cell 2</td>
-        <td>row 2, cell 3</td>
     </tr>
-    <tr style="height:100px; width:100px">
+    <tr style ="width:100px; height:100px">
         <td>row 3, cell 1</td>
         <td>row 3, cell 2</td>
         <td>row 3, cell 3</td>

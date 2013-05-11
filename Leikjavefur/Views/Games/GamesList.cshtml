@@ -6,6 +6,6 @@
 
 @foreach (var item in Model) 
 {
-    @Html.ActionLink(item.Name, "Index", "Play", new { @game = item.Name}, null)
+    @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
     <br/>
 }
