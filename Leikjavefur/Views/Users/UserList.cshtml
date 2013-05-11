@@ -6,5 +6,7 @@
 
 @foreach (var item in Model) 
 {
-    @Html.DisplayFor(modelItem => item.UserName) <br/>
+    @*@Html.DisplayFor(modelItem => item.UserName)*@
+    @Html.ActionLink(item.UserName, "Details", new { id=item.UserID })
+    <br/>
 }
