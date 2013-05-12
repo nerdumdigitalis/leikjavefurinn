@@ -1,20 +1,10 @@
-﻿@model IEnumerable<Leikjavefur.Models.GameInstance>
+﻿@model IEnumerable<Leikjavefur.ViewModels.GameInstanceViewModel>
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.GameID)
-        </th>
-        <th></th>
-    </tr>
+<h3>Taka þátt í leik</h3>
 
 @foreach (var item in Model)
 {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameID)
-        </td>
-    </tr>
+    @Html.ActionLink(item.GameName, "Join", "GameInstance", new { @gameInstanceID = item.GameInstanceID }, null)
+    <br/>
 }
 
-</table>

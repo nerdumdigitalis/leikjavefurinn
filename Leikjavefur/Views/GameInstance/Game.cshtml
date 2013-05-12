@@ -1,10 +1,16 @@
-﻿@model Leikjavefur.ViewModels.GameViewModel
+﻿@model Leikjavefur.ViewModels.GameInstanceViewModel
 
-<h2>@Model.Game.Name</h2>
+<h2>@Model.GameName</h2>
 
-<h3>Leikjatilfelli númer: @Model.GameInstance.GameInstanceID</h3>
-<h3>Leikur stofnaður af leikmanni númer: @Model.GameInstance.UserID</h3>
-<h3>Leikur númer: @Model.GameInstance.GameID</h3>
+<h3>Leikjatilfelli númer: @Model.GameInstanceID</h3>
+<h3>Leikur stofnaður af leikmanni númer: @Model.Players.First().UserName</h3>
+<h3>Leikur: @Model.GameName</h3>
 
-@RenderPage(Model.Game.Name + ".cshtml")
+<h3>Spilarar í þessum leik:</h3>
+@foreach(var player in Model.Players)
+{
+    @Html.DisplayFor(modelItem => player.UserName);
+}
+
+@RenderPage(Model.GameName + ".cshtml")
 

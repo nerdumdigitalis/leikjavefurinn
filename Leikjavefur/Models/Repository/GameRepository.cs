@@ -57,6 +57,11 @@ namespace Leikjavefur.Models.Repository
         {
             _context.Dispose();
         }
+
+        public Game GetGameByGameID(int gameID)
+        {
+            return _context.Games.Find(gameID);
+        }
     }
 
 }
