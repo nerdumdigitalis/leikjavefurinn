@@ -77,13 +77,7 @@ namespace Leikjavefur.Models.Repository
                               where friend.UserID == currentUserId
                               select friend.FriendID).ToList();
 
-            var friendsList = new List<UserProfile>();
-            foreach (var user in friendsIDs)
-            {
-                friendsList.Add(Find(user));
-            }
-
-            return friendsList;
+            return friendsIDs.Select(Find).ToList();
         }
     }
 

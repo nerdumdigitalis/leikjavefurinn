@@ -4,6 +4,8 @@
     Layout = null;
 }
 
+<h3>Stofna nýjan leik</h3>
+
 @foreach (var item in Model) 
 {
     @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)

@@ -27,36 +27,33 @@ namespace Leikjavefur.Models.Repository
             return query;
         }
 
-        public GameInstance Find(string gameInstance)
+        public GameInstance Find(string gameInstanceID)
         {
-            return _context.GameInstances.Find(gameInstance);
+            return Enumerable.FirstOrDefault(_context.GameInstances.Where(instance => instance.GameInstanceID == gameInstanceID));
         }
 
         public void DeleteGameInstance(GameInstance gameInstance)
         {
-            //var instance = _context.Games.Find(gameInstance.GameInstanceID);
-            //_context.Games.Remove(instance);
+            var allGameInst = All;
+            foreach (var gameInst in allGameInst)
+            {
+                if (gameInst.GameInstanceID == gameInstance.GameInstanceID)
+                    _context.GameInstances.Remove(gameInst);
+            }
         }
 
-        public List<GameInstance> GetGameInstances()
+        public List<string> GetGameInstancesID()
         {
-            var groups = _context.GameInstances.GroupBy(inst => inst.GameInstanceID);
-            var instances = new List<GameInstance>();
-            foreach (var instance in groups)
-            {
-                 //instances.Add(instance.Key.);                 
-            }
-            return new List<GameInstance>();
+
+            return _context.GameInstances.Select(element => element.GameInstanceID).Distinct().ToList();
+
         }
 
         public IQueryable<UserProfile> GetUsersByGameInstance(string gameInstance)
         {
-            //var instances = _context.GameInstances.Select(inst => inst).Where(inst => inst.GameInstanceID == gameInstance).ToList();
-            //IUserRepository userRep = new UserRepository();
-            //IQueryable users;
-
             var users = from c in _context.GameInstances
                         join o in _context.Users on c.UserID equals o.UserID
+                        where c.GameInstanceID == gameInstance
                         select o;
             return users;
         }
@@ -64,6 +61,15 @@ namespace Leikjavefur.Models.Repository
         public List<GameInstance> GetGameInstancesByUser(int userID)
         {
             return new List<GameInstance>();
+        }
+
+        public int GetGameIDByGameInstanceID(string gameInstanceID)
+        {
+            foreach (var inst in _context.GameInstances.Where(inst => inst.GameInstanceID == gameInstanceID))
+            {
+                return inst.GameID;
+            }
+            return -1;
         }
 
         public GameInstance CreateNewGameInstance (int gameID, int currentUserID)
@@ -76,8 +82,11 @@ namespace Leikjavefur.Models.Repository
 
         public void JoinActiveGameInstance(GameInstance gameInstance, int currentUserID)
         {
+            if (gameInstance.UserID == currentUserID) return;
             var joinInstance = new GameInstance { GameID = gameInstance.GameID, UserID = currentUserID, GameInstanceID = gameInstance.GameInstanceID };
             _context.GameInstances.Add(joinInstance);
+            Save();
+
         }
 
 
