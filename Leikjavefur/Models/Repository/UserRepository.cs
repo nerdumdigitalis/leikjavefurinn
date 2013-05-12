@@ -75,7 +75,7 @@ namespace Leikjavefur.Models.Repository
             return friendsList;
         }
 
-        public string AddFriend(int currentUserId, int friendsId)
+        public void AddFriend(int currentUserId, int friendsId)
         {
             var existingClient = (from friend in _context.Friends
                                   where friend.UserID == currentUserId
@@ -90,9 +90,7 @@ namespace Leikjavefur.Models.Repository
                 _context.Friends.Add(newFriend);
                 _context.SaveChanges();
             }
-            return "Index";
+            //return "Index";
         }
     }
-
-    
 }

@@ -41,7 +41,9 @@ namespace Leikjavefur.Controllers
 
         public ActionResult AddFriend(int id)
         {
-            return PartialView(_userRepository.AddFriend(WebSecurity.CurrentUserId, id));
+            //return PartialView(_userRepository.AddFriend(WebSecurity.CurrentUserId, id));
+            _userRepository.AddFriend(WebSecurity.CurrentUserId, id);
+            return RedirectToAction("Details", new { id = id });
         }
         //
         // GET: /Players/Details/5
