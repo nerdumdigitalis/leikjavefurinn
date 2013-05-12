@@ -28,13 +28,16 @@ namespace Leikjavefur.Controllers
         {
             var result = new List<GameInstanceViewModel>();
             var instanceIDs = _gameInstanceRepository.GetGameInstancesID();
+
             foreach (var id in instanceIDs)
             {
                 result.Add(new GameInstanceViewModel
                                {
                                    GameInstanceID = id,
                                    GameName = new GameRepository().GetGameByGameID(_gameInstanceRepository.GetGameIDByGameInstanceID(id)).Name,
-                                   Players = _gameInstanceRepository.GetUsersByGameInstance(id)
+                                   Players = _gameInstanceRepository.GetUsersByGameInstance(id),
+                                   CurrentUser = WebSecurity.CurrentUserId,
+                                   CurrentUserName = WebSecurity.CurrentUserName
                                });
 
             }
