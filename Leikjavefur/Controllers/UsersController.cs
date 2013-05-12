@@ -37,6 +37,11 @@ namespace Leikjavefur.Controllers
         public ActionResult FriendsList()
         {
             return PartialView(_userRepository.GetFriends(WebSecurity.CurrentUserId));
+            //if(WebSecurity.IsAuthenticated)
+            //{
+            //    return PartialView(_userRepository.GetFriends(WebSecurity.CurrentUserId));
+            //}
+            //return RedirectToAction("Login", "Account");
         }
 
         public ActionResult AddFriend(int id)

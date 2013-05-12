@@ -37,6 +37,7 @@ namespace Leikjavefur.Models
         //sends the clicked cell id to oponent. (and others in group)
         public void ClickCell(string groupId, string cellId)
         {
+            //Clients.OthersInGroup(groupId).cellClicked(cellId, IsGameOver);
             Clients.OthersInGroup(groupId).cellClicked(cellId);
         }
 
