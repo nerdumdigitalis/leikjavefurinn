@@ -8,8 +8,10 @@
 <input id="TextBoxMessage" type="text"/>
 <input id="SendButton" type="button" value ="Senda" style="display: none;"/>
 
-<script>
 
+
+<script src ="\Scripts\LeikjavefurinnSignalR.js"></script>
+<script>
     $("#TextBoxMessage").keydown(function (event) {
         if (event.keyCode == 13) {
             $("#SendButton").click();
@@ -17,51 +19,18 @@
         }
         return true;
     });
+   
+    var myUserName = '@(Model.UserName)';
+    var myChatGroup = '@(Model.GameInstance)';
 
-    var textArea = document.getElementById('ChatArea')
-    $(function ()
-    {
-        var userName = '@(Model.UserName)';
-        //var userID = '(Model.ID)';
-        var group = '@(Model.GameInstance)';
-        var hub = $.connection.communication;
+    function getUserName() {
+        return myUserName;
+    }
 
-        /*if (userName = '') {
-            var textBox = document.getElementById('TextBoxMessage');
-            textbox.disabled = true;
-        }*/
-       
-		hub.client.ReceiveMessage = function (message) {
-		    var text = document.createTextNode(message + '\n');
-		    textArea.appendChild(text);
-		    textArea.scrollTop = textArea.scrollHeight;
-		};
-
-		$.connection.hub.start().done(function ()
-		{
-			hub.server.join(group);
-
-			$("#SendButton").click(function ()
-			{
-			    if (userName != '') {
-			        var message = $('#TextBoxMessage').val();
-			        if (message != '') {
-			            message = userName + ": ";
-			            message += $('#TextBoxMessage').val();
-			            hub.server.sendMessage(group, message);
-			            $('#TextBoxMessage').val('');
-			            var text = document.createTextNode(message + '\r');
-			            textArea.appendChild(text);
-			            textArea.scrollTop = textArea.scrollHeight;
-			            document.getElementById("TextBoxMessage").focus();
-			        }
-			    }
-			    else {
-			        $('#TextBoxMessage').val('');
-			    }
-			});
-		});
-	});
+    function getChatGroup() {
+        return myChatGroup;
+    }
+		
 </script>
 
 

@@ -21,105 +21,42 @@
 </table>
 
 <script>
-    var group = '(@Model.GameInstanceID)';
-    var gameHub = $.connection.communication;
-    var myTurn = false;
-    var myMark = '';
-    var hisMark = '';
-    var grid = [['', '', ''], ['', '', ''], ['', '', '']];
+    var myGameGroup = '(@Model.GameInstanceID)';
     var player1 = '@Model.Players.ToArray()[0].UserID';
+    var mMark = '';
+    var hMark = '';
+    var startTurn = false;
+
     @{
         int value;
         value = WebSecurity.CurrentUserId;
         string user = Convert.ToString(value); 
     }
-
     var currentUserId = '@user';
-
-    $(document).ready(function () {
-       
-        if (currentUserId == player1) {
-            myMark = 'X';
-            hisMark = 'O';
-            myTurn = true;
-        }
-        else {
-            myMark = 'O';
-            hisMark = 'X';
-       }
-
-        gameHub.client.cellClicked = function (cellId) {
-            addToGrid(cellId, hisMark);
-            $("#" + cellId).text(hisMark);
-
-            var isGameOver = checkIfGameOver();
-
-            if (isGameOver == true) {
-                alert("You lost, play again!");
-            }
-            else {
-                myTurn = true;
-            }
-	    };
-
-	    $.connection.hub.start().done(function () {
-	        gameHub.server.join(group);
-
-	        $("#tictactoe tr td").click(function () {
-	            if (myTurn == true && $(this).text() != hisMark && $(this).text() != myMark) {
-	                myTurn = false;
-	                addToGrid(this.id, myMark);
-	                gameHub.server.clickCell(group, this.id);
-	                $(this).text(myMark);
-	                var isGameOver = checkIfGameOver();
-	                if (isGameOver == true) {
-	                    alert("You won!!, play again!");
-	                }
-	                
-	            }
-	        });
-	    });
-    });
-
-    function addToGrid(id, mark){
-        if (id == 1)
-            grid[0][0] = mark;
-        else if(id == 2)
-            grid[0][1] = mark;
-        else if (id == 3)
-            grid[0][2] = mark;
-        else if (id == 4)
-            grid[1][0] = mark;
-        else if (id == 5)
-            grid[1][1] = mark;
-        else if (id == 6)
-            grid[1][2] = mark;
-        else if (id == 7)
-            grid[2][0] = mark;
-        else if (id == 8)
-            grid[2][1] = mark;
-        else if (id == 9)
-            grid[2][2] = mark;
+      
+    if (currentUserId == player1) {
+        mMark = 'X';
+        hMark = 'O';
+        startTurn = true;
+    }
+    else {
+        mMark = 'O';
+        hMark = 'X';
     }
 
-    function checkIfGameOver(){
-        if (grid[0][0] == grid[0][1] && grid[0][0] == grid[0][2] && grid[0][0] != '')
-            return true;
-        else if (grid[1][0] == grid[1][1] && grid[1][0] == grid[1][2] && grid[1][0] != '')
-            return true;
-        else if (grid[2][0] == grid[2][1] && grid[2][0] == grid[2][2] && grid[2][0] != '')
-            return true;
-        else if (grid[0][0] == grid[1][0] && grid[0][0] == grid[2][0] && grid[0][0] != '')
-            return true;
-        else if (grid[0][1] == grid[1][1] && grid[0][1] == grid[2][1] && grid[0][1] != '')
-            return true;
-        else if (grid[0][2] == grid[1][2] && grid[0][2] == grid[2][2] && grid[0][2] != '')
-            return true;
-        else if (grid[0][0] == grid[1][1] && grid[0][0] == grid[2][2] && grid[0][0] != '')
-            return true;
-        else if (grid[0][2] == grid[1][1] && grid[0][2] == grid[2][0] && grid[0][2] != '')
-            return true;
+    function getHisMark(){
+        return hMark;
+    }
 
-        return false;
+    function getMyMark() {
+        return mMark;
+    }
+    
+    function getGameGroup() {
+        return myGameGroup;
+    }
+
+    function getMyTurn() {
+        return startTurn;
     }
 </script>
