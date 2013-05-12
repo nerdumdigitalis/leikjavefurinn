@@ -98,7 +98,8 @@ body
     text-align:center;
     border: solid black 2px;
     border-right:none;
-    overflow-y: scroll;
+    border-left:none;
+    overflow-y: auto;
     height:100%;
     width:100%;
     background-color: gray;
@@ -281,6 +282,7 @@ td
     border: solid black 3px;
 }
 
+
 #tictactoe tbody tr td {
 
 	background-color: #c7d1d6;
@@ -288,3 +290,44 @@ td
 	border: 1px solid black;
 }
 
+.display-label 
+{
+    text-align:left;
+    color: white;
+    font-family: "Arial Black", Gadget, sans-serif;
+    position: relative;
+    overflow: hidden;
+    padding-left: 20px;
+}
+
+.display-label p 
+{
+    color: black;
+}
+
+#details 
+{
+    width:70%;
+    height:70%;
+    position:relative;
+    margin-left:auto;
+    margin-right:auto;
+    border:solid black 3px;
+    padding-left:1px;
+    padding-top:1px;
+    
+}
+
+.bio 
+{
+    color: black;
+    font-family: "Arial Black", Gadget, sans-serif;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+h2 
+{
+    color: white;
+    font-family: "Arial Black", Gadget, sans-serif;
+}

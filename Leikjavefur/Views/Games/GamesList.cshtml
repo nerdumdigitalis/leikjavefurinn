@@ -3,6 +3,8 @@
 @{
     Layout = null;
 }
+<h3>Stofna nýjan leik</h3>
+
 
 <ul class="popup">
     @foreach (var item in Model)
@@ -28,3 +30,10 @@
         </li>
     }
 </ul>
+
+
+@*@foreach (var item in Model) 
+{
+    @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
+    <br/>
+}*@

@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using Leikjavefur.Models;
 using Leikjavefur.Models.Interfaces;
 using Leikjavefur.Models.Repository;
@@ -24,14 +26,25 @@ namespace Leikjavefur.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var result = new List<GameInstanceViewModel>();
+            var instanceIDs = _gameInstanceRepository.GetGameInstancesID();
+            foreach (var id in instanceIDs)
+            {
+                result.Add(new GameInstanceViewModel
+                               {
+                                   GameInstanceID = id,
+                                   GameName = new GameRepository().GetGameByGameID(_gameInstanceRepository.GetGameIDByGameInstanceID(id)).Name,
+                                   Players = _gameInstanceRepository.GetUsersByGameInstance(id)
+                               });
+
+            }
+            return PartialView(result);
         }
 
         public ActionResult Create(int gameID, string gameName)
         {
             if (WebSecurity.IsAuthenticated)
             {
-
                 var gameInstance =_gameInstanceRepository.CreateNewGameInstance(gameID, WebSecurity.CurrentUserId);
                 _gameInstanceRepository.Save();
                 return RedirectToAction("Game", gameInstance);
@@ -39,11 +52,15 @@ namespace Leikjavefur.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult Join(GameInstance gameInstance)
+        public ActionResult Join(string gameInstanceID)
         {
-            var gameName = new GameRepository().Find(gameInstance.GameID).Name;
-            _gameInstanceRepository.JoinActiveGameInstance(gameInstance, WebSecurity.CurrentUserId);
-            return RedirectToAction(gameName, "GameInstance", gameInstance);
+            if (WebSecurity.IsAuthenticated)
+            {
+                var gameInstance = _gameInstanceRepository.Find(gameInstanceID);
+                _gameInstanceRepository.JoinActiveGameInstance(gameInstance, WebSecurity.CurrentUserId);
+                return RedirectToAction("Game", gameInstance);
+            }
+            return RedirectToAction("Login", "Account");
         }
 
         public ActionResult DeleteGameInstance(GameInstance gameInstance)
@@ -62,19 +79,10 @@ namespace Leikjavefur.Controllers
         {
             var players = _gameInstanceRepository.GetUsersByGameInstance(gameInstance.GameInstanceID);
             var game = new GameRepository().Find(gameInstance.GameID);
-            var viewModel = new GameViewModel {GameInstance = gameInstance, Players = players, Game = game};
+            var viewModel = new GameInstanceViewModel {GameInstanceID = gameInstance.GameInstanceID, Players = players, GameName = game.Name};
 
             return View(viewModel);
         }
 
-        public ActionResult TicTacToe(GameInstance gameInstance)
-        {
-            return View(gameInstance);
-        }
-
-        public ActionResult SnakesAndLadders(GameInstance gameInstance)
-        {
-            return View(gameInstance);
-        }
     }
 }
