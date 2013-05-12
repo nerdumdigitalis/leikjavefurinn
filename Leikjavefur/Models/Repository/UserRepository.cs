@@ -77,11 +77,19 @@ namespace Leikjavefur.Models.Repository
 
         public string AddFriend(int currentUserId, int friendsId)
         {
-            Friends newFriend = new Friends();
-            newFriend.UserID = currentUserId;
-            newFriend.FriendID = friendsId;
-            _context.Friends.Add(newFriend);
-            _context.SaveChanges();
+            var existingClient = (from friend in _context.Friends
+                                  where friend.UserID == currentUserId
+                                     && friend.FriendID == friendsId
+                                  select friend).SingleOrDefault();
+
+            if (existingClient == null)
+            {
+                Friends newFriend = new Friends();
+                newFriend.UserID = currentUserId;
+                newFriend.FriendID = friendsId;
+                _context.Friends.Add(newFriend);
+                _context.SaveChanges();
+            }
             return "Index";
         }
     }

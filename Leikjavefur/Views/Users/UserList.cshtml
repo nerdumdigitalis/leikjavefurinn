@@ -18,7 +18,10 @@
                             <legend>@item.UserName</legend>
                             @item.About
                             <br />
-                            @Html.ActionLink("Vingast Við", "AddFriend", new { id=item.UserID }) |
+                            @if (Request.IsAuthenticated) 
+                            {
+                                @Html.ActionLink("Vingast Við", "AddFriend", new { id=item.UserID })
+                            }
                         </fieldset>
                     </form>
                 </div>
