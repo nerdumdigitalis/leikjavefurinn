@@ -4,9 +4,25 @@
     Layout = null;
 }
 
-@foreach (var item in Model) 
-{
-    @*@Html.DisplayFor(modelItem => item.UserName)*@
-    @Html.ActionLink(item.UserName, "Details", new { id=item.UserID })
-    <br/>
-}
+<ul class="popup">
+    @foreach (var item in Model) 
+    {
+        @*@Html.DisplayFor(modelItem => item.UserName)*@
+        <li>
+            @Html.ActionLink(item.UserName, "Details", new { id=item.UserID })
+            <div>
+                <div id="dialog-form" title="Create new user">
+                    <p class="validateTips">All form fields are required.</p>
+                    <form>
+                        <fieldset>
+                            <legend>@item.UserName</legend>
+                            @item.About
+                            <br />
+                            @Html.ActionLink("Vingast Við", "AddFriend", new { id=item.UserID }) |
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </li>
+    }
+</ul>

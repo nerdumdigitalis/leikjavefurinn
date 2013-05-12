@@ -14,5 +14,6 @@ namespace Leikjavefur.Models.Interfaces
         void Delete(int id);
         void Save();
         List<UserProfile> GetFriends(int currentUserId);
+        string AddFriend(int currendUserId, int friendsId);
     }
 }

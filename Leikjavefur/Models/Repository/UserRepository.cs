@@ -61,17 +61,6 @@ namespace Leikjavefur.Models.Repository
 
         public List<UserProfile> GetFriends(int currentUserId)
         {
-            //var friendsList = (from friend in _context.Friends
-            //                                      join user in _context.Users on friend.UserID equals user.UserID
-            //                                      where friend.UserID == 1
-            //                                      select new UserProfile { UserID = user.UserID
-            //                                                                ,UserName = user.UserName
-            //                                                                ,DateCreated = user.DateCreated
-            //                                                                ,Avatar = user.Avatar
-            //                                                                ,Email = user.Email
-            //                                                                ,Friends = user.Friends
-            //                                                            });
-
             var friendsIDs = (from friend in _context.Friends
                               join user in _context.Users on friend.UserID equals user.UserID
                               where friend.UserID == currentUserId
@@ -84,6 +73,16 @@ namespace Leikjavefur.Models.Repository
             }
 
             return friendsList;
+        }
+
+        public string AddFriend(int currentUserId, int friendsId)
+        {
+            Friends newFriend = new Friends();
+            newFriend.UserID = currentUserId;
+            newFriend.FriendID = friendsId;
+            _context.Friends.Add(newFriend);
+            _context.SaveChanges();
+            return "Index";
         }
     }
 

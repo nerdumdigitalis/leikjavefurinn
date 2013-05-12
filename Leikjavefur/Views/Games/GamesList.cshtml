@@ -4,8 +4,27 @@
     Layout = null;
 }
 
-@foreach (var item in Model) 
-{
-    @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
-    <br/>
-}
+<ul class="popup">
+    @foreach (var item in Model)
+    {
+        <li>
+            @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
+            <div>
+                <div id="dialog-form" title="Create new user">
+                    <p class="validateTips">All form fields are required.</p>
+                    <form>
+                        <fieldset>
+                            <legend>@item.Name</legend>
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" />
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" value=""  />
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" value="" />
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
