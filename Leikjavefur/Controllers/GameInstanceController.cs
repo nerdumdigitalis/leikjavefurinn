@@ -24,7 +24,7 @@ namespace Leikjavefur.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(_gameInstanceRepository.GetGameInstances());
         }
 
         public ActionResult Create(int gameID, string gameName)

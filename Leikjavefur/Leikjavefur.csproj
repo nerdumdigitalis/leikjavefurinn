@@ -344,7 +344,6 @@
     <Content Include="Views\Games\GamesList.cshtml" />
     <Content Include="Views\Users\UserList.cshtml" />
     <Content Include="Views\Games\Index.cshtml" />
-    <Content Include="Views\GameInstance\Index.cshtml" />
     <Content Include="Views\GameInstance\TicTacToe.cshtml" />
     <Content Include="Views\GameInstance\SnakesAndLadders.cshtml" />
     <Content Include="Views\GameInstance\GetUsersByGameInstance.cshtml" />
@@ -353,6 +352,7 @@
       <BrowseToURL>~/Account/_ChangeEmailPartial</BrowseToURL>
     </Content>
     <Content Include="Views\Users\FriendsList.cshtml" />
+    <Content Include="Views\GameInstance\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
