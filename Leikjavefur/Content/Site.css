@@ -221,6 +221,7 @@ ul
     margin: auto;
 }
 
+<<<<<<< HEAD
 .popup
 { 
     text-align:center;
@@ -255,14 +256,18 @@ ul
 {
     width: 350px;
     height: 150px;
-    left:50%;
-    top:50%;
-    margin-left:-175px;
-    margin-top:-75px;
+    left: 50%;
+    top: 50%;
+    margin-left: -175px;
+    margin-top: -75px;
     background: rgb(172, 171, 185); /* fallback color */
     background: rgba(172, 171, 185, 0.95);
     border-color: rgb(24, 17, 12);
     border-color: rgba(24, 17, 12, 0.95);
+}
 
-
+#tictactoe 
+{
+    margin-left:auto;
+    margin-right:auto;
 }
