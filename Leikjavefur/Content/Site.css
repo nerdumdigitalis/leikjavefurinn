@@ -282,6 +282,14 @@ td
     border: solid black 3px;
 }
 
+
+#tictactoe tbody tr td {
+
+	background-color: #c7d1d6;
+	padding: 50px;
+	border: 1px solid black;
+}
+
 .display-label 
 {
     text-align:left;
