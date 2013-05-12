@@ -77,12 +77,12 @@ namespace Leikjavefur.Models.Repository
 
         public void AddFriend(int currentUserId, int friendsId)
         {
-            var existingClient = (from friend in _context.Friends
+            var alreadyFriends = (from friend in _context.Friends
                                   where friend.UserID == currentUserId
                                      && friend.FriendID == friendsId
                                   select friend).SingleOrDefault();
 
-            if (existingClient == null)
+            if (alreadyFriends == null)
             {
                 Friends newFriend = new Friends();
                 newFriend.UserID = currentUserId;
