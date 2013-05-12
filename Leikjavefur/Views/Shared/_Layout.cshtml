@@ -8,65 +8,88 @@
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
         <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 		<script src="~/Scripts/jquery.signalR-1.0.1.min.js"></script>
 		<script src="~/signalr/hubs"></script>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css"> @* Fyrir tabs *@
         @RenderSection("scripts", required: false)
+
+
+        <script type='text/javascript'>
+            $(window).load(function () {
+                $("#tabs").tabs();
+            });
+        </script>
     </head>
     <body>
 
 
-    <div id="leftChat">
-	    <div id="vinir">
-		    <p id="vinirtext">Vinir</p>
-            @*@Html.Partial("_FriendsPartial")*@
-            @*@Html.Action("FriendsList", "Users")*@
-	    </div>
-	    <div id="leikirchat">
-		    <p>@Html.ActionLink("Leikir", "Index", "Games")</p>
-            @Html.Action("GamesList", "Games")
-            @Html.Action("Index", "GameInstance")
+        <div id="leftChat">
+	        <div id="leikirchat">
+		        <p>@Html.ActionLink("Leikir", "Index", "Games")</p>
+                @Html.Action("GamesList", "Games")
+            </div>
         </div>
-    </div>
     
-    <div id="middle">
+        <div id="middle">
             <div id="profile">
                 
                 
-                    <div id="avatar">
+                <div id="avatar">
                     @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
-                    </div>
-                    
-                    <section id="login"> 
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            @*<li>@Html.ActionLink("Notendur", "Index", "Players")</li>
-                            <li>@Html.ActionLink("Leikir", "Index", "Games")</li>*@
-                        </ul>
-                    </nav>
                 </div>
+                    
+                <section id="login"> 
+                    @Html.Partial("_LoginPartial")
+                </section>
+                <nav>
+                    <ul id="menu">
+                        @*<li>@Html.ActionLink("Notendur", "Index", "Players")</li>
+                        <li>@Html.ActionLink("Leikir", "Index", "Games")</li>*@
+                    </ul>
+                </nav>
+            </div>
                
             
-             <div id="mainPage">
-                    <div id="nyskra">
-                        @RenderSection("featured", required: false)
-                        <section class="content-wrapper main-content clear-fix">
-                        @RenderBody()
-                        </section>
-                    </div>
+            <div id="mainPage">
+                <div id="nyskra">
+                    @RenderSection("featured", required: false)
+                    <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                    </section>
                 </div>
-      </div>
-      
-      <div id="rightChat">
-	        <div id="notendur">
-		        <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
-                @Html.Action("UserList", "Users")
-	        </div>
-	        <div id="spjall">
+            </div>
+        </div>
+
+        <div id="rightChat">
+            <div id="tabs">
+                <ul class="tabs">
+                    <li><a href="#tabs-1">Allir Notendur</a></li>
+                    @if(WebSecurity.IsAuthenticated) { <li><a href="#tabs-2">Vinir</a></li> }
+                </ul>
+                <div id="tabs-1" class="tabcontent">
+                    <p>
+    		            <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
+                        @Html.Action("UserList", "Users")
+                    </p>
+                </div>
+                @if(WebSecurity.IsAuthenticated)
+                {
+                    <div id="tabs-2" class="tabcontent">
+                        <p>
+                            <p id="vinirtext">Vinir</p>
+                            @*@Html.Partial("_FriendsPartial")*@
+                            @Html.Action("FriendsList", "Users")
+                        </p>
+                    </div>
+                }
+            </div>
+            <div id="spjall">
                 @Html.Action("ChatPartial", "Chat")
-	        </div>
+            </div>
         </div>
     </body>
 </html>
+
+

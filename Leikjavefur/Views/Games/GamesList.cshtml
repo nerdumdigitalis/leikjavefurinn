@@ -11,7 +11,7 @@
     {
         <li>
             @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
-            <div>
+            <div class="popup-left-upper">
                 <div id="dialog-form" title="Create new user">
                     <p class="validateTips">All form fields are required.</p>
                     <form>

@@ -10,17 +10,6 @@ body
     font-size: 90%;
 }
 
-#leftChat
-{
-    position:relative;
-    background-color:#827B60;
-    border: solid black 1px;
-    height: 100%;
-    width:19%;
-    float:left;
-    text-align: center;
-}
-
 #vinir
 {
     position:relative;
@@ -65,7 +54,7 @@ body
 #logoff 
 {   
     float:right;
-    width:10%;
+    padding-right:10px;
     height:100%;
     margin-top:10px;
 }
@@ -92,17 +81,30 @@ body
     float:left;
 }
 
+#leftChat
+{
+    position:relative;
+    background-color:#827B60;
+    border: solid black 1px;
+    height: 100%;
+    width:19%;
+    float:left;
+    text-align: center;
+}
+
 #mainPage 
 {
     position:relative;
-    text-align:center;
+    background-color: gray;
     border: solid black 2px;
     border-right:none;
     border-left:none;
     overflow-y: auto;
     height:100%;
     width:100%;
-    background-color: gray;
+    text-align:center;
+    border-right:none;
+    overflow-y: scroll;
 }
 
 #rightChat
@@ -112,8 +114,8 @@ body
     border: solid black 1px;
     height: 100%;
     width:20%;
-    text-align:center;
     float:left;
+    text-align:center;
 }
 
 #spjallgluggi
@@ -191,7 +193,7 @@ ul
     display:inline;
     text-align: right;
     /*margin-right:15%;*/
-        }
+}
 
 .RegisterAndManageList
 {
@@ -224,7 +226,6 @@ ul
     margin: auto;
 }
 
-
 .popup
 { 
     
@@ -234,7 +235,15 @@ ul
     
 }
 
-.popup li div
+.popup li:hover div
+{
+    visibility:visible;
+    opacity:1;
+    transition-delay:0s;
+
+}
+
+.popup li .popup-center
 { 
     position:fixed; 
     z-index:10; 
@@ -249,12 +258,34 @@ ul
     margin-top:-240px;
 }
 
-.popup li:hover div
-{
-    visibility:visible;
-    opacity:1;
-    transition-delay:0s;
+.popup li .popup-left-upper
+{ 
+    position:fixed; 
+    z-index:10; 
+    visibility:hidden;
+    opacity:0;
+    transition:visibility 0s linear 1s,opacity 1s linear;
+    width:250px; 
+    height:150px; 
+    left:25%;
+    top:25%;
+    /*margin-left:-125px;*/
+    margin-top:-75px;
+}
 
+.popup li .popup-right-upper
+{ 
+    position:fixed; 
+    z-index:10; 
+    visibility:hidden;
+    opacity:0;
+    transition:visibility 0s linear 1s,opacity 1s linear;
+    width:250px; 
+    height:150px; 
+    left:75%;
+    top:25%;
+    margin-left:-125px;
+    margin-top:-75px;
 }
 
 #dialog-form
@@ -277,11 +308,49 @@ ul
     margin-right:auto;
 }
 
-td
-{
-    border: solid black 3px;
+#tabs {
+    width: 100%;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid black 1px;
+    /*margin-top: 10px;*/
+    background: #827B60;
 }
 
+ul.tabs {
+    margin:0px; padding:0px;
+}
+ul.tabs li {
+    list-style:none;
+    display:inline;
+}
+
+ul.tabs li a {
+    background-color:#827B60;
+    color:#827B60;
+}
+ul.tabs li a:hover {
+    background-position: -420px -31px;
+    color:#827B60;
+    background-color:#2f343a;
+    border-color:#2f343a;
+}
+
+.ui-tabs .ui-tabs-nav
+{
+    background: grey; /* Liturinn fyrir ofan tabbana */
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected 
+{
+    border-bottom-width: 0;
+    background: #827B60;
+    border-top: 1px solid #D4D4D4;
+    border-left: 1px solid #D4D4D4;
+    border-right: 1px solid #D4D4D4;
+    border-bottom: 1px solid #FFF;
+}
 
 #tictactoe tbody tr td {
 
