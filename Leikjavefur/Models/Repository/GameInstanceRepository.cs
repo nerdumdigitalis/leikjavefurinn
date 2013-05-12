@@ -82,7 +82,7 @@ namespace Leikjavefur.Models.Repository
 
         public void JoinActiveGameInstance(GameInstance gameInstance, int currentUserID)
         {
-            if (gameInstance.UserID == currentUserID) return;
+            if (GetUsersByGameInstance(gameInstance.GameInstanceID).ToList().Exists(user => user.UserID == currentUserID)) return;
             var joinInstance = new GameInstance { GameID = gameInstance.GameID, UserID = currentUserID, GameInstanceID = gameInstance.GameInstanceID };
             _context.GameInstances.Add(joinInstance);
             Save();

@@ -36,12 +36,6 @@ namespace Leikjavefur.Controllers
             return PartialView(_gameRepository.All);
         }
 
-        public ActionResult ActiveGamesList()
-        {
-
-            return PartialView();
-        }
-
         public ViewResult Details(int id)
         {
             return View(_gameRepository.Find(id));
