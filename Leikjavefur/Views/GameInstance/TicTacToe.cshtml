@@ -21,12 +21,12 @@
 </table>
 
 <script>
-    var group = '(@Model.GameInstance.GameInstanceID)';
+    var group = '(@Model.GameInstanceID)';
     var gameHub = $.connection.communication;
     var myTurn = false;
     var myMark = '';
     var hisMark = '';
-    var createdBy = '@Model.GameInstance.UserID)';
+    var createdBy = '(@Model.Players.First())';
     var grid = [['', '', ''], ['', '', ''], ['', '', '']];
     //          0,0 0,1 0,2   1,0 1,1 1,2    2,0 2,1 2,2
 

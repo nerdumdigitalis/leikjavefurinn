@@ -12,5 +12,5 @@
     @Html.DisplayFor(modelItem => player.UserName);
 }
 
-@RenderPage(Model.GameName + ".cshtml")
+@RenderPage(Model.GameName + ".cshtml", new {target = "_blank"})
 

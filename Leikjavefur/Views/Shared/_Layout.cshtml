@@ -29,6 +29,8 @@
 	        <div id="leikirchat">
 		        <p>@Html.ActionLink("Leikir", "Index", "Games")</p>
                 @Html.Action("GamesList", "Games")
+                <p>Leikir í gangi</p>
+                @Html.Action("Index", "GameInstance")
             </div>
         </div>
     
@@ -54,10 +56,12 @@
             
             <div id="mainPage">
                 <div id="nyskra">
-                    @RenderSection("featured", required: false)
-                    <section class="content-wrapper main-content clear-fix">
+                    @*@RenderSection("featured", required: false)
+                    <section *@@*class="content-wrapper main-content clear-fix">*@
                     @RenderBody()
-                    </section>
+                    
+
+                    @*</section>*@
                 </div>
             </div>
         </div>
