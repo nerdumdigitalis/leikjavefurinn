@@ -54,7 +54,7 @@ body
 #logoff 
 {   
     float:right;
-    width:10%;
+    padding-right:10px;
     height:100%;
     margin-top:10px;
 }
