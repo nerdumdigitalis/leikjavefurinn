@@ -28,11 +28,18 @@
     var hisMark = '';
     var createdBy = '(@Model.Players.First())';
     var grid = [['', '', ''], ['', '', ''], ['', '', '']];
-    //          0,0 0,1 0,2   1,0 1,1 1,2    2,0 2,1 2,2
+    var player1 = '@Model.Players.ToArray()[0].UserID';
+    @{
+        int value;
+        value = WebSecurity.CurrentUserId;
+        string user = Convert.ToString(value); 
+    }
 
-    $(document).ready(function(){
+    var currentUserId = '@user';
+
+    $(document).ready(function () {
        
-        /*if (createdBy == '') {
+        if (currentUserId == player1) {
             myMark = 'X';
             hisMark = 'O';
             myTurn = true;
@@ -40,11 +47,8 @@
         else {
             myMark = 'O';
             hisMark = 'X';
-        }*/
-        myMark = 'X';
-        hisMark = 'O';
-        myTurn = true;
-              
+       }
+
         gameHub.client.cellClicked = function (cellId) {
             addToGrid(cellId, hisMark);
             $("#" + cellId).text(hisMark);

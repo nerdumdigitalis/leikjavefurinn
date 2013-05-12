@@ -69,22 +69,25 @@
         <div id="rightChat">
             <div id="tabs">
                 <ul class="tabs">
-                    <li><a href="#tabs-1">Notendur</a></li>
-                    <li><a href="#tabs-2">Vinir</a></li>
+                    <li><a href="#tabs-1">Allir Notendur</a></li>
+                    @if(WebSecurity.IsAuthenticated) { <li><a href="#tabs-2">Vinir</a></li> }
                 </ul>
                 <div id="tabs-1" class="tabcontent">
                     <p>
-    		            <p>@Html.ActionLink("Allir Notendur", "Index", "Users")</p>
+    		            <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
                         @Html.Action("UserList", "Users")
                     </p>
                 </div>
-                <div id="tabs-2" class="tabcontent">
-                    <p>
-                        <p id="vinirtext">Vinir</p>
-                        @*@Html.Partial("_FriendsPartial")*@
-                        @Html.Action("FriendsList", "Users")
-                    </p>
-                </div>
+                @if(WebSecurity.IsAuthenticated)
+                {
+                    <div id="tabs-2" class="tabcontent">
+                        <p>
+                            <p id="vinirtext">Vinir</p>
+                            @*@Html.Partial("_FriendsPartial")*@
+                            @Html.Action("FriendsList", "Users")
+                        </p>
+                    </div>
+                }
             </div>
             <div id="spjall">
                 @Html.Action("ChatPartial", "Chat")
