@@ -1,8 +1,10 @@
-﻿@if (Request.IsAuthenticated) 
+﻿
+
+@if (Request.IsAuthenticated) 
 {
     
     <div id="profilestats">
-        <p>Name: @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "UserProfilename", title = "Manage" })</p>
+        <p>Name: @Html.ActionLink(User.Identity.Name, "Details", "Users", new { @id=WebSecurity.CurrentUserId }, null)</p>
         <p>Stigafjöldi:</p>
         <p>Fjöldi Spilaðra leikja:</p>
         <p>Medalía:</p>
@@ -15,9 +17,9 @@
         
         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutForm').submit()">Útskrá</a>
-        }
-    
+            <a href="javascript:document.getElementById('logoutForm').submit()">Útskrá</a>}
+        
+        @Html.ActionLink("Breyta Lykilorði", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "UserProfilename", title = "Manage" })
     </div>
 } 
 else 
