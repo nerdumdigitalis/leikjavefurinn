@@ -10,7 +10,7 @@
         @*@Html.DisplayFor(modelItem => item.UserName)*@
         <li>
             @Html.ActionLink(item.UserName, "Details", new { id=item.UserID })
-            <div>
+            <div class="popup-right-upper">
                 <div id="dialog-form" title="Create new user">
                     <p class="validateTips">All form fields are required.</p>
                     <form>
