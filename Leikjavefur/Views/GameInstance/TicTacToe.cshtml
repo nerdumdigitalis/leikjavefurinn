@@ -1,19 +1,122 @@
 ﻿﻿@model Leikjavefur.ViewModels.GameViewModel
 
 <table id="tictactoe">
-    <tr style ="width:120px; height:100px">
-        <td>row 1, cell 1</td>
-        <td>row 1, cell 2</td>
-        <td>row 1, cell 3</td>  
-    </tr>
-    <tr style ="width:120px; height:100px">
-        <td>row 2, cell 1</td>
-        <td>row 2, cell 2</td>
-        <td>row 2, cell 3</td>
-    </tr>
-    <tr style ="width:120px; height:100px">
-        <td>row 3, cell 1</td>
-        <td>row 3, cell 2</td>
-        <td>row 3, cell 3</td>
-    </tr>
+	<tbody>
+		<tr>
+			<td id="1">&nbsp;</td>
+			<td id="2">&nbsp;</td>
+			<td id="3">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="4">&nbsp;</td>
+			<td id="5">&nbsp;</td>
+			<td id="6">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="7">&nbsp;</td>
+			<td id="8">&nbsp;</td>
+			<td id="9">&nbsp;</td>
+		</tr>
+	</tbody>
 </table>
+
+<script>
+    var group = '(@Model.GameInstance.GameInstanceID)';
+    var gameHub = $.connection.communication;
+    var myTurn = false;
+    var myMark = '';
+    var hisMark = '';
+    var createdBy = '@Model.GameInstance.UserID)';
+    var grid = [['', '', ''], ['', '', ''], ['', '', '']];
+    //          0,0 0,1 0,2   1,0 1,1 1,2    2,0 2,1 2,2
+
+    $(document).ready(function(){
+       
+        /*if (createdBy == '') {
+            myMark = 'X';
+            hisMark = 'O';
+            myTurn = true;
+        }
+        else {
+            myMark = 'O';
+            hisMark = 'X';
+        }*/
+        myMark = 'X';
+        hisMark = 'O';
+        myTurn = true;
+              
+        gameHub.client.cellClicked = function (cellId) {
+            addToGrid(cellId, hisMark);
+            $("#" + cellId).text(hisMark);
+
+            var isGameOver = checkIfGameOver();
+
+            if (isGameOver == true) {
+                alert("You lost, play again!");
+            }
+            else {
+                myTurn = true;
+            }
+	    };
+
+	    $.connection.hub.start().done(function () {
+	        gameHub.server.join(group);
+
+	        $("#tictactoe tr td").click(function () {
+	            if (myTurn == true && $(this).text() != hisMark && $(this).text() != myMark) {
+	                myTurn = false;
+	                addToGrid(this.id, myMark);
+	                gameHub.server.clickCell(group, this.id);
+	                $(this).text(myMark);
+	                var isGameOver = checkIfGameOver();
+	                if (isGameOver == true) {
+	                    alert("You won!!, play again!");
+	                }
+	                
+	            }
+	        });
+	    });
+    });
+
+    function addToGrid(id, mark){
+        if (id == 1)
+            grid[0][0] = mark;
+        else if(id == 2)
+            grid[0][1] = mark;
+        else if (id == 3)
+            grid[0][2] = mark;
+        else if (id == 4)
+            grid[1][0] = mark;
+        else if (id == 5)
+            grid[1][1] = mark;
+        else if (id == 6)
+            grid[1][2] = mark;
+        else if (id == 7)
+            grid[2][0] = mark;
+        else if (id == 8)
+            grid[2][1] = mark;
+        else if (id == 9)
+            grid[2][2] = mark;
+    }
+
+    function checkIfGameOver(){
+        if (grid[0][0] == grid[0][1] && grid[0][0] == grid[0][2] && grid[0][0] != '')
+            return true;
+        else if (grid[1][0] == grid[1][1] && grid[1][0] == grid[1][2] && grid[1][0] != '')
+            return true;
+        else if (grid[2][0] == grid[2][1] && grid[2][0] == grid[2][2] && grid[2][0] != '')
+            return true;
+        else if (grid[0][0] == grid[1][0] && grid[0][0] == grid[2][0] && grid[0][0] != '')
+            return true;
+        else if (grid[0][1] == grid[1][1] && grid[0][1] == grid[2][1] && grid[0][1] != '')
+            return true;
+        else if (grid[0][2] == grid[1][2] && grid[0][2] == grid[2][2] && grid[0][2] != '')
+            return true;
+        else if (grid[0][0] == grid[1][1] && grid[0][0] == grid[2][2] && grid[0][0] != '')
+            return true;
+        else if (grid[0][2] == grid[1][1] && grid[0][2] == grid[2][0] && grid[0][2] != '')
+            return true;
+
+        return false;
+    }
+</script>
