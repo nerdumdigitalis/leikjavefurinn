@@ -239,13 +239,15 @@ ul
     width: 100px;
     height: 30px;
 }
+
+
+
+
 .popup
 { 
-    
     text-align:center;
     list-style:none; 
     cursor:pointer;
-    
 }
 
 .popup li:hover div
@@ -279,11 +281,11 @@ ul
     opacity:0;
     transition:visibility 0s linear 0.2s,opacity 0.2s linear;
     width:250px; 
-    height:150px; 
+    height:250px; 
     left:30%;
     top:25%;
     /*margin-left:-125px;*/
-    margin-top:-75px;
+    margin-top:-50px;
 }
 
 .popup li .popup-right-upper
@@ -294,7 +296,7 @@ ul
     opacity:0;
     transition:visibility 0s linear 0.2s,opacity 0.2s linear;
     width:250px; 
-    height:150px; 
+    height:250px; 
     left:75%;
     top:25%;
     margin-left:-125px;
@@ -304,7 +306,7 @@ ul
 #dialog-form
 {
     width: 350px;
-    height: 150px;
+    height: 350px;
     left: 50%;
     top: 50%;
     margin-left: -175px;
@@ -314,6 +316,10 @@ ul
     border-color: rgb(24, 17, 12);
     border-color: rgba(24, 17, 12, 0.95);
 }
+
+
+
+
 
 #tabs {
     width: 100%;
