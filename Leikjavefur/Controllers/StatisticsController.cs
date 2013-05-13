@@ -7,20 +7,16 @@ namespace Leikjavefur.Controllers
 {   
     public class StatisticsController : Controller
     {
-		private readonly IUserRepository userRepository;
-		private readonly IGameRepository gameRepository;
-		private readonly IStatisticRepository statisticRepository;
+		private readonly IDataRepository _dataRepository;
 
 		// If you are using Dependency Injection, you can delete the following constructor
-        public StatisticsController() : this(new UserRepository(), new GameRepository(), new StatisticRepository())
+        public StatisticsController() : this(new DataRepository())
         {
         }
 
-        public StatisticsController(IUserRepository userRepository, IGameRepository gameRepository, IStatisticRepository statisticRepository)
+        private StatisticsController(IDataRepository dataRepository)
         {
-			this.userRepository = userRepository;
-			this.gameRepository = gameRepository;
-			this.statisticRepository = statisticRepository;
+			_dataRepository = dataRepository;
         }
 
         //
@@ -28,7 +24,7 @@ namespace Leikjavefur.Controllers
 
         public ViewResult Index()
         {
-            return View(statisticRepository.AllIncluding(statistic => statistic.UserID, statistic => statistic.GameID));
+            return View(_dataRepository.StatisticRepository.AllIncluding(statistic => statistic.UserID, statistic => statistic.GameID));
         }
 
         //
@@ -36,7 +32,7 @@ namespace Leikjavefur.Controllers
 
         public ViewResult Details(string id)
         {
-            return View(statisticRepository.Find(id));
+            return View(_dataRepository.StatisticRepository.Find(id));
         }
 
         //
@@ -44,8 +40,8 @@ namespace Leikjavefur.Controllers
 
         public ActionResult Create()
         {
-			ViewBag.PossibleUsers = userRepository.All;
-			ViewBag.PossibleGames = gameRepository.All;
+            ViewBag.PossibleUsers = _dataRepository.UserRepository.All;
+            ViewBag.PossibleGames = _dataRepository.GameRepository.All;
             return View();
         } 
 
@@ -55,15 +51,15 @@ namespace Leikjavefur.Controllers
         [HttpPost]
         public ActionResult Create(Statistic statistic)
         {
-            if (ModelState.IsValid) {
-                statisticRepository.InsertOrUpdate(statistic);
-                statisticRepository.Save();
+            if (ModelState.IsValid) 
+            {
+                _dataRepository.StatisticRepository.InsertOrUpdate(statistic);
+                _dataRepository.StatisticRepository.Save();
                 return RedirectToAction("Index");
-            } else {
-				ViewBag.PossibleUsers = userRepository.All;
-				ViewBag.PossibleGames = gameRepository.All;
-				return View();
-			}
+            }
+            ViewBag.PossibleUsers = _dataRepository.UserRepository.All;
+            ViewBag.PossibleGames = _dataRepository.GameRepository.All;
+            return View();
         }
         
         //
@@ -71,9 +67,9 @@ namespace Leikjavefur.Controllers
  
         public ActionResult Edit(string id)
         {
-			ViewBag.PossibleUsers = userRepository.All;
-			ViewBag.PossibleGames = gameRepository.All;
-             return View(statisticRepository.Find(id));
+            ViewBag.PossibleUsers = _dataRepository.UserRepository.All;
+            ViewBag.PossibleGames = _dataRepository.GameRepository.All;
+            return View(_dataRepository.StatisticRepository.Find(id));
         }
 
         //
@@ -82,15 +78,15 @@ namespace Leikjavefur.Controllers
         [HttpPost]
         public ActionResult Edit(Statistic statistic)
         {
-            if (ModelState.IsValid) {
-                statisticRepository.InsertOrUpdate(statistic);
-                statisticRepository.Save();
+            if (ModelState.IsValid) 
+            {
+                _dataRepository.StatisticRepository.InsertOrUpdate(statistic);
+                _dataRepository.StatisticRepository.Save();
                 return RedirectToAction("Index");
-            } else {
-				ViewBag.PossibleUsers = userRepository.All;
-				ViewBag.PossibleGames = gameRepository.All;
-				return View();
-			}
+            }
+            ViewBag.PossibleUsers = _dataRepository.UserRepository.All;
+            ViewBag.PossibleGames = _dataRepository.GameRepository.All;
+            return View();
         }
 
         //
@@ -98,7 +94,7 @@ namespace Leikjavefur.Controllers
  
         public ActionResult Delete(string id)
         {
-            return View(statisticRepository.Find(id));
+            return View(_dataRepository.StatisticRepository.Find(id));
         }
 
         //
@@ -107,18 +103,19 @@ namespace Leikjavefur.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(string id)
         {
-            statisticRepository.Delete(id);
-            statisticRepository.Save();
+            _dataRepository.StatisticRepository.Delete(id);
+            _dataRepository.StatisticRepository.Save();
 
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing) {
-                userRepository.Dispose();
-                gameRepository.Dispose();
-                statisticRepository.Dispose();
+            if (disposing) 
+            {
+                _dataRepository.UserRepository.Dispose();
+                _dataRepository.GameRepository.Dispose();
+                _dataRepository.StatisticRepository.Dispose();
             }
             base.Dispose(disposing);
         }

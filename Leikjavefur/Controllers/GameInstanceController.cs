@@ -11,31 +11,31 @@ namespace Leikjavefur.Controllers
 {
     public class GameInstanceController : Controller
     {
-        private readonly IGameInstanceRepository _gameInstanceRepository;
+        private readonly IDataRepository _dataRepository;
 
 
-        public GameInstanceController(): this(new GameInstanceRepository())
+        public GameInstanceController(): this(new DataRepository())
         {
 
         }
 
-        public GameInstanceController(IGameInstanceRepository gameInstanceRepository)
+        private GameInstanceController(IDataRepository dataRepository)
         {
-            _gameInstanceRepository = gameInstanceRepository;
+            _dataRepository = dataRepository;
         }
 
         public ActionResult Index()
         {
             var result = new List<GameInstanceViewModel>();
-            var instanceIDs = _gameInstanceRepository.GetGameInstancesID();
+            var instanceIDs = _dataRepository.GameInstanceRepository.GetGameInstancesID();
 
             foreach (var id in instanceIDs)
             {
                 result.Add(new GameInstanceViewModel
                                {
                                    GameInstanceID = id,
-                                   GameName = new GameRepository().GetGameByGameID(_gameInstanceRepository.GetGameIDByGameInstanceID(id)).Name,
-                                   Players = _gameInstanceRepository.GetUsersByGameInstance(id)
+                                   GameName = _dataRepository.GameRepository.GetGameByGameID(_dataRepository.GameInstanceRepository.GetGameIDByGameInstanceID(id)).Name,
+                                   Players = _dataRepository.GameInstanceRepository.GetUsersByGameInstance(id)
                                });
 
             }
@@ -46,8 +46,8 @@ namespace Leikjavefur.Controllers
         {
             if (WebSecurity.IsAuthenticated)
             {
-                var gameInstance =_gameInstanceRepository.CreateNewGameInstance(gameID, WebSecurity.CurrentUserId);
-                _gameInstanceRepository.Save();
+                var gameInstance = _dataRepository.GameInstanceRepository.CreateNewGameInstance(gameID, WebSecurity.CurrentUserId);
+                _dataRepository.GameInstanceRepository.Save();
                 return RedirectToAction("Game", gameInstance);
             }
             return RedirectToAction("Login", "Account");
@@ -57,29 +57,29 @@ namespace Leikjavefur.Controllers
         {
             if (WebSecurity.IsAuthenticated)
             {
-                var gameInstance = _gameInstanceRepository.Find(gameInstanceID);
-                _gameInstanceRepository.JoinActiveGameInstance(gameInstance, WebSecurity.CurrentUserId);
+                var gameInstance = _dataRepository.GameInstanceRepository.Find(gameInstanceID);
+                _dataRepository.GameInstanceRepository.JoinActiveGameInstance(gameInstance, WebSecurity.CurrentUserId);
                 return RedirectToAction("Game", gameInstance);
             }
             return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult DeleteGameInstance(GameInstance gameInstance)
+        public ActionResult DeleteGameInstance(string gameInstance)
         {
-            _gameInstanceRepository.DeleteGameInstance(gameInstance.GameInstanceID);
+            _dataRepository.GameInstanceRepository.DeleteGameInstance(gameInstance);
             return RedirectToAction("Index");
         }
 
         public ActionResult GetUsersByGameInstance(string gameInstance)
         {
-            
-            return PartialView(_gameInstanceRepository.GetUsersByGameInstance(gameInstance));
+
+            return PartialView(_dataRepository.GameInstanceRepository.GetUsersByGameInstance(gameInstance));
         }
 
         public ActionResult Game(GameInstance gameInstance)
         {
-            var players = _gameInstanceRepository.GetUsersByGameInstance(gameInstance.GameInstanceID);
-            var game = new GameRepository().Find(gameInstance.GameID);
+            var players = _dataRepository.GameInstanceRepository.GetUsersByGameInstance(gameInstance.GameInstanceID);
+            var game = _dataRepository.GameRepository.Find(gameInstance.GameID);
             var viewModel = new GameInstanceViewModel {GameInstanceID = gameInstance.GameInstanceID, Players = players, GameName = game.Name};
 
             return View(viewModel);
