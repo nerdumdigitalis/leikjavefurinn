@@ -424,3 +424,18 @@ h2
 	padding: 33px 39px;
 	border: 1px solid white;
 }
+
+#gameinfo 
+{
+    float:left;
+    border:solid black 3px;
+    margin-left:5px;
+    margin-right:5px;
+    padding:10px;
+}
+
+#gameinfo p
+{
+    color:black;
+    text-align:left;
+}

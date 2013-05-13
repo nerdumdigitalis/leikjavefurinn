@@ -2,15 +2,18 @@
 
 <h2>@Model.GameName</h2>
 
-<h3>Leikjatilfelli númer: @Model.GameInstanceID</h3>
-<h3>Leikur stofnaður af leikmanni númer: @Model.Players.First().UserName</h3>
-<h3>Leikur: @Model.GameName</h3>
+<div id="gameinfo">
+@*<p>Leikjatilfelli númer: @Model.GameInstanceID</p>*@
 
-<h3>Spilarar í þessum leik:</h3>
+<p>Leikur stofnaður af: @Model.Players.First().UserName</p>
+<p>Spilarar í þessum leik:</p>
 @foreach(var player in Model.Players)
 {
-    @Html.DisplayFor(modelItem => player.UserName);
+    @Html.DisplayFor(modelItem => player.UserName );
+    <p> </p>
 }
+
+</div>
 
 @RenderPage(Model.GameName + ".cshtml", new {target = "_blank"})
 
