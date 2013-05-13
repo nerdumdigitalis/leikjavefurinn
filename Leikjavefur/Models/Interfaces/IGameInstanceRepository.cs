@@ -12,7 +12,7 @@ namespace Leikjavefur.Models.Interfaces
         GameInstance Find(string gameInstanceID);
         GameInstance CreateNewGameInstance(int gameID, int currentUserID);
         void JoinActiveGameInstance(GameInstance gameInstance, int currentUserID);
-        void DeleteGameInstance(GameInstance gameInstance);
+        void DeleteGameInstance(string gameInstanceId);
         List<string> GetGameInstancesID();
         IQueryable<UserProfile> GetUsersByGameInstance(string gameInstanceID);
         List<GameInstance> GetGameInstancesByUser(int userID);

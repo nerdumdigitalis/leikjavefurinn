@@ -239,13 +239,15 @@ ul
     width: 100px;
     height: 30px;
 }
+
+
+
+
 .popup
 { 
-    
     text-align:center;
     list-style:none; 
     cursor:pointer;
-    
 }
 
 .popup li:hover div
@@ -262,7 +264,7 @@ ul
     z-index:10; 
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 1s,opacity 1s linear;
+    transition:visibility 0s linear 0.2s,opacity 0.2s linear;
     width:853px; 
     height:480px; 
     left:50%;
@@ -277,13 +279,13 @@ ul
     z-index:10; 
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 1s,opacity 1s linear;
+    transition:visibility 0s linear 0.2s,opacity 0.2s linear;
     width:250px; 
-    height:150px; 
-    left:25%;
+    height:250px; 
+    left:30%;
     top:25%;
     /*margin-left:-125px;*/
-    margin-top:-75px;
+    margin-top:-50px;
 }
 
 .popup li .popup-right-upper
@@ -292,9 +294,9 @@ ul
     z-index:10; 
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 1s,opacity 1s linear;
+    transition:visibility 0s linear 0.2s,opacity 0.2s linear;
     width:250px; 
-    height:150px; 
+    height:250px; 
     left:75%;
     top:25%;
     margin-left:-125px;
@@ -304,7 +306,7 @@ ul
 #dialog-form
 {
     width: 350px;
-    height: 150px;
+    height: 350px;
     left: 50%;
     top: 50%;
     margin-left: -175px;
@@ -314,6 +316,10 @@ ul
     border-color: rgb(24, 17, 12);
     border-color: rgba(24, 17, 12, 0.95);
 }
+
+
+
+
 
 #tabs {
     width: 100%;
@@ -421,8 +427,59 @@ h2
 }
 
 #snakestable tbody tr td {
-	padding: 33px 39px;
+	/*padding: 33px 39px;*/
+    margin: 33px 39px;
 	border: 1px solid white;
+}
+
+#SnakesAndLaddersBoard 
+{
+	background: url("../Images/game_board3.jpg") no-repeat;
+	width: 519px;
+	height: 437px;
+	margin-top: 200px;
+	z-index: -1;
+}
+
+#SnakesAndLaddersBoard tbody tr td {
+
+	width: 82px;
+	height: 82px;
+}
+
+.player 
+{
+	height: 83px;
+	width: 83px;
+	position: absolute;
+}
+
+#player1 
+{
+	background: url("../Images/ped1.png") no-repeat;
+	top: 598px;
+	left: 2px;
+}
+
+#player2 
+{
+	background: url("../Images/ped2.png") no-repeat;
+	top: 598px;
+	left: 2px;
+}
+
+#player3 
+{
+	background: url("../Images/ped3.png") no-repeat;
+	top: 598px;
+	left: 2px;
+}
+
+#player4
+{
+	background: url("../Images/ped4.png") no-repeat;
+	top: 598px;
+	left: 2px;
 }
 
 #gameinfo 
@@ -440,6 +497,7 @@ h2
     color:black;
     text-align:left;
 }
+<<<<<<< HEAD
 
 #gameindex 
 {
@@ -508,3 +566,5 @@ h2
     padding-bottom:20px;
 }
     
+=======
+>>>>>>> 4efa6fcb772807ae68a9332a2e09f95adf10c6c7

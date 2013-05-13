@@ -2,24 +2,33 @@
 
 @*<img src="~/Images/game_board.jpg" width="700" height="583">*@
 
-<table id="snakestable" background="~/Images/game_board3.jpg">
-    <tbody>
-        <tr>
-            <td id="25">&nbsp;</td>
-            <td id="26">&nbsp;</td>
+
+@section GameStyles {<link href='@Url.Content("~/Content/SnakesAndLadders.css")' rel="stylesheet" type="text/css" />}
+
+
+<div id="SnakesAndLaddersBoard" >
+    <div class="player" id="player1"></div>
+    <div class="player" id="player2"></div>
+    <div class="player" id="player3"></div>
+    <div class="player" id="player4"></div>
+    <table id="SnakesAndLaddersSquares">
+	<tbody>
+		<tr>
+			<td id="25">&nbsp;</td>
+			<td id="26">&nbsp;</td>
             <td id="27">&nbsp;</td>
             <td id="28">&nbsp;</td>
-            <td id="29">&nbsp;</td>
-            <td id="30">&nbsp;</td>
-        </tr>
-        <tr>
-            <td id="24">&nbsp;</td>
-            <td id="23">&nbsp;</td>
+			<td id="29">&nbsp;</td>
+			<td id="30">&nbsp;</td>
+		</tr>
+		<tr>
+			<td id="24">&nbsp;</td>
+			<td id="23">&nbsp;</td>
             <td id="22">&nbsp;</td>
             <td id="21">&nbsp;</td>
-            <td id="20">&nbsp;</td>
-            <td id="19">&nbsp;</td>
-        </tr>
+			<td id="20">&nbsp;</td>
+			<td id="19">&nbsp;</td>
+		</tr>
         <tr>
             <td id="13">&nbsp;</td>
             <td id="14">&nbsp;</td>
@@ -37,23 +46,49 @@
             <td id="7">&nbsp;</td>
         </tr>
         <tr>
+<<<<<<< Updated upstream
+			<td id="1">&nbsp;</td>
+			<td id="2">&nbsp;</td>
+=======
             <td id="1">&nbsp;
-               @* <img src="~/Images/Player1.jpg" style="top:3px; margin-top: auto;"/>*@
+                <img src="~/Images/Player1.jpg" style="top:3px; margin-top: auto;"/>
                 @*<img src="~/Images/Player2.jpg" style="left:3px; position:relative;"/>
                 <img src="~/Images/Player3.jpg" style="right:3px; position:relative;"/>*@
 
 
             </td>
             <td id="2">&nbsp;</td>
+>>>>>>> Stashed changes
             <td id="3">&nbsp;</td>
             <td id="4">&nbsp;</td>
-            <td id="5">&nbsp;</td>
-            <td id="6">&nbsp;</td>
-        </tr>
-    </tbody>
+			<td id="5">&nbsp;</td>
+			<td id="6">&nbsp;</td>
+		</tr>
+	</tbody>
 </table>
+    
+    
 
+
+<<<<<<< Updated upstream
+
+</div>
+=======
 <script>
+    var myGameGroup = '(@Model.GameInstanceID)';
+    var playerNumber = '@Model.Players.ToArray().Count()';
+    var isMyTurn = false;
+
+    if (playerNumer == '1')
+        var isMyTurn = true;
 
 
-</script>
+    function getMyPlayerNumber() {
+        return playerNumber;
+    }
+
+    function getIsMyTurn(){
+
+    }
+>>>>>>> Stashed changes
+

@@ -66,7 +66,7 @@ namespace Leikjavefur.Controllers
 
         public ActionResult DeleteGameInstance(GameInstance gameInstance)
         {
-            _gameInstanceRepository.DeleteGameInstance(gameInstance);
+            _gameInstanceRepository.DeleteGameInstance(gameInstance.GameInstanceID);
             return RedirectToAction("Index");
         }
 
