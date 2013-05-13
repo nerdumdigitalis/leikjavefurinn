@@ -4,6 +4,15 @@
     Layout = null;
 }
 
+@if (User.IsInRole("Administrator"))
+{
+    <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
+}
+else
+{
+    <p>Notendur</p>
+}
+
 <ul class="popup">
     @foreach (var item in Model) 
     {
@@ -11,29 +20,24 @@
         <li>
             @Html.ActionLink(item.UserName, "Details", new { id=item.UserID })
             <div class="popup-right-upper">
-                <div id="dialog-form">
+                <div id="popup-form">
                     <form>
                         <fieldset>
                             <legend>@item.UserName</legend>
-                            @item.About
-                            <br />
+                            <div id="avatar">
+                                @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
+                            </div>
+
+                            <div class="display-label">Nafn: <p>@item.UserName</p></div>
+                            <div class="display-label">Netfang: <p>@item.Email</p></div>
+                            <div class="display-label">Fyrst Innskráður: <p>@String.Format("{0:g}", @item.DateCreated)</p></div>
+                            <div class="display-field">@item.About</div>
+
                             @if (Request.IsAuthenticated) 
                             {
-                                @*Html.ActionLink("Vingast Við", "AddFriend", new { id=item.UserID })*@
                                 <input type="button" value="Vingast við" onclick="location.href='@Url.Action("AddFriend", "Users", new { id=item.UserID })'" />
                             }
                         </fieldset>
-                        <fieldset>
-
-                        <div id="avatar">
-                            @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
-                        </div>
-
-                        <div class="display-label">Nafn: <p>@item.UserName</p></div>
-                        <div class="display-label">Netfang: <p>@item.Email</p></div>
-                        <div class="display-label">Fyrst Innskráður: <p>@String.Format("{0:g}", @item.DateCreated)</p></div>
-                        <div class="display-field">@item.About</div>
-                    </fieldset>
                     </form>
                 </div>
             </div>

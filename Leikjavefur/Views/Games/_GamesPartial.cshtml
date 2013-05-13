@@ -1,7 +1,10 @@
 ﻿@model IEnumerable<Leikjavefur.Models.Game>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    if (User.IsInRole("Administrator"))
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
 </p>
 <table>
     <tr>
@@ -53,9 +56,12 @@
             @Html.DisplayFor(modelItem => item.Rules)
         </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GameID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GameID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GameID })
+            @if (User.IsInRole("Administrator"))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id=item.GameID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.GameID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.GameID })
+            }
         </td>
     </tr>
 }

@@ -303,7 +303,7 @@ ul
     margin-top:-75px;
 }
 
-#dialog-form
+#popup-form
 {
     width: 350px;
     height: 350px;
@@ -341,11 +341,10 @@ ul.tabs li {
 
 ul.tabs li a {
     background-color:#827B60;
-    color:#827B60;
 }
+
 ul.tabs li a:hover {
     background-position: -420px -31px;
-    color:#827B60;
     background-color:#2f343a;
     border-color:#2f343a;
 }
@@ -365,19 +364,9 @@ ul.tabs li a:hover {
     border-bottom: 1px solid #FFF;
 }
 
-#tictactoe 
-{
-    margin-left:auto;
-    margin-right:auto;
-}
 
-#tictactoe tbody tr td {
 
-	background-color: #c7d1d6;
-	padding: 50px;
-	border: 1px solid black;
-}
-
+/*
 .display-label 
 {
     text-align:left;
@@ -391,6 +380,23 @@ ul.tabs li a:hover {
 .display-label p 
 {
     color: black;
+}
+*/
+
+
+
+
+#tictactoe 
+{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#tictactoe tbody tr td {
+
+	background-color: #c7d1d6;
+	padding: 50px;
+	border: 1px solid black;
 }
 
 #details 
@@ -497,7 +503,6 @@ h2
     color:black;
     text-align:left;
 }
-<<<<<<< HEAD
 
 #gameindex 
 {
@@ -565,6 +570,3 @@ h2
     float:left;
     padding-bottom:20px;
 }
-    
-=======
->>>>>>> 4efa6fcb772807ae68a9332a2e09f95adf10c6c7

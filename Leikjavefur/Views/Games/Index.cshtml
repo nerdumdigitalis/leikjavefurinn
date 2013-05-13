@@ -4,53 +4,59 @@
     ViewBag.Title = "Index";
 }
 
-@*<h2>Leikir</h2>
+<h2>Leikir</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+@if (User.IsInRole("Administrator"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
 
 
 @foreach (var item in Model) {
-<fieldset id="gameindex">
+    <fieldset id="gameindex">
 
-        <div id ="gameindexphoto">
-            @*Html.DisplayFor(modelItem => item.Avatar) //þarf að gera eithvað til að geta sett inn mynd fyrir hvert instance*@
-            @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})
-        </div>
-        <div id="gameindexinfo">
-            <p>Nafn: @Html.DisplayFor(modelItem => item.Name)</p>
+            <div id ="gameindexphoto">
+                @*Html.DisplayFor(modelItem => item.Avatar) //þarf að gera eithvað til að geta sett inn mynd fyrir hvert instance*@
+                @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})
+            </div>
+            <div id="gameindexinfo">
+                <p>Nafn: @Html.DisplayFor(modelItem => item.Name)</p>
         
-            <p>Hámarksfjöldi Spilara: @Html.DisplayFor(modelItem => item.MaxPlayers)</p>
+                <p>Hámarksfjöldi Spilara: @Html.DisplayFor(modelItem => item.MaxPlayers)</p>
         
-            <p>Lágmarksfjöldi spilara: @Html.DisplayFor(modelItem => item.MinPlayers)</p>
-        </div>
-        <div id="gameindexabout">
-            <table id="about">
-                <tr>                
-                    <td>UM</td>   
-                </tr>
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.About)</td>
-                </tr>
-            </table>
-            <table id="rules">
-                    <tr>
-                        <td>Reglur</td>
+                <p>Lágmarksfjöldi spilara: @Html.DisplayFor(modelItem => item.MinPlayers)</p>
+            </div>
+            <div id="gameindexabout">
+                <table id="about">
+                    <tr>                
+                        <td>UM</td>   
                     </tr>
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Rules)</td>
+                        <td>@Html.DisplayFor(modelItem => item.About)</td>
                     </tr>
-            </table>
-        </div>
+                </table>
+                <table id="rules">
+                        <tr>
+                            <td>Reglur</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Rules)</td>
+                        </tr>
+                </table>
+            </div>
         
-</fieldset>
+    </fieldset>
     
-    @*<div id="gameindexedit">
-            @Html.ActionLink("Edit", "Edit", new { id=item.GameID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GameID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GameID })
-    </div>*@
+    if (User.IsInRole("Administrator"))
+    {
+        <div id="gameindexedit">
+                @Html.ActionLink("Edit", "Edit", new { id=item.GameID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.GameID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.GameID })
+        </div>
+    }
     
 }
 

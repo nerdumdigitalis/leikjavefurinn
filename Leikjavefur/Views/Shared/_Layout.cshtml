@@ -27,12 +27,9 @@
 
         <div id="leftChat">
 	        <div id="leikirchat">
-		        <p>@Html.ActionLink("Leikir", "Index", "Games")</p>
                 @Html.Action("GamesList", "Games")
-                
             </div>
             <div id="ongoingGames">
-                <p>Leikir í gangi</p>
                 @Html.Action("Index", "GameInstance")
             </div>
         </div>
@@ -80,7 +77,6 @@
                 </ul>
                 <div id="tabs-1" class="tabcontent">
                     <p>
-    		            <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
                         @Html.Action("UserList", "Users")
                     </p>
                 </div>

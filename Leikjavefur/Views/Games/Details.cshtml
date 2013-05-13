@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <fieldset>
-    <legend>Game</legend>
+    <legend>Leikur</legend>
 
     <div class="display-label">Name</div>
     <div class="display-field">@Model.Name</div>
@@ -32,8 +32,11 @@
 </fieldset>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.GameID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (User.IsInRole("Administrator"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id=Model.GameID }) |
+        @Html.ActionLink("Back to List", "Index")
+    }
 </p>
 
 

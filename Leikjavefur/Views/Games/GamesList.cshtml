@@ -3,8 +3,10 @@
 @{
     Layout = null;
 }
-<h3>Stofna nýjan leik</h3>
 
+<p>@Html.ActionLink("Leikir", "Index", "Games")</p>
+
+<h3>Stofna nýjan leik</h3>
 
 <ul class="popup">
     @foreach (var item in Model)
@@ -12,7 +14,7 @@
         <li>
             @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, new {target ="_blank"})
             <div class="popup-left-upper">
-                <div id="dialog-form" title="Create new user">
+                <div id="popup-form" title="Notendasnið">
                     <p class="validateTips">All form fields are required.</p>
                     <form>
                         <fieldset>
