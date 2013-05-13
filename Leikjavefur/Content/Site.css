@@ -108,11 +108,11 @@ body
     border-right:none;
     border-left:none;
     overflow-y: auto;
-    height:100%;
+    height:80%;
     width:100%;
     text-align:center;
     border-right:none;
-    /*overflow-y: scroll;*/
+    overflow-y: scroll;
 }
 
 #rightChat
@@ -434,8 +434,77 @@ h2
     padding:10px;
 }
 
+
 #gameinfo p
 {
     color:black;
     text-align:left;
 }
+
+#gameindex 
+{
+    border:solid black 5px;
+    padding:5px;
+    margin:5px;
+    height:250px;     
+}
+
+#gameindexphoto 
+{
+    position:relative;    
+    float:left;
+    height:90%;
+    padding:10px;
+
+}
+
+#gameindexinfo
+{
+    
+    text-align:left;
+    color:black;
+    font-size:12px;
+    position:relative; 
+    padding:10px;
+    height:40%;
+    width:70%;
+    float:left;
+    
+}
+
+#gameindexabout
+{
+    position:relative; 
+    float:left;
+    width:70%; 
+    height:40%;
+    padding:10px;
+   
+}
+
+#about
+{   
+    
+   float:left;
+   width:50%;
+   
+}
+
+#rules
+{   
+   float:right; 
+    
+   width:50%;
+   
+}
+    
+
+#gameindexedit 
+{
+    
+    position:relative; 
+    width:100%;
+    float:left;
+    padding-bottom:20px;
+}
+    
