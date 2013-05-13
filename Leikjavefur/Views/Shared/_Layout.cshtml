@@ -29,6 +29,9 @@
 	        <div id="leikirchat">
 		        <p>@Html.ActionLink("Leikir", "Index", "Games")</p>
                 @Html.Action("GamesList", "Games")
+                
+            </div>
+            <div id="ongoingGames">
                 <p>Leikir í gangi</p>
                 @Html.Action("Index", "GameInstance")
             </div>
