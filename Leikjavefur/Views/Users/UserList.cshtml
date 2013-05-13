@@ -20,7 +20,7 @@
                             <br />
                             @if (Request.IsAuthenticated) 
                             {
-                                @Html.ActionLink("Vingast Við", "AddFriend", new { id=item.UserID })
+                                @*Html.ActionLink("Vingast Við", "AddFriend", new { id=item.UserID })*@
                                 <input type="button" value="Vingast við" onclick="location.href='@Url.Action("AddFriend", "Users", new { id=item.UserID })'" />
                             }
                         </fieldset>
