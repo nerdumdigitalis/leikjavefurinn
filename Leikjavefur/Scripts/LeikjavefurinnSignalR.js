@@ -2,7 +2,9 @@
 
     var hub = $.connection.communication;
     var myTurn = false;
+    var myTurnSnakesAndLadders = false;
     var grid = [['', '', ''], ['', '', ''], ['', '', '']];
+    var myPosition = 1;
     var gameGroup = '';
     var chatGroup = '';
     var textArea = document.getElementById('ChatArea');
@@ -31,6 +33,26 @@
     };
 
     //Snakes'N'Ladders Receive Functions
+    hub.client.receiveRollValueAndNextPlayer = function (move, player, isGameOver) {
+        //Start by moving player to new position
+
+
+        //find out if i should do next.
+        if ((player + 1) == getMyPlayerNumber()) {
+            if (isGameOver != "true") {
+                myTurnSnakesAndLadders = true;
+                $("#Dice").hidden = true;
+            }
+        }
+        else if (player == getMyPlayerNumber()) {
+            myPosition = move;
+        }
+
+        if (isGameOver == "true" && player == getMyPlayerNumber())
+            alert("You won! Congratulationz");
+        else if(isGameOver == "true" && player != GetMyPlayerNumber())
+            alert("You lost. Sorry friend :(");
+    };
 
     //Connect
     $.connection.hub.start().done(function () {
@@ -43,18 +65,18 @@
         if (typeof (getChatGroup) === 'function')
             chatGroup = getChatGroup();
 
-        /*if (gameGroup != ''){
+        if (gameGroup != ''){
             hub.server.join(gameGroup);
             chatGroup = gameGroup;
         }
         else if (chatGroup != '')
-            hub.server.join(chatGroup);*/
+            hub.server.join(chatGroup);
 
-        if (gameGroup != '') {
+       /* if (gameGroup != '') {
             hub.server.join(gameGroup);
         }
         if (chatGroup != '')
-            hub.server.join(chatGroup);
+            hub.server.join(chatGroup);*/
 
         //Chat Send Functions
         $("#SendButton").click(function () {
@@ -78,7 +100,6 @@
         });
 
         //TicTacToe Send Functions
-
         $("#tictactoe tr td").click(function (event) {
             var elementId = event.target.id;
             var hisMark = getHisMark();
@@ -91,12 +112,20 @@
                 $("#" + elementId).text(myMark);
                 var isGameOver = checkIfGameOver();
                 if (isGameOver == true) {
+                    hub.server.gameOver(gameGroup);
                     alert("You won!!, play again!");
                 }
             }
         });
 
         //Snakes'N'Ladders Send Functions
+        $("#Dice").click(function () {
+            if (myTurnSnakesAndLadders == true) {
+                hub.server.rollDice(gameGroup, getMyPlayerNumber(), myPosition);
+                $("#Dice").hidden = true;
+            }
+            
+        });
 
     });
 

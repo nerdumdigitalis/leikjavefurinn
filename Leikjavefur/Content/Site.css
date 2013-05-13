@@ -421,7 +421,8 @@ h2
 }
 
 #snakestable tbody tr td {
-	padding: 33px 39px;
+	/*padding: 33px 39px;*/
+    margin: 33px 39px;
 	border: 1px solid white;
 }
 

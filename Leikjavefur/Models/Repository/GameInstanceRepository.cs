@@ -32,13 +32,16 @@ namespace Leikjavefur.Models.Repository
             return Enumerable.FirstOrDefault(_context.GameInstances.Where(instance => instance.GameInstanceID == gameInstanceID));
         }
 
-        public void DeleteGameInstance(GameInstance gameInstance)
+        public void DeleteGameInstance(string gameInstanceId)
         {
             var allGameInst = All;
             foreach (var gameInst in allGameInst)
             {
-                if (gameInst.GameInstanceID == gameInstance.GameInstanceID)
+                if (gameInst.GameInstanceID == gameInstanceId)
+                {
                     _context.GameInstances.Remove(gameInst);
+                    Save();
+                }
             }
         }
 
