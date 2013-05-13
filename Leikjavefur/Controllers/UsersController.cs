@@ -9,16 +9,16 @@ namespace Leikjavefur.Controllers
 {   
     public class UsersController : Controller
     {
-		private readonly IUserRepository _userRepository;
+        private readonly IDataRepository _dataRepository;
 
 		// If you are using Dependency Injection, you can delete the following constructor
-        public UsersController() : this(new UserRepository())
+        public UsersController() : this(new DataRepository())
         {
         }
 
-        public UsersController(IUserRepository userRepository)
+        public UsersController(IDataRepository dataRepository)
         {
-			this._userRepository = userRepository;
+			_dataRepository = dataRepository;
         }
 
         //
@@ -26,17 +26,17 @@ namespace Leikjavefur.Controllers
 
         public ViewResult Index()
         {
-            return View(_userRepository.All);
+            return View(_dataRepository.UserRepository.All);
         }
 
         public ActionResult UserList()
         {
-            return PartialView(_userRepository.All);
+            return PartialView(_dataRepository.UserRepository.All);
         }
 
         public ActionResult FriendsList()
         {
-            return PartialView(_userRepository.GetFriends(WebSecurity.CurrentUserId));
+            return PartialView(_dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId));
             //if(WebSecurity.IsAuthenticated)
             //{
             //    return PartialView(_userRepository.GetFriends(WebSecurity.CurrentUserId));
@@ -47,7 +47,7 @@ namespace Leikjavefur.Controllers
         public ActionResult AddFriend(int id)
         {
             //return PartialView(_userRepository.AddFriend(WebSecurity.CurrentUserId, id));
-            _userRepository.AddFriend(WebSecurity.CurrentUserId, id);
+            _dataRepository.UserRepository.AddFriend(WebSecurity.CurrentUserId, id);
             return RedirectToAction("Details", new { id = id });
         }
         //
@@ -55,7 +55,7 @@ namespace Leikjavefur.Controllers
 
         public ViewResult Details(int id)
         {
-            return View(_userRepository.Find(id));
+            return View(_dataRepository.UserRepository.Find(id));
         }
 
         //
@@ -74,8 +74,8 @@ namespace Leikjavefur.Controllers
         {
             if (ModelState.IsValid) {
                 userProfile.DateCreated = DateTime.Now;
-                _userRepository.InsertOrUpdate(userProfile);
-                _userRepository.Save();
+                _dataRepository.UserRepository.InsertOrUpdate(userProfile);
+                _dataRepository.UserRepository.Save();
                 return RedirectToAction("Index");
             } else {
 				return View();
@@ -87,7 +87,7 @@ namespace Leikjavefur.Controllers
  
         public ActionResult Edit(int id)
         {
-             return View(_userRepository.Find(id));
+            return View(_dataRepository.UserRepository.Find(id));
         }
 
         //
@@ -96,14 +96,13 @@ namespace Leikjavefur.Controllers
         [HttpPost]
         public ActionResult Edit(UserProfile userProfile)
         {
-            if (ModelState.IsValid) {
-                //UserProfile.DateCreated = DateTime.Now;
-                _userRepository.InsertOrUpdate(userProfile);
-                _userRepository.Save();
+            if (ModelState.IsValid) 
+            {
+                _dataRepository.UserRepository.InsertOrUpdate(userProfile);
+                _dataRepository.UserRepository.Save();
                 return RedirectToAction("Index");
-            } else {
-				return View();
-			}
+            }
+            return View();
         }
 
         //
@@ -111,7 +110,7 @@ namespace Leikjavefur.Controllers
  
         public ActionResult Delete(int id)
         {
-            return View(_userRepository.Find(id));
+            return View(_dataRepository.UserRepository.Find(id));
         }
 
         //
@@ -120,8 +119,8 @@ namespace Leikjavefur.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            _userRepository.Delete(id);
-            _userRepository.Save();
+            _dataRepository.UserRepository.Delete(id);
+            _dataRepository.UserRepository.Save();
 
             return RedirectToAction("Index");
         }
@@ -129,7 +128,7 @@ namespace Leikjavefur.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing) {
-                _userRepository.Dispose();
+                _dataRepository.UserRepository.Dispose();
             }
             base.Dispose(disposing);
         }

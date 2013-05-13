@@ -9,6 +9,7 @@ namespace Leikjavefur.Models.Interfaces
         IQueryable<Game> All { get; }
         IQueryable<Game> AllIncluding(params Expression<Func<Game, object>>[] includeProperties);
         Game Find(int id);
+        Game GetGameByGameID(int gameID);
         void InsertOrUpdate(Game game);
         void Delete(int id);
         void Save();

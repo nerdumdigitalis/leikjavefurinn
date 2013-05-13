@@ -202,7 +202,9 @@
     <Compile Include="Models\ApplicationModels.cs" />
     <Compile Include="Models\Communication.cs" />
     <Compile Include="Models\Context\ApplicationContext.cs" />
+    <Compile Include="Models\Interfaces\IDataRepository.cs" />
     <Compile Include="Models\Interfaces\IGameInstanceRepository.cs" />
+    <Compile Include="Models\Repository\DataRepository.cs" />
     <Compile Include="Models\Repository\GameInstanceRepository.cs" />
     <Compile Include="Models\Repository\GameRepository.cs" />
     <Compile Include="Models\Interfaces\IGameRepository.cs" />

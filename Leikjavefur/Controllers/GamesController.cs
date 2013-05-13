@@ -8,16 +8,16 @@ namespace Leikjavefur.Controllers
 {   
     public class GamesController : Controller
     {
-		private readonly IGameRepository _gameRepository;
+		private readonly IDataRepository _dataRepository;
 
 		// If you are using Dependency Injection, you can delete the following constructor
-        public GamesController() : this(new GameRepository())
+        public GamesController() : this(new DataRepository())
         {
         }
 
-        public GamesController(IGameRepository gameRepository)
+        private GamesController(IDataRepository dataRepository)
         {
-			this._gameRepository = gameRepository;
+			_dataRepository = dataRepository;
         }
 
         //
@@ -25,7 +25,7 @@ namespace Leikjavefur.Controllers
 
         public ActionResult Index()
         {
-            return View(_gameRepository.All);
+            return View(_dataRepository.GameRepository.All);
         }
 
         //
@@ -33,12 +33,12 @@ namespace Leikjavefur.Controllers
 
         public ActionResult GamesList()
         {
-            return PartialView(_gameRepository.All);
+            return PartialView(_dataRepository.GameRepository.All);
         }
 
         public ViewResult Details(int id)
         {
-            return View(_gameRepository.Find(id));
+            return View(_dataRepository.GameRepository.Find(id));
         }
 
         //
@@ -55,22 +55,22 @@ namespace Leikjavefur.Controllers
         [HttpPost]
         public ActionResult Create(Game game)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid) 
+            {
                 game.DateAdded = DateTime.Now;
-                _gameRepository.InsertOrUpdate(game);
-                _gameRepository.Save();
+                _dataRepository.GameRepository.InsertOrUpdate(game);
+                _dataRepository.GameRepository.Save();
                 return RedirectToAction("Index");
-            } else {
-				return View();
-			}
+            }
+            return View();
         }
-        
+
         //
         // GET: /Games/Edit/5
  
         public ActionResult Edit(int id)
         {
-             return View(_gameRepository.Find(id));
+            return View(_dataRepository.GameRepository.Find(id));
         }
 
         //
@@ -79,14 +79,14 @@ namespace Leikjavefur.Controllers
         [HttpPost]
         public ActionResult Edit(Game game)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid) 
+            {
                 //game.DateAdded = DateTime.Now;
-                _gameRepository.InsertOrUpdate(game);
-                _gameRepository.Save();
+                _dataRepository.GameRepository.InsertOrUpdate(game);
+                _dataRepository.GameRepository.Save();
                 return RedirectToAction("Index");
-            } else {
-				return View();
-			}
+            }
+            return View();
         }
 
         //
@@ -94,7 +94,7 @@ namespace Leikjavefur.Controllers
  
         public ActionResult Delete(int id)
         {
-            return View(_gameRepository.Find(id));
+            return View(_dataRepository.GameRepository.Find(id));
         }
 
         //
@@ -103,8 +103,8 @@ namespace Leikjavefur.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            _gameRepository.Delete(id);
-            _gameRepository.Save();
+            _dataRepository.GameRepository.Delete(id);
+            _dataRepository.GameRepository.Save();
 
             return RedirectToAction("Index");
         }
@@ -112,7 +112,7 @@ namespace Leikjavefur.Controllers
         protected override void Dispose(bool disposing)
         {
             if (disposing) {
-                _gameRepository.Dispose();
+                _dataRepository.GameRepository.Dispose();
             }
             base.Dispose(disposing);
         }
