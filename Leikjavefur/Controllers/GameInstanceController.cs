@@ -35,9 +35,7 @@ namespace Leikjavefur.Controllers
                                {
                                    GameInstanceID = id,
                                    GameName = new GameRepository().GetGameByGameID(_gameInstanceRepository.GetGameIDByGameInstanceID(id)).Name,
-                                   Players = _gameInstanceRepository.GetUsersByGameInstance(id),
-                                   CurrentUser = WebSecurity.CurrentUserId,
-                                   CurrentUserName = WebSecurity.CurrentUserName
+                                   Players = _gameInstanceRepository.GetUsersByGameInstance(id)
                                });
 
             }
