@@ -108,11 +108,11 @@ body
     border-right:none;
     border-left:none;
     overflow-y: auto;
-    height:100%;
+    height:80%;
     width:100%;
     text-align:center;
     border-right:none;
-    /*overflow-y: scroll;*/
+    overflow-y: scroll;
 }
 
 #rightChat
@@ -239,13 +239,15 @@ ul
     width: 100px;
     height: 30px;
 }
+
+
+
+
 .popup
 { 
-    
     text-align:center;
     list-style:none; 
     cursor:pointer;
-    
 }
 
 .popup li:hover div
@@ -262,7 +264,7 @@ ul
     z-index:10; 
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 1s,opacity 1s linear;
+    transition:visibility 0s linear 0.2s,opacity 0.2s linear;
     width:853px; 
     height:480px; 
     left:50%;
@@ -277,13 +279,13 @@ ul
     z-index:10; 
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 1s,opacity 1s linear;
+    transition:visibility 0s linear 0.2s,opacity 0.2s linear;
     width:250px; 
-    height:150px; 
-    left:25%;
+    height:250px; 
+    left:30%;
     top:25%;
     /*margin-left:-125px;*/
-    margin-top:-75px;
+    margin-top:-50px;
 }
 
 .popup li .popup-right-upper
@@ -292,9 +294,9 @@ ul
     z-index:10; 
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 1s,opacity 1s linear;
+    transition:visibility 0s linear 0.2s,opacity 0.2s linear;
     width:250px; 
-    height:150px; 
+    height:250px; 
     left:75%;
     top:25%;
     margin-left:-125px;
@@ -304,7 +306,7 @@ ul
 #dialog-form
 {
     width: 350px;
-    height: 150px;
+    height: 350px;
     left: 50%;
     top: 50%;
     margin-left: -175px;
@@ -314,6 +316,10 @@ ul
     border-color: rgb(24, 17, 12);
     border-color: rgba(24, 17, 12, 0.95);
 }
+
+
+
+
 
 #tabs {
     width: 100%;
@@ -421,7 +427,8 @@ h2
 }
 
 #snakestable tbody tr td {
-	padding: 33px 39px;
+	/*padding: 33px 39px;*/
+    margin: 33px 39px;
 	border: 1px solid white;
 }
 
@@ -484,8 +491,77 @@ h2
     padding:10px;
 }
 
+
 #gameinfo p
 {
     color:black;
     text-align:left;
 }
+
+#gameindex 
+{
+    border:solid black 5px;
+    padding:5px;
+    margin:5px;
+    height:250px;     
+}
+
+#gameindexphoto 
+{
+    position:relative;    
+    float:left;
+    height:90%;
+    padding:10px;
+
+}
+
+#gameindexinfo
+{
+    
+    text-align:left;
+    color:black;
+    font-size:12px;
+    position:relative; 
+    padding:10px;
+    height:40%;
+    width:70%;
+    float:left;
+    
+}
+
+#gameindexabout
+{
+    position:relative; 
+    float:left;
+    width:70%; 
+    height:40%;
+    padding:10px;
+   
+}
+
+#about
+{   
+    
+   float:left;
+   width:50%;
+   
+}
+
+#rules
+{   
+   float:right; 
+    
+   width:50%;
+   
+}
+    
+
+#gameindexedit 
+{
+    
+    position:relative; 
+    width:100%;
+    float:left;
+    padding-bottom:20px;
+}
+   
