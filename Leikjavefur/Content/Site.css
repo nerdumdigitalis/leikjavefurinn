@@ -411,3 +411,73 @@ h2
 	padding: 33px 39px;
 	border: 1px solid white;
 }
+
+/*#SnakesAndLaddersBoard 
+{
+	background: url("../Images/game_board3.jpg") no-repeat;
+	width: 519px;
+	height: 433px;
+
+}
+
+.SnakesAndLadderSquares 
+{
+	background-color: aliceblue;
+	width: 83px;
+	height: 84px;
+	position: relative;
+	left: 2px;
+	top: 2px;
+	float: left;
+}*/
+
+#SnakesAndLaddersBoard 
+{
+	background: url("../Images/game_board3.jpg") no-repeat;
+	width: 519px;
+	height: 437px;
+    
+}
+
+#SnakesAndLaddersBoard tbody tr td {
+
+	/*background-color: #c7d1d6;*/
+	width: 82px;
+	/*border: 1px solid black;*/
+	height: 82px;
+}
+
+.player 
+{
+	height: 83px;
+	width: 83px;
+	position: absolute;
+}
+
+#player1 
+{
+	background: url("../Images/ped1.png") no-repeat;
+	top: 578px;
+	left: 2px;
+}
+
+#player2 
+{
+	background: url("../Images/ped2.png") no-repeat;
+	top: 578px;
+	left: 2px;
+}
+
+#player3 
+{
+	background: url("../Images/ped3.png") no-repeat;
+	top: 578px;
+	left: 2px;
+}
+
+#player4 
+{
+	background: url("../Images/ped4.png") no-repeat;
+	top: 578px;
+	left: 2px;
+}

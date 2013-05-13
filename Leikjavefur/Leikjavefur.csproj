@@ -218,6 +218,7 @@
     <Compile Include="ViewModels\GameViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\SnakesAndLadders.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -280,6 +281,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\TicTacToe.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -288,6 +290,10 @@
     <Content Include="Images\game_board2.jpg" />
     <Content Include="Images\game_board3.jpg" />
     <Content Include="Images\logo.jpg" />
+    <Content Include="Images\ped1.png" />
+    <Content Include="Images\ped2.png" />
+    <Content Include="Images\ped3.png" />
+    <Content Include="Images\ped4.png" />
     <Content Include="Images\Player1.jpg" />
     <Content Include="Images\Player2.jpg" />
     <Content Include="Images\Player3.jpg" />
