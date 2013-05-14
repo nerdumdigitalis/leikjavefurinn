@@ -137,6 +137,7 @@ namespace Leikjavefur.Controllers
         {
             return PartialView(_dataRepository.UserRepository.Find(WebSecurity.CurrentUserId));
         }
+
     }
 }
 
