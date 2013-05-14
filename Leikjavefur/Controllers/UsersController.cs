@@ -139,12 +139,12 @@ namespace Leikjavefur.Controllers
             return PartialView(_dataRepository.UserRepository.Find(WebSecurity.CurrentUserId));
         }
 
-        public ActionResult ToggleDisable(string name)
+        public ActionResult ToggleRoleMembership(string username, string rolename)
         {
-            if (Roles.IsUserInRole(name, "Disabled"))
-                Roles.RemoveUsersFromRoles(new[] { name }, new[] { "Disabled" });
+            if (Roles.IsUserInRole(username, rolename))
+                Roles.RemoveUsersFromRoles(new[] { username }, new[] { rolename });
             else
-                Roles.AddUsersToRoles(new[] { name }, new[] { "Disabled" });
+                Roles.AddUsersToRoles(new[] { username }, new[] { rolename });
 
             return RedirectToAction("Index");
         }    
