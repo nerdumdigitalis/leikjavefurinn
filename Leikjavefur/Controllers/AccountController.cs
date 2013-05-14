@@ -36,7 +36,7 @@ namespace Leikjavefur.Controllers
 
             if (!WebSecurity.IsConfirmed(model.UserName))
             {
-                ModelState.AddModelError("", "Notandi er ekki virkur");
+                ModelState.AddModelError("", "Notandinn " + model.UserName +" er óvirkur");
                 return View(model);
             }
 

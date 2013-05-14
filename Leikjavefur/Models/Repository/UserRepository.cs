@@ -18,7 +18,7 @@ namespace Leikjavefur.Models.Repository
             get
             {
                 //return _context.Users;  // skilar öllum notendum
-                return (from user in _context.Users
+                return (from user in _context.Users // skilar öllum notendum nema UserID=1 sem er admin
                         where user.UserID != 1
                         select user);
             }
