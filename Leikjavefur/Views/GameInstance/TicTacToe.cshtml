@@ -22,6 +22,7 @@
 
 <script>
     var myGameGroup = '@Model.GameInstanceID';
+    var myGameGroup = '(@Model.GameInstance.GameInstanceID)';
     var player1 = '@Model.Players.ToArray()[0].UserID';
     var mMark = '';
     var hMark = '';

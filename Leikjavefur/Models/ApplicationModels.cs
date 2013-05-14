@@ -132,6 +132,8 @@ namespace Leikjavefur.Models
         public int UserID { get; set; }
         //[ForeignKey("UserID")]
         //public virtual UserProfile WinnerID { get; set; }
+
+        public bool IsActive { get; set; }
     }
 
     [Table("Friends")]

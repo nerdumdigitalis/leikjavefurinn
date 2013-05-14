@@ -27,15 +27,15 @@ namespace Leikjavefur.Controllers
         public ActionResult Index()
         {
             var result = new List<GameInstanceViewModel>();
-            var instanceIDs = _dataRepository.GameInstanceRepository.GetGameInstancesID();
+            var instances = _dataRepository.GameInstanceRepository.GetGameInstances();
 
-            foreach (var id in instanceIDs)
+            foreach (var instance in instances)
             {
                 result.Add(new GameInstanceViewModel
                                {
-                                   GameInstanceID = id,
-                                   GameName = _dataRepository.GameRepository.GetGameByGameID(_dataRepository.GameInstanceRepository.GetGameIDByGameInstanceID(id)).Name,
-                                   Players = _dataRepository.GameInstanceRepository.GetUsersByGameInstance(id)
+                                   GameInstance = instance,
+                                   Game = _dataRepository.GameRepository.GetGameByGameID(_dataRepository.GameInstanceRepository.GetGameIDByGameInstanceID(instance.GameInstanceID)),
+                                   Players = _dataRepository.GameInstanceRepository.GetUsersByGameInstance(instance.GameInstanceID)
                                });
 
             }
@@ -58,7 +58,7 @@ namespace Leikjavefur.Controllers
             if (WebSecurity.IsAuthenticated)
             {
                 var gameInstance = _dataRepository.GameInstanceRepository.Find(gameInstanceID);
-                _dataRepository.GameInstanceRepository.JoinActiveGameInstance(gameInstance, WebSecurity.CurrentUserId);
+                _dataRepository.GameInstanceRepository.JoinGameInstance(gameInstance, WebSecurity.CurrentUserId);
                 return RedirectToAction("Game", gameInstance);
             }
             return RedirectToAction("Login", "Account");
@@ -80,9 +80,14 @@ namespace Leikjavefur.Controllers
         {
             var players = _dataRepository.GameInstanceRepository.GetUsersByGameInstance(gameInstance.GameInstanceID);
             var game = _dataRepository.GameRepository.Find(gameInstance.GameID);
-            var viewModel = new GameInstanceViewModel {GameInstanceID = gameInstance.GameInstanceID, Players = players, GameName = game.Name};
+            var viewModel = new GameInstanceViewModel {GameInstance = gameInstance, Players = players, Game = game};
 
             return View(viewModel);
+        }
+
+        public void ActivateGameInstance(GameInstance gameInstance)
+        {
+            _dataRepository.GameInstanceRepository.ActivateGameInstance(gameInstance);
         }
 
     }
