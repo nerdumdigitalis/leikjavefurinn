@@ -34,6 +34,12 @@ namespace Leikjavefur.Controllers
                 return RedirectToLocal(returnUrl);
             }
 
+            if (!WebSecurity.IsConfirmed(model.UserName))
+            {
+                ModelState.AddModelError("", "Notandinn " + model.UserName +" er óvirkur");
+                return View(model);
+            }
+
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "Notendanafnið eða lykilorðið er ekki rétt.");
             return View(model);

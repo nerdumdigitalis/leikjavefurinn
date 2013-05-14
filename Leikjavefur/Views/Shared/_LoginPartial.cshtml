@@ -1,33 +1,8 @@
-﻿
+﻿@model Leikjavefur.Models.LoginModel
 
-@if (Request.IsAuthenticated) 
-{
-    
-    <div id="profilestats">
-        <p>Name: @Html.ActionLink(User.Identity.Name, "Details", "Users", new { @id=WebSecurity.CurrentUserId }, null)</p>
-        <p>Stigafjöldi:</p>
-        <p>Fjöldi Spilaðra leikja:</p>
-        <p>Medalía:</p>
-    </div>
-
-    
-    
-    <div id="logoff">
-    
-        
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
-            @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutForm').submit()">Útskrá</a>}
-        
-        @Html.ActionLink("Breyta Lykilorði", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "UserProfilename", title = "Manage" })
-    </div>
-} 
-else 
-{
     <ul>
-        @*@RenderPage("~/Views/Account/Login.cshtml")*@
+        @*@Html.RenderAction("Login","Users")*@
+        @*@RenderPage("~/Views/Account/Login.cshtml","Login","Account")*@
         @Html.ActionLink("Nýskráning", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
     </ul>
-}
-

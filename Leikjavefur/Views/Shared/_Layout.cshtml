@@ -26,31 +26,38 @@
 
 
         <div id="leftChat">
-	        <div id="leikirchat">
-                @Html.Action("GamesList", "Games")
-            </div>
-            <div id="ongoingGames">
-                @Html.Action("Index", "GameInstance")
-            </div>
+            @if (Request.IsAuthenticated) 
+            {
+	            <div id="leikirchat">
+                    @Html.Action("GamesList", "Games")
+                </div>
+                <div id="ongoingGames">
+                    @Html.Action("Index", "GameInstance")
+                </div>
+            }
+            else
+            {
+                @Html.Partial("_LoginPartial")             
+            } 
+           
         </div>
     
         <div id="middle">
             <div id="profile">
                 
-                
-                <div id="avatar">
-                    @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
-                </div>
-                    
-                <section id="login"> 
+              @if (Request.IsAuthenticated)  
+               {
+                  
+               @Html.Action("_ProfilePartial", "Users")
+              } 
+              @if(!Request.IsAuthenticated)
+                {    
+                @*<section id="login"> 
                     @Html.Partial("_LoginPartial")
-                </section>
-                <nav>
-                    <ul id="menu">
-                        @*<li>@Html.ActionLink("Notendur", "Index", "Players")</li>
-                        <li>@Html.ActionLink("Leikir", "Index", "Games")</li>*@
-                    </ul>
-                </nav>
+                    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                </section>*@
+                }
+
             </div>
                
             
@@ -60,7 +67,7 @@
                     
                     
                     @*@RenderSection("featured", required: false)
-                    <section *@@*class="content-wrapper main-content clear-fix">*@
+                    <section class="content-wrapper main-content clear-fix">*@
                     @RenderBody()
                     
 
@@ -84,7 +91,7 @@
                 {
                     <div id="tabs-2" class="tabcontent">
                         <p>
-                            <p id="vinirtext">Vinir</p>
+                            <span id="vinirtext">Vinir</span>
                             @*@Html.Partial("_FriendsPartial")*@
                             @Html.Action("FriendsList", "Users")
                         </p>

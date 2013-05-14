@@ -15,7 +15,13 @@ namespace Leikjavefur.Models.Repository
 
         public IQueryable<UserProfile> All
         {
-            get { return _context.Users; }
+            get
+            {
+                //return _context.Users;  // skilar öllum notendum
+                return (from user in _context.Users // skilar öllum notendum nema UserID=1 sem er admin
+                        where user.UserID != 1
+                        select user);
+            }
         }
 
         public IQueryable<UserProfile> AllIncluding(params Expression<Func<UserProfile, object>>[] includeProperties)

@@ -1,0 +1,24 @@
+﻿@model Leikjavefur.Models.UserProfile
+
+@{
+    Layout = null;
+}
+
+<div id="avatar">
+        @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar5.png") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
+</div>
+
+<div id="profilestats">
+        <p>Name: @Html.ActionLink(User.Identity.Name, "Details", "Users", new { @id=WebSecurity.CurrentUserId }, null)</p>
+        <p>Stigafjöldi:</p>
+        <p>Fjöldi Spilaðra leikja:</p>
+        <p>Medalía:</p>
+</div>
+
+<div id="logoff">
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Útskrá</a>}
+        
+        @Html.ActionLink("Breyta Lykilorði", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "UserProfilename", title = "Manage" })
+</div>
