@@ -58,41 +58,63 @@ namespace Leikjavefur.Models
         public void RollDice(string groupId, string userNumber, string userPosition)
         {
             string isGameOver = "false";
+            string snakeOrLadder = "false";
+
             //nextPlayer: used to find out which player rolls next.
             int userRoll;
             Random rand = new Random();
-            userRoll = rand.Next(1, 6);
+            userRoll = rand.Next(1, 7);
 
             int nextCell = userRoll + Convert.ToInt32(userPosition);
 
+            if (nextCell > 30)
+            {
+                int overFlow = nextCell - 30;
+                nextCell = 30 - overFlow;
+            }
+
             //Ladders and Snakes
-            if (nextCell == 3)
+            if (nextCell == 3){
                 nextCell = 22;
-            else if (nextCell == 5)
-                nextCell = 8;
-            else if (nextCell == 11)
-                nextCell = 26;
-            else if (nextCell == 17)
-                nextCell = 4;
-            else if (nextCell == 19)
-                nextCell = 7;
-            else if (nextCell == 20)
-                nextCell = 29;
-            else if (nextCell == 21)
+                snakeOrLadder = "true";
+            }
+            else if (nextCell == 5){
+            nextCell = 8;
+            snakeOrLadder = "true";
+            }
+            else if (nextCell == 11){
+             nextCell = 26;
+             snakeOrLadder = "true";
+            }
+            else if (nextCell == 17){
+             nextCell = 4;
+             snakeOrLadder = "true";
+            }
+            else if (nextCell == 19){
+              nextCell = 7;
+              snakeOrLadder = "true";
+            }
+            else if (nextCell == 20){
+            nextCell = 29;
+            snakeOrLadder = "true";
+            }
+            else if (nextCell == 21){
                 nextCell = 9;
-            else if (nextCell == 27)
-                nextCell = 1;
+                snakeOrLadder = "true";
+            }
+            else if (nextCell == 27){
+              nextCell = 1;
+              snakeOrLadder = "true";
+            }
 
             if (nextCell == 30)
             {
                 isGameOver = "true";
             }
-            //Sends roll value and who rolls next.
-            //if last roller was #4 then new roller will be 0+1 = 1 which is player 1
-            //if last roller was <4 then new roller will be players 2, 3 or 4.
-            Clients.Group(groupId).receiveRollValueAndNextPlayer(Convert.ToString(nextCell), userNumber, isGameOver);
-        }
 
+            Clients.Caller.receiveRollValueAndNextPlayer(userPosition, Convert.ToString(nextCell), userNumber, isGameOver, Convert.ToString(userRoll), snakeOrLadder);
+            Clients.OthersInGroup(groupId).receiveRollValueAndNextPlayer(userPosition, Convert.ToString(nextCell), userNumber, isGameOver, Convert.ToString(userRoll), snakeOrLadder); 
+        }
 
 #endregion
         

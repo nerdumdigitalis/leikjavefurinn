@@ -288,6 +288,7 @@
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\avatar.bmp" />
+    <Content Include="Images\dice_150.jpg" />
     <Content Include="Images\game_board.jpg" />
     <Content Include="Images\game_board2.jpg" />
     <Content Include="Images\game_board3.jpg" />
