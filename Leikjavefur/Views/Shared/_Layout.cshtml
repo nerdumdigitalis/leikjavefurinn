@@ -37,20 +37,18 @@
         <div id="middle">
             <div id="profile">
                 
-                
-                <div id="avatar">
-                    @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
-                </div>
-                    
+              @if (Request.IsAuthenticated)  
+               {
+                  
+                @Html.Partial("~/Views/Users/_ProfilePartial.cshtml")
+              } 
+              @if(!Request.IsAuthenticated)
+                {    
                 <section id="login"> 
                     @Html.Partial("_LoginPartial")
                 </section>
-                <nav>
-                    <ul id="menu">
-                        @*<li>@Html.ActionLink("Notendur", "Index", "Players")</li>
-                        <li>@Html.ActionLink("Leikir", "Index", "Games")</li>*@
-                    </ul>
-                </nav>
+                }
+
             </div>
                
             
@@ -60,7 +58,7 @@
                     
                     
                     @*@RenderSection("featured", required: false)
-                    <section *@@*class="content-wrapper main-content clear-fix">*@
+                    <section class="content-wrapper main-content clear-fix">*@
                     @RenderBody()
                     
 
@@ -84,7 +82,7 @@
                 {
                     <div id="tabs-2" class="tabcontent">
                         <p>
-                            <p id="vinirtext">Vinir</p>
+                            <span id="vinirtext">Vinir</span>
                             @*@Html.Partial("_FriendsPartial")*@
                             @Html.Action("FriendsList", "Users")
                         </p>
