@@ -99,7 +99,6 @@ namespace Leikjavefur.Models.Repository
                 {
                     instance.IsActive = true;
                 }
-                Save();
             }
         }
 

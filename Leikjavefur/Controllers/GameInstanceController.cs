@@ -53,21 +53,22 @@ namespace Leikjavefur.Controllers
             return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult Join(string gameInstanceID)
+        public ActionResult Join(GameInstance gameInstance)
         {
             if (WebSecurity.IsAuthenticated)
             {
-                var gameInstance = _dataRepository.GameInstanceRepository.Find(gameInstanceID);
+                //var gameInstance = _dataRepository.GameInstanceRepository.Find(gameInstance);
                 _dataRepository.GameInstanceRepository.JoinGameInstance(gameInstance, WebSecurity.CurrentUserId);
                 return RedirectToAction("Game", gameInstance);
             }
             return RedirectToAction("Login", "Account");
         }
 
-        public ActionResult DeleteGameInstance(string gameInstance)
+        public ActionResult DeleteGameInstance(GameInstance gameInstance)
         {
-            _dataRepository.GameInstanceRepository.DeleteGameInstance(gameInstance);
-            return RedirectToAction("Index");
+            _dataRepository.GameInstanceRepository.DeleteGameInstance(gameInstance.GameInstanceID);
+            _dataRepository.GameInstanceRepository.Save();
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult GetUsersByGameInstance(string gameInstance)
@@ -88,6 +89,7 @@ namespace Leikjavefur.Controllers
         public void ActivateGameInstance(GameInstance gameInstance)
         {
             _dataRepository.GameInstanceRepository.ActivateGameInstance(gameInstance);
+            _dataRepository.GameInstanceRepository.Save();
         }
 
     }

@@ -3,17 +3,17 @@
 <h2>@Model.Game.Name</h2>
 
 <div id="gameinfo">
-@*<p>Leikjatilfelli númer: @Model.GameInstanceID</p>*@
-
-<p>Leikur stofnaður af: @Model.Players.First().UserName</p>
-<p>Spilarar í þessum leik:</p>
-@foreach(var player in Model.Players)
-{
-    @Html.DisplayFor(modelItem => player.UserName );
-    <p> </p>
-}
+    
+    <p>Leikur stofnaður af: @Model.Players.First().UserName</p>
+    <p>Spilarar í þessum leik:</p>
+    @foreach(var player in Model.Players)
+    {
+        @Html.DisplayFor(modelItem => player.UserName );
+        <p> </p>
+    }
 
 </div>
+@Html.ActionLink("Hefja leik", "ActivateGameInstance", "GameInstance", Model.GameInstance, null)
+@Html.ActionLink("Hætta leik", "DeleteGameInstance", "GameInstance", Model.GameInstance, null)
 
 @RenderPage(Model.Game.Name + ".cshtml", new {target = "_blank"})
-
