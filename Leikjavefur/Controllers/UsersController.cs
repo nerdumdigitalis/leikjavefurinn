@@ -4,6 +4,7 @@ using Leikjavefur.Models;
 using Leikjavefur.Models.Interfaces;
 using Leikjavefur.Models.Repository;
 using WebMatrix.WebData;
+using System.Web.Security;
 
 namespace Leikjavefur.Controllers
 {   
@@ -136,8 +137,18 @@ namespace Leikjavefur.Controllers
         public ActionResult _ProfilePartial()
         {
             return PartialView(_dataRepository.UserRepository.Find(WebSecurity.CurrentUserId));
+        }
+
+        public ActionResult ToggleRoleMembership(string username, string rolename)
+        {
+            if (Roles.IsUserInRole(username, rolename))
+                Roles.RemoveUsersFromRoles(new[] { username }, new[] { rolename });
+            else
+                Roles.AddUsersToRoles(new[] { username }, new[] { rolename });
+
+            return RedirectToAction("Index");
         }    
-        
+
     }
 }
 
