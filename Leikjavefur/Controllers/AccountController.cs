@@ -29,12 +29,12 @@ namespace Leikjavefur.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (ModelState.IsValid && !Roles.IsUserInRole(model.UserName, "Disabled")  && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
             }
 
-            if (!WebSecurity.IsConfirmed(model.UserName))
+            if (Roles.IsUserInRole(model.UserName, "Disabled"))
             {
                 ModelState.AddModelError("", "Notandinn " + model.UserName +" er óvirkur");
                 return View(model);

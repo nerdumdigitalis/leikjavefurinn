@@ -136,8 +136,8 @@ namespace Leikjavefur.Controllers
         public ActionResult _ProfilePartial()
         {
             return PartialView(_dataRepository.UserRepository.Find(WebSecurity.CurrentUserId));
-        }
-
+        }    
+        
     }
 }
 
