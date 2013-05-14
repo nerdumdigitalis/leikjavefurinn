@@ -27,8 +27,10 @@
 <p>
     @if (User.IsInRole("Administrator"))
     {
-        @Html.ActionLink("Edit", "Edit", new { id=Model.UserID })
-        @Html.ActionLink("Til Baka", "Index")
+        <div>
+            @Html.ActionLink("Edit", "Edit", new { id=Model.UserID }) | 
+            @Html.ActionLink("Til Baka", "Index")
+        </div>
     }
 </p>
 

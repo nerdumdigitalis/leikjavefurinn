@@ -21,9 +21,9 @@
         <th>
             DateCreated
         </th>
-        <th>
+@*        <th>
             About
-        </th>
+        </th>*@
     </tr>
 
 @foreach (var item in Model) {
@@ -42,9 +42,9 @@
         <td>
 			@String.Format("{0:g}", item.DateCreated)
         </td>
-        <td>
+@*        <td>
 			@item.About
-        </td>
+        </td>*@
     </tr>
 }
 
