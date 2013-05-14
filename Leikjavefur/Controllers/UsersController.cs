@@ -132,6 +132,7 @@ namespace Leikjavefur.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }
 
