@@ -75,7 +75,19 @@
         }
 
         var myNumber = parseInt(getMyPlayerNumber());
-        if (nextPlayer == myNumber) {
+
+        if (roll == 6)
+        {
+            if (player == myNumber)
+            {
+                if (isGameOver != "true") {
+                    myTurn = true;
+                    $("#dice").show();
+                    myPosition = newPosition;
+                }
+            }
+        }
+        else if (nextPlayer == myNumber) {
             if (isGameOver != "true") {
                 myTurn = true;
                 $("#dice").show();
