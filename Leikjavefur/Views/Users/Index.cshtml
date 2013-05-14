@@ -1,3 +1,5 @@
+@using System.Web.Security;
+
 @model IEnumerable<Leikjavefur.Models.UserProfile>
 
 @{
@@ -29,7 +31,11 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Disable", "Disable", "Account", new { name=item.UserName }, null) |
+            @if (Roles.IsUserInRole(item.UserName, "Disabled"))
+            {   @Html.ActionLink("Enable", "ToggleDisable", "Users", new { name=item.UserName }, null) }
+            else
+            {   @Html.ActionLink("Disable",  "ToggleDisable", "Users", new { name=item.UserName }, null) }
+            |
             @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
             @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
