@@ -133,6 +133,16 @@ namespace Leikjavefur.Controllers
             base.Dispose(disposing);
         }
 
+        public ActionResult Disable(string name)
+        {
+            if (WebSecurity.IsConfirmed(name))
+            {
+                WebSecurity.ConfirmAccount(null);
+            }
+            return RedirectToAction("Index", "Users");
+        }
+
+
     }
 }
 

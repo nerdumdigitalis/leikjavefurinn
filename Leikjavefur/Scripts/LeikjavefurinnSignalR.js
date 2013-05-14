@@ -2,11 +2,11 @@
 
     var hub = $.connection.communication;
     var myTurn = false;
-    var myTurnSnakesAndLadders = false;
     var grid = [['', '', ''], ['', '', ''], ['', '', '']];
     var myPosition = 1;
     var gameGroup = '';
     var chatGroup = '';
+    var move = 1;
     var textArea = document.getElementById('ChatArea');
 
     //Chat Receive Functions
@@ -33,24 +33,64 @@
     };
 
     //Snakes'N'Ladders Receive Functions
-    hub.client.receiveRollValueAndNextPlayer = function (move, player, isGameOver) {
+    hub.client.receiveRollValueAndNextPlayer = function (_oldPosition, _newPosition, _player, _isGameOver, roll, snakeOrLadder) {
+
+        var oldPosition = 0;
+        oldPosition = parseInt(_oldPosition);
+        var newPosition = 0;
+        newPosition = parseInt(_newPosition);
+        var player = 0;
+        player = parseInt(_player);
+        var isGameOver = "";
+        isGameOver = _isGameOver;
+
         //Start by moving player to new position
-
-
-        //find out if i should do next.
-        if ((player + 1) == getMyPlayerNumber()) {
-            if (isGameOver != "true") {
-                myTurnSnakesAndLadders = true;
-                $("#Dice").hidden = true;
+        $("#rolltext").text("Player " + player + " rolls a " + roll);
+        var difference = newPosition - oldPosition;
+        if (snakeOrLadder == "true")
+        {
+            for (var i = 1; i <= roll; i++) {
+                var nextPos = $("#" + (oldPosition + i)).position();
+                $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+            }
+            var endPos = $("#" + (newPosition)).position();
+            $("#player" + player).animate({ 'top': endPos.top + 'px', 'left': endPos.left + 'px' }, 1000, function () { });
+        }
+        else if(difference > 0)
+        {
+            for(var i = oldPosition++; i <= newPosition; i++)
+            {
+                var nextPos = $("#" + i).position();
+                $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
             }
         }
-        else if (player == getMyPlayerNumber()) {
-            myPosition = move;
+
+        //find out if i should do next
+        var nextPlayer = player;
+        if (nextPlayer == 4){
+            nextPlayer = 1;
+        }
+        else{
+            nextPlayer++;
         }
 
-        if (isGameOver == "true" && player == getMyPlayerNumber())
+        var myNumber = parseInt(getMyPlayerNumber());
+        if (nextPlayer == myNumber) {
+            if (isGameOver != "true") {
+                myTurn = true;
+                $("#dice").show();
+            }
+        }
+        else if (player == myNumber) {
+            myPosition = newPosition;
+        }
+
+        if (isGameOver == "true" && player == myNumber)
+        {
+            hub.server.gameOver(gameGroup);
             alert("You won! Congratulationz");
-        else if(isGameOver == "true" && player != GetMyPlayerNumber())
+        }
+        else if (isGameOver == "true" && player != myNumber)
             alert("You lost. Sorry friend :(");
     };
 
@@ -65,18 +105,17 @@
         if (typeof (getChatGroup) === 'function')
             chatGroup = getChatGroup();
 
+        if (typeof (getMyPlayerNumber) === 'function') {
+            if(getMyPlayerNumber() == true)
+                $("#dice").show();
+        };
+
         if (gameGroup != ''){
             hub.server.join(gameGroup);
             chatGroup = gameGroup;
         }
         else if (chatGroup != '')
             hub.server.join(chatGroup);
-
-       /* if (gameGroup != '') {
-            hub.server.join(gameGroup);
-        }
-        if (chatGroup != '')
-            hub.server.join(chatGroup);*/
 
         //Chat Send Functions
         $("#SendButton").click(function () {
@@ -119,12 +158,12 @@
         });
 
         //Snakes'N'Ladders Send Functions
-        $("#Dice").click(function () {
-            if (myTurnSnakesAndLadders == true) {
+        $("#dice").click(function () {
+            if (myTurn == true) {
+                myTurn = false;
                 hub.server.rollDice(gameGroup, getMyPlayerNumber(), myPosition);
-                $("#Dice").hidden = true;
+                $("#dice").hide();
             }
-            
         });
 
     });

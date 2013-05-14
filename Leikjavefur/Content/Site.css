@@ -232,7 +232,7 @@ ul
     float: left;
     text-align:right;
     display:inline;
-    margin-left: 33%;
+    
 }
 #loginButton 
 {
@@ -426,18 +426,6 @@ h2
     font-family: "Arial Black", Gadget, sans-serif;
 }
 
-#snakestable
-{
-    margin-left:auto;
-    margin-right:auto;
-}
-
-#snakestable tbody tr td {
-	/*padding: 33px 39px;*/
-    margin: 33px 39px;
-	border: 1px solid white;
-}
-
 #SnakesAndLaddersBoard 
 {
 	background: url("../Images/game_board3.jpg") no-repeat;
@@ -488,13 +476,29 @@ h2
 	left: 2px;
 }
 
+#dice {
+    position:absolute;
+    background: url("../Images/dice_150.jpg") no-repeat; 
+	top: 520px;
+	left: 600px;
+    height: 150px;
+	width: 152px;
+}
+
+#rolltext {
+    position:absolute;
+    top: 480px;
+	left: 600px;
+}
+
 #gameinfo 
 {
-    float:left;
+    float:right;
     border:solid black 3px;
     margin-left:5px;
     margin-right:5px;
     padding:10px;
+    left: 700px;
 }
 
 

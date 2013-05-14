@@ -40,7 +40,6 @@ namespace Leikjavefur.Models.Repository
                 if (gameInst.GameInstanceID == gameInstanceId)
                 {
                     _context.GameInstances.Remove(gameInst);
-                    Save();
                 }
             }
         }
