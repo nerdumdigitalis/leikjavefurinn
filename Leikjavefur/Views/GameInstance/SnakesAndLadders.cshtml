@@ -58,7 +58,7 @@
 
 <script>
     $("#dice").hide();
-    var myGameGroup = '@Model.GameInstanceID';
+    var myGameGroup = '@Model.GameInstance.GameInstanceID';
     var playerNumber = '@Model.Players.ToArray().Count()';
     var isMyTurn = false;
 

@@ -11,12 +11,13 @@ namespace Leikjavefur.Models.Interfaces
         IQueryable<GameInstance> AllIncluding(params Expression<Func<GameInstance, object>>[] includeProperties);
         GameInstance Find(string gameInstanceID);
         GameInstance CreateNewGameInstance(int gameID, int currentUserID);
-        void JoinActiveGameInstance(GameInstance gameInstance, int currentUserID);
+        void JoinGameInstance(GameInstance gameInstance, int currentUserID);
         void DeleteGameInstance(string gameInstanceId);
-        List<string> GetGameInstancesID();
+        List<GameInstance> GetGameInstances();
         IQueryable<UserProfile> GetUsersByGameInstance(string gameInstanceID);
         List<GameInstance> GetGameInstancesByUser(int userID);
         int GetGameIDByGameInstanceID(string gameInstanceID);
+        void ActivateGameInstance(GameInstance gameInstance);
         void Save();
         void Dispose();
     }

@@ -44,10 +44,10 @@ namespace Leikjavefur.Models.Repository
             }
         }
 
-        public List<string> GetGameInstancesID()
+        public List<GameInstance> GetGameInstances()
         {
-
-            return _context.GameInstances.Select(element => element.GameInstanceID).Distinct().ToList();
+            return All.GroupBy(element => element.GameInstanceID).Select(grp => grp.FirstOrDefault()).ToList();
+            //return _context.GameInstances.Select(element => element.GameInstanceID).Distinct().ToList();
 
         }
 
@@ -82,13 +82,25 @@ namespace Leikjavefur.Models.Repository
             return gameInstance;
         }
 
-        public void JoinActiveGameInstance(GameInstance gameInstance, int currentUserID)
+        public void JoinGameInstance(GameInstance gameInstance, int currentUserID)
         {
             if (GetUsersByGameInstance(gameInstance.GameInstanceID).ToList().Exists(user => user.UserID == currentUserID)) return;
             var joinInstance = new GameInstance { GameID = gameInstance.GameID, UserID = currentUserID, GameInstanceID = gameInstance.GameInstanceID };
             _context.GameInstances.Add(joinInstance);
             Save();
 
+        }
+
+        public void ActivateGameInstance(GameInstance gameInstance)
+        {
+            foreach (var instance in All)
+            {
+                if(instance.GameInstanceID == gameInstance.GameInstanceID)
+                {
+                    instance.IsActive = true;
+                }
+                Save();
+            }
         }
 
 

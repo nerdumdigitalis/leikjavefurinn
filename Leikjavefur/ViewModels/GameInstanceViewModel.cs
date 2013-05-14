@@ -5,8 +5,8 @@ namespace Leikjavefur.ViewModels
 {
     public class GameInstanceViewModel
     {
-        public string GameInstanceID { get; set; }
-        public string GameName { get; set; }
+        public GameInstance GameInstance { get; set; }
+        public Game Game { get; set; }
         public IQueryable<UserProfile> Players { get; set; }
     }
 }

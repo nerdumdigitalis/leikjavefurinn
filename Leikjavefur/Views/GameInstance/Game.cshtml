@@ -1,6 +1,6 @@
 ﻿@model Leikjavefur.ViewModels.GameInstanceViewModel
 
-<h2>@Model.GameName</h2>
+<h2>@Model.Game.Name</h2>
 
 <div id="gameinfo">
 @*<p>Leikjatilfelli númer: @Model.GameInstanceID</p>*@
@@ -15,5 +15,5 @@
 
 </div>
 
-@RenderPage(Model.GameName + ".cshtml", new {target = "_blank"})
+@RenderPage(Model.Game.Name + ".cshtml", new {target = "_blank"})
 
