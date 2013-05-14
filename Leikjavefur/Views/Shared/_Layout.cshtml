@@ -26,12 +26,20 @@
 
 
         <div id="leftChat">
-	        <div id="leikirchat">
-                @Html.Action("GamesList", "Games")
-            </div>
-            <div id="ongoingGames">
-                @Html.Action("Index", "GameInstance")
-            </div>
+            @if (Request.IsAuthenticated) 
+            {
+	            <div id="leikirchat">
+                    @Html.Action("GamesList", "Games")
+                </div>
+                <div id="ongoingGames">
+                    @Html.Action("Index", "GameInstance")
+                </div>
+            }
+            else
+            {
+                @Html.Partial("_LoginPartial")             
+            } 
+           
         </div>
     
         <div id="middle">
@@ -40,13 +48,14 @@
               @if (Request.IsAuthenticated)  
                {
                   
-                @Html.Partial("~/Views/Users/_ProfilePartial.cshtml")
+               @Html.Action("_ProfilePartial", "Users")
               } 
               @if(!Request.IsAuthenticated)
                 {    
-                <section id="login"> 
+                @*<section id="login"> 
                     @Html.Partial("_LoginPartial")
-                </section>
+                    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                </section>*@
                 }
 
             </div>

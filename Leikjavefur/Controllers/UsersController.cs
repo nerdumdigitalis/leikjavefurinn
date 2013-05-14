@@ -132,6 +132,11 @@ namespace Leikjavefur.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult _ProfilePartial()
+        {
+            return PartialView(_dataRepository.UserRepository.Find(WebSecurity.CurrentUserId));
+        }
     }
 }
 
