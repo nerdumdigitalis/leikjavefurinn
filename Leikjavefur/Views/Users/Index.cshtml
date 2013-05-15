@@ -37,9 +37,13 @@
         {
             <td>
                 @if (Roles.IsUserInRole(item.UserName, role))
-                {   @Html.ActionLink("True | ",   "ToggleRoleMembership", "Users", new { username=item.UserName , rolename=role }, null)  }
+                {   
+                    @Html.ActionLink("True",   "ToggleRoleMembership", "Users", new { username=item.UserName , rolename=role }, null) @: | 
+                }
                 else
-                {   @Html.ActionLink("False | ",  "ToggleRoleMembership", "Users", new { username=item.UserName , rolename=role }, null)  }
+                {   
+                    @Html.ActionLink("False",  "ToggleRoleMembership", "Users", new { username=item.UserName , rolename=role }, null) @: | 
+                }
             </td>
         }
         <td>

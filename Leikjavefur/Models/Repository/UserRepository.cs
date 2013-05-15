@@ -18,7 +18,7 @@ namespace Leikjavefur.Models.Repository
             get
             {
                 //return _context.Users;  // skilar öllum notendum
-                return (from user in _context.Users // skilar öllum notendum nema UserID=1 sem er admin
+                return (from user in _context.Users // skilar öllum notendum nema UserID=1 (admin notandanum)
                         where user.UserID != 1
                         select user);
             }
@@ -91,6 +91,19 @@ namespace Leikjavefur.Models.Repository
                 _context.SaveChanges();
             }
             //return "Index";
+        }
+
+        public bool IsFriend(int currentUserId, int friendsId)
+        {
+            var alreadyFriends = (from friend in _context.Friends
+                                  where friend.UserID == currentUserId
+                                  && friend.FriendID == friendsId
+                                  select friend).SingleOrDefault();
+
+            if (alreadyFriends == null)
+                return false;
+            else
+                return true;
         }
 
     }

@@ -39,38 +39,28 @@
             {
                 @Html.Partial("_LoginPartial")
             } 
-           
         </div>
     
         <div id="middle">
             <div id="profile">
-                
-              @if (Request.IsAuthenticated)  
-               {
-                  
-               @Html.Action("_ProfilePartial", "Users")
-              } 
-              @if(!Request.IsAuthenticated)
+                @if (Request.IsAuthenticated)  
+                {
+                    @Html.Action("_ProfilePartial", "Users")
+                } 
+                @if(!Request.IsAuthenticated)
                 {    
-                @*<section id="login"> 
-                    @Html.Partial("_LoginPartial")
-                    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-                </section>*@
+                    @*<section id="login"> 
+                        @Html.Partial("_LoginPartial")
+                        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+                    </section>*@
                 }
-
             </div>
                
-            
             <div id="mainPage">
                 <div id="nyskra">
-                    
-                    
-                    
                     @*@RenderSection("featured", required: false)
                     <section class="content-wrapper main-content clear-fix">*@
-                    @RenderBody()
-                    
-
+                        @RenderBody()
                     @*</section>*@
                 </div>
             </div>
@@ -91,8 +81,6 @@
                 {
                     <div id="tabs-2" class="tabcontent">
                         <p>
-                            <span id="vinirtext">Vinir</span>
-                            @*@Html.Partial("_FriendsPartial")*@
                             @Html.Action("FriendsList", "Users")
                         </p>
                     </div>
