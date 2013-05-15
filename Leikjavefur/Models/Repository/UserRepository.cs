@@ -77,12 +77,26 @@ namespace Leikjavefur.Models.Repository
 
         public void AddFriend(int currentUserId, int friendsId)
         {
-            if (IsFriend(currentUserId, friendsId))
+            if (!IsFriend(currentUserId, friendsId))
             {
                 Friends newFriend = new Friends();
                 newFriend.UserID = currentUserId;
                 newFriend.FriendID = friendsId;
                 _context.Friends.Add(newFriend);
+                _context.SaveChanges();
+            }
+            //return "Index";
+        }
+
+        public void RemoveFriend(int currentUserId, int friendsId)
+        {
+            if (IsFriend(currentUserId, friendsId))
+            {
+                var currentFriend = (from friend in _context.Friends
+                              where friend.UserID == currentUserId
+                              && friend.FriendID == friendsId
+                              select friend).SingleOrDefault();
+                _context.Friends.Remove(currentFriend);
                 _context.SaveChanges();
             }
             //return "Index";
