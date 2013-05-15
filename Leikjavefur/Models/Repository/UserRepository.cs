@@ -75,6 +75,14 @@ namespace Leikjavefur.Models.Repository
             return friendsIDs.Select(Find).ToList();
         }
 
+        public Friends GetFriend(int currentUserId, int friendsId)
+        {
+            return (from friend in _context.Friends
+                    where friend.UserID == currentUserId
+                    && friend.FriendID == friendsId
+                    select friend).SingleOrDefault();
+        }
+
         public void AddFriend(int currentUserId, int friendsId)
         {
             if (!IsFriend(currentUserId, friendsId))
@@ -92,11 +100,7 @@ namespace Leikjavefur.Models.Repository
         {
             if (IsFriend(currentUserId, friendsId))
             {
-                var currentFriend = (from friend in _context.Friends
-                              where friend.UserID == currentUserId
-                              && friend.FriendID == friendsId
-                              select friend).SingleOrDefault();
-                _context.Friends.Remove(currentFriend);
+                _context.Friends.Remove(GetFriend(currentUserId, friendsId));
                 _context.SaveChanges();
             }
             //return "Index";
@@ -104,16 +108,10 @@ namespace Leikjavefur.Models.Repository
 
         public bool IsFriend(int currentUserId, int friendsId)
         {
-            var alreadyFriends = (from friend in _context.Friends
-                                  where friend.UserID == currentUserId
-                                  && friend.FriendID == friendsId
-                                  select friend).SingleOrDefault();
-
-            if (alreadyFriends == null)
+            if (GetFriend(currentUserId, friendsId) == null)
                 return false;
             else
                 return true;
         }
-
     }
 }

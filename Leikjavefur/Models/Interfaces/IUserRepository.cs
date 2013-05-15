@@ -17,5 +17,6 @@ namespace Leikjavefur.Models.Interfaces
         void AddFriend(int currendUserId, int friendsId);
         void RemoveFriend(int currendUserId, int friendsId);
         bool IsFriend(int currentUserId, int friendsId);
+        Friends GetFriend(int currentUserId, int friendsId);
     }
 }
