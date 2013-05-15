@@ -25,6 +25,16 @@ namespace Leikjavefur.Models
             gameInstRep.DeleteGameInstance(gameInstanceId);
         }
 
+        public void SendPlayerCount(string groupId, string playerCount)
+        {
+            Clients.OthersInGroup(groupId).receivePlayerCount(playerCount);
+        }
+
+        public void StartGame(string groupId)
+        {
+            Clients.OthersInGroup(groupId).gameStarted();
+        }
+
 #endregion
 
 #region Chat Functions 

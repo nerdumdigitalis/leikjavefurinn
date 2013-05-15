@@ -8,12 +8,30 @@
     <p>Spilarar í þessum leik:</p>
     @foreach(var player in Model.Players)
     {
+
         @Html.DisplayFor(modelItem => player.UserName );
         <p> </p>
     }
+    <p id="waitingForPlayers"></p>
 
 </div>
-@Html.ActionLink("Hefja leik", "ActivateGameInstance", "GameInstance", Model.GameInstance, null)
-@Html.ActionLink("Hætta leik", "DeleteGameInstance", "GameInstance", Model.GameInstance, null)
+@*@Html.ActionLink("Hefja leik", "ActivateGameInstance", "GameInstance", Model.GameInstance, null)
+@Html.ActionLink("Hætta leik", "DeleteGameInstance", "GameInstance", Model.GameInstance, null)*@
+
+<input type="button" id="startGame" value="Hefja Leik" />
+<input type="button" id="deleteGame" value="Hætta leik">
+
+<script>
+    $("#startGame").hide();
+    $("#deleteGame").hide();
+
+    function startGame() {
+        document.location = '@Url.Action("ActivateGameInstance", "GameInstance", Model.GameInstance, null)';
+    };
+
+    function deleteGame() {
+        document.location = '@Url.Action("DeleteGameInstance", "GameInstance", Model.GameInstance, null)';
+    };
+</script>
 
 @RenderPage(Model.Game.Name + ".cshtml", new {target = "_blank"})
