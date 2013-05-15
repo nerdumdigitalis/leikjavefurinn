@@ -431,7 +431,7 @@ h2
 	background: url("../Images/game_board3.jpg") no-repeat;
 	width: 519px;
 	height: 437px;
-	margin-top: 200px;
+	margin-top: 0px;
 	z-index: -1;
 }
 
@@ -577,17 +577,13 @@ h2
 #changeAvatarButton 
 {
     display:none;
-    
 }
 #avatar:hover #changeAvatarButton 
 {
     display: inline;
     position:absolute;
-    /*z-index:10;*/
     bottom:1px;
     left:1px;
     background-color:grey;
     opacity:0.8;
-    
-
 }
