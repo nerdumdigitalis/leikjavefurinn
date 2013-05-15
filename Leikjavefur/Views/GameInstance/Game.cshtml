@@ -18,20 +18,34 @@
 @*@Html.ActionLink("Hefja leik", "ActivateGameInstance", "GameInstance", Model.GameInstance, null)
 @Html.ActionLink("Hætta leik", "DeleteGameInstance", "GameInstance", Model.GameInstance, null)*@
 
+
+@RenderPage(Model.Game.Name + ".cshtml", new {target = "_blank"})
+
+
 <input type="button" id="startGame" value="Hefja Leik" />
 <input type="button" id="deleteGame" value="Hætta leik">
+
 
 <script>
     $("#startGame").hide();
     $("#deleteGame").hide();
 
-    function startGame() {
-        document.location = '@Url.Action("ActivateGameInstance", "GameInstance", Model.GameInstance, null)';
-    };
+    var userId2 = '@WebSecurity.CurrentUserId';
+    var realGameId = '@Model.Game.GameID';
 
+   @* function startGame() {
+        document.location = '@Url.Action("ActivateGameInstance", "GameInstance", Model.GameInstance, null)';
+    };*@
+   
     function deleteGame() {
         document.location = '@Url.Action("DeleteGameInstance", "GameInstance", Model.GameInstance, null)';
     };
-</script>
 
-@RenderPage(Model.Game.Name + ".cshtml", new {target = "_blank"})
+    function getRealGameId() {
+        return realGameId;
+    };
+
+    function getUserId() {
+        return userId2;
+    };
+</script>

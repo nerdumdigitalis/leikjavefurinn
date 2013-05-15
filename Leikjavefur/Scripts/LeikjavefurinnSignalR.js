@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-
     var hub = $.connection.communication;
     var myTurn = false;
     var grid = [['', '', ''], ['', '', ''], ['', '', '']];
@@ -7,6 +6,7 @@
     var gameGroup = '';
     var chatGroup = '';
     var move = 1;
+    var numberOfPlayers = 1;
     var textArea = document.getElementById('ChatArea');
 
     //Chat Receive Functions
@@ -25,7 +25,16 @@
         var isGameOver = checkIfGameOver();
 
         if (isGameOver == true) {
+            hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Lost");
             alert("Þú tapaðir, spilaðu aftur!");
+            if (getMyPlayerNumber() == 1)
+                $("#deleteGame").show();
+        }
+        else if(checkIfGameTied() == true){
+            hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Tie");
+            alert("Það er jafntefli!");
+            if (getMyPlayerNumber() == 1)
+                $("#deleteGame").show();
         }
         else {
             myTurn = true;
@@ -64,10 +73,16 @@
                 $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
             }
         }
+        else if (difference < 0) {
+            for (var i = oldPosition--; i >= newPosition; i--) {
+                var nextPos = $("#" + i).position();
+                $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+            }
+        }
 
         //find out if i should do next
         var nextPlayer = player;
-        if (nextPlayer == 4){
+        if (nextPlayer == numberOfPlayers){
             nextPlayer = 1;
         }
         else{
@@ -100,15 +115,19 @@
         if (isGameOver == "true" && player == myNumber)
         {
             $("#deleteGame").show();
+            hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Won");
             alert("Þú vannst! til hamingju :)");
         }
         else if (isGameOver == "true" && player != myNumber)
         {
+            hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Lost");
             alert("Þú tapaðir... :(");
         }
     };
 
     hub.client.receivePlayerCount = function (playerCount) {
+        numberOfPlayers = playerCount;
+
         if (playerCount < getMinPlayers()) {
             $("#waitingForPlayers").text("Waiting for: " + (getMinPlayers() - playerCount) + " player");
         }
@@ -131,6 +150,7 @@
 
         $("#startGame").click(function () {
             //startGame();
+            hub.server.activateGame(gameGroup);
             $("#startGame").hide();
             hub.server.startGame(gameGroup);
             myTurn = true;
@@ -150,6 +170,7 @@
         if (typeof (getGameGroup) === 'function') {
             gameGroup = getGameGroup();
             hub.server.sendPlayerCount(gameGroup, getMyPlayerNumber());
+            numberOfPlayers = getMyPlayerNumber();
         }
         if (typeof (getChatGroup) === 'function')
             chatGroup = getChatGroup();
@@ -193,9 +214,15 @@
                 addToGrid(elementId, myMark);
                 hub.server.clickCell(gameGroup, elementId);
                 $("#" + elementId).text(myMark);
-                var isGameOver = checkIfGameOver();
-                if (isGameOver == true) {
+                if (checkIfGameOver() == true) {
+                    hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Won");
                     alert("Þú vannst! til hamingju");
+                    if (getMyPlayerNumber() == 1)
+                        $("#deleteGame").show();
+                }
+                else if (checkIfGameTied() == true) {
+                    hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Tie");
+                    alert("Það er jafntefli!");
                     $("#deleteGame").show();
                 }
             }
@@ -231,7 +258,7 @@
             grid[2][1] = mark;
         else if (id == 9)
             grid[2][2] = mark;
-    }
+    };
 
     function checkIfGameOver() {
         if (grid[0][0] == grid[0][1] && grid[0][0] == grid[0][2] && grid[0][0] != '')
@@ -252,6 +279,14 @@
             return true;
 
         return false;
-    }
+    };
+
+    function checkIfGameTied() {
+        if (grid[0][0] != "" && grid[0][1] != "" && grid[0][2] != ""
+            && grid[1][0] != "" && grid[1][1] != "" && grid[1][2] != ""
+            && grid[2][0] != "" && grid[2][1] != "" && grid[2][2] != "") {
+            return true;
+        }
+    };
 })
 

@@ -240,9 +240,6 @@ ul
     height: 30px;
 }
 
-
-
-
 .popup
 { 
     text-align:center;
@@ -479,16 +476,14 @@ h2
 #dice {
     position:absolute;
     background: url("../Images/dice_150.jpg") no-repeat; 
-	top: 520px;
-	left: 600px;
+	top: 350px;
+	left: 550px;
     height: 150px;
 	width: 152px;
 }
 
 #rolltext {
-    position:absolute;
-    top: 480px;
-	left: 600px;
+    font-size:large;
 }
 
 #gameinfo 

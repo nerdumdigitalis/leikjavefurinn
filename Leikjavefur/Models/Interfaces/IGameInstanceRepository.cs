@@ -17,7 +17,8 @@ namespace Leikjavefur.Models.Interfaces
         IQueryable<UserProfile> GetUsersByGameInstance(string gameInstanceID);
         List<GameInstance> GetGameInstancesByUser(int userID);
         int GetGameIDByGameInstanceID(string gameInstanceID);
-        void ActivateGameInstance(GameInstance gameInstance);
+        //void ActivateGameInstance(GameInstance gameInstance);
+        void ActivateGameInstance(string gameInstanceId);
         void Save();
         void Dispose();
     }
