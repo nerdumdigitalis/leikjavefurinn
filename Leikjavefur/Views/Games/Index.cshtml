@@ -18,8 +18,7 @@
     <fieldset id="gameindex">
 
             <div id ="gameindexphoto">
-                @*Html.DisplayFor(modelItem => item.Avatar) //þarf að gera eithvað til að geta sett inn mynd fyrir hvert instance*@
-                @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})
+                 <img src="~/Images/@item.Avatar"  />
             </div>
             <div id="gameindexinfo">
                 <p>Nafn: @Html.DisplayFor(modelItem => item.Name)</p>
