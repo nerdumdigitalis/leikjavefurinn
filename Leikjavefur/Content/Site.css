@@ -574,3 +574,20 @@ h2
     float:left;
     padding-bottom:20px;
 }
+#changeAvatarButton 
+{
+    display:none;
+    
+}
+#avatar:hover #changeAvatarButton 
+{
+    display: inline;
+    position:absolute;
+    /*z-index:10;*/
+    bottom:1px;
+    left:1px;
+    background-color:grey;
+    opacity:0.8;
+    
+
+}
