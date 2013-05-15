@@ -31,6 +31,14 @@ namespace Leikjavefur.Models.Repository
             return _context.Statistics.Find(id);
         }
 
+        public Statistic FindByUserIdAndGameID(int userId, int gameId)
+        {
+            return (from Stats in _context.Statistics
+                              where Stats.UserID == userId
+                              &&  Stats.GameID == gameId
+                              select Stats).FirstOrDefault();
+        }
+
         public void InsertOrUpdate(Statistic statistic)
         {
             if (statistic.Id == default(string)) {

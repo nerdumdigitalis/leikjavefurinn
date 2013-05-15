@@ -9,7 +9,6 @@
     <div class="player" id="player3"></div>
     <div class="player" id="player4"></div>
     <div id="dice"></div>
-    <p id="rolltext"> </p>
     <table id="SnakesAndLaddersSquares">
 	    <tbody>
 		    <tr>
@@ -56,6 +55,8 @@
     </table>
 </div>
 
+<p id="rolltext"> </p>
+
 <script>
     var start = $("#1").position();
     $("#player1").animate({ 'top': start.top + 'px', 'left': start.left + 'px' }, 1, function () { });
@@ -101,7 +102,7 @@
     if (playerNumber == 4)
         $("#waitingForPlayers").text("Waiting for game to start!");
     else
-        $("#waitingForPlayers").text("Waiting for: " + (4 - playerNumber) + " player");
+        $("#waitingForPlayers").text("Waiting for: " + (minPlayers - playerNumber) + " player");
 
 </script>
 

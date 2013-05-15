@@ -35,17 +35,12 @@ namespace Leikjavefur.Controllers
             return View(_dataRepository.UserRepository.All);
         }
 
-        public ActionResult UserListORIGINAL()
-        {
-            return PartialView(_dataRepository.UserRepository.All);
-        }
-
         public ActionResult UserList()
         {
             var result = new List<UserProfileViewModel>();
-            var instances = _dataRepository.UserRepository.All.ToList();
+            var allusers = _dataRepository.UserRepository.All.ToList();
             var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId).ToList();
-            List<UserProfile> notfriends = instances.Except(friends).ToList();
+            List<UserProfile> notfriends = allusers.Except(friends).ToList();
    
             foreach (var instance in friends)
             {

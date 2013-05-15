@@ -51,7 +51,7 @@ body
     float:left;
     width:100%;
     height:155px;
-    background-color:#f90a79;
+    background-color:#827B60;
 }
 
 #profilestats 
@@ -242,9 +242,6 @@ ul
     width: 100px;
     height: 30px;
 }
-
-
-
 
 .popup
 { 
@@ -482,16 +479,14 @@ h2
 #dice {
     position:absolute;
     background: url("../Images/dice_150.jpg") no-repeat; 
-	top: 520px;
-	left: 600px;
+	top: 350px;
+	left: 550px;
     height: 150px;
 	width: 152px;
 }
 
 #rolltext {
-    position:absolute;
-    top: 480px;
-	left: 600px;
+    font-size:large;
 }
 
 #gameinfo 

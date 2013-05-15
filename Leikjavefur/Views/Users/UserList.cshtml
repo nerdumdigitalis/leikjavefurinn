@@ -8,7 +8,7 @@
 
 @if (User.IsInRole("Administrator"))
 {
-    <p>@Html.ActionLink("Notendur", "Index", "Users")</p>
+    <h3>@Html.ActionLink("Notendur", "Index", "Users")</h3>
 }
 else
 {
@@ -27,7 +27,10 @@ else
                         <fieldset>
                             <legend>@item.UserProfile.UserName</legend>
                             <div id="avatar">
-                                @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
+                                <object data="~/Images/@item.UserProfile.Avatar">
+                                    <img src="~/Images/avatar3.png"  />
+                                </object>
+                                @*@Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    *@
                             </div>
 
                             <div class="display-label">Nafn: <p>@item.UserProfile.UserName</p></div>

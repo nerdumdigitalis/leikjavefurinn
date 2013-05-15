@@ -91,11 +91,11 @@ namespace Leikjavefur.Models.Repository
 
         }
 
-        public void ActivateGameInstance(GameInstance gameInstance)
+        public void ActivateGameInstance(string gameInstanceId)
         {
             foreach (var instance in All)
             {
-                if(instance.GameInstanceID == gameInstance.GameInstanceID)
+                if (instance.GameInstanceID == gameInstanceId)
                 {
                     instance.IsActive = true;
                 }
