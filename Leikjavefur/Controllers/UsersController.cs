@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using System.Web.Mvc;
 using Leikjavefur.Models;
@@ -5,6 +6,7 @@ using Leikjavefur.Models.Interfaces;
 using Leikjavefur.Models.Repository;
 using WebMatrix.WebData;
 using System.Web.Security;
+using Leikjavefur.ViewModels;
 
 namespace Leikjavefur.Controllers
 {   
@@ -25,24 +27,43 @@ namespace Leikjavefur.Controllers
         //
         // GET: /Players/
 
+        [Authorize(Roles = "Administrator")]
         public ViewResult Index()
         {
             return View(_dataRepository.UserRepository.All);
         }
 
-        public ActionResult UserList()
+        public ActionResult UserListORIGINAL()
         {
             return PartialView(_dataRepository.UserRepository.All);
+        }
+
+        public ActionResult UserList()
+        {
+            var result = new List<UserProfileViewModel>();
+            var instances = _dataRepository.UserRepository.All;
+            var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId);
+   
+            foreach (var instance in instances)
+            {
+                //int index = friends.FindIndex(item => item. == 200);
+                //if (index >= 0)
+                //{
+                //    // element exists, do what you need
+                //}
+                result.Add(new UserProfileViewModel
+                {
+                    UserProfile = instance,
+    //                IsFriend = _dataRepository.UserRepository.IsFriend(WebSecurity.CurrentUserId, instance.UserID)
+                });
+
+            }
+            return PartialView(result);
         }
 
         public ActionResult FriendsList()
         {
             return PartialView(_dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId));
-            //if(WebSecurity.IsAuthenticated)
-            //{
-            //    return PartialView(_userRepository.GetFriends(WebSecurity.CurrentUserId));
-            //}
-            //return RedirectToAction("Login", "Account");
         }
 
         public ActionResult AddFriend(int id)
@@ -149,10 +170,11 @@ namespace Leikjavefur.Controllers
             return RedirectToAction("Index");
         }
 
-        public bool IsFriend(int id)
-        {
-            return (_dataRepository.UserRepository.IsFriend(WebSecurity.CurrentUserId, id));
-        }
+        //public bool IsFriend(int id)
+        //{
+        //    return (_dataRepository.UserRepository.IsFriend(WebSecurity.CurrentUserId, id));
+        //}
+
     }
 }
 

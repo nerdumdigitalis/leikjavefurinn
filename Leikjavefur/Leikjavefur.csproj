@@ -218,6 +218,7 @@
     <Compile Include="ViewModels\ChatModel.cs" />
     <Compile Include="ViewModels\GameInstanceViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\SnakesAndLadders.css" />

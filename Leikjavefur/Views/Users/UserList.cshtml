@@ -1,4 +1,6 @@
-﻿@model IQueryable<Leikjavefur.Models.UserProfile>
+﻿@*@model IQueryable<Leikjavefur.Models.UserProfile>*@
+@using Leikjavefur.Models
+@model IEnumerable<Leikjavefur.ViewModels.UserProfileViewModel>
 
 @{
     Layout = null;
@@ -18,24 +20,27 @@ else
     {
         @*@Html.DisplayFor(modelItem => item.UserName)*@
         <li>
-            @Html.ActionLink(item.UserName, "Details", new { id=item.UserID })
+            @Html.ActionLink(item.UserProfile.UserName, "Details", new { id=item.UserProfile.UserID })
             <div class="popup-right-upper">
                 <div id="popup-form">
                     <form>
                         <fieldset>
-                            <legend>@item.UserName</legend>
+                            <legend>@item.UserProfile.UserName</legend>
                             <div id="avatar">
                                 @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
                             </div>
 
-                            <div class="display-label">Nafn: <p>@item.UserName</p></div>
-                            <div class="display-label">Netfang: <p>@item.Email</p></div>
-                            <div class="display-label">Fyrst Innskráður: <p>@String.Format("{0:g}", @item.DateCreated)</p></div>
-                            <div class="display-field">@item.About</div>
+                            <div class="display-label">Nafn: <p>@item.UserProfile.UserName</p></div>
+                            <div class="display-label">Netfang: <p>@item.UserProfile.Email</p></div>
+                            <div class="display-label">Fyrst Innskráður: <p>@String.Format("{0:g}", @item.UserProfile.DateCreated)</p></div>
+                            <div class="display-field">@item.UserProfile.About</div>
 
                             @if (Request.IsAuthenticated) 
                             {
-                                <input type="button" value="Vingast við" onclick="location.href='@Url.Action("AddFriend", "Users", new { id=item.UserID })'" />
+                                if (item.IsFriend)
+                                {   <input type="button" value="Taka af Vinalista" onclick="location.href='@Url.Action("AddFriend", "Users", new { id=item.UserProfile.UserID })'" />   }
+                                else
+                                {   <input type="button" value="Setja á Vinalista" onclick="location.href='@Url.Action("AddFriend", "Users", new { id=item.UserProfile.UserID })    '" />   }
                             }
                         </fieldset>
                     </form>

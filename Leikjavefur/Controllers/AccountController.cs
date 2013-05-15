@@ -235,7 +235,7 @@ namespace Leikjavefur.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Games");
             }
         }
 

@@ -1,5 +1,3 @@
-@using System.Web.Security;
-
 @model IEnumerable<Leikjavefur.Models.UserProfile>
 
 @{
@@ -11,11 +9,12 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
 <table>
     <tr>
-        @foreach (var role in System.Web.Security.Roles.GetAllRoles())
-        {   <th>@role</th>   }
+        @foreach (var role in Roles.GetAllRoles())
+        {
+            <th>@role</th>
+        }
         <th></th>
         <th>
             Username
@@ -33,18 +32,12 @@
 
 @foreach (var item in Model) {
     <tr>
-        @foreach (var role in System.Web.Security.Roles.GetAllRoles())
+        @foreach (var role in Roles.GetAllRoles())
         {
-            <td>
-                @if (Roles.IsUserInRole(item.UserName, role))
-                {   
-                    @Html.ActionLink("True",   "ToggleRoleMembership", "Users", new { username=item.UserName , rolename=role }, null) @: | 
-                }
-                else
-                {   
-                    @Html.ActionLink("False",  "ToggleRoleMembership", "Users", new { username=item.UserName , rolename=role }, null) @: | 
-                }
-            </td>
+            if (Roles.IsUserInRole(item.UserName, role))
+            {   <td>@Html.ActionLink("True", "ToggleRoleMembership", "Users", new { username=item.UserName, rolename=role }, null) |</td>    }
+            else
+            {   <td>@Html.ActionLink("False", "ToggleRoleMembership", "Users", new { username=item.UserName, rolename=role }, null) |</td>    }
         }
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |

@@ -25,13 +25,17 @@
 </fieldset>
 
 <p>
+    <div>
+    @if (User.IsInRole("Administrator") || WebSecurity.CurrentUserId == Model.UserID)
+    {
+            @Html.ActionLink("Edit", "Edit", new { id=Model.UserID })
+    }
     @if (User.IsInRole("Administrator"))
     {
-        <div>
-            @Html.ActionLink("Edit", "Edit", new { id=Model.UserID }) | 
-            @Html.ActionLink("Til Baka", "Index")
-        </div>
+        @: | 
+        @Html.ActionLink("Til Baka", "Index")
     }
+    </div>
 </p>
 
 
