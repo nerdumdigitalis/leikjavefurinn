@@ -35,17 +35,12 @@ namespace Leikjavefur.Controllers
             return View(_dataRepository.UserRepository.All);
         }
 
-        public ActionResult UserListORIGINAL()
-        {
-            return PartialView(_dataRepository.UserRepository.All);
-        }
-
         public ActionResult UserList()
         {
             var result = new List<UserProfileViewModel>();
-            var instances = _dataRepository.UserRepository.All.ToList();
+            var allusers = _dataRepository.UserRepository.All.ToList();
             var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId).ToList();
-            List<UserProfile> notfriends = instances.Except(friends).ToList();
+            List<UserProfile> notfriends = allusers.Except(friends).ToList();
    
             foreach (var instance in friends)
             {
@@ -79,6 +74,14 @@ namespace Leikjavefur.Controllers
             _dataRepository.UserRepository.AddFriend(WebSecurity.CurrentUserId, id);
             return RedirectToAction("Details", new { id = id });
         }
+
+        public ActionResult RemoveFriend(int id)
+        {
+            //return PartialView(_userRepository.AddFriend(WebSecurity.CurrentUserId, id));
+            _dataRepository.UserRepository.RemoveFriend(WebSecurity.CurrentUserId, id);
+            return RedirectToAction("Details", new { id = id });
+        }
+
         //
         // GET: /Players/Details/5
 
@@ -129,7 +132,7 @@ namespace Leikjavefur.Controllers
             {
                 _dataRepository.UserRepository.InsertOrUpdate(userProfile);
                 _dataRepository.UserRepository.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Games");
             }
             return View();
         }

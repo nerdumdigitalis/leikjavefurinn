@@ -3,11 +3,14 @@ body
 {
     position:fixed;
     float:left;
-    width:100%;
-    height:100%;
+    width:80%;
+    height:98%;
     background-color: #827B60;
-    margin:0px;
+    margin-left:10%;
+    margin-right:10%;
     font-size: 90%;
+    background-color:white;
+
 }
 
 #vinir
@@ -48,6 +51,7 @@ body
     float:left;
     width:100%;
     height:155px;
+    background-color:#827B60;
 }
 
 #profilestats 
@@ -112,7 +116,6 @@ body
     width:100%;
     text-align:center;
     border-right:none;
-    overflow-y: scroll;
 }
 
 #rightChat
@@ -573,6 +576,7 @@ h2
 {
     display:none;
 }
+
 #avatar:hover #changeAvatarButton 
 {
     display: inline;
@@ -582,3 +586,20 @@ h2
     background-color:grey;
     opacity:0.8;
 }
+
+#AvatarSelector:hover #AvatarsAvailible
+{
+    display: inline;
+}
+
+#AvatarsAvailible 
+{
+    display:none;
+}
+    
+#AvatarsAvailible img 
+{
+    height: 100px;
+    width: 100px;
+}
+
