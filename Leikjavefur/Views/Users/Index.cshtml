@@ -35,7 +35,7 @@
         @foreach (var role in Roles.GetAllRoles())
         {
             if (Roles.IsUserInRole(item.UserName, role))
-            {   <td>@Html.ActionLink("True", "ToggleRoleMembership", "Users", new { username=item.UserName, rolename=role }, null) |</td>    }
+            {   <td>@Html.ActionLink("True",  "ToggleRoleMembership", "Users", new { username=item.UserName, rolename=role }, null) |</td>    }
             else
             {   <td>@Html.ActionLink("False", "ToggleRoleMembership", "Users", new { username=item.UserName, rolename=role }, null) |</td>    }
         }

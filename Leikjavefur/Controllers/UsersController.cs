@@ -7,6 +7,8 @@ using Leikjavefur.Models.Repository;
 using WebMatrix.WebData;
 using System.Web.Security;
 using Leikjavefur.ViewModels;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Leikjavefur.Controllers
 {   
@@ -41,23 +43,28 @@ namespace Leikjavefur.Controllers
         public ActionResult UserList()
         {
             var result = new List<UserProfileViewModel>();
-            var instances = _dataRepository.UserRepository.All;
-            var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId);
+            var instances = _dataRepository.UserRepository.All.ToList();
+            var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId).ToList();
+            List<UserProfile> notfriends = instances.Except(friends).ToList();
    
-            foreach (var instance in instances)
+            foreach (var instance in friends)
             {
-                //int index = friends.FindIndex(item => item. == 200);
-                //if (index >= 0)
-                //{
-                //    // element exists, do what you need
-                //}
                 result.Add(new UserProfileViewModel
                 {
                     UserProfile = instance,
-    //                IsFriend = _dataRepository.UserRepository.IsFriend(WebSecurity.CurrentUserId, instance.UserID)
+                    IsFriend = true
                 });
-
             }
+
+            foreach (var instance in notfriends)
+            {
+                result.Add(new UserProfileViewModel
+                {
+                    UserProfile = instance,
+                    IsFriend = false
+                });
+            }
+
             return PartialView(result);
         }
 

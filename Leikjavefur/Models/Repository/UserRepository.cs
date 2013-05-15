@@ -77,7 +77,7 @@ namespace Leikjavefur.Models.Repository
 
         public void AddFriend(int currentUserId, int friendsId)
         {
-            if (IsFriend(currentUserId, friendsId) == null)
+            if (IsFriend(currentUserId, friendsId))
             {
                 Friends newFriend = new Friends();
                 newFriend.UserID = currentUserId;
