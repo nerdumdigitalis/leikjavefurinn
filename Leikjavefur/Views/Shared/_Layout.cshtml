@@ -34,10 +34,6 @@
                 <div id="ongoingGames">
                     @Html.Action("Index", "GameInstance")
                 </div>
-            }
-            else
-            {
-                @Html.Partial("_LoginPartial")
             } 
         </div>
     
@@ -51,7 +47,6 @@
                 {    
                     <section id="login"> 
                         @Html.Partial("_LoginPartial")
-                        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
                     </section>
                 }
             </div>
