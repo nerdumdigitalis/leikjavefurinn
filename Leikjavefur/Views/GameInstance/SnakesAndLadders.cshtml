@@ -9,7 +9,7 @@
     <div class="player" id="player3"></div>
     <div class="player" id="player4"></div>
     <div id="dice"></div>
-    <p id="rolltext">Test</p>
+    <p id="rolltext"> </p>
     <table id="SnakesAndLaddersSquares">
 	    <tbody>
 		    <tr>
@@ -57,10 +57,19 @@
 </div>
 
 <script>
+    var start = $("#1").position();
+    $("#player1").animate({ 'top': start.top + 'px', 'left': start.left + 'px' }, 1, function () { });
+    $("#player2").animate({ 'top': start.top + 'px', 'left': start.left + 'px' }, 1, function () { });
+    $("#player3").animate({ 'top': start.top + 'px', 'left': start.left + 'px' }, 1, function () { });
+    $("#player4").animate({ 'top': start.top + 'px', 'left': start.left + 'px' }, 1, function () { });
+
     $("#dice").hide();
     var myGameGroup = '@Model.GameInstance.GameInstanceID';
     var playerNumber = '@Model.Players.ToArray().Count()';
     var isMyTurn = false;
+    var gameName = '@Model.Game.Name';
+    var minPlayers = '@Model.Game.MinPlayers';
+    var maxPlayers = '@Model.Game.MaxPlayers';
 
     if (playerNumber == '1')
         var isMyTurn = true;
@@ -76,6 +85,23 @@
     function getGameGroup() {
         return myGameGroup;
     };
+
+    function getGameName() {
+        return gameName;
+    };
+
+    function getMinPlayers() {
+        return minPlayers;
+    };
+
+    function getMaxPlayers() {
+        return maxPlayers;
+    };
+
+    if (playerNumber == 4)
+        $("#waitingForPlayers").text("Waiting for game to start!");
+    else
+        $("#waitingForPlayers").text("Waiting for: " + (4 - playerNumber) + " player");
 
 </script>
 
