@@ -25,7 +25,7 @@
         var isGameOver = checkIfGameOver();
 
         if (isGameOver == true) {
-            alert("You lost, play again!");
+            alert("Þú tapaðir, spilaðu aftur!");
         }
         else {
             myTurn = true;
@@ -99,28 +99,60 @@
 
         if (isGameOver == "true" && player == myNumber)
         {
-            hub.server.gameOver(gameGroup);
-            alert("You won! Congratulationz");
+            $("#deleteGame").show();
+            alert("Þú vannst! til hamingju :)");
         }
         else if (isGameOver == "true" && player != myNumber)
-            alert("You lost. Sorry friend :(");
+        {
+            alert("Þú tapaðir... :(");
+        }
+    };
+
+    hub.client.receivePlayerCount = function (playerCount) {
+        if (playerCount < getMinPlayers()) {
+            $("#waitingForPlayers").text("Waiting for: " + (getMinPlayers() - playerCount) + " player");
+        }
+        else if (playerCount >= getMinPlayers()){
+            if (getMyPlayerNumber() == 1) {
+                $("#startGame").show();
+                $("#waitingForPlayers").text("Þú mátt byrja leikin!");
+        }
+            else
+                $("#waitingForPlayers").text("Biða eftir að leikurinn hefst!");
+        }
+    };
+
+    hub.client.gameStarted = function() {
+        $("#waitingForPlayers").text("Leikurin er hafinn!");
     };
 
     //Connect
     $.connection.hub.start().done(function () {
 
+        $("#startGame").click(function () {
+            //startGame();
+            $("#startGame").hide();
+            hub.server.startGame(gameGroup);
+            myTurn = true;
+            if (getGameName() == "TicTacToe"){
+            }
+            else if (getGameName() == "SnakesAndLadders") {
+                $("#dice").show();
+            }
+        });
+
+        $("#deleteGame").click(function () {
+            deleteGame();
+            $("#deleteGame").hide();
+        });
+
         //Get Groups
         if (typeof (getGameGroup) === 'function') {
             gameGroup = getGameGroup();
-            myTurn = getMyTurn();
+            hub.server.sendPlayerCount(gameGroup, getMyPlayerNumber());
         }
         if (typeof (getChatGroup) === 'function')
             chatGroup = getChatGroup();
-
-        if (typeof (getMyPlayerNumber) === 'function') {
-            if(getMyPlayerNumber() == true)
-                $("#dice").show();
-        };
 
         if (gameGroup != ''){
             hub.server.join(gameGroup);
@@ -163,8 +195,8 @@
                 $("#" + elementId).text(myMark);
                 var isGameOver = checkIfGameOver();
                 if (isGameOver == true) {
-                    hub.server.gameOver(gameGroup);
-                    alert("You won!!, play again!");
+                    alert("Þú vannst! til hamingju");
+                    $("#deleteGame").show();
                 }
             }
         });
@@ -222,3 +254,4 @@
         return false;
     }
 })
+

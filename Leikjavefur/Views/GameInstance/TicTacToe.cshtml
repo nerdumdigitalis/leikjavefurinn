@@ -22,11 +22,13 @@
 
 <script>
     var myGameGroup = '@Model.GameInstance.GameInstanceID';
-    var myGameGroup = '(@Model.GameInstance.GameInstanceID)';
     var player1 = '@Model.Players.ToArray()[0].UserID';
+    var playerNumber = '@Model.Players.ToArray().Count()';
     var mMark = '';
     var hMark = '';
     var startTurn = false;
+    var minPlayers = '@Model.Game.MinPlayers';
+    var maxPlayers = '@Model.Game.MaxPlayers';
 
     @{
         int value;
@@ -47,17 +49,38 @@
 
     function getHisMark(){
         return hMark;
-    }
+    };
 
     function getMyMark() {
         return mMark;
-    }
+    };
     
     function getGameGroup() {
         return myGameGroup;
-    }
+    };
 
     function getMyTurn() {
         return startTurn;
-    }
+    };
+
+    function getMyPlayerNumber() {
+        return playerNumber;
+    };
+
+    function getGameName() {
+        return gameName;
+    };
+
+    function getMinPlayers() {
+        return minPlayers;
+    };
+
+    function getMaxPlayers() {
+        return maxPlayers;
+    };
+
+    if (playerNumber == 2)
+        $("#waitingForPlayers").text("Waiting for game to start!");
+    else
+        $("#waitingForPlayers").text("Waiting for: " + (2 - playerNumber) + " player");
 </script>
