@@ -5,7 +5,12 @@
 }
 
 <div id="avatar">
-        @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar5.png") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
+        <object data="~/Images/@Model.Avatar">
+            <img src="~/Images/avatar3.png"  />
+        </object>
+    @*<div id="ChangeAvatarButton">
+        @Html.ActionLink("Breyta Mynd","Index","Home")
+    </div>*@
 </div>
 
 <div id="profilestats">
