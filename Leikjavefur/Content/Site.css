@@ -146,7 +146,7 @@ html
 	padding-left: 1px;
 	border: solid black 1px;
 	float:right;
-	width:198px;
+	width:97%;
 	height:26px;
 	
 }
@@ -164,7 +164,7 @@ html
 {
     position:relative;
     border: solid black 1px;
-    width:100%;
+    width:99%;
     height:90%;
 }
 
@@ -196,14 +196,14 @@ ul
     position:relative;
     overflow:auto;
     height: 89%;
-    width: 100%;
+    width: 97%;
     resize: none;
 }
 
 #TextBoxMessage {
     position:relative;
     float:left;
-    width: 100%;
+    width: 98%;
     height:5%;
     resize: none;
 }
@@ -944,7 +944,7 @@ h2
 {
 	display: block;
 	z-index: 100;
-<<<<<<< HEAD
+
 
 }
 
@@ -952,8 +952,7 @@ h2
 {
     float:left;
     position:relative;
-    width:97%;
+    width:100%;
     height:300px;
-=======
->>>>>>> 0335e22acfd1fe99768db5502d8ce07cfed81324
+
 }
