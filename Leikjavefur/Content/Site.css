@@ -499,7 +499,6 @@ h2
     left: 700px;
 }
 
-
 #gameinfo p
 {
     color:black;
@@ -603,3 +602,19 @@ h2
     width: 100px;
 }
 
+#listplayer1 {
+    background-color: white;
+}
+
+#listplayer2 {
+    background-color: black;
+    color:white;
+}
+
+#listplayer2 {
+    background-color: purple;
+}
+
+#listplayer3 {
+    background-color: brown;
+}

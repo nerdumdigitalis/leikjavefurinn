@@ -65,45 +65,19 @@
     $("#player4").animate({ 'top': start.top + 'px', 'left': start.left + 'px' }, 1, function () { });
 
     $("#dice").hide();
-    var myGameGroup = '@Model.GameInstance.GameInstanceID';
-    var playerNumber = '@Model.Players.ToArray().Count()';
     var isMyTurn = false;
     var gameName = '@Model.Game.Name';
-    var minPlayers = '@Model.Game.MinPlayers';
-    var maxPlayers = '@Model.Game.MaxPlayers';
 
-    if (playerNumber == '1')
+    if (getMyPlayerNumber()  == '1')
         var isMyTurn = true;
-
-    function getMyPlayerNumber() {
-        return playerNumber;
-    };
 
     function getMyTurn() {
         return isMyTurn;
     };
 
-    function getGameGroup() {
-        return myGameGroup;
-    };
-
     function getGameName() {
         return gameName;
     };
-
-    function getMinPlayers() {
-        return minPlayers;
-    };
-
-    function getMaxPlayers() {
-        return maxPlayers;
-    };
-
-    if (playerNumber == 4)
-        $("#waitingForPlayers").text("Waiting for game to start!");
-    else
-        $("#waitingForPlayers").text("Waiting for: " + (minPlayers - playerNumber) + " player");
-
 </script>
 
 

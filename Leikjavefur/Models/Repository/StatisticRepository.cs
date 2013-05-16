@@ -41,7 +41,7 @@ namespace Leikjavefur.Models.Repository
 
         public void InsertOrUpdate(Statistic statistic)
         {
-            if (statistic.Id == default(string)) {
+            if (statistic.Id == default(int)) {
                 // New entity
                 _context.Statistics.Add(statistic);
             } else {

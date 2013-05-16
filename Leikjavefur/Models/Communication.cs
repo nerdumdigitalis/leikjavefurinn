@@ -8,7 +8,7 @@ namespace Leikjavefur.Models
 {
     public class Communication : Hub
     {
-        private readonly IDataRepository _dataRepository;
+        private readonly IDataRepository _dataRepository = new DataRepository();
 
 #region Basic Functions
         //adds users to groups, either char or game group.
@@ -34,9 +34,9 @@ namespace Leikjavefur.Models
             _dataRepository.GameInstanceRepository.Save();
         }
 
-        public void SendPlayerCount(string groupId, string playerCount)
+        public void SendPlayerCount(string groupId, string playerCount, string userName)
         {
-            Clients.OthersInGroup(groupId).receivePlayerCount(playerCount);
+            Clients.OthersInGroup(groupId).receivePlayerCount(playerCount, userName);
         }
 
         public void StartGame(string groupId)
@@ -50,6 +50,7 @@ namespace Leikjavefur.Models
             if (myStat == null)
             {
                 myStat = new Statistic();
+
                 myStat.UserID = Convert.ToInt32(userId);
                 myStat.GameID = Convert.ToInt32(gameId);
                 myStat.GamesPlayed = 1;
@@ -90,8 +91,8 @@ namespace Leikjavefur.Models
                     myStat.Draws += 1;
                 }
             }
-            _dataRepository.StatisticRepository.InsertOrUpdate(myStat);
-            _dataRepository.StatisticRepository.Save();
+            //_dataRepository.StatisticRepository.InsertOrUpdate(myStat);
+            //_dataRepository.StatisticRepository.Save();
         }
 
 #endregion

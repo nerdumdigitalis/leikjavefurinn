@@ -76,7 +76,7 @@ namespace Leikjavefur.Models
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public int UserID { get; set; }
         //[ForeignKey("UserID")]
@@ -168,12 +168,6 @@ namespace Leikjavefur.Models
 
     public class LoginModel
     {
-        /*
-            Mögulega þarf að bæta hér inn "Forgot password" og "Register".
-            -Natan
-         * Það verða í raun ActionLinks sem sjá um það redirection
-         * -Siggi
-         */
         [Required]
         [Display(Name = "Notandanafn")]
         public string UserName { get; set; }
@@ -189,10 +183,7 @@ namespace Leikjavefur.Models
 
     public class RegisterModel
     {
-        /*
-            Hér þurfum við að bæta við t.d. Email
-            -Natan
-         */
+
         [Required]
         [Display(Name = "Notandanafn")]
         public string UserName { get; set; }

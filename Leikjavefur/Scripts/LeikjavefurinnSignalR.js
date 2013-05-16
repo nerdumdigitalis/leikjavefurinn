@@ -125,7 +125,7 @@
         }
     };
 
-    hub.client.receivePlayerCount = function (playerCount) {
+    hub.client.receivePlayerCount = function (playerCount, userName) {
         numberOfPlayers = playerCount;
 
         if (playerCount < getMinPlayers()) {
@@ -135,10 +135,11 @@
             if (getMyPlayerNumber() == 1) {
                 $("#startGame").show();
                 $("#waitingForPlayers").text("Þú mátt byrja leikin!");
-        }
+            }
             else
                 $("#waitingForPlayers").text("Biða eftir að leikurinn hefst!");
         }
+        $("#playerslist").append(userName + "<p></p>");
     };
 
     hub.client.gameStarted = function() {
@@ -169,7 +170,7 @@
         //Get Groups
         if (typeof (getGameGroup) === 'function') {
             gameGroup = getGameGroup();
-            hub.server.sendPlayerCount(gameGroup, getMyPlayerNumber());
+            hub.server.sendPlayerCount(gameGroup, getMyPlayerNumber(), getMyUserName());
             numberOfPlayers = getMyPlayerNumber();
         }
         if (typeof (getChatGroup) === 'function')

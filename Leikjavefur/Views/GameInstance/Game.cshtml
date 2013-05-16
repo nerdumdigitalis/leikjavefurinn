@@ -6,37 +6,37 @@
     
     <p>Leikur stofnaður af: @Model.Players.First().UserName</p>
     <p>Spilarar í þessum leik:</p>
+
+    <div id="playerslist">
     @foreach(var player in Model.Players)
     {
-
         @Html.DisplayFor(modelItem => player.UserName );
-        <p> </p>
+        <p></p>
     }
+
+    </div>
     <p id="waitingForPlayers"></p>
-
 </div>
-@*@Html.ActionLink("Hefja leik", "ActivateGameInstance", "GameInstance", Model.GameInstance, null)
-@Html.ActionLink("Hætta leik", "DeleteGameInstance", "GameInstance", Model.GameInstance, null)*@
-
 
 @RenderPage(Model.Game.Name + ".cshtml", new {target = "_blank"})
 
-
 <input type="button" id="startGame" value="Hefja Leik" />
 <input type="button" id="deleteGame" value="Hætta leik">
-
 
 <script>
     $("#startGame").hide();
     $("#deleteGame").hide();
 
+    var myGameGroup = '@Model.GameInstance.GameInstanceID';
     var userId2 = '@WebSecurity.CurrentUserId';
     var realGameId = '@Model.Game.GameID';
+    var userName = '@WebSecurity.CurrentUserName';
+    var playerNumber = '@Model.Players.ToArray().Count()';
+    var minPlayers = '@Model.Game.MinPlayers';
+    var maxPlayers = '@Model.Game.MaxPlayers';
 
-   @* function startGame() {
-        document.location = '@Url.Action("ActivateGameInstance", "GameInstance", Model.GameInstance, null)';
-    };*@
-   
+    //$('listplayer1').css('background-color', 'white');
+
     function deleteGame() {
         document.location = '@Url.Action("DeleteGameInstance", "GameInstance", Model.GameInstance, null)';
     };
@@ -48,4 +48,29 @@
     function getUserId() {
         return userId2;
     };
+
+    function getMyUserName() {
+        return userName;
+    };
+
+    function getMinPlayers() {
+        return minPlayers;
+    };
+
+    function getMaxPlayers() {
+        return maxPlayers;
+    };
+
+    function getMyPlayerNumber() {
+        return playerNumber;
+    };
+
+    function getGameGroup() {
+        return myGameGroup;
+    };
+
+    if (playerNumber >= minPlayers)
+        $("#waitingForPlayers").text("Waiting for game to start!");
+    else
+        $("#waitingForPlayers").text("Waiting for: " + (minPlayers - playerNumber) + " player");
 </script>
