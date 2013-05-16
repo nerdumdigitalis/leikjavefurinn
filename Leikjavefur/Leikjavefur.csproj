@@ -289,11 +289,13 @@
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\avatar.bmp" />
+    <Content Include="Images\chess.png" />
+    <Content Include="Images\chucknorris.jpg" />
     <Content Include="Images\dice_150.jpg" />
+    <Content Include="Images\Doom_II.png" />
     <Content Include="Images\game_board.jpg" />
     <Content Include="Images\game_board2.jpg" />
     <Content Include="Images\game_board3.jpg" />
-    <Content Include="Images\logo.jpg" />
     <Content Include="Images\ped1.png" />
     <Content Include="Images\ped2.png" />
     <Content Include="Images\ped3.png" />
@@ -302,6 +304,8 @@
     <Content Include="Images\Player2.jpg" />
     <Content Include="Images\Player3.jpg" />
     <Content Include="Images\Player4.jpg" />
+    <Content Include="Images\skyrim.png" />
+    <Content Include="Images\snakes.bmp" />
     <Content Include="Images\tic.bmp" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
