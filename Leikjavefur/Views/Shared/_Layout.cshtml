@@ -32,18 +32,20 @@
         </div>
 
         <div id="MainView">
-        
-            <div id="Display">
-                @RenderBody()
-            </div>
-	
+            <div id="wrapper">
+                <div id="Display">
+                    @RenderBody()
+                </div>
+            </div>	
             <div id="left_nav">
                 @Html.Action("Index", "GameInstance")
             </div>
         
             <div id="right_nav">
+                <div id="divspjall">
                 <div id="spjall">
                     @Html.Action("ChatPartial", "Chat")
+                </div>
                 </div>
                 @Html.Action("FriendsList", "Users") 
                 @Html.Action("UserList", "Users")

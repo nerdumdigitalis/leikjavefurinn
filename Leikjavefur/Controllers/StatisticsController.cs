@@ -2,6 +2,10 @@ using System.Web.Mvc;
 using Leikjavefur.Models;
 using Leikjavefur.Models.Interfaces;
 using Leikjavefur.Models.Repository;
+using Leikjavefur.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Leikjavefur.Controllers
 {   
@@ -118,6 +122,10 @@ namespace Leikjavefur.Controllers
                 _dataRepository.StatisticRepository.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult OverallTopTen() 
+        {
+            return PartialView();
         }
     }
 }

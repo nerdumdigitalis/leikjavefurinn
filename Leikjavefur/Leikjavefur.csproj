@@ -219,6 +219,8 @@
     <Compile Include="ViewModels\ChatModel.cs" />
     <Compile Include="ViewModels\GameInstanceViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\StatisticsTopTenWithUsernameViewModel.cs" />
+    <Compile Include="ViewModels\StatisticViewModel.cs" />
     <Compile Include="ViewModels\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -350,6 +352,7 @@
     <Content Include="Images\skyrim.png" />
     <Content Include="Images\snakes.bmp" />
     <Content Include="Images\tic.bmp" />
+    <Content Include="Images\top10.png" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -437,6 +440,7 @@
     <Content Include="Views\Users\FriendsList.cshtml" />
     <Content Include="Views\Users\_ProfilePartial.cshtml" />
     <Content Include="Views\Users\ChangeAvatar.cshtml" />
+    <Content Include="Views\Statistics\OverallTopTen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

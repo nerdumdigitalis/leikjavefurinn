@@ -25,16 +25,19 @@
         var isGameOver = checkIfGameOver();
 
         if (isGameOver == true) {
-            hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Lost");
+            //hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Lost");
             alert("Þú tapaðir, spilaðu aftur!");
             if (getMyPlayerNumber() == 1)
-                $("#deleteGame").show();
+            {
+                hub.server.deleteGameById(getGameGroup());
+            }
         }
         else if(checkIfGameTied() == true){
             hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Tie");
             alert("Það er jafntefli!");
-            if (getMyPlayerNumber() == 1)
-                $("#deleteGame").show();
+            if (getMyPlayerNumber() == 1) {
+                hub.server.deleteGameById(getGameGroup());
+            }
         }
         else {
             myTurn = true;
@@ -42,7 +45,7 @@
     };
 
     //Snakes'N'Ladders Receive Functions
-    hub.client.receiveRollValueAndNextPlayer = function (_oldPosition, _newPosition, _player, _isGameOver, roll, snakeOrLadder) {
+    hub.client.receiveRollValueAndNextPlayer = function (_oldPosition, _newPosition, _player, _isGameOver, roll, snakeOrLadder, snakeOrLadderValue) {
 
         var oldPosition = 0;
         oldPosition = parseInt(_oldPosition);
@@ -58,12 +61,33 @@
         var difference = newPosition - oldPosition;
         if (snakeOrLadder == "true")
         {
-            for (var i = 1; i <= roll; i++) {
-                var nextPos = $("#" + (oldPosition + i)).position();
-                $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+            if (snakeOrLadderValue > oldPosition)
+            {
+                var length = snakeOrLadderValue - oldPosition;
+                for (var i = 1; i <= length; i++) {
+                    var nextPos = $("#" + (oldPosition + i)).position();
+                    $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+                }
+                var endPos = $("#" + (newPosition)).position();
+                $("#player" + player).animate({ 'top': endPos.top + 'px', 'left': endPos.left + 'px' }, 1000, function () { });
+
             }
-            var endPos = $("#" + (newPosition)).position();
-            $("#player" + player).animate({ 'top': endPos.top + 'px', 'left': endPos.left + 'px' }, 1000, function () { });
+            else if (snakeOrLadderValue < oldPosition)
+            {
+                var nextPosition = oldPosition + 1;
+                for (var i = nextPosition; i <= 30; i++) {
+                    var nextPos = $("#" + i).position();
+                    $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+                }
+
+                var length = 30 - snakeOrLadderValue;
+                for (var i = 1; i < length; i++) {
+                    var nextPos = $("#" + (oldPosition - i)).position();
+                    $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+                }
+                var endPos = $("#" + (newPosition)).position();
+                $("#player" + player).animate({ 'top': endPos.top + 'px', 'left': endPos.left + 'px' }, 1000, function () { });
+            }
         }
         else if(difference > 0)
         {
@@ -74,7 +98,15 @@
             }
         }
         else if (difference < 0) {
-            for (var i = oldPosition--; i >= newPosition; i--) {
+            var nextPosition = oldPosition + 1;
+            for (var i = nextPosition; i <= 30; i++)
+            {
+                var nextPos = $("#" + i).position();
+                $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+            }
+
+            nextPosition = 29;
+            for (var i = nextPosition; i >= newPosition; i--) {
                 var nextPos = $("#" + i).position();
                 $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
             }
@@ -112,16 +144,19 @@
             myPosition = newPosition;
         }
 
-        if (isGameOver == "true" && player == myNumber)
-        {
-            $("#deleteGame").show();
+        if (isGameOver == "true" && player == myNumber){
             hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Won");
             alert("Þú vannst! til hamingju :)");
+            if (getMyPlayerNumber() == 1) {
+                hub.server.deleteGameById(getGameGroup());
+            }
         }
-        else if (isGameOver == "true" && player != myNumber)
-        {
+        else if (isGameOver == "true" && player != myNumber){
             hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Lost");
             alert("Þú tapaðir... :(");
+            if (getMyPlayerNumber() == 1) {
+                hub.server.deleteGameById(getGameGroup());
+            }
         }
     };
 
@@ -160,12 +195,13 @@
             else if (getGameName() == "SnakesAndLadders") {
                 $("#dice").show();
             }
+            $("#waitingForPlayers").text("Leikurin er hafinn!");
         });
 
-        $("#deleteGame").click(function () {
+        /*$("#deleteGame").click(function () {
             deleteGame();
             $("#deleteGame").hide();
-        });
+        });*/
 
         //Get Groups
         if (typeof (getGameGroup) === 'function') {
@@ -219,12 +255,17 @@
                     hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Won");
                     alert("Þú vannst! til hamingju");
                     if (getMyPlayerNumber() == 1)
-                        $("#deleteGame").show();
+                    {
+                        hub.server.deleteGameById(getGameGroup());
+                    }
                 }
                 else if (checkIfGameTied() == true) {
                     hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Tie");
                     alert("Það er jafntefli!");
-                    $("#deleteGame").show();
+                    if (getMyPlayerNumber() == 1)
+                    {
+                        hub.server.deleteGameById(getGameGroup());
+                    }
                 }
             }
         });
