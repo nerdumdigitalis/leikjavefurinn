@@ -39,9 +39,9 @@ else
 @foreach (var item in Model) 
 {
     <div class="UserImage">
-    <img src="@item.UserProfile.Avatar"/>
+    <img src="~/Images/@item.UserProfile.Avatar"/>
         <div class="UserProfilePopup">
-            <img src="@item.UserProfile.Avatar" style="float:left" alt="Mynd vantar"/>
+            <img src="~/Images/@item.UserProfile.Avatar" style="float:left" alt="Mynd vantar"/>
 @*            <div id="UserProfilePopupUserName">
                 @Html.Encode(item.UserProfile.UserName)
             </div>

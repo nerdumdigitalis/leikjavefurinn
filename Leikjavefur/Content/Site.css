@@ -806,12 +806,17 @@ h2
 	margin-top: 50px;	
 }
 
+.Games div
+{
+	position: relative;
+}
+
 .GamesImage 
 {
 	float: left;
 	margin: 5px;
-	width: 60px;
-	height: 60px;
+	width: 80px;
+	height: 80px;
 	
 }
 

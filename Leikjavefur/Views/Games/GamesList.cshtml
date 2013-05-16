@@ -4,23 +4,23 @@
     Layout = null;
 }
 
-    @foreach (var item in Model)
-    {
-        <div class="Games">
-            <div class="GamesTop">
-                <div class="GamesImage">
-                    <img src="@item.Avatar"/>
+@foreach (var item in Model)
+{
+    <div class="Games">
+        <div class="GamesTop">
+            <div class="GamesImage">
+                <img src="~/Images/@item.Avatar"/>
 
-                </div>
-                <div class="GamesTitle">
-                    @item.Name
-                </div>
             </div>
-            <div class="GamesText">
-                @item.About
-            </div>
-            <div class="GamesPlay">
-                @Html.ActionLink("Spila >>", "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
+            <div class="GamesTitle">
+                @item.Name
             </div>
         </div>
-    }
+        <div class="GamesText">
+            @item.About
+        </div>
+        <div class="GamesPlay">
+            @Html.ActionLink("Spila", "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
+        </div>
+    </div>
+}
