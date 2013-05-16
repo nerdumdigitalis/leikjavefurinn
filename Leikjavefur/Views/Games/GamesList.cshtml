@@ -15,16 +15,21 @@
             @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, new {target ="_blank"})
             <div class="popup-left-upper">
                 <div id="popup-form" title="Notendasnið">
-                    <p class="validateTips">All form fields are required.</p>
                     <form>
                         <fieldset>
                             <legend>@item.Name</legend>
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" />
-                            <label for="email">Email</label>
-                            <input type="text" name="email" id="email" value=""  />
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" value="" />
+                            <div id="avatar">
+                                <object data="~/Images/@item.Avatar">
+                                    <img src="~/Images/avatar3.png"  />
+                                </object>
+                            </div>
+
+                            <div class="display-label">Nafn: <p>@item.Name</p></div>
+                            <div class="display-label">Min Spilarar: <p>@item.MinPlayers</p></div>
+                            <div class="display-label">Max Spilarar: <p>@item.MaxPlayers</p></div>
+                            <div class="display-label">Fyrst Skráður: <p>@String.Format("{0:g}", @item.DateAdded)</p></div>
+                            <div class="display-label">Um Leikinn: <p>@item.About</p></div>
+                            <div class="display-label">Reglur: <p>@item.Rules</p></div>
                         </fieldset>
                     </form>
                 </div>
