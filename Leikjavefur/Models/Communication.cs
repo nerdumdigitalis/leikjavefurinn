@@ -50,7 +50,7 @@ namespace Leikjavefur.Models
             if (myStat == null)
             {
                 myStat = new Statistic();
-
+               // myStat.Id = 0;
                 myStat.UserID = Convert.ToInt32(userId);
                 myStat.GameID = Convert.ToInt32(gameId);
                 myStat.GamesPlayed = 1;
@@ -91,8 +91,14 @@ namespace Leikjavefur.Models
                     myStat.Draws += 1;
                 }
             }
-            //_dataRepository.StatisticRepository.InsertOrUpdate(myStat);
-            //_dataRepository.StatisticRepository.Save();
+            _dataRepository.StatisticRepository.InsertOrUpdate(myStat);
+            _dataRepository.StatisticRepository.Save();
+        }
+
+        public void DeleteGameById(string gameId)
+        {
+            _dataRepository.GameInstanceRepository.DeleteGameInstance(gameId);
+            _dataRepository.GameInstanceRepository.Save();
         }
 
 #endregion
