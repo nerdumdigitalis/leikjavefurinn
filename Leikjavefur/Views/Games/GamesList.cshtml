@@ -7,20 +7,16 @@
 @foreach (var item in Model)
 {
     <div class="Games">
-        <div class="GamesTop">
-            <div class="GamesImage">
-                <img src="~/Images/@item.Avatar"/>
-
-            </div>
-            <div class="GamesTitle">
-                @item.Name
-            </div>
-        </div>
-        <div class="GamesText">
-            @item.About
-        </div>
-        <div class="GamesPlay">
+        <div class="GamesLeft">
+            <img src="~/Images/@item.Avatar"/>
+            <br />
             @Html.ActionLink("Spila", "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
+            <br />
+            <img src="~/Images/chess_thumbnail.jpg"/>
         </div>
-    </div>
+        <div class="GamesRight">
+            <h4>@item.Name</h4>
+            <text>@item.About</text>
+        </div>
+    </div>  
 }
