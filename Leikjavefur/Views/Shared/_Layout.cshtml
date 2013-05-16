@@ -32,11 +32,11 @@
         </div>
 
         <div id="MainView">
-        
-            <div id="Display">
-                @RenderBody()
-            </div>
-	
+            <div id="wrapper">
+                <div id="Display">
+                    @RenderBody()
+                </div>
+            </div>	
             <div id="left_nav">
                 @Html.Action("Index", "GameInstance")
             </div>
