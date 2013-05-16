@@ -349,6 +349,7 @@
     <Content Include="Images\skyrim.png" />
     <Content Include="Images\snakes.bmp" />
     <Content Include="Images\tic.bmp" />
+    <Content Include="Images\top10.png" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
