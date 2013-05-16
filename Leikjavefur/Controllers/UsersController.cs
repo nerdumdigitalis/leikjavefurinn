@@ -39,6 +39,7 @@ namespace Leikjavefur.Controllers
         {
             var result = new List<UserProfileViewModel>();
             var allusers = _dataRepository.UserRepository.All.ToList();
+            allusers.Remove(_dataRepository.UserRepository.Find(WebSecurity.CurrentUserId));
             var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId).ToList();
             List<UserProfile> notfriends = allusers.Except(friends).ToList();
    
