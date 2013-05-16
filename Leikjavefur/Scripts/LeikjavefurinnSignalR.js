@@ -74,14 +74,19 @@
             }
             else if (snakeOrLadderValue < oldPosition)
             {
-                var length = oldPosition - snakeOrLadderValue;
-                for (var i = 1; i <= length; i++) {
+                var nextPosition = oldPosition + 1;
+                for (var i = nextPosition; i <= 30; i++) {
+                    var nextPos = $("#" + i).position();
+                    $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+                }
+
+                var length = 30 - snakeOrLadderValue;
+                for (var i = 1; i < length; i++) {
                     var nextPos = $("#" + (oldPosition - i)).position();
                     $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
                 }
                 var endPos = $("#" + (newPosition)).position();
                 $("#player" + player).animate({ 'top': endPos.top + 'px', 'left': endPos.left + 'px' }, 1000, function () { });
-
             }
         }
         else if(difference > 0)
@@ -93,7 +98,14 @@
             }
         }
         else if (difference < 0) {
-            var nextPosition = oldPosition - 1;
+            var nextPosition = oldPosition + 1;
+            for (var i = nextPosition; i <= 30; i++)
+            {
+                var nextPos = $("#" + i).position();
+                $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+            }
+
+            nextPosition = 29;
             for (var i = nextPosition; i >= newPosition; i--) {
                 var nextPos = $("#" + i).position();
                 $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
