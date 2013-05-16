@@ -13,22 +13,19 @@ else
     <p>Notendur</p>
 }
 
-<ul class="popup">
+@*<ul class="popup">
     @foreach (var item in Model) 
     {
-        @*@Html.DisplayFor(modelItem => item.UserName)*@
         <li>
             @Html.ActionLink(item.UserProfile.UserName, "Details", new { id=item.UserProfile.UserID })
             <div class="popup-right-upper">
                 <div id="popup-form">
                     <form>
                         <fieldset>
-                            @*<legend>@item.UserProfile.UserName</legend>*@
                             <div id="avatar">
                                 <object data="~/Images/@item.UserProfile.Avatar">
                                     <img src="~/Images/avatar3.png"  />
                                 </object>
-                                @*@Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    *@
                             </div>
                         </fieldset>
                     </form>
@@ -36,9 +33,9 @@ else
             </div>
         </li>
     }
-</ul>
+</ul>*@
 
-@*=======
+
 @foreach (var item in Model) 
 {
     <div class="UserImage">
@@ -50,10 +47,10 @@ else
             </div>
             @Html.Encode(item.UserProfile.About)
             dskfsækdjflsdkjfldskjflsdkjflsdkjflksdfjldskjfsd
-        
         </div>
-        
->>>>>>> 2e1b352b8da36df2444abdfcb4c3d6191f6953fc*@
+    </div>
+}
+
 
         
 

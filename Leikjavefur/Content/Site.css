@@ -754,6 +754,7 @@ h2
 	width: 100%;
 	height:500px;
 	background-color: lightgreen;
+    overflow: auto;
 }
 
 #left_nav
