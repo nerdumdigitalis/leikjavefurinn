@@ -131,6 +131,7 @@ namespace Leikjavefur.Models
         {
             string isGameOver = "false";
             string snakeOrLadder = "false";
+            string snakeOrLadderValue = "0";
 
             //nextPlayer: used to find out which player rolls next.
             int userRoll;
@@ -147,36 +148,44 @@ namespace Leikjavefur.Models
 
             //Ladders and Snakes
             if (nextCell == 3){
+                snakeOrLadderValue = "3";
                 nextCell = 22;
                 snakeOrLadder = "true";
             }
             else if (nextCell == 5){
-            nextCell = 8;
-            snakeOrLadder = "true";
+                snakeOrLadderValue = "5";
+                nextCell = 8;
+                snakeOrLadder = "true";
             }
             else if (nextCell == 11){
-             nextCell = 26;
-             snakeOrLadder = "true";
+                snakeOrLadderValue = "11";
+                nextCell = 26;
+                snakeOrLadder = "true";
             }
             else if (nextCell == 17){
-             nextCell = 4;
-             snakeOrLadder = "true";
+                snakeOrLadderValue = "17";
+                nextCell = 4;
+                snakeOrLadder = "true";
             }
             else if (nextCell == 19){
-              nextCell = 7;
-              snakeOrLadder = "true";
+                snakeOrLadderValue = "19";
+                nextCell = 7;
+                snakeOrLadder = "true";
             }
             else if (nextCell == 20){
-            nextCell = 29;
-            snakeOrLadder = "true";
+                snakeOrLadderValue = "20";
+                nextCell = 29;
+                snakeOrLadder = "true";
             }
             else if (nextCell == 21){
+                snakeOrLadderValue = "21";
                 nextCell = 9;
                 snakeOrLadder = "true";
             }
             else if (nextCell == 27){
-              nextCell = 1;
-              snakeOrLadder = "true";
+                snakeOrLadderValue = "27";
+                nextCell = 1;
+                snakeOrLadder = "true";
             }
 
             if (nextCell == 30)
@@ -184,8 +193,8 @@ namespace Leikjavefur.Models
                 isGameOver = "true";
             }
 
-            Clients.Caller.receiveRollValueAndNextPlayer(userPosition, Convert.ToString(nextCell), userNumber, isGameOver, Convert.ToString(userRoll), snakeOrLadder);
-            Clients.OthersInGroup(groupId).receiveRollValueAndNextPlayer(userPosition, Convert.ToString(nextCell), userNumber, isGameOver, Convert.ToString(userRoll), snakeOrLadder); 
+            Clients.Caller.receiveRollValueAndNextPlayer(userPosition, Convert.ToString(nextCell), userNumber, isGameOver, Convert.ToString(userRoll), snakeOrLadder, snakeOrLadderValue);
+            Clients.OthersInGroup(groupId).receiveRollValueAndNextPlayer(userPosition, Convert.ToString(nextCell), userNumber, isGameOver, Convert.ToString(userRoll), snakeOrLadder, snakeOrLadderValue); 
         }
 
 #endregion

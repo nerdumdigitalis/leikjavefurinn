@@ -439,6 +439,7 @@
     <Content Include="Views\Users\FriendsList.cshtml" />
     <Content Include="Views\Users\_ProfilePartial.cshtml" />
     <Content Include="Views\Users\ChangeAvatar.cshtml" />
+    <Content Include="Views\Statistics\OverallTopTen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

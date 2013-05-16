@@ -11,10 +11,10 @@ namespace Leikjavefur.Models.Interfaces
         IQueryable<Statistic> AllIncluding(params Expression<Func<Statistic, object>>[] includeProperties);
         Statistic Find(string id);
         Statistic FindByUserIdAndGameID(int userId, int gameId);
+        List<Statistic> FindAllByUserId(int userId);
         void InsertOrUpdate(Statistic statistic);
         void Delete(string id);
         void Save();
         List<Statistic> GetStatisticsByGame(int gameId);
     }
-
 }

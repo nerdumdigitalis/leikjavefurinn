@@ -45,7 +45,7 @@
     };
 
     //Snakes'N'Ladders Receive Functions
-    hub.client.receiveRollValueAndNextPlayer = function (_oldPosition, _newPosition, _player, _isGameOver, roll, snakeOrLadder) {
+    hub.client.receiveRollValueAndNextPlayer = function (_oldPosition, _newPosition, _player, _isGameOver, roll, snakeOrLadder, snakeOrLadderValue) {
 
         var oldPosition = 0;
         oldPosition = parseInt(_oldPosition);
@@ -61,12 +61,33 @@
         var difference = newPosition - oldPosition;
         if (snakeOrLadder == "true")
         {
-            for (var i = 1; i <= roll; i++) {
-                var nextPos = $("#" + (oldPosition + i)).position();
-                $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+            if (snakeOrLadderValue > oldPosition)
+            {
+                var length = snakeOrLadderValue - oldPosition;
+                for (var i = 1; i <= length; i++) {
+                    var nextPos = $("#" + (oldPosition + i)).position();
+                    $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+                }
+                var endPos = $("#" + (newPosition)).position();
+                $("#player" + player).animate({ 'top': endPos.top + 'px', 'left': endPos.left + 'px' }, 1000, function () { });
+
             }
-            var endPos = $("#" + (newPosition)).position();
-            $("#player" + player).animate({ 'top': endPos.top + 'px', 'left': endPos.left + 'px' }, 1000, function () { });
+            else if (snakeOrLadderValue < oldPosition)
+            {
+                var nextPosition = oldPosition + 1;
+                for (var i = nextPosition; i <= 30; i++) {
+                    var nextPos = $("#" + i).position();
+                    $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+                }
+
+                var length = 30 - snakeOrLadderValue;
+                for (var i = 1; i < length; i++) {
+                    var nextPos = $("#" + (oldPosition - i)).position();
+                    $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+                }
+                var endPos = $("#" + (newPosition)).position();
+                $("#player" + player).animate({ 'top': endPos.top + 'px', 'left': endPos.left + 'px' }, 1000, function () { });
+            }
         }
         else if(difference > 0)
         {
@@ -77,7 +98,15 @@
             }
         }
         else if (difference < 0) {
-            for (var i = oldPosition--; i >= newPosition; i--) {
+            var nextPosition = oldPosition + 1;
+            for (var i = nextPosition; i <= 30; i++)
+            {
+                var nextPos = $("#" + i).position();
+                $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+            }
+
+            nextPosition = 29;
+            for (var i = nextPosition; i >= newPosition; i--) {
                 var nextPos = $("#" + i).position();
                 $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
             }

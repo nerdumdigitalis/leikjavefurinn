@@ -40,6 +40,28 @@ namespace Leikjavefur.Models.Repository
                               select Stats).FirstOrDefault();
         }
 
+        public List<Statistic> FindAllByUserId(int userId)
+        {
+            var PlayerList =  (from Stats in _context.Statistics
+                    select Stats).ToList();
+
+
+            List<Statistic> playTotalScoreArray = new List<Statistic>();
+
+            foreach (var item in PlayerList)
+            {
+                playTotalScoreArray[item.UserID].Wins += item.Wins;
+                playTotalScoreArray[item.UserID].Losses += item.Wins;
+                playTotalScoreArray[item.UserID].Draws += item.Wins;
+                playTotalScoreArray[item.UserID].GamesPlayed += item.Wins;
+                playTotalScoreArray[item.UserID].UserID = item.UserID;
+            }
+            playTotalScoreArray = playTotalScoreArray.OrderByDescending(x => x.Wins).ToList();
+            playTotalScoreArray = playTotalScoreArray.Take(10).ToList();
+
+            return playTotalScoreArray;
+        }
+
         public void InsertOrUpdate(Statistic statistic)
         {
             if (statistic.Id == default(int)) {
