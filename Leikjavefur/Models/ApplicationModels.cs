@@ -32,6 +32,7 @@ namespace Leikjavefur.Models
 
         [Display(Name = "Stutt lýsing, max 200 stafir (Valkvætt)")]
         [StringLength(200, ErrorMessage = "Styttu textan niður í max 200 stafi")]
+        [DataType(DataType.MultilineText)]
         public string About { get; set; }
 
 
@@ -64,10 +65,12 @@ namespace Leikjavefur.Models
 
         [Display(Name = "Stutt lýsing, max 200 stafir (Valkvætt)")]
         [StringLength(200, ErrorMessage = "Styttu textan niður í max 200 stafi")]
+        [DataType(DataType.MultilineText)]
         public string About { get; set; }
 
         [Display(Name = "Reglur")]
         [StringLength(500, ErrorMessage = "Styttu textan niður í max 500 stafi")]
+        [DataType(DataType.MultilineText)]
         public string Rules { get; set; }
     }
 
