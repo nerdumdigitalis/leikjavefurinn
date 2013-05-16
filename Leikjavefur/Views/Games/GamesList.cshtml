@@ -12,11 +12,19 @@
             <br />
             @Html.ActionLink("Spila", "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
             <br />
-            <img src="~/Images/chess_thumbnail.jpg"/>
+            <div class="GamesImage">
+                <img src="~/Images/top10.png"/>
+                <div class="UserProfilePopup">
+                    <img src="~/Images/@item.Avatar" style="float:left" alt="Mynd vantar"/>
+                    <div class="display-label">Nafn: @item.Name</div>
+                    <div class="display-label">Skráður: @String.Format("{0:g}", @item.DateAdded)</div>
+                    <div class="display-field">@item.About</div>
+                </div>
+            </div>
         </div>
         <div class="GamesRight">
             <h4>@item.Name</h4>
-            <text>@item.About</text>
+            @item.About
         </div>
     </div>  
 }

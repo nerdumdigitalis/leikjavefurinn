@@ -949,9 +949,42 @@ h2
 {
 	display: block;
 	z-index: 100;
-
-
 }
+
+
+
+.GamesImage {
+	height: 57px;
+	width: 57px;
+	float: left;
+}
+
+.GamesProfilePopup img 
+{
+	margin: 10px;
+}
+
+.GamesImage .UserProfilePopup 
+{
+	position: relative;
+	display: none;
+	background: white;
+	width: 300px;
+	height: 200px;
+	border: black 1px solid;
+	padding: 10px;
+    top: -30px;
+    left: 50px;
+}
+
+.GamesImage:hover .UserProfilePopup 
+{
+	display: block;
+	z-index: 100;
+}
+
+
+
 
 #divspjall
 {
