@@ -165,11 +165,11 @@ html
     position:relative;
     border: solid black 1px;
     width:100%;
-    height:50%;
+    height:90%;
 }
 
 p {
-    color: white;
+    color: black;
     font-family: "Arial Black", Gadget, sans-serif;
     position: relative;
     overflow: hidden;
@@ -829,7 +829,7 @@ h2
 	height: 10px;
 	font-size: 18px;
 	font-weight: bold;
-	color: #ffffff;
+	color: black;
 }
 
 .GamesText 
@@ -928,4 +928,16 @@ h2
 {
 	display: block;
 	z-index: 100;
+<<<<<<< HEAD
+
+}
+
+#divspjall
+{
+    float:left;
+    position:relative;
+    width:97%;
+    height:300px;
+=======
+>>>>>>> 0335e22acfd1fe99768db5502d8ce07cfed81324
 }
