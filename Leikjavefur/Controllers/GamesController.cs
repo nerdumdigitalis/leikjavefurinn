@@ -3,6 +3,10 @@ using System.Web.Mvc;
 using Leikjavefur.Models;
 using Leikjavefur.Models.Interfaces;
 using Leikjavefur.Models.Repository;
+using Leikjavefur.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Leikjavefur.Controllers
 {   
@@ -33,7 +37,32 @@ namespace Leikjavefur.Controllers
 
         public ActionResult GamesList()
         {
-            return PartialView(_dataRepository.GameRepository.All);
+            //return PartialView(_dataRepository.GameRepository.All);
+            var resultTopTenWithUsername = new List<StatisticsTopTenWithUsernameViewModel>();
+            var resultTopTenWithUsernameAndGame = new List<StatisticViewModel>();
+            var allgames = _dataRepository.GameRepository.All;
+
+            foreach (var gameInstance in allgames)
+            {
+                var statsForGame = _dataRepository.StatisticRepository.GetStatisticsByGame(gameInstance.GameID).ToList();
+
+                foreach (var stat in statsForGame)
+                {
+                    resultTopTenWithUsername.Add(new StatisticsTopTenWithUsernameViewModel
+                    {
+                        Statistic = statsForGame,
+                        UserName = _dataRepository.UserRepository.Find(stat.UserID).UserName
+                    });
+                }
+
+                resultTopTenWithUsernameAndGame.Add(new StatisticViewModel
+                {
+                    StatisticWithUsername = resultTopTenWithUsername,
+                    Game = _dataRepository.GameRepository.Find(gameInstance.GameID),
+                });
+            }
+
+            return PartialView(resultTopTenWithUsernameAndGame);
         }
 
         public ViewResult Details(int id)
