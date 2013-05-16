@@ -56,7 +56,6 @@ namespace Leikjavefur.Models.Repository
                 playTotalScoreArray[item.UserID].GamesPlayed += item.Wins;
                 playTotalScoreArray[item.UserID].UserID = item.UserID;
             }
-            int testint = 0;
             playTotalScoreArray = playTotalScoreArray.OrderByDescending(x => x.Wins).ToList();
             playTotalScoreArray = playTotalScoreArray.Take(10).ToList();
 
@@ -88,6 +87,14 @@ namespace Leikjavefur.Models.Repository
         public void Dispose() 
         {
             _context.Dispose();
+        }
+
+        public List<Statistic> GetStatisticsByGame(int gameId)
+        {
+            return (from stats in _context.Statistics
+                    where stats.GameID == gameId
+                    orderby stats.Wins descending
+                    select stats).Take(10).ToList();
         }
     }
 

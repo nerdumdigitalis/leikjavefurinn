@@ -15,5 +15,6 @@ namespace Leikjavefur.Models.Interfaces
         void InsertOrUpdate(Statistic statistic);
         void Delete(string id);
         void Save();
+        List<Statistic> GetStatisticsByGame(int gameId);
     }
 }
