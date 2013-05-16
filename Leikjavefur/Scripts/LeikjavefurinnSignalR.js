@@ -25,16 +25,19 @@
         var isGameOver = checkIfGameOver();
 
         if (isGameOver == true) {
-            hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Lost");
+            //hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Lost");
             alert("Þú tapaðir, spilaðu aftur!");
             if (getMyPlayerNumber() == 1)
-                $("#deleteGame").show();
+            {
+                hub.server.deleteGameById(getGameGroup());
+            }
         }
         else if(checkIfGameTied() == true){
             hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Tie");
             alert("Það er jafntefli!");
-            if (getMyPlayerNumber() == 1)
-                $("#deleteGame").show();
+            if (getMyPlayerNumber() == 1) {
+                hub.server.deleteGameById(getGameGroup());
+            }
         }
         else {
             myTurn = true;
@@ -112,16 +115,19 @@
             myPosition = newPosition;
         }
 
-        if (isGameOver == "true" && player == myNumber)
-        {
-            $("#deleteGame").show();
+        if (isGameOver == "true" && player == myNumber){
             hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Won");
             alert("Þú vannst! til hamingju :)");
+            if (getMyPlayerNumber() == 1) {
+                hub.server.deleteGameById(getGameGroup());
+            }
         }
-        else if (isGameOver == "true" && player != myNumber)
-        {
+        else if (isGameOver == "true" && player != myNumber){
             hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Lost");
             alert("Þú tapaðir... :(");
+            if (getMyPlayerNumber() == 1) {
+                hub.server.deleteGameById(getGameGroup());
+            }
         }
     };
 
@@ -160,12 +166,13 @@
             else if (getGameName() == "SnakesAndLadders") {
                 $("#dice").show();
             }
+            $("#waitingForPlayers").text("Leikurin er hafinn!");
         });
 
-        $("#deleteGame").click(function () {
+        /*$("#deleteGame").click(function () {
             deleteGame();
             $("#deleteGame").hide();
-        });
+        });*/
 
         //Get Groups
         if (typeof (getGameGroup) === 'function') {
@@ -219,12 +226,17 @@
                     hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Won");
                     alert("Þú vannst! til hamingju");
                     if (getMyPlayerNumber() == 1)
-                        $("#deleteGame").show();
+                    {
+                        hub.server.deleteGameById(getGameGroup());
+                    }
                 }
                 else if (checkIfGameTied() == true) {
                     hub.server.saveWinOrLoss(getUserId(), getRealGameId(), "Tie");
                     alert("Það er jafntefli!");
-                    $("#deleteGame").show();
+                    if (getMyPlayerNumber() == 1)
+                    {
+                        hub.server.deleteGameById(getGameGroup());
+                    }
                 }
             }
         });
