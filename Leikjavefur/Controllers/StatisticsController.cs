@@ -119,6 +119,13 @@ namespace Leikjavefur.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult OverallTopTen() 
+        {
+
+
+            return PartialView();
+        }
     }
 }
 

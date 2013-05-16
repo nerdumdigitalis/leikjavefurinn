@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Leikjavefur.Models.Context;
 using Leikjavefur.Models.Interfaces;
+using System.Collections.Generic;
 
 namespace Leikjavefur.Models.Repository
 { 
@@ -37,6 +38,29 @@ namespace Leikjavefur.Models.Repository
                               where Stats.UserID == userId
                               &&  Stats.GameID == gameId
                               select Stats).FirstOrDefault();
+        }
+
+        public List<Statistic> FindAllByUserId(int userId)
+        {
+            var PlayerList =  (from Stats in _context.Statistics
+                    select Stats).ToList();
+
+
+            List<Statistic> playTotalScoreArray = new List<Statistic>();
+
+            foreach (var item in PlayerList)
+            {
+                playTotalScoreArray[item.UserID].Wins += item.Wins;
+                playTotalScoreArray[item.UserID].Losses += item.Wins;
+                playTotalScoreArray[item.UserID].Draws += item.Wins;
+                playTotalScoreArray[item.UserID].GamesPlayed += item.Wins;
+                playTotalScoreArray[item.UserID].UserID = item.UserID;
+            }
+            int testint = 0;
+            playTotalScoreArray = playTotalScoreArray.OrderByDescending(x => x.Wins).ToList();
+            playTotalScoreArray = playTotalScoreArray.Take(10).ToList();
+
+            return playTotalScoreArray;
         }
 
         public void InsertOrUpdate(Statistic statistic)
