@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Collections.Generic;
 
 namespace Leikjavefur.Models.Interfaces
 {
@@ -13,6 +14,7 @@ namespace Leikjavefur.Models.Interfaces
         void InsertOrUpdate(Statistic statistic);
         void Delete(string id);
         void Save();
+        List<Statistic> GetStatisticsByGame(int gameId);
     }
 
 }

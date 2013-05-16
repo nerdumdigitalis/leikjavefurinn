@@ -965,11 +965,6 @@ h2
     left: 50px;
 }
 
-#UserProfilePopupUserName 
-{
-	
-}
-
 .UserImage:hover .UserProfilePopup 
 {
 	display: block;

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Leikjavefur.Models.Context;
 using Leikjavefur.Models.Interfaces;
+using System.Collections.Generic;
 
 namespace Leikjavefur.Models.Repository
 { 
@@ -64,6 +65,14 @@ namespace Leikjavefur.Models.Repository
         public void Dispose() 
         {
             _context.Dispose();
+        }
+
+        public List<Statistic> GetStatisticsByGame(int gameId)
+        {
+            return (from stats in _context.Statistics
+                    where stats.GameID == gameId
+                    orderby stats.Wins descending
+                    select stats).Take(10).ToList();
         }
     }
 
