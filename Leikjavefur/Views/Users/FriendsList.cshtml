@@ -1,23 +1,53 @@
-﻿@model List<Leikjavefur.Models.UserProfile>
+﻿@*@model List<Leikjavefur.Models.UserProfile>*@
+@using Leikjavefur.Models
+@model IEnumerable<Leikjavefur.ViewModels.UserProfileViewModel>
 
 @{
     Layout = null;
 }
 
-<span id="vinirtext">Vinir</span>
+<span id="vinirtext"><p>Vinir</p></span>
 
 <ul class="popup">
     @foreach (var item in Model)
     {
         <li>
-            @Html.ActionLink(item.UserName, "Details", new { id=item.UserID })
-            <div class="popup-center">
+            @Html.ActionLink(item.UserProfile.UserName, "Details", new { id=item.UserProfile.UserID })
+@*            <div class="popup-center">
                 <object width="853" height="480">
                     <param name="movie" value="http://www.youtube.com/v/msIjWthwWwI?version=3&amp;hl=en_US" />
                     <param name="allowFullScreen" value="true" />
                     <param name="allowscriptaccess" value="always" />
                     <embed src="http://www.youtube.com/v/msIjWthwWwI?version=3&amp;hl=en_US" type="application/x-shockwave-flash" width="853" height="480" allowscriptaccess="always" allowfullscreen="true" />
                 </object>
+            </div>*@
+            <div class="popup-right-upper">
+                <div id="popup-form">
+                    <form>
+                        <fieldset>
+                            <legend>@item.UserProfile.UserName</legend>
+                            <div id="avatar">
+                                <object data="~/Images/@item.UserProfile.Avatar">
+                                    <img src="~/Images/avatar3.png"  />
+                                </object>
+                                @*@Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    *@
+                            </div>
+
+                            <div class="display-label">Nafn: <p>@item.UserProfile.UserName</p></div>
+                            <div class="display-label">Netfang: <p>@item.UserProfile.Email</p></div>
+                            <div class="display-label">Fyrst Innskráður: <p>@String.Format("{0:g}", @item.UserProfile.DateCreated)</p></div>
+                            <div class="display-field">@item.UserProfile.About</div>
+
+                            @if (Request.IsAuthenticated) 
+                            {
+                                if (item.IsFriend)
+                                {   <input type="button" value="Taka af Vinalista" onclick="location.href='@Url.Action("RemoveFriend", "Users", new { id=item.UserProfile.UserID })'" />   }
+                                else
+                                {   <input type="button" value="Setja á Vinalista" onclick="location.href='@Url.Action("AddFriend", "Users", new { id=item.UserProfile.UserID })    '" />   }
+                            }
+                        </fieldset>
+                    </form>
+                </div>
             </div>
         </li>
     }

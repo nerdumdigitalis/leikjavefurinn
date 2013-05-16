@@ -65,7 +65,20 @@ namespace Leikjavefur.Controllers
 
         public ActionResult FriendsList()
         {
-            return PartialView(_dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId));
+            //return PartialView(_dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId));
+            var result = new List<UserProfileViewModel>();
+            var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId).ToList();
+
+            foreach (var instance in friends)
+            {
+                result.Add(new UserProfileViewModel
+                {
+                    UserProfile = instance,
+                    IsFriend = true
+                });
+            }
+
+            return PartialView(result);
         }
 
         public ActionResult AddFriend(int id)

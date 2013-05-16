@@ -54,7 +54,7 @@ namespace Leikjavefur.Controllers
         {
             WebSecurity.Logout();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Games");
         }
 
         //
@@ -93,7 +93,7 @@ namespace Leikjavefur.Controllers
                     //};
                     //userRep.InsertOrUpdate(UserProfile);
                     //userRep.Save();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Games");
                 }
                 catch (MembershipCreateUserException e)
                 {

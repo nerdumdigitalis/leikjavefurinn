@@ -23,8 +23,6 @@
         </script>
     </head>
     <body>
-
-
         <div id="leftChat">
             @if (Request.IsAuthenticated) 
             {
@@ -68,16 +66,12 @@
                     @if(WebSecurity.IsAuthenticated) { <li><a href="#tabs-2">Vinir</a></li> }
                 </ul>
                 <div id="tabs-1" class="tabcontent">
-                    <p>
-                        @Html.Action("UserList", "Users")
-                    </p>
+                    @Html.Action("UserList", "Users")
                 </div>
                 @if(WebSecurity.IsAuthenticated)
                 {
                     <div id="tabs-2" class="tabcontent">
-                        <p>
-                            @Html.Action("FriendsList", "Users")
-                        </p>
+                        @Html.Action("FriendsList", "Users")
                     </div>
                 }
             </div>
