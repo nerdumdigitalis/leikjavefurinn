@@ -1,26 +1,44 @@
-﻿@using Leikjavefur.Models
-@model IEnumerable<Leikjavefur.ViewModels.GameInstanceViewModel>
+﻿@model IEnumerable<Leikjavefur.ViewModels.GameInstanceViewModel>
 
 <p>Leikir í gangi</p>
 
-@foreach (var item in Model)
-{
-    if(item.GameInstance.IsActive)
-    {
-        <p>@item.Game.Name (Leikur í gangi)</p>
-    }
-    else
-    {
-        if(item.Players.Count() < item.Game.MaxPlayers)
+<div id="GameInstanceNavContainer">
+    <ul>
+        @foreach (var item in Model)
         {
-            <p>@Html.ActionLink((item.Game.Name + " (Vantar " + (item.Game.MaxPlayers - item.Players.Count()) + " spilara)"), "Join", "GameInstance", item.GameInstance, null)</p>
+            <li>
+                <span>
+                      
+                    @if(item.GameInstance.IsActive)
+                    {
+                        <a>@item.Game.Name (Leikur í gangi)</a>
+                    }
+                    else
+                    {
+                        if(item.Players.Count() < item.Game.MaxPlayers)
+                        {
+                            @Html.ActionLink((item.Game.Name + " (Vantar " + (item.Game.MaxPlayers - item.Players.Count()) + " spilara)"), "Join", "GameInstance", item.GameInstance, null)
+                        }
+                        else
+                        {
+                            <a>@item.Game.Name (Leikur fullur)</a>
+                        }
+                    }
+                </span>
+                <ul>
+                    
+                    @foreach(var player in item.Players)
+                    {
+                        <li><span><a>@player.UserName</a></span></li>
+                    }
+                         
+                </ul>   
+                   
+            </li>
+    
         }
-        else
-        {
-            <p>@item.Game.Name (Leikur fullur)</p>
-        }
-    }
 
-    <br/>
-}
+    </ul>
+
+</div>
 

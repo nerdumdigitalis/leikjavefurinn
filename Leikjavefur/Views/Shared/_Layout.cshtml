@@ -23,62 +23,38 @@
         </script>
     </head>
     <body>
-        <div id="leftChat">
-            @if (Request.IsAuthenticated) 
-            {
-	            <div id="leikirchat">
-                    @Html.Action("GamesList", "Games")
-                </div>
-                <div id="ongoingGames">
-                    @Html.Action("Index", "GameInstance")
-                </div>
-            } 
-        </div>
-    
-        <div id="middle">
-            <div id="profile">
-                @if (Request.IsAuthenticated)  
-                {
-                    @Html.Action("_ProfilePartial", "Users")
-                } 
-                @if(!Request.IsAuthenticated)
-                {    
-                    <section id="login"> 
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                }
-            </div>
-               
-            <div id="mainPage">
-                <div id="nyskra">
-                    @*@RenderSection("featured", required: false)
-                    <section class="content-wrapper main-content clear-fix">*@
-                        @RenderBody()
-                    @*</section>*@
-                </div>
-            </div>
+        <div id="Header">
+            
+            <div id="Header_name"></div>
+
+            <div id="login">@Html.Partial("_LoginPartial")</div>
+
         </div>
 
-        <div id="rightChat">
-            <div id="tabs">
-                <ul class="tabs">
-                    <li><a href="#tabs-1">Allir Notendur</a></li>
-                    @if(WebSecurity.IsAuthenticated) { <li><a href="#tabs-2">Vinir</a></li> }
-                </ul>
-                <div id="tabs-1" class="tabcontent">
-                    @Html.Action("UserList", "Users")
+        <div id="MainView">
+        
+            <div id="Display">
+                @RenderBody()
+            </div>
+	
+            <div id="left_nav">
+                @Html.Action("Index", "GameInstance")
+            </div>
+        
+            <div id="right_nav">
+                <div id="spjall">
+                    @Html.Action("ChatPartial", "Chat")
                 </div>
-                @if(WebSecurity.IsAuthenticated)
-                {
-                    <div id="tabs-2" class="tabcontent">
-                        @Html.Action("FriendsList", "Users")
-                    </div>
-                }
+                @Html.Action("FriendsList", "Users") 
+                @Html.Action("UserList", "Users")
             </div>
-            <div id="spjall">
-                @Html.Action("ChatPartial", "Chat")
+
+            <div id="middle_nav">
+                @Html.Action("GamesList", "Games")
             </div>
+
         </div>
+
     </body>
 </html>
 

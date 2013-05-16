@@ -1,6 +1,4 @@
-﻿@*@model IQueryable<Leikjavefur.Models.UserProfile>*@
-@using Leikjavefur.Models
-@model IEnumerable<Leikjavefur.ViewModels.UserProfileViewModel>
+﻿@model IEnumerable<Leikjavefur.ViewModels.UserProfileViewModel>
 
 @{
     Layout = null;
@@ -32,19 +30,6 @@ else
                                 </object>
                                 @*@Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    *@
                             </div>
-
-                            <div class="display-label">Nafn: <p>@item.UserProfile.UserName</p></div>
-                            <div class="display-label">Netfang: <p>@item.UserProfile.Email</p></div>
-                            <div class="display-label">Fyrst Innskráður: <p>@String.Format("{0:g}", @item.UserProfile.DateCreated)</p></div>
-                            <div class="display-field">@item.UserProfile.About</div>
-
-                            @if (Request.IsAuthenticated) 
-                            {
-                                if (item.IsFriend)
-                                {   <input type="button" value="Taka af Vinalista" onclick="location.href='@Url.Action("RemoveFriend", "Users", new { id=item.UserProfile.UserID })'" />   }
-                                else
-                                {   <input type="button" value="Setja á Vinalista" onclick="location.href='@Url.Action("AddFriend", "Users", new { id=item.UserProfile.UserID })    '" />   }
-                            }
                         </fieldset>
                     </form>
                 </div>
@@ -52,3 +37,23 @@ else
         </li>
     }
 </ul>
+
+@*=======
+@foreach (var item in Model) 
+{
+    <div class="UserImage">
+    <img src="@item.UserProfile.Avatar"/>
+        <div class="UserProfilePopup">
+            <img src="@item.UserProfile.Avatar" style="float:left" alt="Mynd vantar"/>
+            <div id="UserProfilePopupUserName">
+                @Html.Encode(item.UserProfile.UserName)
+            </div>
+            @Html.Encode(item.UserProfile.About)
+            dskfsækdjflsdkjfldskjflsdkjflsdkjflksdfjldskjfsd
+        
+        </div>
+        
+>>>>>>> 2e1b352b8da36df2444abdfcb4c3d6191f6953fc*@
+
+        
+

@@ -4,43 +4,23 @@
     Layout = null;
 }
 
-<p>@Html.ActionLink("Leikir", "Index", "Games")</p>
-
-<h3>Stofna nýjan leik</h3>
-
-<ul class="popup">
     @foreach (var item in Model)
     {
-        <li>
-            @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, new {target ="_blank"})
-            <div class="popup-left-upper">
-                <div id="popup-form" title="Notendasnið">
-                    <form>
-                        <fieldset>
-                            <legend>@item.Name</legend>
-                            <div id="avatar">
-                                <object data="~/Images/@item.Avatar">
-                                    <img src="~/Images/avatar3.png"  />
-                                </object>
-                            </div>
+        <div class="Games">
+            <div class="GamesTop">
+                <div class="GamesImage">
+                    <img src="@item.Avatar"/>
 
-                            <div class="display-label">Nafn: <p>@item.Name</p></div>
-                            <div class="display-label">Min Spilarar: <p>@item.MinPlayers</p></div>
-                            <div class="display-label">Max Spilarar: <p>@item.MaxPlayers</p></div>
-                            <div class="display-label">Fyrst Skráður: <p>@String.Format("{0:g}", @item.DateAdded)</p></div>
-                            <div class="display-label">Um Leikinn: <p>@item.About</p></div>
-                            <div class="display-label">Reglur: <p>@item.Rules</p></div>
-                        </fieldset>
-                    </form>
+                </div>
+                <div class="GamesTitle">
+                    @item.Name
                 </div>
             </div>
-        </li>
+            <div class="GamesText">
+                @item.About
+            </div>
+            <div class="GamesPlay">
+                @Html.ActionLink("Spila >>", "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
+            </div>
+        </div>
     }
-</ul>
-
-
-@*@foreach (var item in Model) 
-{
-    @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
-    <br/>
-}*@
