@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using System.Web.Mvc;
 using Leikjavefur.Models;
@@ -5,6 +6,9 @@ using Leikjavefur.Models.Interfaces;
 using Leikjavefur.Models.Repository;
 using WebMatrix.WebData;
 using System.Web.Security;
+using Leikjavefur.ViewModels;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Leikjavefur.Controllers
 {   
@@ -25,6 +29,7 @@ namespace Leikjavefur.Controllers
         //
         // GET: /Players/
 
+        [Authorize(Roles = "Administrator")]
         public ViewResult Index()
         {
             return View(_dataRepository.UserRepository.All);
@@ -32,17 +37,49 @@ namespace Leikjavefur.Controllers
 
         public ActionResult UserList()
         {
-            return PartialView(_dataRepository.UserRepository.All);
+            var result = new List<UserProfileViewModel>();
+            var allusers = _dataRepository.UserRepository.All.ToList();
+            allusers.Remove(_dataRepository.UserRepository.Find(WebSecurity.CurrentUserId));
+            var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId).ToList();
+            List<UserProfile> notfriends = allusers.Except(friends).ToList();
+   
+            foreach (var instance in friends)
+            {
+                result.Add(new UserProfileViewModel
+                {
+                    UserProfile = instance,
+                    IsFriend = true
+                });
+            }
+
+            foreach (var instance in notfriends)
+            {
+                result.Add(new UserProfileViewModel
+                {
+                    UserProfile = instance,
+                    IsFriend = false
+                });
+            }
+
+            return PartialView(result);
         }
 
         public ActionResult FriendsList()
         {
-            return PartialView(_dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId));
-            //if(WebSecurity.IsAuthenticated)
-            //{
-            //    return PartialView(_userRepository.GetFriends(WebSecurity.CurrentUserId));
-            //}
-            //return RedirectToAction("Login", "Account");
+            //return PartialView(_dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId));
+            var result = new List<UserProfileViewModel>();
+            var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId).ToList();
+
+            foreach (var instance in friends)
+            {
+                result.Add(new UserProfileViewModel
+                {
+                    UserProfile = instance,
+                    IsFriend = true
+                });
+            }
+
+            return PartialView(result);
         }
 
         public ActionResult AddFriend(int id)
@@ -51,6 +88,14 @@ namespace Leikjavefur.Controllers
             _dataRepository.UserRepository.AddFriend(WebSecurity.CurrentUserId, id);
             return RedirectToAction("Details", new { id = id });
         }
+
+        public ActionResult RemoveFriend(int id)
+        {
+            //return PartialView(_userRepository.AddFriend(WebSecurity.CurrentUserId, id));
+            _dataRepository.UserRepository.RemoveFriend(WebSecurity.CurrentUserId, id);
+            return RedirectToAction("Details", new { id = id });
+        }
+
         //
         // GET: /Players/Details/5
 
@@ -101,7 +146,7 @@ namespace Leikjavefur.Controllers
             {
                 _dataRepository.UserRepository.InsertOrUpdate(userProfile);
                 _dataRepository.UserRepository.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Games");
             }
             return View();
         }
@@ -149,10 +194,11 @@ namespace Leikjavefur.Controllers
             return RedirectToAction("Index");
         }
 
-        public bool IsFriend(int id)
-        {
-            return (_dataRepository.UserRepository.IsFriend(WebSecurity.CurrentUserId, id));
-        }
+        //public bool IsFriend(int id)
+        //{
+        //    return (_dataRepository.UserRepository.IsFriend(WebSecurity.CurrentUserId, id));
+        //}
+
     }
 }
 

@@ -22,5 +22,8 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @if (User.IsInRole("Administrator"))
+    {
+        @Html.ActionLink("Back to List", "Details")
+    }
 </div>

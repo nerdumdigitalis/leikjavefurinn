@@ -1,11 +1,15 @@
 ﻿using System;
 using Leikjavefur.Models.Repository;
+using Leikjavefur.Models.Interfaces;
 using Microsoft.AspNet.SignalR;
+using System.Linq;
 
 namespace Leikjavefur.Models
 {
     public class Communication : Hub
     {
+        private readonly IDataRepository _dataRepository = new DataRepository();
+
 #region Basic Functions
         //adds users to groups, either char or game group.
         public void Join(string groupId)
@@ -21,8 +25,74 @@ namespace Leikjavefur.Models
 
         public void GameOver(string gameInstanceId)
         {
-            GameInstanceRepository gameInstRep = new GameInstanceRepository();
-            gameInstRep.DeleteGameInstance(gameInstanceId);
+            _dataRepository.GameInstanceRepository.DeleteGameInstance(gameInstanceId);
+        }
+
+        public void ActivateGame(string gameInstanceId)
+        {
+            _dataRepository.GameInstanceRepository.ActivateGameInstance(gameInstanceId);
+            _dataRepository.GameInstanceRepository.Save();
+        }
+
+        public void SendPlayerCount(string groupId, string playerCount, string userName)
+        {
+            Clients.OthersInGroup(groupId).receivePlayerCount(playerCount, userName);
+        }
+
+        public void StartGame(string groupId)
+        {
+            Clients.OthersInGroup(groupId).gameStarted();
+        }
+
+        public void SaveWinOrLoss(string userId, string gameId, string winOrLoose) 
+        {
+            Statistic myStat = _dataRepository.StatisticRepository.FindByUserIdAndGameID(Convert.ToInt32(userId), Convert.ToInt32(gameId));
+            if (myStat == null)
+            {
+                myStat = new Statistic();
+
+                myStat.UserID = Convert.ToInt32(userId);
+                myStat.GameID = Convert.ToInt32(gameId);
+                myStat.GamesPlayed = 1;
+                myStat.Points = 0;
+
+                if (winOrLoose == "Won")
+                {
+                    myStat.Wins = 1;
+                    myStat.Losses = 0;
+                     myStat.Draws = 0;
+                }
+                else if (winOrLoose == "Lost")
+                {
+                    myStat.Wins = 0;
+                    myStat.Losses = 1;
+                    myStat.Draws = 0;
+                }
+                else if (winOrLoose == "Tie")
+                {
+                    myStat.Wins = 0;
+                    myStat.Losses = 0;
+                    myStat.Draws = 1;
+                }
+            }
+            else if (myStat != null)
+            {
+                myStat.GamesPlayed += 1;
+                if (winOrLoose == "Won")
+                {
+                    myStat.Wins += 1;
+                }
+                else if (winOrLoose == "Lost")
+                {
+                    myStat.Losses += 1;
+                }
+                else if (winOrLoose == "Tie")
+                {
+                    myStat.Draws += 1;
+                }
+            }
+            //_dataRepository.StatisticRepository.InsertOrUpdate(myStat);
+            //_dataRepository.StatisticRepository.Save();
         }
 
 #endregion

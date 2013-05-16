@@ -21,8 +21,6 @@
 </table>
 
 <script>
-    var myGameGroup = '@Model.GameInstance.GameInstanceID';
-    var myGameGroup = '(@Model.GameInstance.GameInstanceID)';
     var player1 = '@Model.Players.ToArray()[0].UserID';
     var mMark = '';
     var hMark = '';
@@ -47,17 +45,13 @@
 
     function getHisMark(){
         return hMark;
-    }
+    };
 
     function getMyMark() {
         return mMark;
-    }
-    
-    function getGameGroup() {
-        return myGameGroup;
-    }
+    };
 
     function getMyTurn() {
         return startTurn;
-    }
+    };
 </script>

@@ -24,38 +24,37 @@
     </head>
     <body>
         <div id="Header">
-            <div id="Header_name">
-            </div>
-            <div id="login">@Html.Partial("_LoginPartial")</div>
-	    </div>
-        <div id="MainView">
+            
+            <div id="Header_name"></div>
 
-	    
+            <div id="login">@Html.Partial("_LoginPartial")</div>
+
+        </div>
+
+        <div id="MainView">
         
             <div id="Display">
                 @RenderBody()
             </div>
 	
-            
             <div id="left_nav">
                 @Html.Action("Index", "GameInstance")
             </div>
         
             <div id="right_nav">
                 <div id="spjall">
-                @Html.Action("ChatPartial", "Chat")
+                    @Html.Action("ChatPartial", "Chat")
                 </div>
                 @Html.Action("FriendsList", "Users") 
                 @Html.Action("UserList", "Users")
-               
             </div>
+
             <div id="middle_nav">
                 @Html.Action("GamesList", "Games")
             </div>
 
         </div>
 
-        
     </body>
 </html>
 

@@ -218,6 +218,7 @@
     <Compile Include="ViewModels\ChatModel.cs" />
     <Compile Include="ViewModels\GameInstanceViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
@@ -293,7 +294,10 @@
     <Content Include="Images\background_sky.jpg" />
     <Content Include="Images\Banner.jpg" />
     <Content Include="Images\chess_thumbnail.jpg" />
+    <Content Include="Images\chess.png" />
+    <Content Include="Images\chucknorris.jpg" />
     <Content Include="Images\dice_150.jpg" />
+    <Content Include="Images\Doom_II.png" />
     <Content Include="Images\game_board.jpg" />
     <Content Include="Images\game_board2.jpg" />
     <Content Include="Images\game_board3.jpg" />
@@ -342,6 +346,9 @@
     <Content Include="Images\profileimg9.jpg" />
     <Content Include="Images\snakesandladders_thumbnail.jpg" />
     <Content Include="Images\tictactoe_thumbnail.jpg" />
+    <Content Include="Images\skyrim.png" />
+    <Content Include="Images\snakes.bmp" />
+    <Content Include="Images\tic.bmp" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -428,6 +435,7 @@
     <Content Include="Views\GameInstance\Index.cshtml" />
     <Content Include="Views\Users\FriendsList.cshtml" />
     <Content Include="Views\Users\_ProfilePartial.cshtml" />
+    <Content Include="Views\Users\ChangeAvatar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

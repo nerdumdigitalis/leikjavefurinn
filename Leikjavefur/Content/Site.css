@@ -1,18 +1,24 @@
 ﻿
 body
 {
-    position:fixed;
-    float:left;
     width:100%;
     height:100%;
     margin:0px;
-	overflow: auto;
+	/*overflow: auto;*/
 	/*background: url("../Images/background_sky.jpg");*/
 }
 
 html 
 {
 	overflow-y: scroll;
+    /*width:80%;
+    height:98%;
+    background-color: #827B60;
+    margin-left:10%;
+    margin-right:10%;
+    font-size: 90%;
+    background-color:white;*/
+
 }
 
 #vinir
@@ -53,6 +59,7 @@ html
     float:left;
     width:100%;
     height:155px;
+    background-color:#827B60;
 }
 
 #profilestats 
@@ -246,9 +253,6 @@ ul
     height: 30px;
 }
 
-
-
-
 .popup
 { 
     text-align:center;
@@ -286,12 +290,12 @@ ul
     visibility:hidden;
     opacity:0;
     transition:visibility 0s linear 0.2s,opacity 0.2s linear;
-    width:250px; 
-    height:250px; 
+    width:450px; 
+    height:350px; 
     left:30%;
     top:25%;
-    /*margin-left:-125px;*/
-    margin-top:-50px;
+    margin-left:75px;
+    margin-top:-100px;
 }
 
 .popup li .popup-right-upper
@@ -301,18 +305,18 @@ ul
     visibility:hidden;
     opacity:0;
     transition:visibility 0s linear 0.2s,opacity 0.2s linear;
-    width:250px; 
-    height:250px; 
+    width:450px; 
+    height:350px; 
     left:75%;
     top:25%;
-    margin-left:-125px;
-    margin-top:-75px;
+    margin-left:-225px;
+    margin-top:-125px;
 }
 
 #popup-form
 {
-    width: 350px;
-    height: 350px;
+    width: 450px;
+    height: auto;
     left: 50%;
     top: 50%;
     margin-left: -175px;
@@ -437,7 +441,7 @@ h2
 	background: url("../Images/game_board3.jpg") no-repeat;
 	width: 519px;
 	height: 437px;
-	margin-top: 200px;
+	margin-top: 0px;
 	z-index: -1;
 }
 
@@ -485,16 +489,14 @@ h2
 #dice {
     position:absolute;
     background: url("../Images/dice_150.jpg") no-repeat; 
-	top: 520px;
-	left: 600px;
+	top: 350px;
+	left: 550px;
     height: 150px;
 	width: 152px;
 }
 
 #rolltext {
-    position:absolute;
-    top: 480px;
-	left: 600px;
+    font-size:large;
 }
 
 #gameinfo 
@@ -506,7 +508,6 @@ h2
     padding:10px;
     left: 700px;
 }
-
 
 #gameinfo p
 {
@@ -838,5 +839,86 @@ h2
 }
 
 
+#changeAvatarButton 
+{
+    display:none;
+}
 
+#avatar:hover #changeAvatarButton 
+{
+    display: inline;
+    position:absolute;
+    bottom:1px;
+    left:1px;
+    background-color:grey;
+    opacity:0.8;
+}
 
+#AvatarSelector:hover #AvatarsAvailible
+{
+    display: inline;
+}
+
+#AvatarsAvailible 
+{
+    display:none;
+}
+    
+#AvatarsAvailible img 
+{
+    height: 100px;
+    width: 100px;
+}
+
+#listplayer1 {
+    background-color: white;
+}
+
+#listplayer2 {
+    background-color: black;
+    color:white;
+}
+
+#listplayer2 {
+    background-color: purple;
+}
+
+#listplayer3 {
+    background-color: brown;
+}
+
+.UserImage {
+	height: 70px;
+	width: 70px;
+	float: left;
+	border: black solid 1px;
+	
+}
+
+.UserProfilePopup img 
+{
+	margin: 10px;
+}
+
+.UserImage .UserProfilePopup 
+{
+	position: absolute;
+	display: none;
+	background: white;
+	width: 300px;
+	height: 200px;
+	border: black 1px solid;
+	padding: 10px
+}
+
+#UserProfilePopupUserName 
+{
+	
+}
+
+.UserImage:hover .UserProfilePopup 
+{
+	display: block;
+	z-index: 100;
+
+}

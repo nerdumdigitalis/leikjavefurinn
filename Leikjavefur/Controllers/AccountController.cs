@@ -54,7 +54,7 @@ namespace Leikjavefur.Controllers
         {
             WebSecurity.Logout();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Games");
         }
 
         //
@@ -79,14 +79,6 @@ namespace Leikjavefur.Controllers
                 // Attempt to register the UserProfile
                 try
                 {
-                    /*  Hér þurfum við að breyta þannig að í staðinn fyrir að nota WebSecurity klasan
-                        Til að geyma upplýsingar þá myndum við senda þessar upplýsingar til Database(SQL) serverin.
-                        Svo þurfum við að útfæra "login" klasa sem checkar hvort þessi notandi er til
-                        og loggar hann inn ef svo er satt.
-                        #TL;DR þurfum 2 klasa, Register og Login, til að replace'a þetta "WebSecurity" dót.
-                        
-                        -Natan
-                     */
                     //var userRep = new UserRepository();
                     model.DateCreated = DateTime.Now;
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, new{DateCreated = DateTime.Now, /*About = model.About,*/ Email = model.Email});
@@ -101,7 +93,7 @@ namespace Leikjavefur.Controllers
                     //};
                     //userRep.InsertOrUpdate(UserProfile);
                     //userRep.Save();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Games");
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -235,7 +227,7 @@ namespace Leikjavefur.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Games");
             }
         }
 

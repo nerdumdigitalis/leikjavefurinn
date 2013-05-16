@@ -72,7 +72,6 @@ namespace Leikjavefur.Controllers
 
         public ActionResult GetUsersByGameInstance(string gameInstance)
         {
-
             return PartialView(_dataRepository.GameInstanceRepository.GetUsersByGameInstance(gameInstance));
         }
 
@@ -87,7 +86,7 @@ namespace Leikjavefur.Controllers
 
         public void ActivateGameInstance(GameInstance gameInstance)
         {
-            _dataRepository.GameInstanceRepository.ActivateGameInstance(gameInstance);
+            _dataRepository.GameInstanceRepository.ActivateGameInstance(gameInstance.GameInstanceID);
             _dataRepository.GameInstanceRepository.Save();
         }
 
