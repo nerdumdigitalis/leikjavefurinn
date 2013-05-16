@@ -903,13 +903,15 @@ h2
 
 .UserImage .UserProfilePopup 
 {
-	position: absolute;
+	position: relative;
 	display: none;
 	background: white;
 	width: 300px;
 	height: 200px;
 	border: black 1px solid;
-	padding: 10px
+	padding: 10px;
+    top: -30px;
+    left: 50px;
 }
 
 #UserProfilePopupUserName 
@@ -921,5 +923,4 @@ h2
 {
 	display: block;
 	z-index: 100;
-
 }
