@@ -1,5 +1,4 @@
 using System;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -11,7 +10,18 @@ namespace Leikjavefur.Models.Repository
 { 
     public class UserRepository : IUserRepository
     {
-        readonly ApplicationContext _context = new ApplicationContext();
+        private readonly IDataContext _context;
+
+
+        public UserRepository()
+        {
+            _context = new ApplicationContext();
+        }
+
+        public UserRepository(IDataContext dataContext)
+        {
+            _context = dataContext;
+        }
 
         public IQueryable<UserProfile> All
         {
@@ -45,7 +55,7 @@ namespace Leikjavefur.Models.Repository
                 _context.Users.Add(userProfile);
             } else {
                 // Existing entity
-                _context.Entry(userProfile).State = EntityState.Modified;
+                _context.SetModified(userProfile);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Data;
+using System.Data.Entity;
 
 namespace Leikjavefur.Models.Context
 {
@@ -14,6 +15,9 @@ namespace Leikjavefur.Models.Context
         public DbSet<Report> Reports { get; set; }
         public DbSet<GameInstance> GameInstances { get; set; }
         public DbSet<Friends> Friends { get; set; }
-       
+        public void SetModified(object entity)
+        {
+            Entry(entity).State = EntityState.Modified;
+        }
     }
 }

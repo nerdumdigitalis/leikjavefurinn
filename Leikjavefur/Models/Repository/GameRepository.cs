@@ -10,7 +10,19 @@ namespace Leikjavefur.Models.Repository
 { 
     public class GameRepository : IGameRepository
     {
-        readonly ApplicationContext _context = new ApplicationContext();
+        private readonly IDataContext _context;
+
+        public GameRepository()
+        {
+            _context = new ApplicationContext();
+        }
+
+        public GameRepository(IDataContext dataContext)
+        {
+            _context = dataContext;
+        }
+
+
 
         public IQueryable<Game> All
         {
@@ -38,7 +50,7 @@ namespace Leikjavefur.Models.Repository
                 _context.Games.Add(game);
             } else {
                 // Existing entity
-                _context.Entry(game).State = EntityState.Modified;
+                _context.SetModified(game);
             }
         }
 

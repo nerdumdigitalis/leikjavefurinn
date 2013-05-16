@@ -10,7 +10,18 @@ namespace Leikjavefur.Models.Repository
 { 
     public class StatisticRepository : IStatisticRepository
     {
-        readonly ApplicationContext _context = new ApplicationContext();
+        readonly IDataContext _context;
+
+
+        public StatisticRepository()
+        {
+            _context = new ApplicationContext();
+        }
+
+        public StatisticRepository(IDataContext dataContext)
+        {
+            _context = dataContext;
+        }
 
         public IQueryable<Statistic> All
         {
@@ -46,7 +57,7 @@ namespace Leikjavefur.Models.Repository
                 _context.Statistics.Add(statistic);
             } else {
                 // Existing entity
-                _context.Entry(statistic).State = EntityState.Modified;
+                _context.SetModified(statistic);
             }
         }
 

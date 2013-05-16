@@ -23,7 +23,6 @@ namespace Leikjavefur.Models.Repository
         }
 
 
-
         public IQueryable<GameInstance> All
         {
             get { return _context.GameInstances; }
