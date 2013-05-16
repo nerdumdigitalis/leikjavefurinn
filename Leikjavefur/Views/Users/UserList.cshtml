@@ -13,34 +13,8 @@ else
     <p>Notendur</p>
 }
 
-<ul class="popup">
     @foreach (var item in Model) 
     {
-        @*@Html.DisplayFor(modelItem => item.UserName)*@
-        <li>
-            @Html.ActionLink(item.UserName, "Details", new { id=item.UserID })
-            <div class="popup-right-upper">
-                <div id="popup-form">
-                    <form>
-                        <fieldset>
-                            <legend>@item.UserName</legend>
-                            <div id="avatar">
-                                @Html.ActionLink(" ", "Index", "Home", new { style = "background: url('" + Url.Content("~/Images/avatar.bmp") + "') no-repeat center right; display:block; height:155px; width:155px;"})    
-                            </div>
-
-                            <div class="display-label">Nafn: <p>@item.UserName</p></div>
-                            <div class="display-label">Netfang: <p>@item.Email</p></div>
-                            <div class="display-label">Fyrst Innskráður: <p>@String.Format("{0:g}", @item.DateCreated)</p></div>
-                            <div class="display-field">@item.About</div>
-
-                            @if (Request.IsAuthenticated) 
-                            {
-                                <input type="button" value="Vingast við" onclick="location.href='@Url.Action("AddFriend", "Users", new { id=item.UserID })'" />
-                            }
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </li>
+        <img src="@item.Avatar" style="float:left"/>
+        
     }
-</ul>

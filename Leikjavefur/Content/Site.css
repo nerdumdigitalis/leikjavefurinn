@@ -5,9 +5,14 @@ body
     float:left;
     width:100%;
     height:100%;
-    background-color: #827B60;
     margin:0px;
-    font-size: 90%;
+	overflow: auto;
+	/*background: url("../Images/background_sky.jpg");*/
+}
+
+html 
+{
+	overflow-y: scroll;
 }
 
 #vinir
@@ -113,6 +118,7 @@ body
     text-align:center;
     border-right:none;
     overflow-y: scroll;
+	z-index:-1;
 }
 
 #rightChat
@@ -574,3 +580,263 @@ h2
     float:left;
     padding-bottom:20px;
 }
+
+
+#GameInstanceNavContainer 
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	/*margin:0;*/
+	padding:0;
+	/*background:url(/Images/GI_nohover.jpg) repeat-x;*/
+	/*border: 1px solid #7398ba;*/
+	text-align:center;
+	width: 80%;
+}
+
+#GameInstanceNavContainer ul
+{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+
+#GameInstanceNavContainer ul li 
+{
+	position:relative;
+	height: 30px;
+	margin-bottom: 5px;
+	background:url(../Images/navmenu_middle.jpg) repeat-x;
+}
+
+#GameInstanceNavContainer ul li span
+{
+	display:block;
+	background:url(../Images/navmenu_left.jpg) top left no-repeat;
+}
+
+#GameInstanceNavContainer ul li a
+{
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+	font-family:Lucida Sans Unicode, Lucida Grande, sans-serif;
+	display:block;
+	padding:8px;
+	background:url(../Images/navmenu_right.jpg) top right no-repeat;
+}
+
+#GameInstanceNavContainer ul li:hover 
+{
+	
+	background:url(../Images/GI_hover.jpg) repeat-x;
+}
+
+
+#GameInstanceNavContainer ul li span:hover 
+{
+	background:url(../Images/GI_left_hover.jpg) top left no-repeat;
+}
+
+
+#GameInstanceNavContainer ul li a span
+{
+	
+}
+
+#GameInstanceNavContainer ul li a:hover
+{
+	background:url(../Images/GI_right_hover.jpg) top right no-repeat;
+}
+
+#GameInstanceNavContainer ul ul
+{
+	position:absolute;
+	display:none;
+	z-index: 200;
+}
+
+/*#GameInstanceNavContainer ul ul li
+{
+	position:relative;
+	height: 30px;
+	margin-bottom: 5px;
+	background:url(../Images/GI_nohover.jpg) repeat-x;
+}
+
+#GameInstanceNavContainer ul ul li a
+{
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+	font-family:Lucida Sans Unicode, Lucida Grande, sans-serif;
+	display:block;
+	padding:8px;
+	background:url(../Images/GI_right_nohover.jpg) top right no-repeat;
+}
+
+#GameInstanceNavContainer ul ul li span
+{
+	background:url(../Images/GI_left_nohover.jpg) top left no-repeat;
+}
+
+#GameInstanceNavContainer ul li:hover 
+{
+	right: 10px;
+	background:url(../Images/GI_hover.jpg) repeat-x;
+}
+
+
+#GameInstanceNavContainer ul ul li span:hover 
+{
+	background:url(../Images/GI_left_hover.jpg) top left no-repeat;
+}
+
+
+#GameInstanceNavContainer ul ul li a:hover
+{
+	background:url(../Images/GI_right_hover.jpg) top right no-repeat;
+}*/
+
+#GameInstanceNavContainer ul li:hover ul
+{
+	width:40%;
+	position:absolute;
+	display:block; left:-115px; 
+	top:0px;
+}
+
+#GameProfile
+{
+	position:absolute;
+	display:none;
+}
+
+#GameInstanceNavContainer ul li:hover #GameProfile
+{
+	height: 100px;
+	width: 100px;
+	position:absolute;
+	display:block;
+	left: 200px;
+}
+
+
+/*New shit*/
+
+
+#MainView
+{
+	position: absolute;
+	width:60%;
+	left:20%;
+	margin:0;
+
+}
+
+#Header
+{
+	position: absolute;
+	margin:0;
+	height:140px;
+	width:76%;
+	left: 12%;
+	background: url("../Images/Banner.jpg") top left no-repeat;
+
+
+}
+
+#Display
+{
+	margin-top: 140px;
+	width: 100%;
+	height:500px;
+	background-color: lightgreen;
+}
+
+#left_nav
+{
+	width:33%;
+	float:left;
+	/*height:1000px;*/
+	/*background-color: lightgoldenrodyellow;*/
+
+
+}
+
+#right_nav
+{
+	width:34%;
+	float:right;
+	/*height:1000px;*/
+	
+
+}
+
+#middle_nav
+{
+	width:33%;
+	left: 34%;
+	float:left;
+	/*height:1000px;*/
+	
+}
+
+#login 
+{
+	float: right;	
+}
+
+#Header_name 
+{
+	float: left;	
+}
+
+.Games 
+{
+	position: relative;
+	width: 70%;
+	left: 15%;
+	height: 140px;
+	background-color: lightblue;
+	margin-bottom: 10px;
+	margin-top: 50px;	
+}
+
+.GamesImage 
+{
+	float: left;
+	margin: 5px;
+	width: 60px;
+	height: 60px;
+	
+}
+
+.GamesTitle
+{
+	margin: 5px 5px 5px 0;
+	text-align: left;
+	float: left;
+	width: 140px;
+	height: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+.GamesText 
+{
+	float: left;
+	position: relative;
+	margin: 10px;
+}
+
+.GamesPlay 
+{
+	margin-right: 20px;
+}
+
+
+
+

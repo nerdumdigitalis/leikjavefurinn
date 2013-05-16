@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using Leikjavefur.Models;
 using Leikjavefur.Models.Interfaces;

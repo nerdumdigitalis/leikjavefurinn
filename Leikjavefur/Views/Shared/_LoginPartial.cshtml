@@ -1,8 +1,23 @@
-﻿@*@model Leikjavefur.Models.LoginModel*@
-
+﻿@if (Request.IsAuthenticated) {
+    <text>
+        Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        }
+    </text>
+} else {
     <ul>
-        @*@Html.RenderAction("Login","Users")*@
-        @*@RenderPage("~/Views/Account/Login.cshtml","Login","Account")*@
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+
+
+
+@*@model Leikjavefur.Models.LoginModel*@
+
+   @* <ul>
         @Html.ActionLink("Nýskráning", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
         @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-    </ul>
+    </ul>*@

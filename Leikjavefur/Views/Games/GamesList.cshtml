@@ -4,38 +4,22 @@
     Layout = null;
 }
 
-<p>@Html.ActionLink("Leikir", "Index", "Games")</p>
-
-<h3>Stofna nýjan leik</h3>
-
-<ul class="popup">
     @foreach (var item in Model)
     {
-        <li>
-            @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, new {target ="_blank"})
-            <div class="popup-left-upper">
-                <div id="popup-form" title="Notendasnið">
-                    <p class="validateTips">All form fields are required.</p>
-                    <form>
-                        <fieldset>
-                            <legend>@item.Name</legend>
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" />
-                            <label for="email">Email</label>
-                            <input type="text" name="email" id="email" value=""  />
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" value="" />
-                        </fieldset>
-                    </form>
+        <div class="Games">
+            <div class="GamesTop">
+                <div class="GamesImage">
+                    <img src="@item.Avatar"/>
+                </div>
+                <div class="GamesTitle">
+                    @item.Name
                 </div>
             </div>
-        </li>
+            <div class="GamesText">
+                @item.About
+            </div>
+            <div class="GamesPlay">
+                @Html.ActionLink("Spila >>", "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
+            </div>
+        </div>
     }
-</ul>
-
-
-@*@foreach (var item in Model) 
-{
-    @Html.ActionLink(item.Name, "Create", "GameInstance", new { @gameID = item.GameID, @gameName = item.Name}, null)
-    <br/>
-}*@
