@@ -10,13 +10,25 @@ namespace Leikjavefur.Models.Repository
 {
     public class GameInstanceRepository : IGameInstanceRepository
     {
-        readonly ApplicationContext _context = new ApplicationContext();
+        private readonly IDataContext _context;
+
+        public GameInstanceRepository()
+        {
+            _context = new ApplicationContext();
+        }
+
+        public GameInstanceRepository(IDataContext dataContext)
+        {
+            _context = dataContext;
+        }
+
+
 
         public IQueryable<GameInstance> All
         {
             get { return _context.GameInstances; }
         }
-
+        
         public IQueryable<GameInstance> AllIncluding(params Expression<Func<GameInstance, object>>[] includeProperties)
         {
             IQueryable<GameInstance> query = _context.GameInstances;
