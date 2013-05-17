@@ -120,8 +120,7 @@ namespace Leikjavefur.Models.Repository
         {
             if (GetFriend(currentUserId, friendsId) == null)
                 return false;
-            else
-                return true;
+            return true;
         }
     }
 }

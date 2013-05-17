@@ -4,7 +4,6 @@ using Leikjavefur.Models;
 using Leikjavefur.Models.Context;
 using Leikjavefur.Models.Repository;
 using Leikjavefur_Test.Contexts;
-using Leikjavefur_Test.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Leikjavefur_Test.RepositoryTests
@@ -37,21 +36,31 @@ namespace Leikjavefur_Test.RepositoryTests
         }
 
         [TestMethod]
-        public void TestGetDistinctGameInstancesNotNull()
-        {
-            Assert.IsNotNull(_repository.GetGameInstances());
-        }
-
-        [TestMethod]
-        public void TestGetUsersByGameInstanceCount()
+        public void TestGetUsersByGameInstance()
         {
             Assert.AreEqual(_repository.GetUsersByGameInstance("1").Count(), 1);
+            Assert.IsInstanceOfType(_repository.GetUsersByGameInstance("1"), typeof(IQueryable<UserProfile>));
+            Assert.AreEqual(_repository.GetUsersByGameInstance("100").Count(),0);
         }
 
         [TestMethod]
         public void TestActivateGameInstance()
         {
-            
+            Assert.IsFalse(_context.GameInstances.ElementAt(0).IsActive);
+            _repository.ActivateGameInstance(_context.GameInstances.ElementAt(0).GameInstanceID);
+            Assert.IsTrue(_context.GameInstances.ElementAt(0).IsActive);
+            _repository.ActivateGameInstance(_context.GameInstances.ElementAt(0).GameInstanceID);
+            Assert.IsTrue(_context.GameInstances.ElementAt(0).IsActive);
         }
+
+        [TestMethod]
+        public void TestGetGameIDByGameInstanceID()
+        {
+            Assert.IsInstanceOfType(_repository.GetGameIDByGameInstanceID("1"), typeof(int));
+            Assert.AreEqual(_repository.GetGameIDByGameInstanceID(_context.GameInstances.ElementAt(0).GameInstanceID), _context.GameInstances.ElementAt(0).GameID);
+            Assert.AreNotEqual(_repository.GetGameIDByGameInstanceID(_context.GameInstances.ElementAt(0).GameInstanceID), -1);
+            Assert.AreEqual(_repository.GetGameIDByGameInstanceID("b"), -1);
+        }
+        
     }
 }

@@ -36,7 +36,7 @@ namespace Leikjavefur_Test.Contexts
             GameInstances = new FakeDbSet<GameInstance>
             {
                 
-                                   new GameInstance {GameID = 1, GameInstanceID = "1", IsActive = true, UserID = 1},
+                                   new GameInstance {GameID = 1, GameInstanceID = "1", IsActive = false, UserID = 1},
                                    new GameInstance {GameID = 1, GameInstanceID = "2", IsActive = true, UserID = 2},
                                    new GameInstance {GameID = 2, GameInstanceID = "3", IsActive = true, UserID = 1},
                                    new GameInstance {GameID = 2, GameInstanceID = "3", IsActive = true, UserID = 2},
@@ -55,6 +55,17 @@ namespace Leikjavefur_Test.Contexts
                             new UserProfile {About = "trall6", Avatar = "trall6", DateCreated = DateTime.Now, Email = "emailtrall6", Friends = null, UserID = 6, UserName = "Chuck Norris"},
                             new UserProfile {About = "trall7", Avatar = "trall7", DateCreated = DateTime.Now, Email = "emailtrall7", Friends = null, UserID = 7, UserName = "Peter Griffin"},
                         };
+
+            Friends = new FakeDbSet<Friends>
+                          {
+                              new Friends {UserID = 1, FriendID = 2},
+                              new Friends {UserID = 1, FriendID = 3},
+                              new Friends {UserID = 1, FriendID = 4},
+                              new Friends {UserID = 2, FriendID = 4},
+                              new Friends {UserID = 2, FriendID = 1},
+                              new Friends {UserID = 7, FriendID = 5},
+                              new Friends {UserID = 5, FriendID = 4},
+                          };
         }
     }
 }

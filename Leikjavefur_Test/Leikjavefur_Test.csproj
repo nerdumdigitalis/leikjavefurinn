@@ -59,7 +59,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Contexts\MockContext.cs" />
-    <Compile Include="Data\FakeData.cs" />
     <Compile Include="Data\FakeDbSet.cs" />
     <Compile Include="RepositoryTests\GameInstancesRepositoryTest.cs" />
     <Compile Include="RepositoryTests\UserRepositoryTest.cs" />
