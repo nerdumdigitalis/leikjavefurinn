@@ -446,7 +446,7 @@ ul.tabs li a:hover {
     border:solid black 3px;
     padding-left:1px;
     padding-top:1px;
-    
+    border-radius: 15px;
 }
 
 .bio 
@@ -1097,6 +1097,10 @@ h2
     overflow:visible;
     margin: 5px;    
     text-align:center;
+}
+
+.textcenter {
+    text-align: center;
 }
 
 #Chat

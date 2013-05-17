@@ -1,15 +1,12 @@
-﻿@if (Request.IsAuthenticated)
-{
-    @*<p id="logGreeting">*@
-    <ul>
-        @*<li>@Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "actionLink", id="username", title = "Manage" })</li>*@
-        <li>@Html.ActionLink("Breyta lykilorði", "Manage", "Account")</li>
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-        {
+﻿@if (Request.IsAuthenticated) {
+    <p id="logGreeting">
+        @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "actionLink", id="username", title = "Manage" })
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Útskrá</a></li>
+            <a href="javascript:document.getElementById('logoutForm').submit()">Útskrá</a>
+    
         }
-    </ul>
+    </p>
 } else {
     <ul>
         <li>@Html.ActionLink("Nýskrá", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
@@ -17,13 +14,7 @@
     </ul>
 }
 
-@if (User.IsInRole("Administrator"))
-{
-    <ul>
-        <li>@Html.ActionLink("Admin: Notendur", "Index", "Users")</li>
-        <li>@Html.ActionLink("Admin: Leikir", "Index", "Games")</li>
-    </ul>
-}
+
 
 @*@model Leikjavefur.Models.LoginModel*@
 
