@@ -4,14 +4,14 @@
     Layout = null;
 }
 
-@if (User.IsInRole("Administrator"))
+@*@if (User.IsInRole("Administrator"))
 {
     <h3>@Html.ActionLink("Notendur", "Index", "Users")</h3>
 }
 else
 {
     <p>Notendur</p>
-}
+}*@
 
 @*<ul class="popup">
     @foreach (var item in Model) 
@@ -42,10 +42,6 @@ else
         <img src="~/Images/@item.UserProfile.Avatar"/>
         <div class="UserProfilePopup">
             <img src="~/Images/@item.UserProfile.Avatar" style="float:left" alt="Mynd vantar"/>
-@*            <div id="UserProfilePopupUserName">
-                @Html.Encode(item.UserProfile.UserName)
-            </div>
-            @Html.Encode(item.UserProfile.About)*@
             <div class="display-label">Nafn: @item.UserProfile.UserName</div>
             <div class="display-label">Netfang: @item.UserProfile.Email</div>
             <div class="display-label">Skráður: @String.Format("{0:g}", @item.UserProfile.DateCreated)</div>

@@ -47,8 +47,12 @@
                     @Html.Action("ChatPartial", "Chat")
                 </div>
                 </div>
-                @Html.Action("FriendsList", "Users") 
-                @Html.Action("UserList", "Users")
+                <div class="Userlist">
+                    @Html.Action("FriendsList", "Users")
+                </div>
+                <div class="Userlist">
+                    @Html.Action("UserList", "Users")
+                </div>
             </div>
 
             <div id="middle_nav">
