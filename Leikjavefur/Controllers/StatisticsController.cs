@@ -125,7 +125,23 @@ namespace Leikjavefur.Controllers
         }
         public ActionResult OverallTopTen() 
         {
-            return PartialView();
+            List<StatisticViewModel> newViewModel = new List<StatisticViewModel>();
+            List<Statistic> newList = _dataRepository.StatisticRepository.FindTopScoreForAll(1);
+
+            foreach (var item in newList)
+	        {
+                newViewModel.Add(new StatisticViewModel
+                    {
+                        UserName = _dataRepository.UserRepository.Find(item.UserID).UserName,
+                        Wins = item.Wins,
+                        Losses = item.Losses,
+                        Draws = item.Draws,
+                        GamesPlayed = item.GamesPlayed
+                    });
+            }
+
+            newViewModel.OrderByDescending(x => x.Wins);
+            return PartialView(newViewModel);
         }
     }
 }
