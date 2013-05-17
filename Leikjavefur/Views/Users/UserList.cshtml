@@ -4,6 +4,8 @@
 Layout = null;
 }
 
+<h3>Allir notendur</h3>
+
 @*@if (User.IsInRole("Administrator"))
 {
     <h3>@Html.ActionLink("Notendur", "Index", "Users")</h3>
@@ -52,13 +54,12 @@ else
                     if (item.IsFriend)
                     {   <input type="button" value="Taka af Vinalista" onclick="location.href='@Url.Action("RemoveFriend", "Users", new { id=item.UserProfile.UserID })'" />   }
                     else
-                    {   <input type="button" value="Setja á Vinalista" onclick="location.href='@Url.Action("AddFriend", "Users", new { id=item.UserProfile.UserID })    '" />   }
+                    {   <input type="button" value="Setja á Vinalista" onclick="location.href='@Url.Action("AddFriend", "Users",    new { id=item.UserProfile.UserID })'" />   }
                 }
             </div>
         </div>
     }
 </div>
-
 
         
 
