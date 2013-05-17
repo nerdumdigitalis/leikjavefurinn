@@ -23,50 +23,50 @@
         </script>
     </head>
     <body>
-        <div id="Header">
-            
-            <div id="Header_name"></div>
-            <a href="~/Home"><img src="~/Images/logo.png" alt="Borðspil.is" /></a>
-            <div id="login">@Html.Partial("_LoginPartial")</div>
-
-        </div>
-
-        <div id="MainView">
-            <div id="wrapper">
-                <div id="ChatWrap">
-                    <h2>Spjall</h2>
-                        <div id="Chat">
-                            @Html.Action("ChatPartial", "Chat")
-                        </div>
-                    </div>
-                <div id="Display">
-                      @RenderBody()
-                    
-                </div>
-            </div>	
-            <div id="left_nav">
-                @Html.Action("Index", "GameInstance")
-            </div>
         
-            <div id="right_nav">
+            <div id="Header">
+            
+                <div id="Header_name"></div>
+                <a href="~/Home"><img src="~/Images/logo.png" alt="Borðspil.is" /></a>
+                <div id="login">@Html.Partial("_LoginPartial")</div>
+
+            </div>
+
+            <div id="MainView">
+                <div id="wrapper">
+                    <div id="ChatWrap">
+                        <h2>Spjall</h2>
+                            <div id="Chat">
+                                @Html.Action("ChatPartial", "Chat")
+                            </div>
+                        </div>
+                    <div id="Display">
+                          @RenderBody()
+                    
+                    </div>
+                </div>	
+                <div id="left_nav">
+                    @Html.Action("Index", "GameInstance")
+                </div>
+        
+                <div id="right_nav">
                 
-                <div class="Userlist">
-                    <h3>Vinir þínir</h3>
-                    @Html.Action("FriendsList", "Users")
+                    <div class="Userlist">
+                        <h3>Vinir þínir</h3>
+                        @Html.Action("FriendsList", "Users")
+                    </div>
+                    <div class="Userlist">
+                        <br />
+                        <h3>Allir notendur</h3>
+                        @Html.Action("UserList", "Users")
+                    </div>
                 </div>
-                <div class="Userlist">
-                    <br />
-                    <h3>Allir notendur</h3>
-                    @Html.Action("UserList", "Users")
+
+                <div id="middle_nav">
+                    @Html.Action("GamesList", "Games")
                 </div>
+
             </div>
-
-            <div id="middle_nav">
-                @Html.Action("GamesList", "Games")
-            </div>
-
-        </div>
-
     </body>
 </html>
 
