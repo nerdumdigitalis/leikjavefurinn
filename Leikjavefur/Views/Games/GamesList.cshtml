@@ -19,7 +19,7 @@
                     <div class="display-label">Skráður: @String.Format("{0:g}", @item.Game.DateAdded)</div>
                     <div class="display-field">@item.Game.About</div>
                     @*@Html.ActionLink("Spila", "Create", "GameInstance", new { gameID = item.Game.GameID, gameName = item.Game.Name}, null)*@
-                    <input type="button" value="Spila leik" onclick="location.href='@Url.Action("Create", "GameInstance", new { gameID = item.Game.GameID, gameName = item.Game.Name })'" />
+                    <input type="button" value="Stofna leik" onclick="location.href='@Url.Action("Create", "GameInstance", new { gameID = item.Game.GameID, gameName = item.Game.Name })'" />
                 </div>
             </div>
             <br />
