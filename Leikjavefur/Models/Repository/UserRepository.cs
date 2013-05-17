@@ -97,9 +97,7 @@ namespace Leikjavefur.Models.Repository
         {
             if (!IsFriend(currentUserId, friendsId))
             {
-                Friends newFriend = new Friends();
-                newFriend.UserID = currentUserId;
-                newFriend.FriendID = friendsId;
+                var newFriend = new Friends {UserID = currentUserId, FriendID = friendsId};
                 _context.Friends.Add(newFriend);
                 _context.SaveChanges();
             }
@@ -116,11 +114,10 @@ namespace Leikjavefur.Models.Repository
             //return "Index";
         }
 
+
         public bool IsFriend(int currentUserId, int friendsId)
         {
-            if (GetFriend(currentUserId, friendsId) == null)
-                return false;
-            return true;
+            return GetFriend(currentUserId, friendsId) != null;
         }
     }
 }

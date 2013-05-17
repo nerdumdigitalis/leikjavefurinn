@@ -441,7 +441,7 @@
     <Content Include="Views\Users\FriendsList.cshtml" />
     <Content Include="Views\GameInstance\Index.cshtml" />
     <Content Include="Views\Users\FriendsList.cshtml" />
-    <Content Include="Views\Users\_ProfilePartial.cshtml" />
+    <Content Include="Views\Users\ProfilePartial.cshtml" />
     <Content Include="Views\Statistics\OverallTopTen.cshtml" />
   </ItemGroup>
   <ItemGroup>
