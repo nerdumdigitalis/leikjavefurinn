@@ -57,7 +57,7 @@ namespace Leikjavefur.Models.Repository
 
         public List<GameInstance> GetGameInstances()
         {
-            return All.GroupBy(element => element.GameInstanceID).Select(grp => grp.FirstOrDefault()).ToList();
+            return All.GroupBy(element => element.GameInstanceID).Select(grp => grp.FirstOrDefault()).OrderBy(x => x.GameID).ToList();
             //return _context.GameInstances.Select(element => element.GameInstanceID).Distinct().ToList();
 
         }
