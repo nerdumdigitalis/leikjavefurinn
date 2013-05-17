@@ -67,11 +67,18 @@
                         <h3>Allir notendur</h3>
                         @Html.Action("UserList", "Users")
                     </div>
+                     <div id="OverallTopTenList">
+                        @Html.Action("OverallTopTen", "Statistics")
+                    </div>
                 </div>
 
                 <div id="middle_nav">
                     @Html.Action("GamesList", "Games")
                 </div>
+
+               
+
+            </div>
 
             </div>
     </body>

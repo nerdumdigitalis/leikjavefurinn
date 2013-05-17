@@ -40,26 +40,43 @@ namespace Leikjavefur.Models.Repository
                               select Stats).FirstOrDefault();
         }
 
-        public List<Statistic> FindAllByUserId(int userId)
+        public List<Statistic> FindTopScoreForAll(int howToSort)
         {
             var PlayerList =  (from Stats in _context.Statistics
                     select Stats).ToList();
 
+            var sortedList = PlayerList.GroupBy(x => x.UserID)
+                    .Select(y => new
+                    {
+                        UserId = y.Key,
+                        Wins = y.Sum(i => i.Wins),
+                        Losses = y.Sum(i => i.Losses),
+                        Draws = y.Sum(i => i.Draws),
+                        GamesPlayed = y.Sum(i => i.GamesPlayed)
+                    }).ToList();
 
-            List<Statistic> playTotalScoreArray = new List<Statistic>();
-
-            foreach (var item in PlayerList)
+            List<Statistic> playTotalScoreList = new List<Statistic>();
+            foreach (var item in sortedList)
             {
-                playTotalScoreArray[item.UserID].Wins += item.Wins;
-                playTotalScoreArray[item.UserID].Losses += item.Wins;
-                playTotalScoreArray[item.UserID].Draws += item.Wins;
-                playTotalScoreArray[item.UserID].GamesPlayed += item.Wins;
-                playTotalScoreArray[item.UserID].UserID = item.UserID;
-            }
-            playTotalScoreArray = playTotalScoreArray.OrderByDescending(x => x.Wins).ToList();
-            playTotalScoreArray = playTotalScoreArray.Take(10).ToList();
+                Statistic tempStats = new Statistic();
+                tempStats.Wins = item.Wins;
+                tempStats.Losses = item.Losses;
+                tempStats.Draws = item.Draws;
+                tempStats.GamesPlayed = item.GamesPlayed;
+                tempStats.UserID = item.UserId;
 
-            return playTotalScoreArray;
+                playTotalScoreList.Add(tempStats);
+            }
+
+            if(howToSort == 1)
+                playTotalScoreList = playTotalScoreList.OrderByDescending(x => x.Wins).ToList();
+            else if(howToSort == 2)
+                playTotalScoreList = playTotalScoreList.OrderByDescending(x => x.GamesPlayed).ToList();
+            else if(howToSort == 3)
+                playTotalScoreList = playTotalScoreList.OrderByDescending(x => x.Points).ToList();
+
+            playTotalScoreList = playTotalScoreList.Take(10).ToList();
+            return playTotalScoreList;
         }
 
         public void InsertOrUpdate(Statistic statistic)
