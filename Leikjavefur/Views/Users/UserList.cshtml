@@ -37,30 +37,29 @@ else
 }
 </ul>*@
 
-    <div id="UserWrapper">
-        @foreach (var item in Model) 
-        {
-            <div class="UserImage">
-                <img src="~/Images/@item.UserProfile.Avatar"/>
-                <div class="UserProfilePopup">
-                    <img src="~/Images/@item.UserProfile.Avatar" style="float:left" alt="Mynd Notanda"/>
-                    <div class="display-label">Nafn: @item.UserProfile.UserName</div>
-                    <div class="display-label">Netfang: @item.UserProfile.Email</div>
-                    <div class="display-label">Skráður: @String.Format("{0:g}", @item.UserProfile.DateCreated)</div>
-                    <div class="display-field">@item.UserProfile.About</div>
+<div id="UserWrapper">
+    @foreach (var item in Model) 
+    {
+        <div class="UserImage">
+            <img src="~/Images/@item.UserProfile.Avatar"/>
+            <div class="UserProfilePopup">
+                <img src="~/Images/@item.UserProfile.Avatar" style="float:left" alt="Mynd Notanda"/>
+                <div class="display-label">Nafn: @item.UserProfile.UserName</div>
+                <div class="display-label">Netfang: @item.UserProfile.Email</div>
+                <div class="display-label">Skráður: @String.Format("{0:g}", @item.UserProfile.DateCreated)</div>
+                <div class="display-field">@item.UserProfile.About</div>
 
-                    @if (Request.IsAuthenticated) 
-                    {
-                        if (item.IsFriend)
-                        {   <input type="button" value="Taka af Vinalista" onclick="location.href='@Url.Action("RemoveFriend", "Users", new { id=item.UserProfile.UserID })'" />   }
-                        else
-                        {   <input type="button" value="Setja á Vinalista" onclick="location.href='@Url.Action("AddFriend", "Users", new { id=item.UserProfile.UserID })    '" />   }
-                    }
-                </div>
+                @if (Request.IsAuthenticated) 
+                {
+                    if (item.IsFriend)
+                    {   <input type="button" value="Taka af Vinalista" onclick="location.href='@Url.Action("RemoveFriend", "Users", new { id=item.UserProfile.UserID })'" />   }
+                    else
+                    {   <input type="button" value="Setja á Vinalista" onclick="location.href='@Url.Action("AddFriend", "Users",    new { id=item.UserProfile.UserID })'" />   }
+                }
             </div>
-        }
-    </div>
-}
+        </div>
+    }
+</div>
 
         
 
