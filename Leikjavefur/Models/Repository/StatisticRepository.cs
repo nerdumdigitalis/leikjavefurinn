@@ -1,5 +1,4 @@
 using System;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -31,11 +30,7 @@ namespace Leikjavefur.Models.Repository
 
         public IQueryable<Statistic> AllIncluding(params Expression<Func<Statistic, object>>[] includeProperties)
         {
-            IQueryable<Statistic> query = _context.Statistics;
-            foreach (var includeProperty in includeProperties) {
-                query = query.Include(includeProperty);
-            }
-            return query;
+            return includeProperties.Aggregate<Expression<Func<Statistic, object>>, IQueryable<Statistic>>(_context.Statistics, (current, includeProperty) => current.Include(includeProperty));
         }
 
         public Statistic Find(string id)
@@ -45,9 +40,9 @@ namespace Leikjavefur.Models.Repository
 
         public Statistic FindByUserId(int userID)
         {
-            var myStats = (from Stats in _context.Statistics
-                           where Stats.UserID == userID
-                           select Stats).ToList();
+            var myStats = (from stats in _context.Statistics
+                           where stats.UserID == userID
+                           select stats).ToList();
 
             var singleStat= myStats.GroupBy(x => x.UserID)
                    .Select(y => new
@@ -57,7 +52,7 @@ namespace Leikjavefur.Models.Repository
                        GamesPlayed = y.Sum(i => i.GamesPlayed)
                    }).FirstOrDefault();
 
-            Statistic newStats = new Statistic();
+            var newStats = new Statistic();
             if (singleStat == null)
             {
                 newStats.Wins = 0;
@@ -77,18 +72,18 @@ namespace Leikjavefur.Models.Repository
 
         public Statistic FindByUserIdAndGameID(int userId, int gameId)
         {
-            return (from Stats in _context.Statistics
-                              where Stats.UserID == userId
-                              &&  Stats.GameID == gameId
-                              select Stats).FirstOrDefault();
+            return (from stats in _context.Statistics
+                              where stats.UserID == userId
+                              &&  stats.GameID == gameId
+                              select stats).FirstOrDefault();
         }
 
         public List<Statistic> FindTopScoreForAll(int howToSort)
         {
-            var PlayerList =  (from Stats in _context.Statistics
-                    select Stats).ToList();
+            var playerList =  (from stats in _context.Statistics
+                    select stats).ToList();
 
-            var sortedList = PlayerList.GroupBy(x => x.UserID)
+            var sortedList = playerList.GroupBy(x => x.UserID)
                     .Select(y => new
                     {
                         UserId = y.Key,
@@ -98,25 +93,33 @@ namespace Leikjavefur.Models.Repository
                         GamesPlayed = y.Sum(i => i.GamesPlayed)
                     }).ToList();
 
-            List<Statistic> playTotalScoreList = new List<Statistic>();
+            var playTotalScoreList = new List<Statistic>();
             foreach (var item in sortedList)
             {
-                Statistic tempStats = new Statistic();
-                tempStats.Wins = item.Wins;
-                tempStats.Losses = item.Losses;
-                tempStats.Draws = item.Draws;
-                tempStats.GamesPlayed = item.GamesPlayed;
-                tempStats.UserID = item.UserId;
+                var tempStats = new Statistic
+                                    {
+                                        Wins = item.Wins,
+                                        Losses = item.Losses,
+                                        Draws = item.Draws,
+                                        GamesPlayed = item.GamesPlayed,
+                                        UserID = item.UserId
+                                    };
 
                 playTotalScoreList.Add(tempStats);
             }
 
-            if(howToSort == 1)
-                playTotalScoreList = playTotalScoreList.OrderByDescending(x => x.Wins).ToList();
-            else if(howToSort == 2)
-                playTotalScoreList = playTotalScoreList.OrderByDescending(x => x.GamesPlayed).ToList();
-            else if(howToSort == 3)
-                playTotalScoreList = playTotalScoreList.OrderByDescending(x => x.Points).ToList();
+            switch (howToSort)
+            {
+                case 1:
+                    playTotalScoreList = playTotalScoreList.OrderByDescending(x => x.Wins).ToList();
+                    break;
+                case 2:
+                    playTotalScoreList = playTotalScoreList.OrderByDescending(x => x.GamesPlayed).ToList();
+                    break;
+                case 3:
+                    playTotalScoreList = playTotalScoreList.OrderByDescending(x => x.Points).ToList();
+                    break;
+            }
 
             playTotalScoreList = playTotalScoreList.Take(10).ToList();
             return playTotalScoreList;
@@ -124,6 +127,8 @@ namespace Leikjavefur.Models.Repository
 
         public void InsertOrUpdate(Statistic statistic)
         {
+            
+
             if (statistic.Id == default(int)) {
                 // New entity
                 _context.Statistics.Add(statistic);

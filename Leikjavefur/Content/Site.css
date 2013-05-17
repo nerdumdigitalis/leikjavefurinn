@@ -3,11 +3,16 @@ body
 {
     width:100%;
     height:100%;
+    margin:0;
     /*margin:20px;*/
     margin-top: 5px;
     min-width: 1550px; 
 	/*overflow: auto;*/
-	/*background: url("../Images/background_sky.jpg");*/
+	background: url("../Images/Background_color2.png") repeat-y center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 }
 
 html 
@@ -291,7 +296,7 @@ ul
 {
     visibility:visible;
     opacity:1;
-    transition-delay:0s;
+    transition-delay:0;
 
 }
 
@@ -301,7 +306,7 @@ ul
     z-index:10; 
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 0.2s,opacity 0.2s linear;
+    transition:visibility 0 linear 0.2s,opacity 0.2s linear;
     width:853px; 
     height:480px; 
     left:50%;
@@ -316,7 +321,7 @@ ul
     z-index:10; 
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 0.2s,opacity 0.2s linear;
+    transition:visibility 0 linear 0.2s,opacity 0.2s linear;
     width:450px; 
     height:350px; 
     left:30%;
@@ -331,7 +336,7 @@ ul
     z-index:10; 
     visibility:hidden;
     opacity:0;
-    transition:visibility 0s linear 0.2s,opacity 0.2s linear;
+    transition:visibility 0 linear 0.2s,opacity 0.2s linear;
     width:450px; 
     height:350px; 
     left:75%;
@@ -369,7 +374,7 @@ ul
 }
 
 ul.tabs {
-    margin:0px; padding:0px;
+    margin:0; padding:0;
 }
 ul.tabs li {
     list-style:none;
@@ -468,7 +473,7 @@ h2
 	background: url("../Images/game_board3.jpg") no-repeat;
 	width: 519px;
 	height: 437px;
-	margin-top: 0px;
+	margin-top: 0;
 	z-index: -1;
 
 }
@@ -675,6 +680,14 @@ h2
 #GameInstanceNavContainer ul li:hover 
 {
     background: rgb(86,221,79);
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMTAwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNTZkZDRmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjN2FmZmY2IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+    background: -moz-linear-gradient(45deg,  rgba(86,221,79,1) 0, rgba(122,255,246,1) 75%);
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0,rgba(86,221,79,1)), color-stop(75%,rgba(122,255,246,1)));
+    background: -webkit-linear-gradient(45deg,  rgba(86,221,79,1) 0,rgba(122,255,246,1) 75%);
+    background: -o-linear-gradient(45deg,  rgba(86,221,79,1) 0,rgba(122,255,246,1) 75%);
+    background: -ms-linear-gradient(45deg,  rgba(86,221,79,1) 0,rgba(122,255,246,1) 75%);
+    background: linear-gradient(45deg,  rgba(86,221,79,1) 0,rgba(122,255,246,1) 75%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#56dd4f', endColorstr='#7afff6',GradientType=1 );
     background: rgb(129,234,129);
     background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMTAwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjglIiBzdG9wLWNvbG9yPSIjODFlYTgxIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNzElIiBzdG9wLWNvbG9yPSIjYjNlNWVmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
     background: -moz-linear-gradient(45deg,  rgba(129,234,129,1) 8%, rgba(179,229,239,1) 71%);
@@ -687,23 +700,6 @@ h2
 
 	
 	/*background:url(../Images/GI_hover.jpg) repeat-x;*/
-}
-
-
-#GameInstanceNavContainer ul li span:hover 
-{
-	/*background:url(../Images/GI_left_hover.jpg) top left no-repeat;*/
-}
-
-
-#GameInstanceNavContainer ul li a span
-{
-	
-}
-
-#GameInstanceNavContainer ul li a:hover
-{
-	/*background:url(../Images/GI_right_hover.jpg) top right no-repeat;*/
 }
 
 #GameInstanceNavContainer ul ul
@@ -719,7 +715,7 @@ h2
 	width:40%;
 	position:absolute;
 	display:block; left:-41%; 
-	top:0px;
+	top:0;
 }
 
 #GameProfile
@@ -756,20 +752,19 @@ h2
 
 }
 
-#Header
-{
+#Header {
 	position: relative;
 	height:140px;
 	width:76%;
 	left: 12%;
-    background-color: rgba(236, 126, 20, 0.90)
+	background-color: #ec7e14
+	/*background-image : url("../Images/Banner.jpg")*/ ;
+	background-color: rgba(236, 126, 20, 0.90)
 	/*background-image : url("../Images/Banner.jpg")*/ ;
     /*background-repeat: no-repeat;*/
     /*background-position: top center;*/
     background-size:cover;
     border-radius: 15px;
-
-
 }
 
 #Header a img 

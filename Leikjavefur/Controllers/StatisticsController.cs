@@ -5,7 +5,6 @@ using Leikjavefur.Models.Repository;
 using Leikjavefur.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace Leikjavefur.Controllers
 {   
@@ -125,8 +124,8 @@ namespace Leikjavefur.Controllers
         }
         public ActionResult OverallTopTen() 
         {
-            List<StatisticViewModel> newViewModel = new List<StatisticViewModel>();
-            List<Statistic> newList = _dataRepository.StatisticRepository.FindTopScoreForAll(1);
+            var newViewModel = new List<StatisticViewModel>();
+            var newList = _dataRepository.StatisticRepository.FindTopScoreForAll(1);
 
             foreach (var item in newList)
 	        {
@@ -140,7 +139,7 @@ namespace Leikjavefur.Controllers
                     });
             }
 
-            newViewModel.OrderByDescending(x => x.Wins);
+            newViewModel = newViewModel.OrderByDescending(x => x.Wins).ToList();
             return PartialView(newViewModel);
         }
     }
