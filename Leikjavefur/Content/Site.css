@@ -3,7 +3,7 @@ body
 {
     width:100%;
     height:100%;
-    margin:0px;
+    /*margin:20px;*/
     margin-top: 5px;
     min-width: 1550px; 
 	/*overflow: auto;*/
@@ -23,13 +23,13 @@ html
 
 }
 
-#background 
+/*#background 
 {
     float: left;
     width: 100%;
     height:100%;
     background-color:pink;
-}
+}*/
 
 #vinir
 {
@@ -146,10 +146,10 @@ html
     float:left;
 }
 
-#render 
+/*#render 
 {
     float:left;
-}
+}*/
 
 #leftChat
 {
@@ -675,14 +675,15 @@ h2
 #GameInstanceNavContainer ul li:hover 
 {
     background: rgb(86,221,79);
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMTAwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNTZkZDRmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjN2FmZmY2IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
-    background: -moz-linear-gradient(45deg,  rgba(86,221,79,1) 0%, rgba(122,255,246,1) 75%);
-    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(86,221,79,1)), color-stop(75%,rgba(122,255,246,1)));
-    background: -webkit-linear-gradient(45deg,  rgba(86,221,79,1) 0%,rgba(122,255,246,1) 75%);
-    background: -o-linear-gradient(45deg,  rgba(86,221,79,1) 0%,rgba(122,255,246,1) 75%);
-    background: -ms-linear-gradient(45deg,  rgba(86,221,79,1) 0%,rgba(122,255,246,1) 75%);
-    background: linear-gradient(45deg,  rgba(86,221,79,1) 0%,rgba(122,255,246,1) 75%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#56dd4f', endColorstr='#7afff6',GradientType=1 );
+    background: rgb(129,234,129);
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMTAwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjglIiBzdG9wLWNvbG9yPSIjODFlYTgxIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNzElIiBzdG9wLWNvbG9yPSIjYjNlNWVmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+    background: -moz-linear-gradient(45deg,  rgba(129,234,129,1) 8%, rgba(179,229,239,1) 71%);
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(8%,rgba(129,234,129,1)), color-stop(71%,rgba(179,229,239,1)));
+    background: -webkit-linear-gradient(45deg,  rgba(129,234,129,1) 8%,rgba(179,229,239,1) 71%);
+    background: -o-linear-gradient(45deg,  rgba(129,234,129,1) 8%,rgba(179,229,239,1) 71%);
+    background: -ms-linear-gradient(45deg,  rgba(129,234,129,1) 8%,rgba(179,229,239,1) 71%);
+    background: linear-gradient(45deg,  rgba(129,234,129,1) 8%,rgba(179,229,239,1) 71%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#81ea81', endColorstr='#b3e5ef',GradientType=1 );
 
 	
 	/*background:url(../Images/GI_hover.jpg) repeat-x;*/
@@ -786,6 +787,7 @@ h2
     padding:5px;
     min-width: 1000px;
     min-height:320px;
+    border-radius:15px;
 }
 
 #Display
@@ -851,9 +853,9 @@ h2
 .Games 
 {
 	position: relative;
-	width: 70%;
+	width: 80%;
     margin: auto;
-	height: 140px;
+	height: auto;
 	background-color: lightblue;
 	margin-bottom: 10px;
 	margin-top: 55px;
@@ -984,6 +986,8 @@ h2
 {
     margin-bottom: 10px;
     margin-top: 10px;
+    padding-bottom:10px;
+    padding-right:5px;
     text-align:center;
     float:left;
     width:100%;
@@ -1123,10 +1127,13 @@ h2
     width:100%;
     float:left;
     background-color: pink;
-    align-content:center;
-     border-radius:15px;
+    border-radius:15px;
 }
 
+#OverallTopTenList h2 
+{
+    color:black    
+}
 #OverallTopTenList table
 {
     margin:auto; 
