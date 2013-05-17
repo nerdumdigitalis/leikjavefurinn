@@ -219,8 +219,8 @@
     <Compile Include="ViewModels\ChatModel.cs" />
     <Compile Include="ViewModels\GameInstanceViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
-    <Compile Include="ViewModels\StatisticsTopTenWithUsernameViewModel.cs" />
     <Compile Include="ViewModels\StatisticViewModel.cs" />
+    <Compile Include="ViewModels\StatisticTopTenWithUsernameAndGame.cs" />
     <Compile Include="ViewModels\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +299,7 @@
     <Content Include="Images\chess_thumbnail.jpg" />
     <Content Include="Images\chess.png" />
     <Content Include="Images\chucknorris.jpg" />
+    <Content Include="Images\dice-transparent.png" />
     <Content Include="Images\dice_150.jpg" />
     <Content Include="Images\Doom_II.png" />
     <Content Include="Images\game_board.jpg" />
@@ -314,6 +315,7 @@
     <Content Include="Images\GI_right_hover.jpg" />
     <Content Include="Images\GI_right_nohover.jpg" />
     <Content Include="Images\logo.jpg" />
+    <Content Include="Images\logo.png" />
     <Content Include="Images\navmenu_left.jpg" />
     <Content Include="Images\navmenu_middle.jpg" />
     <Content Include="Images\navmenu_right.jpg" />
@@ -439,7 +441,6 @@
     <Content Include="Views\GameInstance\Index.cshtml" />
     <Content Include="Views\Users\FriendsList.cshtml" />
     <Content Include="Views\Users\_ProfilePartial.cshtml" />
-    <Content Include="Views\Users\ChangeAvatar.cshtml" />
     <Content Include="Views\Statistics\OverallTopTen.cshtml" />
   </ItemGroup>
   <ItemGroup>

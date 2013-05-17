@@ -38,26 +38,29 @@ namespace Leikjavefur.Controllers
         public ActionResult GamesList()
         {
             //return PartialView(_dataRepository.GameRepository.All);
-            var resultTopTenWithUsername = new List<StatisticsTopTenWithUsernameViewModel>();
-            var resultTopTenWithUsernameAndGame = new List<StatisticViewModel>();
+            //var resultTopTenWithUsername = new List<StatisticViewModel>();
+            var resultTopTenWithUsernameAndGame = new List<StatisticTopTenWithUsernameAndGame>();
             var allgames = _dataRepository.GameRepository.All;
 
             foreach (var gameInstance in allgames)
             {
-                var statsForGame = _dataRepository.StatisticRepository.GetStatisticsByGame(gameInstance.GameID).ToList();
-
-                foreach (var stat in statsForGame)
+                var resultTopTenWithUsername = new List<StatisticViewModel>();
+                foreach (var stat in _dataRepository.StatisticRepository.GetStatisticsByGame(gameInstance.GameID))
                 {
-                    resultTopTenWithUsername.Add(new StatisticsTopTenWithUsernameViewModel
+                    resultTopTenWithUsername.Add(new StatisticViewModel
                     {
-                        Statistic = statsForGame,
-                        UserName = _dataRepository.UserRepository.Find(stat.UserID).UserName
+                        UserName = _dataRepository.UserRepository.Find(stat.UserID).UserName,
+                        GamesPlayed = stat.GamesPlayed,
+                        Wins = stat.Wins,
+                        Losses = stat.Losses,
+                        Draws = stat.Draws,
+                        Points = stat.Points
                     });
                 }
 
-                resultTopTenWithUsernameAndGame.Add(new StatisticViewModel
+                resultTopTenWithUsernameAndGame.Add(new StatisticTopTenWithUsernameAndGame
                 {
-                    StatisticWithUsername = resultTopTenWithUsername,
+                    StatisticWithUsername = resultTopTenWithUsername.OrderByDescending(x => x.Wins),
                     Game = _dataRepository.GameRepository.Find(gameInstance.GameID),
                 });
             }

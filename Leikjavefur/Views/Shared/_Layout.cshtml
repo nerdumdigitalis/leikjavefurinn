@@ -26,15 +26,22 @@
         <div id="Header">
             
             <div id="Header_name"></div>
-
+            <a href="~/Home"><img src="~/Images/logo.png" alt="Borðspil.is" /></a>
             <div id="login">@Html.Partial("_LoginPartial")</div>
 
         </div>
 
         <div id="MainView">
             <div id="wrapper">
+                <div id="ChatWrap">
+                    <h2>Spjall</h2>
+                        <div id="Chat">
+                            @Html.Action("ChatPartial", "Chat")
+                        </div>
+                    </div>
                 <div id="Display">
-                    @RenderBody()
+                      @RenderBody()
+                    
                 </div>
             </div>	
             <div id="left_nav">
@@ -42,13 +49,13 @@
             </div>
         
             <div id="right_nav">
-                <div id="divspjall">
-                <div id="spjall">
-                    @Html.Action("ChatPartial", "Chat")
+                
+                <div class="Userlist">
+                    @Html.Action("FriendsList", "Users")
                 </div>
+                <div class="Userlist">
+                    @Html.Action("UserList", "Users")
                 </div>
-                @Html.Action("FriendsList", "Users") 
-                @Html.Action("UserList", "Users")
             </div>
 
             <div id="middle_nav">
