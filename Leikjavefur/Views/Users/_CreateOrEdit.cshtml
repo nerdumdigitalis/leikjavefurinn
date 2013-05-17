@@ -23,20 +23,34 @@
 <div class="editor-label">
     @Html.LabelFor(model => model.Avatar)
 </div>
-@*<div class="editor-field" id="AvatarSelector">
+<div class="editor-field" id="AvatarSelector">
     @Html.DropDownListFor(model => model.Avatar, new SelectList(
         new List<Object>{
-                new { value = model.Avatar, text = "Current Image"},
-                new { value ="avatar1.png", text = "Avatar 1"},
-                new { value ="avatar2.png", text = "Avatar 2"},
-                new { value ="avatar3.png", text = "Avatar 3"},
-                new { value ="avatar4.png", text = "Avatar 4"},
-                new { value ="avatar5.png", text = "Avatar 5"},
+                new { value = "../Images/profileimg1.jpg", text = "Avatar 1"},
+                new { value = "../Images/profileimg2.jpg", text = "Avatar 2"},
+                new { value = "../Images/profileimg3.jpg", text = "Avatar 3"},
+                new { value = "../Images/profileimg4.jpg", text = "Avatar 4"},
+                new { value = "../Images/profileimg5.jpg", text = "Avatar 5"},
+                new { value = "../Images/profileimg6.jpg", text = "Avatar 6"},
+                new { value = "../Images/profileimg7.jpg", text = "Avatar 7"},
+                new { value = "../Images/profileimg8.jpg", text = "Avatar 8"},
+                new { value = "../Images/profileimg9.jpg", text = "Avatar 9"},
+                new { value = "../Images/profileimg10.jpg", text = "Avatar 10"},
+                new { value = "../Images/profileimg11.jpg", text = "Avatar 11"},
+                new { value = "../Images/profileimg12.jpg", text = "Avatar 12"},
+                new { value = "../Images/profileimg13.jpg", text = "Avatar 13"},
+                new { value = "../Images/profileimg14.jpg", text = "Avatar 14"},
+                new { value = "../Images/profileimg15.jpg", text = "Avatar 15"},
+                new { value = "../Images/profileimg16.jpg", text = "Avatar 16"},
+                new { value = "../Images/profileimg17.jpg", text = "Avatar 17"},
+                new { value = "../Images/profileimg18.jpg", text = "Avatar 18"},
+                new { value = "../Images/profileimg19.jpg", text = "Avatar 19"},
+                new { value = "../Images/profileimg20.jpg", text = "Avatar 20"},
+                new { value = "../Images/profileimg21.jpg", text = "Avatar 21"}
             }, "value","text", 2), new {style="width:150px;"})
-    *@
     @*@Html.EditorFor(model => model.Avatar)*@
- @*   @Html.ValidationMessageFor(model => model.Avatar)*@
-@*</div>*@
+    @Html.ValidationMessageFor(model => model.Avatar)
+</div>
 
 @*<div class="editor-label">
     @Html.LabelFor(model => model.DateCreated)
