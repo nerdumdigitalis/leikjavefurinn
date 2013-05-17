@@ -47,10 +47,19 @@ namespace Leikjavefur.Models.Repository
                    }).FirstOrDefault();
 
             Statistic newStats = new Statistic();
+            if (singleStat == null)
+            {
+                newStats.Wins = 0;
+                newStats.GamesPlayed = 0;
+                newStats.UserID = 0;
+            }
+            else
+            {
+                newStats.Wins = singleStat.Wins;
+                newStats.GamesPlayed = singleStat.GamesPlayed;
+                newStats.UserID = singleStat.UserId;
+            }
 
-            newStats.Wins = singleStat.Wins;
-            newStats.UserID = singleStat.UserId;
-            newStats.GamesPlayed = singleStat.GamesPlayed;
 
             return newStats;
         }

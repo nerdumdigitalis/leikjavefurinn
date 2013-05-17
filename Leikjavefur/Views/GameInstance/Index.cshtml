@@ -3,41 +3,29 @@
 <p>Leikir í gangi</p>
 
 <div id="GameInstanceNavContainer">
-    <ul>
-        @foreach (var item in Model)
+    @foreach (var item in Model)
+    {
+        if (!item.GameInstance.IsActive)
         {
-            <li>
-                <span>
-                    @if(item.GameInstance.IsActive)
-                    {
-                        <a>@item.Game.Name (Leikur í gangi)</a>
-                    }
-                    else
-                    {
-                        if(item.Players.Count() < item.Game.MaxPlayers)
-                        {
-                            @Html.ActionLink((item.Game.Name + " (Vantar " + (item.Game.MaxPlayers - item.Players.Count()) + " spilara)"), "Join", "GameInstance", item.GameInstance, null)
-                        }
-                        else
-                        {
-                            <a>@item.Game.Name (Leikur fullur)</a>
-                        }
-                    }
-                </span>
+            if (item.Players.Count() < item.Game.MaxPlayers)
+            { 
                 <ul>
-                    
-                    @foreach(var player in item.Players)
-                    {
-                        <li><span><a>@player.UserName</a></span></li>
-                    }
+                    <li>
+                        <span>
+                            @Html.ActionLink((item.Game.Name + " (Vantar " + (item.Game.MaxPlayers - item.Players.Count()) + " spilara)"), "Join", "GameInstance", item.GameInstance, null)
+                        </span>
+                        <ul>
+                            @foreach (var player in item.Players)
+                            {
+                                <li><span><a>@player.UserName</a></span></li>
+                            }
                          
-                </ul>   
-                   
-            </li>
-    
+                        </ul>  
+                    </li>
+                </ul>
+            }
         }
-
-    </ul>
+    }
 
 </div>
 
