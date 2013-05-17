@@ -1070,6 +1070,16 @@ h2
 	z-index: 100;
 }
 
+.UserProfilePopup table
+{
+    margin: 5px;
+}
+
+.UserProfilePopup table th
+{
+    padding: 5px;
+}
+
 #ChatWrap
 {
     float:right;
