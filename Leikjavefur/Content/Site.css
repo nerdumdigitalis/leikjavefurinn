@@ -712,53 +712,12 @@ h2
 	z-index: 200;
 }
 
-/*#GameInstanceNavContainer ul ul li
-{
-	position:relative;
-	height: 30px;
-	margin-bottom: 5px;
-	background:url(../Images/GI_nohover.jpg) repeat-x;
-}
-
-#GameInstanceNavContainer ul ul li a
-{
-	text-decoration:none;
-	color:black;
-	font-weight:bold;
-	font-family:Lucida Sans Unicode, Lucida Grande, sans-serif;
-	display:block;
-	padding:8px;
-	background:url(../Images/GI_right_nohover.jpg) top right no-repeat;
-}
-
-#GameInstanceNavContainer ul ul li span
-{
-	background:url(../Images/GI_left_nohover.jpg) top left no-repeat;
-}
-
-#GameInstanceNavContainer ul li:hover 
-{
-	right: 10px;
-	background:url(../Images/GI_hover.jpg) repeat-x;
-}
-
-
-#GameInstanceNavContainer ul ul li span:hover 
-{
-	background:url(../Images/GI_left_hover.jpg) top left no-repeat;
-}
-
-
-#GameInstanceNavContainer ul ul li a:hover
-{
-	background:url(../Images/GI_right_hover.jpg) top right no-repeat;
-}*/
 
 #GameInstanceNavContainer ul li:hover ul
 {
 	width:40%;
 	position:absolute;
-	display:block; left:-115px; 
+	display:block; left:-41%; 
 	top:0px;
 }
 
@@ -987,39 +946,55 @@ h2
     width: 100px;
 }
 
-#listplayer1 {
+#listplayer1 
+{
     background-color: white;
 }
 
-#listplayer2 {
+#listplayer2 
+{
     background-color: black;
     color:white;
 }
 
-#listplayer2 {
+#listplayer2 
+{
     background-color: purple;
 }
 
-#listplayer3 {
+#listplayer3 
+{
     background-color: brown;
 }
 
 
-.UserImage {
+.UserImage 
+{
 	height: 70px;
 	width: 70px;
 	float: left;
-    /*display: ;*/
+
+    display:inline-block ;
 	border: black solid 1px;
 	
 }
 
-.Userlist {
+.Userlist 
+{
     margin: 10px;
     padding: 10px;
     text-align:center;
     float:right;
     width:100%;
+}
+
+#UserWrapper 
+{
+    height:100%;
+    width:100%;
+    margin:auto;
+    padding:5%;
+    /*float:right*/
 }
 
 .Userlist h3 
