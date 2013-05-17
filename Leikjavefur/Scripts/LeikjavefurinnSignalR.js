@@ -45,7 +45,7 @@
     };
 
     //Snakes'N'Ladders Receive Functions
-    hub.client.receiveRollValueAndNextPlayer = function (_oldPosition, _newPosition, _player, _isGameOver, roll, snakeOrLadder, snakeOrLadderValue) {
+    hub.client.receiveRollValueAndNextPlayer = function (_oldPosition, _newPosition, _player, _isGameOver, _roll, snakeOrLadder, snakeOrLadderValue) {
 
         var oldPosition = 0;
         oldPosition = parseInt(_oldPosition);
@@ -53,8 +53,11 @@
         newPosition = parseInt(_newPosition);
         var player = 0;
         player = parseInt(_player);
+        var roll = 0;
+        roll = parseInt(_roll);
         var isGameOver = "";
         isGameOver = _isGameOver;
+
 
         //Start by moving player to new position
         $("#rolltext").text("Leikmaður " + player + " kastar " + roll);
@@ -91,10 +94,23 @@
         }
         else if(difference > 0)
         {
-            for(var i = oldPosition++; i <= newPosition; i++)
-            {
-                var nextPos = $("#" + i).position();
-                $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+            if ((oldPosition + roll) > 30) {
+                var startSpot = oldPosition + 1;
+                for (var i = startSpot; i <= 30; i++) {
+                    var nextPos = $("#" + i).position();
+                    $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+                }
+
+                for (var i = 29; i >= newPosition; i--) {
+                    var nextPos = $("#" + i).position();
+                    $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+                }
+            }
+            else {
+                for (var i = oldPosition++; i <= newPosition; i++) {
+                    var nextPos = $("#" + i).position();
+                    $("#player" + player).animate({ 'top': nextPos.top + 'px', 'left': nextPos.left + 'px' }, 300, function () { });
+                }
             }
         }
         else if (difference < 0) {
