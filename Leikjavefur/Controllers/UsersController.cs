@@ -146,7 +146,7 @@ namespace Leikjavefur.Controllers
             {
                 _dataRepository.UserRepository.InsertOrUpdate(userProfile);
                 _dataRepository.UserRepository.Save();
-                return RedirectToAction("Index","Games");
+                //return RedirectToAction("Index","Games");
             }
             return View();
         }
