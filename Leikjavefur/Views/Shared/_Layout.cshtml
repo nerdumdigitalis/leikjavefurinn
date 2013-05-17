@@ -28,7 +28,14 @@
             
                 <div id="Header_name"></div>
                 <a href="~/Home"><img src="~/Images/logo.png" alt="Borðspil.is" /></a>
-                <div id="login">@Html.Partial("_LoginPartial")</div>
+                @if (WebSecurity.IsAuthenticated)
+                {
+                    <div id="partialProfile">@Html.Action("_ProfilePartial", "Users")</div>
+                }
+                else
+                {
+                    <div id="login">@Html.Partial("_LoginPartial")</div>
+                }
 
             </div>
 
