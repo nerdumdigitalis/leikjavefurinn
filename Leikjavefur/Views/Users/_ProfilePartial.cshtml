@@ -1,11 +1,11 @@
-﻿@model Leikjavefur.Models.UserProfile
+﻿@model Leikjavefur.ViewModels.LoginPartialViewModel
 
 @{
     Layout = null;
 }
 
 <div id="avatar">
-        <object data="~/Images/@Model.Avatar">
+        <object data="~/Images/@Model.userProfile.Avatar">
             <img src="~/Images/avatar5.png"  />
         </object>
     @*<div id="changeAvatarButton">
@@ -15,8 +15,8 @@
 
 <div id="profilestats">
         <p>Name: @Html.ActionLink(User.Identity.Name, "Details", "Users", new { @id=WebSecurity.CurrentUserId }, null)</p>
-        <p>Sigrar:</p>
-        <p>Spilaðir leikir:</p>
+        <p>Sigrar: @Model.wins</p>
+        <p>Spilaðir leikir: @Model.gamesPlayed</p>
 </div>
 
 <div id="ProfileManage">
