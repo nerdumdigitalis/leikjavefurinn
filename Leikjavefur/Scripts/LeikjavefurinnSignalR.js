@@ -57,7 +57,7 @@
         isGameOver = _isGameOver;
 
         //Start by moving player to new position
-        $("#rolltext").text("Player " + player + " rolls a " + roll);
+        $("#rolltext").text("Leikmaður " + player + " kastar " + roll);
         var difference = newPosition - oldPosition;
         if (snakeOrLadder == "true")
         {
