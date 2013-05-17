@@ -23,6 +23,14 @@ html
 
 }
 
+#background 
+{
+    float: left;
+    width: 100%;
+    height:100%;
+    background-color:pink;
+}
+
 #vinir
 {
     position:relative;
@@ -53,40 +61,80 @@ html
     overflow-y: auto;
 }
 
-#profile
+#partialProfile 
 {
-    position:relative;
-    border: solid black 1px;
-    border-right:none;
-    float:left;
-    width:100%;
-    height:155px;
-    background-color:#827B60;
-}
-
-#profilestats 
-{
-    position:relative;
-    float:left;
-    width:30%;
-    height:100%;
-    margin-left:10px;
-}
-
-#logoff 
-{   
-    float:right;
-    padding-right:10px;
-    height:100%;
-    margin-top:10px;
+    display :inline;
+    margin:10px;
+    padding:10px;
+    border-radius:15px;
+    float: right;
+    height: 100px;
+    background-color: lightgray;
+    opacity:0.8;
+    /*background-color: pink;*/
 }
 
 #avatar
 {
     position:relative;
 	float:left;
-	width:155px;
-    height:155px;
+	/*width:155px;*/
+    margin-right:50px;
+    opacity:1;
+}
+
+#profilestats 
+{
+    position:relative;
+    float:left;
+    width:auto;
+    opacity:1;
+    margin-right :50px;
+    /*height:100%;*/
+    
+}
+
+#profilestats p
+{
+    margin:0;
+    opacity:1;
+}
+/*#profile
+{
+    position:relative;
+    border: solid black 1px;
+    border-right:none;
+    float:left;
+    width:100%;
+    height:auto;
+}*/
+
+
+
+#ProfileManage 
+{   
+    float:right;
+    /*height:100%;*/
+    margin-top:10px;
+    opacity:1;
+}
+
+#profilestats p a 
+{
+    font-size: inherit;
+}
+
+#ProfileManage a 
+{
+    float:right;
+    /*padding:5px;*/
+    color: black;
+    /*margin:0;*/
+    /*background-color:blue;  
+    opacity:0.7;
+    border-radius: 15px;*/
+    
+
 }
 
 #middle
@@ -398,7 +446,7 @@ ul.tabs li a:hover {
     border:solid black 3px;
     padding-left:1px;
     padding-top:1px;
-    
+    border-radius: 15px;
 }
 
 .bio 
@@ -588,14 +636,26 @@ h2
 	position:relative;
 	height: 30px;
 	margin-bottom: 5px;
-	background:url(../Images/navmenu_middle.jpg) repeat-x;
+	/*background:url(../Images/navmenu_middle.jpg) repeat-x;*/
+    border:solid black 1px;
+    border-radius: 15px;
+    background: rgb(86,221,79);
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxJSIgc3RvcC1jb2xvcj0iIzU2ZGQ0ZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk4JSIgc3RvcC1jb2xvcj0iIzk3ZmY3YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+    background: -moz-linear-gradient(top, rgba(86,221,79,1) 1%, rgba(151,255,122,1) 98%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,rgba(86,221,79,1)), color-stop(98%,rgba(151,255,122,1)));
+    background: -webkit-linear-gradient(top, rgba(86,221,79,1) 1%,rgba(151,255,122,1) 98%);
+    background: -o-linear-gradient(top, rgba(86,221,79,1) 1%,rgba(151,255,122,1) 98%);
+    background: -ms-linear-gradient(top, rgba(86,221,79,1) 1%,rgba(151,255,122,1) 98%);
+    background: linear-gradient(to bottom, rgba(86,221,79,1) 1%,rgba(151,255,122,1) 98%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#56dd4f', endColorstr='#97ff7a',GradientType=0 );
+
   
 }
 
 #GameInstanceNavContainer ul li span
 {
 	display:block;
-	background:url(../Images/navmenu_left.jpg) top left no-repeat;
+	/*background:url(../Images/navmenu_left.jpg) top left no-repeat;*/
     
 }
 
@@ -607,21 +667,31 @@ h2
 	font-family:Lucida Sans Unicode, Lucida Grande, sans-serif;
 	display:block;
 	padding:8px;
-	background:url(../Images/navmenu_right.jpg) top right no-repeat;
+	/*background:url(../Images/navmenu_right.jpg) top right no-repeat;*/
     white-space: nowrap;
     overflow: hidden;
 }
 
 #GameInstanceNavContainer ul li:hover 
 {
+    background: rgb(86,221,79);
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMTAwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNTZkZDRmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjN2FmZmY2IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+    background: -moz-linear-gradient(45deg,  rgba(86,221,79,1) 0%, rgba(122,255,246,1) 75%);
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(86,221,79,1)), color-stop(75%,rgba(122,255,246,1)));
+    background: -webkit-linear-gradient(45deg,  rgba(86,221,79,1) 0%,rgba(122,255,246,1) 75%);
+    background: -o-linear-gradient(45deg,  rgba(86,221,79,1) 0%,rgba(122,255,246,1) 75%);
+    background: -ms-linear-gradient(45deg,  rgba(86,221,79,1) 0%,rgba(122,255,246,1) 75%);
+    background: linear-gradient(45deg,  rgba(86,221,79,1) 0%,rgba(122,255,246,1) 75%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#56dd4f', endColorstr='#7afff6',GradientType=1 );
+
 	
-	background:url(../Images/GI_hover.jpg) repeat-x;
+	/*background:url(../Images/GI_hover.jpg) repeat-x;*/
 }
 
 
 #GameInstanceNavContainer ul li span:hover 
 {
-	background:url(../Images/GI_left_hover.jpg) top left no-repeat;
+	/*background:url(../Images/GI_left_hover.jpg) top left no-repeat;*/
 }
 
 
@@ -632,7 +702,7 @@ h2
 
 #GameInstanceNavContainer ul li a:hover
 {
-	background:url(../Images/GI_right_hover.jpg) top right no-repeat;
+	/*background:url(../Images/GI_right_hover.jpg) top right no-repeat;*/
 }
 
 #GameInstanceNavContainer ul ul
@@ -751,6 +821,7 @@ h2
 
 #wrapper 
 {
+    margin-top:5px;
     width:100%;
     background-color: lightgreen;
     padding:5px;
@@ -925,12 +996,27 @@ h2
     background-color: brown;
 }
 
+
 .UserImage {
 	height: 70px;
 	width: 70px;
 	float: left;
+    /*display: ;*/
 	border: black solid 1px;
 	
+}
+
+.Userlist {
+    margin: 10px;
+    padding: 10px;
+    text-align:center;
+    float:right;
+    width:100%;
+}
+
+.Userlist h3 
+{
+    color: black;
 }
 
 .UserProfilePopup img 
@@ -938,26 +1024,30 @@ h2
 	margin: 10px;
 }
 
-.UserImage .UserProfilePopup 
+ .UserProfilePopup 
 {
 	position: relative;
 	display: none;
-	background: white;
+	background: lightgrey;
+    opacity:0.93;
+    border-radius: 15px;
 	width: 300px;
-	height: 200px;
+	height: auto;
 	border: black 1px solid;
 	padding: 10px;
     top: -30px;
     left: 50px;
 }
-
+.Userlist .UserImage:hover .UserProfilePopup 
+{
+     min-height:110px;
+}
+    
 .UserImage:hover .UserProfilePopup 
 {
-	display: block;
-	z-index: 100;
+    display: block;
+    z-index: 100;
 }
-
-
 
 .GamesImage {
 	height: 57px;
@@ -975,7 +1065,7 @@ h2
 	position: relative;
 	display: none;
 	background: white;
-	width: 370px;
+	width: 300px;
 	height: 250px;
 	border: black 1px solid;
 	padding: 10px;
@@ -1001,10 +1091,13 @@ h2
     text-align:center;
 }
 
+.textcenter {
+    text-align: center;
+}
+
 #Chat
 {
     position:relative;
-    border: solid black 1px;
     width:99%;
     height:100%;
 }

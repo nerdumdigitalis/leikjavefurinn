@@ -1,9 +1,48 @@
-﻿@Leikjavefur.ViewModels.StatisticViewModel;
+﻿@using Leikjavefur.Models
+@model IEnumerable<Leikjavefur.ViewModels.StatisticViewModel>
 
-
-
-@foreach(var item in List){
-<div class="overallTopTenList">
-    @item.Stuff;
-</div>
-}
+<table>
+    <tr>
+        <th>
+            Notandi
+        </th>
+        <th>
+            Leikir
+        </th>
+        <th>
+            Sigrar
+        </th>
+        <th>
+            Töp
+        </th>
+        <th>
+            Jafntefli
+        </th>
+        <th>
+            Stig
+        </th>
+    </tr>
+    @foreach (var stats in Model)
+    {
+        <tr>
+            <td>
+			    @Html.DisplayTextFor(_ => stats.UserName).ToString()
+            </td>
+                <td>
+			    @stats.GamesPlayed
+            </td>
+            <td>
+			    @stats.Wins
+            </td>
+            <td>
+			    @stats.Losses
+            </td>
+            <td>
+			    @stats.Draws
+            </td>
+            <td>
+			    @stats.Points
+            </td>
+        </tr>
+    }
+</table>

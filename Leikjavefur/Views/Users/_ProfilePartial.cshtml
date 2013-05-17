@@ -1,29 +1,28 @@
-﻿@model Leikjavefur.Models.UserProfile
+﻿@model Leikjavefur.ViewModels.LoginPartialViewModel
 
 @{
     Layout = null;
 }
 
 <div id="avatar">
-        <object data="~/Images/@Model.Avatar">
-            <img src="~/Images/avatar3.png"  />
+        <object data="~/Images/@Model.userProfile.Avatar">
+            <img src="~/Images/avatar5.png"  />
         </object>
-    <div id="changeAvatarButton">
+    @*<div id="changeAvatarButton">
         @Html.ActionLink("Breyta Mynd", "Edit", new { id=Model.UserID })
-    </div>
+    </div>*@
 </div>
 
 <div id="profilestats">
         <p>Name: @Html.ActionLink(User.Identity.Name, "Details", "Users", new { @id=WebSecurity.CurrentUserId }, null)</p>
-        <p>Stigafjöldi:</p>
-        <p>Fjöldi Spilaðra leikja:</p>
-        <p>Medalía:</p>
+        <p>Sigrar: @Model.wins</p>
+        <p>Spilaðir leikir: @Model.gamesPlayed</p>
 </div>
 
-<div id="logoff">
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+<div id="ProfileManage">
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Útskrá</a>}
         
-        @Html.ActionLink("Breyta Lykilorði", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "UserProfilename", title = "Manage" })
+            @Html.ActionLink("Breyta Lykilorði", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "UserProfilename", title = "Manage" })
 </div>

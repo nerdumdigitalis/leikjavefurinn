@@ -219,6 +219,7 @@
     <Compile Include="ViewModels\ChatModel.cs" />
     <Compile Include="ViewModels\GameInstanceViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\LoginPartialViewModel.cs" />
     <Compile Include="ViewModels\StatisticViewModel.cs" />
     <Compile Include="ViewModels\StatisticTopTenWithUsernameAndGame.cs" />
     <Compile Include="ViewModels\UserProfileViewModel.cs" />

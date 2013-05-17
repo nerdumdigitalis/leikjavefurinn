@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Leikjavefur.ViewModels.UserProfileViewModel>
 
 @{
-    Layout = null;
+Layout = null;
 }
 
 @*@if (User.IsInRole("Administrator"))
@@ -14,25 +14,25 @@ else
 }*@
 
 @*<ul class="popup">
-    @foreach (var item in Model) 
-    {
-        <li>
-            @Html.ActionLink(item.UserProfile.UserName, "Details", new { id=item.UserProfile.UserID })
-            <div class="popup-right-upper">
-                <div id="popup-form">
-                    <form>
-                        <fieldset>
-                            <div id="avatar">
-                                <object data="~/Images/@item.UserProfile.Avatar">
-                                    <img src="~/Images/avatar3.png" />
-                                </object>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
+@foreach (var item in Model) 
+{
+    <li>
+        @Html.ActionLink(item.UserProfile.UserName, "Details", new { id=item.UserProfile.UserID })
+        <div class="popup-right-upper">
+            <div id="popup-form">
+                <form>
+                    <fieldset>
+                        <div id="avatar">
+                            <object data="~/Images/@item.UserProfile.Avatar">
+                                <img src="~/Images/avatar3.png" />
+                            </object>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
-        </li>
-    }
+        </div>
+    </li>
+}
 </ul>*@
 
 

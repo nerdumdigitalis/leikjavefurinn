@@ -146,7 +146,7 @@ namespace Leikjavefur.Controllers
             {
                 _dataRepository.UserRepository.InsertOrUpdate(userProfile);
                 _dataRepository.UserRepository.Save();
-                return RedirectToAction("Index","Games");
+                //return RedirectToAction("Index","Games");
             }
             return View();
         }
@@ -181,7 +181,15 @@ namespace Leikjavefur.Controllers
 
         public ActionResult _ProfilePartial()
         {
-            return PartialView(_dataRepository.UserRepository.Find(WebSecurity.CurrentUserId));
+            LoginPartialViewModel loginViewModel = new LoginPartialViewModel();
+            Statistic myStats = _dataRepository.StatisticRepository.FindByUserId(WebSecurity.CurrentUserId);
+            UserProfile myProfile = _dataRepository.UserRepository.Find(WebSecurity.CurrentUserId);
+
+            loginViewModel.userProfile = myProfile;
+            loginViewModel.wins = myStats.Wins;
+            loginViewModel.gamesPlayed = myStats.GamesPlayed;
+
+            return PartialView(loginViewModel);
         }
 
         public ActionResult ToggleRoleMembership(string username, string rolename)
