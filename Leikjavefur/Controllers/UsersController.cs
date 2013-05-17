@@ -8,7 +8,6 @@ using WebMatrix.WebData;
 using System.Web.Security;
 using Leikjavefur.ViewModels;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace Leikjavefur.Controllers
 {   
@@ -21,7 +20,7 @@ namespace Leikjavefur.Controllers
         {
         }
 
-        public UsersController(IDataRepository dataRepository)
+        private UsersController(IDataRepository dataRepository)
         {
 			_dataRepository = dataRepository;
         }
@@ -37,63 +36,45 @@ namespace Leikjavefur.Controllers
 
         public ActionResult UserList()
         {
-            var result = new List<UserProfileViewModel>();
-            var allusers = _dataRepository.UserRepository.All.ToList();
-            allusers.Remove(_dataRepository.UserRepository.Find(WebSecurity.CurrentUserId));
+            var allUsers = _dataRepository.UserRepository.All.ToList();
+            allUsers.Remove(_dataRepository.UserRepository.Find(WebSecurity.CurrentUserId));
             var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId).ToList();
-            List<UserProfile> notfriends = allusers.Except(friends).ToList();
-   
-            foreach (var instance in friends)
-            {
-                result.Add(new UserProfileViewModel
-                {
-                    UserProfile = instance,
-                    IsFriend = true
-                });
-            }
+            List<UserProfile> notfriends = allUsers.Except(friends).ToList();
 
-            foreach (var instance in notfriends)
-            {
-                result.Add(new UserProfileViewModel
-                {
-                    UserProfile = instance,
-                    IsFriend = false
-                });
-            }
+            var result = friends.Select(instance => new UserProfileViewModel
+                                                        {
+                                                            UserProfile = instance, IsFriend = true
+                                                        }).ToList();
+            result.AddRange(notfriends.Select(instance => new UserProfileViewModel
+                                                              {
+                                                                  UserProfile = instance, IsFriend = false
+                                                              }));
 
             return PartialView(result);
         }
 
         public ActionResult FriendsList()
         {
-            //return PartialView(_dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId));
-            var result = new List<UserProfileViewModel>();
             var friends = _dataRepository.UserRepository.GetFriends(WebSecurity.CurrentUserId).ToList();
 
-            foreach (var instance in friends)
-            {
-                result.Add(new UserProfileViewModel
-                {
-                    UserProfile = instance,
-                    IsFriend = true
-                });
-            }
+            var result = friends.Select(instance => new UserProfileViewModel
+                                                        {
+                                                            UserProfile = instance, IsFriend = true
+                                                        }).ToList();
 
             return PartialView(result);
         }
 
         public ActionResult AddFriend(int id)
         {
-            //return PartialView(_userRepository.AddFriend(WebSecurity.CurrentUserId, id));
             _dataRepository.UserRepository.AddFriend(WebSecurity.CurrentUserId, id);
-            return RedirectToAction("Details", new { id = id });
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult RemoveFriend(int id)
         {
-            //return PartialView(_userRepository.AddFriend(WebSecurity.CurrentUserId, id));
             _dataRepository.UserRepository.RemoveFriend(WebSecurity.CurrentUserId, id);
-            return RedirectToAction("Details", new { id = id });
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -123,11 +104,10 @@ namespace Leikjavefur.Controllers
                 _dataRepository.UserRepository.InsertOrUpdate(userProfile);
                 _dataRepository.UserRepository.Save();
                 return RedirectToAction("Index");
-            } else {
-				return View();
-			}
+            }
+            return View();
         }
-        
+
         //
         // GET: /Players/Edit/5
  
@@ -179,11 +159,11 @@ namespace Leikjavefur.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult _ProfilePartial()
+        public ActionResult ProfilePartial()
         {
-            LoginPartialViewModel loginViewModel = new LoginPartialViewModel();
-            Statistic myStats = _dataRepository.StatisticRepository.FindByUserId(WebSecurity.CurrentUserId);
-            UserProfile myProfile = _dataRepository.UserRepository.Find(WebSecurity.CurrentUserId);
+            var loginViewModel = new LoginPartialViewModel();
+            var myStats = _dataRepository.StatisticRepository.FindByUserId(WebSecurity.CurrentUserId);
+            var myProfile = _dataRepository.UserRepository.Find(WebSecurity.CurrentUserId);
 
             loginViewModel.userProfile = myProfile;
             loginViewModel.wins = myStats.Wins;

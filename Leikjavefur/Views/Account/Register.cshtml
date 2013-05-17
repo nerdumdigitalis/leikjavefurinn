@@ -3,16 +3,16 @@
     ViewBag.Title = "Nýskráning";
 }
 
-<hgroup class="title">
+@*<hgroup class="title">
     <h1>@ViewBag.Title</h1>
-</hgroup>
+</hgroup>*@
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
 <fieldset class ="RegisterAndManageFieldset">
-    <legend id="RegisterLegend" hidden>Registration Form</legend>
+    <legend id="RegisterLegend">Nýskráning</legend>
     <ol class="RegisterAndManageList">
         <li>
             @Html.LabelFor(m => m.UserName)

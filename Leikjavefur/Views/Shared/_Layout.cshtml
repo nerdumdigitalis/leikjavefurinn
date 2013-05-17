@@ -30,7 +30,7 @@
                 <a href="~/Home"><img src="~/Images/logo.png" alt="Borðspil.is" /></a>
                 @if (WebSecurity.IsAuthenticated)
                 {
-                    <div id="partialProfile">@Html.Action("_ProfilePartial", "Users")</div>
+                    <div id="partialProfile">@Html.Action("ProfilePartial", "Users")</div>
                 }
                 else
                 {
