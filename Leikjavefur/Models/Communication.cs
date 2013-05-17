@@ -2,7 +2,6 @@
 using Leikjavefur.Models.Repository;
 using Leikjavefur.Models.Interfaces;
 using Microsoft.AspNet.SignalR;
-using System.Linq;
 
 namespace Leikjavefur.Models
 {
@@ -46,49 +45,51 @@ namespace Leikjavefur.Models
 
         public void SaveWinOrLoss(string userId, string gameId, string winOrLoose) 
         {
-            Statistic myStat = _dataRepository.StatisticRepository.FindByUserIdAndGameID(Convert.ToInt32(userId), Convert.ToInt32(gameId));
+            var myStat = _dataRepository.StatisticRepository.FindByUserIdAndGameID(Convert.ToInt32(userId), Convert.ToInt32(gameId));
             if (myStat == null)
             {
-                myStat = new Statistic();
+                myStat = new Statistic
+                             {
+                                 UserID = Convert.ToInt32(userId),
+                                 GameID = Convert.ToInt32(gameId),
+                                 GamesPlayed = 1,
+                                 Points = 0
+                             };
                // myStat.Id = 0;
-                myStat.UserID = Convert.ToInt32(userId);
-                myStat.GameID = Convert.ToInt32(gameId);
-                myStat.GamesPlayed = 1;
-                myStat.Points = 0;
 
-                if (winOrLoose == "Won")
+                switch (winOrLoose)
                 {
-                    myStat.Wins = 1;
-                    myStat.Losses = 0;
-                     myStat.Draws = 0;
-                }
-                else if (winOrLoose == "Lost")
-                {
-                    myStat.Wins = 0;
-                    myStat.Losses = 1;
-                    myStat.Draws = 0;
-                }
-                else if (winOrLoose == "Tie")
-                {
-                    myStat.Wins = 0;
-                    myStat.Losses = 0;
-                    myStat.Draws = 1;
+                    case "Won":
+                        myStat.Wins = 1;
+                        myStat.Losses = 0;
+                        myStat.Draws = 0;
+                        break;
+                    case "Lost":
+                        myStat.Wins = 0;
+                        myStat.Losses = 1;
+                        myStat.Draws = 0;
+                        break;
+                    case "Tie":
+                        myStat.Wins = 0;
+                        myStat.Losses = 0;
+                        myStat.Draws = 1;
+                        break;
                 }
             }
             else if (myStat != null)
             {
                 myStat.GamesPlayed += 1;
-                if (winOrLoose == "Won")
+                switch (winOrLoose)
                 {
-                    myStat.Wins += 1;
-                }
-                else if (winOrLoose == "Lost")
-                {
-                    myStat.Losses += 1;
-                }
-                else if (winOrLoose == "Tie")
-                {
-                    myStat.Draws += 1;
+                    case "Won":
+                        myStat.Wins += 1;
+                        break;
+                    case "Lost":
+                        myStat.Losses += 1;
+                        break;
+                    case "Tie":
+                        myStat.Draws += 1;
+                        break;
                 }
             }
             _dataRepository.StatisticRepository.InsertOrUpdate(myStat);

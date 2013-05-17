@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Leikjavefur.Models;
-
-namespace Leikjavefur.ViewModels
+﻿namespace Leikjavefur.ViewModels
 {
     public class StatisticViewModel
     {
