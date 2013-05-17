@@ -754,7 +754,7 @@ h2
     width:100%;
     background-color: lightgreen;
     padding:5px;
-    min-width: 1030px;
+    min-width: 1000px;
     min-height:320px;
 }
 
@@ -988,7 +988,7 @@ h2
 	position: relative;
 	display: none;
 	background: white;
-	width: 300px;
+	width: 370px;
 	height: 250px;
 	border: black 1px solid;
 	padding: 10px;
