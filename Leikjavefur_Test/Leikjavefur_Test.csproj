@@ -35,9 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Leikjavefur\bin\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -53,6 +59,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Contexts\MockContext.cs" />
+    <Compile Include="Data\FakeData.cs" />
+    <Compile Include="Data\FakeDbSet.cs" />
     <Compile Include="RepositoryTests\GameInstancesRepositoryTest.cs" />
     <Compile Include="RepositoryTests\UserRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
