@@ -925,12 +925,27 @@ h2
     background-color: brown;
 }
 
+
 .UserImage {
 	height: 70px;
 	width: 70px;
 	float: left;
+    /*display: ;*/
 	border: black solid 1px;
 	
+}
+
+.Userlist {
+    margin: 10px;
+    padding: 10px;
+    text-align:center;
+    float:right;
+    width:100%;
+}
+
+.Userlist h3 
+{
+    color: black;
 }
 
 .UserProfilePopup img 
@@ -953,11 +968,9 @@ h2
 
 .UserImage:hover .UserProfilePopup 
 {
-	display: block;
-	z-index: 100;
+    display: block;
+    z-index: 100;
 }
-
-
 
 .GamesImage {
 	height: 57px;
@@ -975,7 +988,7 @@ h2
 	position: relative;
 	display: none;
 	background: white;
-	width: 370px;
+	width: 300px;
 	height: 250px;
 	border: black 1px solid;
 	padding: 10px;

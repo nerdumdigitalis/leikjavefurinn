@@ -31,22 +31,22 @@
                     <table>
                         <tr>
                             <th>
-                                UserProfile
+                                Notandi
                             </th>
-                            <th>
+@*                            <th>
                                 GamesPlayed
+                            </th>*@
+                            <th>
+                                Sigrar
                             </th>
                             <th>
-                                Wins
+                                Töp
                             </th>
                             <th>
-                                Losses
+                                Jafntefli
                             </th>
                             <th>
-                                Draws
-                            </th>
-                            <th>
-                                Points
+                                Stig
                             </th>
                         </tr>
                         @foreach (var stats in item.StatisticWithUsername)
@@ -55,9 +55,9 @@
                                 <td>
 			                        @Html.DisplayTextFor(_ => stats.UserName).ToString()
                                 </td>
-                                    <td>
+@*                                <td>
 			                        @stats.GamesPlayed
-                                </td>
+                                </td>*@
                                 <td>
 			                        @stats.Wins
                                 </td>
