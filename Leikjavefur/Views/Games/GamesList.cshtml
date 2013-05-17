@@ -1,6 +1,6 @@
 ﻿@*@model IQueryable<Leikjavefur.Models.Game>*@
 @using Leikjavefur.Models
-@model IEnumerable<Leikjavefur.ViewModels.StatisticViewModel>
+@model IEnumerable<Leikjavefur.ViewModels.StatisticTopTenWithUsernameAndGame>
 
 @{
     Layout = null;
@@ -28,10 +28,51 @@
             <div class="GamesImage">
                 <img src="~/Images/top10.png"/>
                 <div class="UserProfilePopup">
-                    <img src="~/Images/@item.Game.Avatar" style="float:left" alt="Mynd vantar"/>
-                    <div class="display-label">Nafn: @item.Game.Name</div>
-                    <div class="display-label">Skráður: @String.Format("{0:g}", @item.Game.DateAdded)</div>
-                    <div class="display-field">@item.Game.About</div>
+                    <table>
+                        <tr>
+                            <th>
+                                UserProfile
+                            </th>
+                            <th>
+                                GamesPlayed
+                            </th>
+                            <th>
+                                Wins
+                            </th>
+                            <th>
+                                Losses
+                            </th>
+                            <th>
+                                Draws
+                            </th>
+                            <th>
+                                Points
+                            </th>
+                        </tr>
+                        @foreach (var stats in item.StatisticWithUsername)
+                        {
+                            <tr>
+                                <td>
+			                        @Html.DisplayTextFor(_ => stats.UserName).ToString()
+                                </td>
+                                    <td>
+			                        @stats.GamesPlayed
+                                </td>
+                                <td>
+			                        @stats.Wins
+                                </td>
+                                <td>
+			                        @stats.Losses
+                                </td>
+                                <td>
+			                        @stats.Draws
+                                </td>
+                                <td>
+			                        @stats.Points
+                                </td>
+                            </tr>
+                        }
+                    </table>
                 </div>
             </div>
         </div>

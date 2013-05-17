@@ -93,7 +93,6 @@ namespace Leikjavefur.Models.Repository
         {
             return (from stats in _context.Statistics
                     where stats.GameID == gameId
-                    orderby stats.Wins descending
                     select stats).Take(10).ToList();
         }
     }
