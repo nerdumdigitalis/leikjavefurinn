@@ -60,14 +60,11 @@
                     @if (WebSecurity.IsAuthenticated)
                         {
                             <div class="Userlist">
-                        
-                                <h3>Vinir þínir</h3>
                                 @Html.Action("FriendsList", "Users")
                             </div>
                         }
                     <div class="Userlist">
                         <br />
-                        <h3>Allir notendur</h3>
                         @Html.Action("UserList", "Users")
                     </div>
                      <div id="OverallTopTenList">

@@ -14,7 +14,7 @@
 </div>
 
 <div id="profilestats">
-        <p>Name: @Html.ActionLink(User.Identity.Name, "Details", "Users", new { @id=WebSecurity.CurrentUserId }, null)</p>
+        <p>Name: @Html.ActionLink(User.Identity.Name, "Edit", "Users", new { @id=WebSecurity.CurrentUserId }, null)</p>
         <p>Sigrar: @Model.wins</p>
         <p>Spilaðir leikir: @Model.gamesPlayed</p>
 </div>
