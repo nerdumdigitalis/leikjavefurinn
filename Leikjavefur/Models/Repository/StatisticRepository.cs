@@ -32,6 +32,29 @@ namespace Leikjavefur.Models.Repository
             return _context.Statistics.Find(id);
         }
 
+        public Statistic FindByUserId(int userID)
+        {
+            var myStats = (from Stats in _context.Statistics
+                           where Stats.UserID == userID
+                           select Stats).ToList();
+
+            var singleStat= myStats.GroupBy(x => x.UserID)
+                   .Select(y => new
+                   {
+                       UserId = y.Key,
+                       Wins = y.Sum(i => i.Wins),
+                       GamesPlayed = y.Sum(i => i.GamesPlayed)
+                   }).FirstOrDefault();
+
+            Statistic newStats = new Statistic();
+
+            newStats.Wins = singleStat.Wins;
+            newStats.UserID = singleStat.UserId;
+            newStats.GamesPlayed = singleStat.GamesPlayed;
+
+            return newStats;
+        }
+
         public Statistic FindByUserIdAndGameID(int userId, int gameId)
         {
             return (from Stats in _context.Statistics
