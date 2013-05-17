@@ -182,11 +182,6 @@ namespace Leikjavefur.Controllers
             return RedirectToAction("Index");
         }
 
-        //public bool IsFriend(int id)
-        //{
-        //    return (_dataRepository.UserRepository.IsFriend(WebSecurity.CurrentUserId, id));
-        //}
-
     }
 }
 
