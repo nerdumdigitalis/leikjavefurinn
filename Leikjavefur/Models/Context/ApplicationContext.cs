@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Data;
 using System.Data.Entity;
 
 namespace Leikjavefur.Models.Context
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationContext : DbContext, IDataContext
     {
-        public ApplicationContext()
-            : base("DefaultConnection")
+        public ApplicationContext() : base("DefaultConnection")
         {
         }
-        public DbSet<UserProfile> Users { get; set; }
-        public DbSet<Game> Games { get; set; }
-        public DbSet<Statistic> Statistics { get; set; }
-        public DbSet<Report> Reports { get; set; }
-        public DbSet<GameInstance> GameInstances { get; set; }
-        public DbSet<Friends> Friends { get; set; }
+
+        public IDbSet<UserProfile> Users { get; set; }
+        public IDbSet<Game> Games { get; set; }
+        public IDbSet<Statistic> Statistics { get; set; }
+        public IDbSet<Report> Reports { get; set; }
+        public IDbSet<GameInstance> GameInstances { get; set; }
+        public IDbSet<Friends> Friends { get; set; }
+        public void SetModified(object entity)
+        {
+            Entry(entity).State = EntityState.Modified;
+        }
+        public IDbSet<T> Set<T>() where T : class
+        {
+            return base.Set<T>();
+        }
+
     }
 }
