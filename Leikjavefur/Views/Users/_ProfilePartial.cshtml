@@ -23,6 +23,11 @@
             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
             <a href="javascript:document.getElementById('logoutForm').submit()">Útskrá</a>}
-        
+            <br />
             @Html.ActionLink("Breyta Lykilorði", "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "UserProfilename", title = "Manage" })
+            @if (User.IsInRole("Administrator"))
+            {
+                <br />@Html.ActionLink("Admin: Notendur", "Index", "Users")
+                <br />@Html.ActionLink("Admin: Leikir", "Index", "Games")
+            }
 </div>
