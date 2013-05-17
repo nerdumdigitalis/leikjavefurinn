@@ -864,6 +864,7 @@ h2
 	width:33%;
 	left: 34%;
 	float:left;
+    margin-right: auto;
 	/*height:1000px;*/
 	
 }
@@ -876,6 +877,12 @@ h2
     z-index: 1;
 }
 
+#login a 
+{
+    float:left;
+    font-size:inherit;
+    color: inherit;
+}
 
 /*#Header_name 
 {
@@ -886,11 +893,12 @@ h2
 {
 	position: relative;
 	width: 70%;
-	left: 20%;
+    margin: auto;
 	height: 140px;
 	background-color: lightblue;
 	margin-bottom: 10px;
-	margin-top: 50px;	
+	margin-top: 50px;
+    border-radius:15px;	
 
 }
 
@@ -1064,9 +1072,9 @@ h2
 {
 	position: relative;
 	display: none;
-	background: white;
+	background: lightgray;
 	width: 300px;
-	height: 250px;
+	height: auto;
 	border: black 1px solid;
 	padding: 10px;
     top: -30px;
@@ -1122,4 +1130,49 @@ h2
     width: 98%;
     height:6%;
     resize: none;
+}
+
+#OverallTopTenList 
+{
+    text-align:center;
+    height:auto;
+    width:100%;
+    float:left;
+    background-color: pink;
+    align-content:center;
+     border-radius:15px;
+}
+
+#OverallTopTenList table
+{
+    margin:auto; 
+    margin-top:10px;
+    margin-bottom:10px;       
+    width:90%;
+}
+
+#OverallTopTenList table td
+{
+    border-right: solid black 1px;
+    border-bottom: solid black 1px;
+}
+
+#OverallTopTenList table th 
+{
+    border:solid black 1px;
+    /*border-left: solid black 1px;
+    border-top: solid black 1px;
+    border-bottom:solid black 2px;*/    
+}
+
+#OverallTopTenList table td
+{
+    border-right: solid black 1px;
+    border-bottom: solid black 1px;
+    margin:2px;
+}
+#OverallTopTenList tr > td:first-child 
+{
+    border-left: solid black 1px;  
+    padding:5px;
 }
