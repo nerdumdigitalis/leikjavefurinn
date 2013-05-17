@@ -23,19 +23,20 @@
 <div class="editor-label">
     @Html.LabelFor(model => model.Avatar)
 </div>
-<div class="editor-field" id="AvatarSelector">
-    @Html.DropDownListFor(Model => Model.Avatar, new SelectList(
+@*<div class="editor-field" id="AvatarSelector">
+    @Html.DropDownListFor(model => model.Avatar, new SelectList(
         new List<Object>{
+                new { value = model.Avatar, text = "Current Image"},
                 new { value ="avatar1.png", text = "Avatar 1"},
                 new { value ="avatar2.png", text = "Avatar 2"},
                 new { value ="avatar3.png", text = "Avatar 3"},
                 new { value ="avatar4.png", text = "Avatar 4"},
                 new { value ="avatar5.png", text = "Avatar 5"},
             }, "value","text", 2), new {style="width:150px;"})
-    
+    *@
     @*@Html.EditorFor(model => model.Avatar)*@
-    @Html.ValidationMessageFor(model => model.Avatar)
-</div>
+ @*   @Html.ValidationMessageFor(model => model.Avatar)*@
+@*</div>*@
 
 @*<div class="editor-label">
     @Html.LabelFor(model => model.DateCreated)

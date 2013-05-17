@@ -4,8 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Notendasnið</h2>
-
+<div class="textcenter">
+    <h2>Notendasnið</h2>
+</div>
 <fieldset id="details">
 
     <div id="avatar">
@@ -26,16 +27,16 @@
 </fieldset>
 
 <p>
-    <div>
-    @if (User.IsInRole("Administrator") || WebSecurity.CurrentUserId == Model.UserID)
-    {
-            @Html.ActionLink("Edit", "Edit", new { id=Model.UserID })
-    }
-    @if (User.IsInRole("Administrator"))
-    {
-        @: | 
-        @Html.ActionLink("Til Baka", "Index")
-    }
+    <div class="textcenter">
+        @if (User.IsInRole("Administrator") || WebSecurity.CurrentUserId == Model.UserID)
+        {
+                @Html.ActionLink("Edit", "Edit", new { id=Model.UserID })
+        }
+        @if (User.IsInRole("Administrator"))
+        {
+            @: | 
+            @Html.ActionLink("Til Baka", "Index")
+        }
     </div>
 </p>
 
